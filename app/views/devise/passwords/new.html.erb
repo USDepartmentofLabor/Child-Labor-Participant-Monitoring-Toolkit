@@ -1,0 +1,22 @@
+<div class="row" id="login-wrap">
+  <div class="panel panel-default">
+  	<div class="panel-heading"><%= t("passwords.forgot_password") %></div>
+    <div class="panel-body">
+
+			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+				<%= devise_error_messages! %>
+
+				<p><%= fa_icon "info-circle" %>&nbsp;<%= t("passwords.enter_email") %></p>
+			  <div class="form-group">
+			  	<%= f.email_field :email, autofocus: true, class: "form-control" %>
+			  </div>
+
+			  <hr>
+
+			  <%= f.submit t("passwords.submit"), class: "btn btn-primary btn-block" %>
+
+			<% end %>
+		</div>
+	</div>
+	<%= render "devise/shared/links" %>
+</div>

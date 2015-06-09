@@ -57,4 +57,20 @@ group :development, :test do
   gem "fuubar"
 end
 
+gem 'rails-i18n', '~> 4.0.0'
+
+gem 'devise'
+
+gem "font-awesome-rails"
+
+gem 'bootstrap-generators', '~> 3.3.4'
+
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem 'sidekiq'
+
+gem 'sinatra', :require => nil
+
 gem 'puma'

@@ -1,0 +1,29 @@
+<div class="row" id="login-wrap">
+
+  <h3 class="text-center" style="padding-bottom: 10px;"><%= t("registrations.sign_up") %></h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "new_user"}) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.email_field :email, class: "form-control validate[required,custom[email]]", placeholder: t("registrations.email") %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password, autocomplete: "off", class: "form-control validate[required]", placeholder: t("registrations.password") %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, autocomplete: "off", 
+          class: "form-control validate[equals[user_password]]", placeholder: t("registrations.password_confirmation") %>
+        </div>
+
+        <hr>
+        <%= submit_tag(t("registrations.submit"), class: "btn btn-success btn-block") %>
+      <% end %>
+    </div>
+  </div>
+  <%= render "devise/shared/links" %>
+</div>
