@@ -1,0 +1,44 @@
+# Development Environment
+
+1.	Download and Install [VirtualBox](www.virtualbox.org/wiki/Downloads)
+
+1.	Download and Install [Vagrant](vagrantup.com/downloads)
+
+1.	Start your console, and go to source code folder.
+
+1.	Start rails development environment in a virtual machine: `vagrant up` (might take some take for the first time)
+
+1.	To enter into the VM, use `vagrant ssh`
+
+1.	To stop the VM, use: `vagrant halt`
+
+
+# Getting Started
+
+1. Start VM: `vagrant up`
+
+1. Enter into VM: `vagrant ssh`
+
+1. Create database
+
+	`psql`
+
+	`create database dbms_development owner vagrant;`
+
+	`grant all privileges on database dbms_development to vagrant;`
+
+	`\q`
+
+1. Install Nodejs
+
+	`sudo add-apt-repository -y ppa:chris-lea/node.js`
+
+	`sudo apt-get -y update`
+
+  `sudo apt-get -y install nodejs`
+
+1. `bundle install`
+
+1. `bundle exec rake db:migrate`
+
+1. Start the server: `bundle exec rails s -b 0.0.0.0`
