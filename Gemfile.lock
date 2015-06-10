@@ -129,6 +129,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (2.10.0)
@@ -296,6 +299,7 @@ DEPENDENCIES
   fuubar
   guard-rspec
   jquery-rails
+  kaminari
   launchy
   mini_magick
   pg

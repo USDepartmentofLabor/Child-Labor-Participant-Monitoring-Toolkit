@@ -76,3 +76,5 @@ gem 'sinatra', :require => nil
 gem 'puma'
 
 gem 'country_select', github: 'stefanpenner/country_select'
+
+gem 'kaminari'

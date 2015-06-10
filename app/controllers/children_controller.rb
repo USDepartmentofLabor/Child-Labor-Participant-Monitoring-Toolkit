@@ -3,7 +3,7 @@ class ChildrenController < ApplicationController
 
   # GET /children
   def index
-    @children = Child.all
+    @children = Child.order(:id).page(params[:page])
   end
 
   # GET /children/1
