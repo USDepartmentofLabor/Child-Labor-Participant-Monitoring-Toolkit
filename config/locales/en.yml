@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  general:
+    submit: "Submit"
+    cancel: "Canel"
+    show: "View"
+    edit: "Edit"
+    delete: "Delete"
   registrations:
     sign_up: "Sign Up"
     email: "Email Address"
@@ -34,6 +40,12 @@ en:
     forgot_password: "Forgot password"
     enter_email: "Please enter your email address"
     submit: "Submit"
+  children:
+    new:
+      form_title: "Child Intake Form"
+    index:
+      add: "Add Child"
+      title: "List of Children"
   layouts:
     application:
       sign_in: "Sign in"

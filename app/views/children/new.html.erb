@@ -1,9 +1,8 @@
 <div class="page-header">
-  <%= link_to children_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+  <%= link_to children_path, class: 'btn btn-danger' do %>
+  	<%= fa_icon "times" %> <%= t("general.cancel") %>
   <% end %>
-  <h1>Child Intake Form</h1>
+  <h1><%= t("children.new.form_title") %></h1>
 </div>
 
 <%= render 'form' %>

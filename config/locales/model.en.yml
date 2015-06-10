@@ -13,3 +13,5 @@ en:
         city: "City"
         state: "State (Province)"
         country: "Country"
+        created_at: "Created at"
+        updated_at: "Updated at"
