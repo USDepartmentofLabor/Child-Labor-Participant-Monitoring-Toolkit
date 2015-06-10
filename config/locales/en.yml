@@ -27,6 +27,7 @@ en:
     edit: "Edit"
     delete: "Delete"
     back: "Back"
+    copyright: "All Rights Reserved"
   registrations:
     sign_up: "Sign Up"
     email: "Email Address"
@@ -45,7 +46,7 @@ en:
     new:
       form_title: "Child Intake Form"
     index:
-      add: "Add Child"
+      add: "Add A Child"
       title: "List of Children"
     show:
       title: "Child Record"

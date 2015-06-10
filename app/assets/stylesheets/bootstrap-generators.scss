@@ -2,8 +2,37 @@
 @import "bootstrap-sprockets.scss";
 @import "bootstrap.scss";
 
-body {
-  padding-top: $navbar-height + 10px;
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 60px auto -60px;
+}
+
+.footer, .push {
+  height: 80px;
+  // height: 21.25em;
+}
+
+.footer {
+  // position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #48525e;
+}
+
+.footer .copyright {
+  color: #a2abb7;
+  text-align: center;
+  padding-top: 15px;
 }
 
 .page-header {
@@ -15,12 +44,6 @@ body {
     margin-right: 8px;
   }
 }
-
-// input[type="radio"], input[type="checkbox"] {
-//   width: initial;
-//   height: initial;
-//   margin-top: 7px;
-// }
 
 #login-wrap {
   width: 360px;
