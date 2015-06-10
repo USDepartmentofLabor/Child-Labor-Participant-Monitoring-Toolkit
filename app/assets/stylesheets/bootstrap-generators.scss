@@ -16,11 +16,11 @@ body {
   }
 }
 
-input[type="radio"], input[type="checkbox"] {
-  width: initial;
-  height: initial;
-  margin-top: 7px;
-}
+// input[type="radio"], input[type="checkbox"] {
+//   width: initial;
+//   height: initial;
+//   margin-top: 7px;
+// }
 
 #login-wrap {
   width: 360px;
@@ -30,4 +30,16 @@ input[type="radio"], input[type="checkbox"] {
 
 i.fa {
   margin-right: 6px;
+}
+
+label.radio-inline {
+  padding-left: 0px;
+}
+
+.selection > .select-inline {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+
 }

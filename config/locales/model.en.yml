@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      child: "Child"
+    attributes:
+      child:
+        fname: "First Name (Given Name)"
+        lname: "Last Name (Family Name)"
+        mname: "Middle Name"
+        sex: "Gender"
+        dob: "Date of Birth"
+        address: "Address"
+        city: "City"
+        state: "State (Province)"
+        country: "Country"

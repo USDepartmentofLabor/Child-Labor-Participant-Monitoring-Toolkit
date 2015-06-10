@@ -1,0 +1,41 @@
+<div class="page-header">
+  <%= link_to children_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_child_path(@child), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show child</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Fname:</dt>
+  <dd><%= @child.fname %></dd>
+
+  <dt>Lname:</dt>
+  <dd><%= @child.lname %></dd>
+
+  <dt>Mname:</dt>
+  <dd><%= @child.mname %></dd>
+
+  <dt>Sex:</dt>
+  <dd><%= @child.sex %></dd>
+
+  <dt>Dob:</dt>
+  <dd><%= @child.dob %></dd>
+
+  <dt>Address:</dt>
+  <dd><%= @child.address %></dd>
+
+  <dt>City:</dt>
+  <dd><%= @child.city %></dd>
+
+  <dt>State:</dt>
+  <dd><%= @child.state %></dd>
+
+  <dt>Country:</dt>
+  <dd><%= @child.country %></dd>
+
+</dl>

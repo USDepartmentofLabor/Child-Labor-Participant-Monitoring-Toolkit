@@ -38,3 +38,7 @@ en:
     application:
       sign_in: "Sign in"
       sign_up: "Sign up"
+  select_options:
+    child:
+      male: "Boy"
+      female: "Girl"
