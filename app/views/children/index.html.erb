@@ -28,7 +28,7 @@
       <td><%= child.fname %></td>
       <td><%= child.lname %></td>
       <td><%= child.mname %></td>
-      <td><%= gender_text(child) %></td>
+      <td><%= child.gender_name %></td>
       <td><%= child.dob %></td>
       <td><%= format_time(child.updated_at) %></td>
       <td><%= link_to t("general.show"), child %></td>

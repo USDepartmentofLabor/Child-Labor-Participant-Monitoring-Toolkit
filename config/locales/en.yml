@@ -26,6 +26,7 @@ en:
     show: "View"
     edit: "Edit"
     delete: "Delete"
+    back: "Back"
   registrations:
     sign_up: "Sign Up"
     email: "Email Address"
@@ -46,6 +47,8 @@ en:
     index:
       add: "Add Child"
       title: "List of Children"
+    show:
+      title: "Child Record"
   layouts:
     application:
       sign_in: "Sign in"

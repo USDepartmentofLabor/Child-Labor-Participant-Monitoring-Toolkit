@@ -7,4 +7,14 @@ class Child < ActiveRecord::Base
 	validates :lname, presence: true
 	validates :country, length: {maximum: 2}
 	validates :sex, presence: true, inclusion: { in: [1,2] }
+
+	def country_name
+    country_iso = ISO3166::Country[country]
+    country_iso.translations[I18n.locale.to_s] || country_iso.name
+  end
+
+  def gender_name
+		option = SEX_OPTIONS[sex - 1]
+		return I18n.t(option[0])
+	end
 end

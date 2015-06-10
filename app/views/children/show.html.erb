@@ -1,41 +1,47 @@
 <div class="page-header">
   <%= link_to children_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= fa_icon "caret-left" %>
+    <%= t("general.back") %>
   <% end %>
   <%= link_to edit_child_path(@child), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
+    <%= fa_icon "pencil" %>
+    <%= t("general.edit") %>
   <% end %>
-  <h1>Show child</h1>
+  <h1><%= t("children.show.title") %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>Fname:</dt>
-  <dd><%= @child.fname %></dd>
-
-  <dt>Lname:</dt>
-  <dd><%= @child.lname %></dd>
-
-  <dt>Mname:</dt>
-  <dd><%= @child.mname %></dd>
-
-  <dt>Sex:</dt>
-  <dd><%= @child.sex %></dd>
-
-  <dt>Dob:</dt>
-  <dd><%= @child.dob %></dd>
-
-  <dt>Address:</dt>
-  <dd><%= @child.address %></dd>
-
-  <dt>City:</dt>
-  <dd><%= @child.city %></dd>
-
-  <dt>State:</dt>
-  <dd><%= @child.state %></dd>
-
-  <dt>Country:</dt>
-  <dd><%= @child.country %></dd>
-
-</dl>
+<table class="table table-bordered table-hover table-listing">
+  <tbody>
+    <tr>
+      <td>ID</td><td><%= @child.id %></td>
+    </tr>
+    <tr>
+      <td><%= Child.human_attribute_name(:fname) %></td><td><%= @child.fname %></td>
+    </tr>
+    <tr>
+      <td><%= Child.human_attribute_name(:lname) %></td><td><%= @child.lname %></td>
+    </tr>
+    <tr>
+      <td><%= Child.human_attribute_name(:mname) %></td><td><%= @child.mname %></td>
+    </tr>
+    <tr>
+      <td><%= Child.human_attribute_name(:sex) %></td><td><%= @child.gender_name %></td>
+    </tr>
+    <tr>
+      <td><%= Child.human_attribute_name(:dob) %></td><td><%= @child.dob %></td>
+    </tr>
+    <tr><td colspan="2"></td></tr>
+    <tr>
+      <td><%= Child.human_attribute_name(:address) %></td><td><%= @child.address %></td>
+    </tr>
+    <tr>
+      <td><%= Child.human_attribute_name(:city) %></td><td><%= @child.city %></td>
+    </tr>
+    <tr>
+      <td><%= Child.human_attribute_name(:state) %></td><td><%= @child.state %></td>
+    </tr>
+    <tr>
+      <td><%= Child.human_attribute_name(:country) %></td><td><%= @child.country_name %></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,19 +1,19 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <%= form_for(@child, html: { role: "form" }) do |f| %>
-      <% if @child.errors.any? %>
-        <div class="alert alert-danger alert-dismissable" role="alert">
-          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h4>
+<%= form_for(@child, html: { role: "form" }) do |f| %>
+  <% if @child.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h4>
 
-          <ul>
-          <% @child.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
+      <ul>
+      <% @child.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <div class="panel panel-default">
+    <div class="panel-body">
       <div class="form-group">
         <%= f.label :fname %>
         <%= f.text_field :fname, class: "form-control" %>
@@ -42,6 +42,11 @@
           <%= f.date_select :dob, {start_year: Date.today.year - 30, end_year: Date.today.year}, {class: "form-control select-inline"} %>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
       <div class="form-group">
         <%= f.label :address %>
         <%= f.text_field :address, class: "form-control" %>
@@ -58,8 +63,7 @@
         <%= f.label :country %>
         <%= f.country_select :country, {}, {class: "form-control"} %>
       </div>
-      <hr>
-      <button type="submit" class="btn btn-primary btn-block">Submit</button>
-    <% end %>
+    </div>
   </div>
-</div>
+  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+<% end %>
