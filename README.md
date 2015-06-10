@@ -43,3 +43,5 @@
 1. `bundle exec rake db:migrate`
 
 1. Start the server: `bundle exec rails s -b 0.0.0.0`
+
+1. Open up a web browser on your local workstation and navigate to [http://localhost:4000](http://localhost:4000)
