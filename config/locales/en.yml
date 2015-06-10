@@ -49,6 +49,8 @@ en:
       title: "List of Children"
     show:
       title: "Child Record"
+    edit:
+      title: "Edit Child Record"
   layouts:
     application:
       sign_in: "Sign in"
