@@ -57,7 +57,9 @@ en:
       title: "List of Children"
     show:
       title: "Child Record"
-      status_form_title: "Update Child's Status"
+      personal_information: "Personal Information"
+      statuses: "History Statuses"
+      status_form_title: "Add A New Status"
     edit:
       title: "Edit Child Record"
   layouts:

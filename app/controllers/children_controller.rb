@@ -8,7 +8,7 @@ class ChildrenController < ApplicationController
 
   # GET /children/1
   def show
-    @child_statuses = @child.statuses
+    @child_statuses = @child.statuses.includes(:work_status, :education_status)
   end
 
   # GET /children/new

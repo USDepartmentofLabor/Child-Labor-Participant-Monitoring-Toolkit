@@ -10,41 +10,57 @@
   <h1><%= t("children.show.title") %></h1>
 </div>
 
-<table class="table table-bordered table-hover table-listing">
-  <tbody>
-    <tr>
-      <td>ID</td><td><%= @child.id %></td>
-    </tr>
-    <tr>
-      <td><%= Child.human_attribute_name(:fname) %></td><td><%= @child.fname %></td>
-    </tr>
-    <tr>
-      <td><%= Child.human_attribute_name(:lname) %></td><td><%= @child.lname %></td>
-    </tr>
-    <tr>
-      <td><%= Child.human_attribute_name(:mname) %></td><td><%= @child.mname %></td>
-    </tr>
-    <tr>
-      <td><%= Child.human_attribute_name(:sex) %></td><td><%= @child.gender_name %></td>
-    </tr>
-    <tr>
-      <td><%= Child.human_attribute_name(:dob) %></td><td><%= @child.dob %></td>
-    </tr>
-    <tr><td colspan="2"></td></tr>
-    <tr>
-      <td><%= Child.human_attribute_name(:address) %></td><td><%= @child.address %></td>
-    </tr>
-    <tr>
-      <td><%= Child.human_attribute_name(:city) %></td><td><%= @child.city %></td>
-    </tr>
-    <tr>
-      <td><%= Child.human_attribute_name(:state) %></td><td><%= @child.state %></td>
-    </tr>
-    <tr>
-      <td><%= Child.human_attribute_name(:country) %></td><td><%= @child.country_name %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= t("children.show.personal_information") %>
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-hover table-listing">
+      <tbody>
+        <tr>
+          <td>ID</td><td><%= @child.id %></td>
+        </tr>
+        <tr>
+          <td><%= Child.human_attribute_name(:fname) %></td><td><%= @child.fname %></td>
+        </tr>
+        <tr>
+          <td><%= Child.human_attribute_name(:lname) %></td><td><%= @child.lname %></td>
+        </tr>
+        <tr>
+          <td><%= Child.human_attribute_name(:mname) %></td><td><%= @child.mname %></td>
+        </tr>
+        <tr>
+          <td><%= Child.human_attribute_name(:sex) %></td><td><%= @child.gender_name %></td>
+        </tr>
+        <tr>
+          <td><%= Child.human_attribute_name(:dob) %></td><td><%= @child.dob %></td>
+        </tr>
+        <tr><td colspan="2"></td></tr>
+        <tr>
+          <td><%= Child.human_attribute_name(:address) %></td><td><%= @child.address %></td>
+        </tr>
+        <tr>
+          <td><%= Child.human_attribute_name(:city) %></td><td><%= @child.city %></td>
+        </tr>
+        <tr>
+          <td><%= Child.human_attribute_name(:state) %></td><td><%= @child.state %></td>
+        </tr>
+        <tr>
+          <td><%= Child.human_attribute_name(:country) %></td><td><%= @child.country_name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= t("children.show.statuses") %>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "status", collection: @child_statuses %>
+  </div>
+</div>
 
 <div class="panel panel-primary">
   <div class="panel-heading">

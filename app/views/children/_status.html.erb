@@ -1,0 +1,12 @@
+Date: <%= status.start_date %> - <%= status.end_date %>
+<% if status.work_status_id.present? %>
+	<%= status.work_status.name %>
+<% end %>
+
+<% if status.education_status_id.present? %>
+	<%= status.education_status.name %>
+<% end %>
+
+<div class="reporter">
+	created by user #<%= status.user_id %> at <%= format_time status.created_at %>
+</div>

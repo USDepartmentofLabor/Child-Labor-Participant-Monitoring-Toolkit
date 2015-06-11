@@ -8,7 +8,7 @@ class Child < ActiveRecord::Base
 	validates :country, length: {maximum: 2}
 	validates :sex, presence: true, inclusion: { in: [1,2] }
 
-	has_many :statuses, class_name: :child_statuses
+	has_many :statuses, class_name: "ChildStatus"
 
 	def country_name
 		return nil if country.nil?
