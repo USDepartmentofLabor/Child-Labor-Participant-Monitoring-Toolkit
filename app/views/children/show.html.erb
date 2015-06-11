@@ -45,3 +45,15 @@
     </tr>
   </tbody>
 </table>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <%= t("children.show.status_form_title") %>
+  </div>
+  <div class="panel-body">
+    <%= form_for([@child, ChildStatus.new], html: { role: "form" }) do |f| %>
+      <%= render partial: 'status_form', locals: {f: f} %>
+      <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
+    <% end %>
+  </div>
+</div>

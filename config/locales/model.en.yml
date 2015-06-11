@@ -15,3 +15,11 @@ en:
         country: "Country"
         created_at: "Created at"
         updated_at: "Updated at"
+      child_status:
+        start_date: "Start Date"
+        end_date: "End Date"
+        work_status_id: "Work Status"
+        education_status_id: "Education Status"
+        note: "Notes"
+        created_at: "Created at"
+        updated_at: "Updated at"

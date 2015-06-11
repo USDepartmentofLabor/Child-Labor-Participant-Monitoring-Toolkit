@@ -8,6 +8,7 @@ class ChildrenController < ApplicationController
 
   # GET /children/1
   def show
+    @child_statuses = @child.statuses
   end
 
   # GET /children/new
@@ -24,7 +25,7 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
 
     if @child.save
-      redirect_to @child, notice: 'Child was successfully created.'
+      redirect_to @child, notice: t("action_messages.create", model: "Child")
     else
       render :new
     end
@@ -33,7 +34,7 @@ class ChildrenController < ApplicationController
   # PATCH/PUT /children/1
   def update
     if @child.update(child_params)
-      redirect_to @child, notice: 'Child was successfully updated.'
+      redirect_to @child, notice: t("action_messages.update", model: "Child")
     else
       render :edit
     end
@@ -42,7 +43,7 @@ class ChildrenController < ApplicationController
   # DELETE /children/1
   def destroy
     @child.destroy
-    redirect_to children_url, notice: 'Child was successfully destroyed.'
+    redirect_to children_url, t("action_messages.destroy", model: "Child")
   end
 
   private

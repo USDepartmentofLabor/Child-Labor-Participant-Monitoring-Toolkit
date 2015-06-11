@@ -8,6 +8,8 @@ class Child < ActiveRecord::Base
 	validates :country, length: {maximum: 2}
 	validates :sex, presence: true, inclusion: { in: [1,2] }
 
+	has_many :statuses, class_name: :child_statuses
+
 	def country_name
 		return nil if country.nil?
     country_iso = ISO3166::Country[country]

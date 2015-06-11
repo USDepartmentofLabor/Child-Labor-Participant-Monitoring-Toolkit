@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :children
+  resources :children do
+    resources :child_statuses
+  end
 
   devise_for :users, skip: [:sessions, :registrations]
   as :user do
