@@ -5,6 +5,7 @@ class ChildStatusesController < ApplicationController
 
 		@child_status = ChildStatus.new(child_status_params)
 		@child_status.child_id = @child.id
+		@child_status.user_id = current_user.id
 
 		if @child_status.save
 			redirect_to :back, notice: t("action_messages.create", model: "Child status")
