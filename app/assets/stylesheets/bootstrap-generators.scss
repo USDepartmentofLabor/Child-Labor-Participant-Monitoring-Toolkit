@@ -70,3 +70,17 @@ label.radio-inline {
 .table-listing td:first-child {
   font-weight: bold;
 }
+
+.child-status {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+
+  .reporter {
+    font-size: 85%;
+    font-style: italic;
+  }
+
+  .status-info {
+    line-height: 1.8
+  }
+}
