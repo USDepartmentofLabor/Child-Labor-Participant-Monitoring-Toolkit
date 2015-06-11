@@ -3,6 +3,9 @@ class Child < ActiveRecord::Base
 	# Integer value follows ISO standards: http://en.wikipedia.org/wiki/ISO/IEC_5218
 	SEX_OPTIONS = [ ["select_options.child.male", 1], ["select_options.child.female", 2] ]
 
+	scope :male, -> { where(sex: 1) }
+	scope :female, -> { where(sex: 2) }
+
 	validates :fname, presence: true
 	validates :lname, presence: true
 	validates :country, length: {maximum: 2}

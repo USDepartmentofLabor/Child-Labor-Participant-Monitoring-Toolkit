@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :reports
+  
   resources :children do
     resources :child_statuses
   end
