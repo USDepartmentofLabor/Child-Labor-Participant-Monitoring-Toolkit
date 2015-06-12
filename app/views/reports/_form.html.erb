@@ -91,12 +91,12 @@
             <% EducationStatus.all.each do |e| %>
               <div class="checkbox">
                 <label>
-                  <%= check_box_tag "reports[service_ids][]", e.id, true, class: "square-red" %>&nbsp;<%= e.name %>
+                  <%= check_box_tag "report[service_ids][]", e.id, true, class: "square-red" %>&nbsp;<%= e.name %>
                 </label>
               </div>
             <% end %>
           </div>
-          <%= hidden_field_tag "reports[service_type]", "EducationStatus" %>
+          <%= hidden_field_tag "report[service_type]", "EducationStatus" %>
 
           <div class="checkbox" style="padding-bottom: 20px;">
             <label style="font-size: 20px;">
@@ -129,12 +129,12 @@
             <% WorkStatus.all.each do |e| %>
               <div class="checkbox">
                 <label>
-                  <%= check_box_tag "reports[target_ids][]", e.id, true, class: "square-red" %>&nbsp;<%= e.name %>
+                  <%= check_box_tag "report[target_ids][]", e.id, true, class: "square-red" %>&nbsp;<%= e.name %>
                 </label>
               </div>
             <% end %>
           </div>
-          <%= hidden_field_tag "reports[target_type]", "WorkStatus" %>
+          <%= hidden_field_tag "report[target_type]", "WorkStatus" %>
         </div>
       </div>
       <hr>
