@@ -1,17 +1,6 @@
 <%= form_for(@child, html: { role: "form" }) do |f| %>
-  <% if @child.errors.any? %>
-    <div class="alert alert-danger alert-dismissable" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h4>
-
-      <ul>
-      <% @child.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= error_messages(@child) %>
+  
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="form-group">

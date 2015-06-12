@@ -66,6 +66,17 @@ en:
     index:
       add: "Generate A New Report"
       title: "List of Reports"
+    wizard:
+      step: "Step"
+      next: "Next"
+      back: "Back"
+      complete_status: "Complete"
+      select_indicator: "Select Indicator"
+      select_subindicators: "Select Sub-indicators"
+      details: "Report Details"
+      confirm: "Final Confirmation"
+      finish: "Generate Report"
+      common_indicators: "Common Indicators"
   layouts:
     application:
       sign_in: "Sign in"

@@ -1,2 +1,125 @@
-<%= form_for(Report.new, html: {role: "form"}) do |f| %>
+<%= form_for(@report, html: {role: "form", id: "report-wizard"}) do |f| %>
+	<%= error_messages(@report) %>
+
+	<div class="swMain">
+    <ul>
+      <li>
+        <a href="#step-1">
+          <div class="stepNumber">
+            1
+          </div>
+          <span class="stepDesc"> <%= t("reports.wizard.step") %> 1
+            <br />
+            <small><%= t("reports.wizard.select_indicator") %></small>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#step-2">
+          <div class="stepNumber">
+            2
+          </div>
+          <span class="stepDesc"> <%= t("reports.wizard.step") %> 2
+            <br />
+            <small><%= t("reports.wizard.select_subindicators") %></small>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#step-3">
+          <div class="stepNumber">
+            3
+          </div>
+          <span class="stepDesc"> <%= t("reports.wizard.step") %> 3
+            <br />
+            <small><%= t("reports.wizard.details") %></small>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#step-4">
+          <div class="stepNumber">
+            4
+          </div>
+          <span class="stepDesc"> <%= t("reports.wizard.step") %> 4
+            <br />
+            <small><%= t("reports.wizard.confirm") %></small>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <div class="progress progress-striped active progress-sm">
+      <div aria-valuemax="100" aria-valuemin="0" role="progressbar" class="progress-bar progress-bar-success step-bar">
+        <span class="sr-only"><%= t("reports.wizard.complete_status") %> 0% </span>
+      </div>
+    </div>
+    <div id="step-1">
+      <h3 class="StepTitle"><%= t("reports.wizard.step") %> 1 - <%= t("reports.wizard.select_indicator") %></h3>
+      <div class="form-group">
+        <%= f.label t("reports.wizard.common_indicators") %>
+        <div class="checkbox">
+        	<label>
+        		<%= check_box_tag "indicator_type[]", 1, true, class: "square-red" %>&nbsp;Education Indicators
+        		<%= check_box_tag "indicator_type[]", 2, true, class: "square-red" %>&nbsp;Livelihood Indicators
+        	</label>
+        </div>
+      </div>
+
+      <hr>
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-8">
+          <button class="btn btn-success next-step btn-block btn-large">
+            <%= t("reports.wizard.next") %> <i class="fa fa-arrow-circle-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="step-2">
+      <h3 class="StepTitle"><%= t("reports.wizard.step") %> 2 - <%= t("reports.wizard.select_subindicators") %></h3>
+
+      <hr>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <button class="btn btn-default back-step btn-block btn-large">
+            <i class="fa fa-arrow-circle-left"></i> <%= t("reports.wizard.back") %>
+          </button>
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+          <button class="btn btn-success next-step btn-block btn-large">
+            <%= t("reports.wizard.next") %> <i class="fa fa-arrow-circle-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="step-3">
+      <h3 class="StepTitle"><%= t("reports.wizard.step") %> 3 - <%= t("reports.wizard.details") %></h3>
+      <hr>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <button class="btn btn-default back-step btn-block btn-large">
+            <i class="fa fa-arrow-circle-left"></i> <%= t("reports.wizard.back") %>
+          </button>
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+          <button class="btn btn-success next-step btn-block btn-large">
+            <%= t("reports.wizard.next") %> <i class="fa fa-arrow-circle-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="step-4">
+      <h3 class="StepTitle"><%= t("reports.wizard.step") %> 3 - <%= t("reports.wizard.confirm") %></h3>
+      <hr>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <button class="btn btn-default back-step btn-block btn-large">
+            <i class="fa fa-arrow-circle-left"></i> <%= t("reports.wizard.back") %>
+          </button>
+        </div>
+        <div class="col-sm-4">
+          <%= submit_tag(t("reports.wizard.finish"), class: "btn btn-primary finish-step btn-block btn-large") %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

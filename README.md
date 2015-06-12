@@ -17,7 +17,9 @@
 
 1. Start VM: `vagrant up`
 
-1. Enter into VM: `vagrant ssh`
+1. Enter into VM: `vagrant ssh`. If you can not ssh into VM, then you will want to get an SSH client, and use it to connect to your Vagrant VM instead. We recommend PuTTY:
+
+		[PuTTY Download Link](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
 1. Create database
 

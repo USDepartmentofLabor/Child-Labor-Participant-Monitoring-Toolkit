@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require icheck.min
-//= require_tree .
+//= require home
+//= require children
