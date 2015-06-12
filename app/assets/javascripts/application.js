@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require icheck.min
+//= require jquery.smartWizard
 //= require home
 //= require children
+//= require form_wizard
