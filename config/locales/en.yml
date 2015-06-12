@@ -62,6 +62,10 @@ en:
       status_form_title: "Add A New Status"
     edit:
       title: "Edit Child Record"
+  reports:
+    index:
+      add: "Generate A New Report"
+      title: "List of Reports"
   layouts:
     application:
       sign_in: "Sign in"
