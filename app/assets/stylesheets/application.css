@@ -13,6 +13,7 @@
  *= require font-awesome
  *= require icheck-red
  *= require jquery.smartWizard
+ *= require bootstrap-datepicker
  *= require bootstrap-variables
  *= require bootstrap-generators
  *= require_self

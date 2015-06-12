@@ -7,11 +7,11 @@ var FormWizard = function() {
     $(wizardContent).smartWizard({
       selected : 0,
       keyNavigation : false,
-      // onLeaveStep : leaveAStepCallback,
+      onLeaveStep : leaveAStepCallback,
       onShowStep : onShowStep,
     });
     animateBar(1);
-    // initValidator();
+    initValidator();
     // runDatePicker();
   };
 
@@ -24,13 +24,13 @@ var FormWizard = function() {
     $('.step-bar').css('width', valueNow + '%');
   };
 
-  var runDatePicker = function () {
-    $('.date-picker').datepicker({
-      autoclose: true,
-      format: 'yyyy-mm-dd',
-      orientation: 'top'
-    });
-  };
+  // var runDatePicker = function () {
+  //   $('.date-picker').datepicker({
+  //     autoclose: true,
+  //     format: 'yyyy-mm-dd',
+  //     orientation: 'top'
+  //   });
+  // };
 
   var initValidator = function() {
     $.validator.addMethod("greaterThan", function(value, element, params) {
@@ -57,53 +57,9 @@ var FormWizard = function() {
       },
       ignore : ':hidden',
       rules : {
-        "user[fname]" : {
-          required : true
-        },
-        "user[lname]" : {
-          required : true
-        },
-        "user[email]" : {
-          required : true
-        },
-        "user[password]" : {
-          required : true
-        },
-        "user[password_confirmation]" : {
-          required : true
-        },
-        "project[title]" : {
-          required : true
-        },
-        "project[industry_id]" : {
-          required : true
-        },
-        "project[type_id]" : {
-          required : true
-        },
-        "project[about]" : {
-          required : true
-        },
-        "project[goals]" : {
-          required : true
-        },
-        "project[budget]" : {
-          money: true,
-          min: 1,
-          required : true
-        },
-        "project[start_at]" : {
-          date: true,
-          required : true
-        },
-        "project[end_at]" : {
-          greaterThan: "#project_start_at",
-          date: true,
+        "report[title]" : {
           required : true
         }
-      },
-      messages : {
-        firstname : "Please specify your first name"
       },
       highlight : function(element) {
         $(element).closest('.help-block').removeClass('valid');
@@ -159,8 +115,6 @@ var FormWizard = function() {
   var onFinish = function(obj, context, event) {
     if (validateAllSteps()) {
       $('.anchor').children("li").last().children("a").removeClass('wait').removeClass('selected').addClass('done');
-      var status = $(event.target).data("status");
-      $("input[name='project[status]']").val(status);
       $(wizardForm).submit();
     }
   };

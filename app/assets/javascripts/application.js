@@ -15,6 +15,8 @@
 //= require bootstrap
 //= require icheck.min
 //= require jquery.smartWizard
+//= require bootstrap-datepicker
+//= require jquery.validate.min
 //= require home
 //= require children
 //= require form_wizard
