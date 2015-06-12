@@ -2,6 +2,7 @@ en:
   activerecord:
     models:
       child: "Child"
+      report: "Report"
     attributes:
       child:
         fname: "First Name (Given Name)"
@@ -23,3 +24,7 @@ en:
         note: "Notes"
         created_at: "Created at"
         updated_at: "Updated at"
+      reports:
+        title: "Report Title"
+        start_date: "Start Date"
+        end_date: "End Date"

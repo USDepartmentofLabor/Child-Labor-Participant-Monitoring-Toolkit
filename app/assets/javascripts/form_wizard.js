@@ -8,9 +8,9 @@ var FormWizard = function() {
       selected : 0,
       keyNavigation : false,
       // onLeaveStep : leaveAStepCallback,
-      // onShowStep : onShowStep,
+      onShowStep : onShowStep,
     });
-    // animateBar(1);
+    animateBar(1);
     // initValidator();
     // runDatePicker();
   };
@@ -28,20 +28,11 @@ var FormWizard = function() {
     $('.date-picker').datepicker({
       autoclose: true,
       format: 'yyyy-mm-dd',
-      language: 'zh-CN',
       orientation: 'top'
     });
   };
 
   var initValidator = function() {
-    // $.validator.addMethod("cardExpiry", function() {
-    //   //if all values are selected
-    //   if ($("#card_expiry_mm").val() != "" && $("#card_expiry_yyyy").val() != "") {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // }, 'Please select a month and year');
     $.validator.addMethod("greaterThan", function(value, element, params) {
       if (!/Invalid|NaN/.test(new Date(value))) {
         return new Date(value) > new Date($(params).val());
@@ -49,12 +40,8 @@ var FormWizard = function() {
 
       return isNaN(value) && isNaN($(params).val()) 
         || (Number(value) > Number($(params).val())); 
-    },"结束日期必须晚于开始日期");
+    },"The end date must be later than the start date.");
 
-    $.validator.addMethod("money", function(value, element) {
-      var isValidMoney = /^\d{0,4}(\.\d{0,2})?$/.test(value);
-      return this.optional(element) || isValidMoney;
-    },"请输入有效的金额");
     $.validator.setDefaults({
       errorElement : "span", // contain the error msg in a span tag
       errorClass : 'help-block',
