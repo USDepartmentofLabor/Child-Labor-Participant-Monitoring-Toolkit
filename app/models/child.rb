@@ -11,7 +11,7 @@ class Child < ActiveRecord::Base
 	validates :country, length: {maximum: 2}
 	validates :sex, presence: true, inclusion: { in: [1,2] }
 
-	has_many :statuses, class_name: "ChildStatus"
+	has_many :statuses, class_name: "ChildStatus", dependent: :destroy
 
 	def country_name
 		return nil if country.nil?
