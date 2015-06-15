@@ -9,7 +9,7 @@ class EducationIndicator
 	  @start_date = start_date
 	  @end_date = end_date
 	  @education_status_ids = education_status_ids
-	  @educated_children_ids = children_provided_education(education_status_ids, start_date, end_date)
+	  @educated_children_ids = children_provided_education
 	end
 
 	def generate(work_status_id)
@@ -27,17 +27,17 @@ class EducationIndicator
 		return results
 	end
 
-	# Return unique IDs of child, whose working status is as work_status_id, within given period of time.
+	# Return unique IDs of children, whose working status is work_status_id, within given period of time.
 	def children_with_work(work_status_id)
 		child_ids = ChildStatus.where(
-			work_status_id: work_status_id, 
+			work_status_id: work_status_id,
 			start_date: (@start_date..@end_date)
 		).pluck("DISTINCT child_id")
 
 		child_ids
 	end
 
-	# Return unique IDs of child, to whom education services are provided, within given period of time.
+	# Return unique IDs of children, to whom education services are provided, within given period of time.
 	def children_provided_education
 		child_ids = ChildStatus.where(
 			education_status_id: @education_status_ids, 

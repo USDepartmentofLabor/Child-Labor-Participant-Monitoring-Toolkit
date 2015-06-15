@@ -26,5 +26,6 @@ en:
         updated_at: "Updated at"
       reports:
         title: "Report Title"
+        desc: "Description"
         start_date: "Start Date"
         end_date: "End Date"

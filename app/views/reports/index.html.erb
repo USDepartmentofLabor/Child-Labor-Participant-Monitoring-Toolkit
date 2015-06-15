@@ -5,3 +5,29 @@
   <% end %>
   <h1><%= t("reports.index.title") %></h1>
 </div>
+
+<table class="table table-condensed table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th><%= Report.human_attribute_name(:title) %></th>
+      <th><%= Report.human_attribute_name(:start_date) %></th>
+      <th><%= Report.human_attribute_name(:end_date) %></th>
+      <th><%= Report.human_attribute_name(:created_at) %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= content_tag_for(:tr, @reports) do |report| %>
+      <td><%= report.id %></td>
+      <td><%= report.title %></td>
+      <td><%= report.start_date %></td>
+      <td><%= report.end_date %></td>
+      <td><%= format_time report.created_at %></td>
+      <td><%= link_to t("general.show"), report %></td>
+      <td><%= link_to t("general.delete"), report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tbody>
+</table>

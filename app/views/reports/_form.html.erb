@@ -54,6 +54,13 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :desc, class: "col-sm-3 control-label" %>
+        <div class="col-sm-7">
+          <%= f.text_area :desc, class: "form-control", rows: "5" %>
+        </div>
+      </div>
+
+      <div class="form-group">
         <%= f.label :start_date, class: "col-sm-3 control-label" %>
         <div class="selection col-sm-7">
           <%= f.date_select :start_date, {start_year: Date.today.year - 10, end_year: Date.today.year, use_two_digit_numbers: true}, {class: "form-control select-inline"} %>
