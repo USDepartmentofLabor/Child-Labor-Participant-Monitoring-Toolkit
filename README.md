@@ -1,4 +1,6 @@
-# Development Environment
+Direct Beneficiary Monitoring System Prototype (DOL-ILAB)
+
+## Development Environment
 
 1.	Download and Install [VirtualBox](www.virtualbox.org/wiki/Downloads)
 
@@ -13,13 +15,12 @@
 1.	To stop the VM, use: `vagrant halt`
 
 
-# Getting Started
+## Getting Started
 
 1. Start VM: `vagrant up`
 
 1. Enter into VM: `vagrant ssh`. If you can not ssh into VM, then you will want to get an SSH client, and use it to connect to your Vagrant VM instead. We recommend PuTTY:
-
-		[PuTTY Download Link](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+  [PuTTY Download Link](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
 1. Create database
 
@@ -51,8 +52,9 @@
 1. Open up a web browser on your local workstation and navigate to [http://localhost:4000](http://localhost:4000)
 
 
-# Load Dummy Data
+## Load Dummy Data
 
 You can load some dummy data to play with this system. To load the data:
 
   `bundle exec rake DBMS:load_dummy_data`
+
