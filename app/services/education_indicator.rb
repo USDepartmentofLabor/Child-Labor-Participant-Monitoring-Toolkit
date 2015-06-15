@@ -22,7 +22,14 @@ class EducationIndicator
 		children_male = children_with_gender(target_children_educated, :male)
 		children_female = children_with_gender(target_children_educated, :female)
 
-		results = {target_total: total_children, educated: {girls: children_female.length, boys: children_male.length, total: total_children_educated}}
+		results = {
+			target_total: total_children,
+			educated: {
+				girls: children_female.length,
+				boys: children_male.length,
+				total: total_children_educated
+			}
+		}
 
 		return results
 	end
