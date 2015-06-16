@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
 
   def show
     # Generate report on demand
-    education_report = EducationIndicator.new(@report.service_ids, @report.start_date, @report.end_date)
+    education_report = EducationIndicator.new(@report.service_ids, @report.start_date, @report.end_date, @report.project_id)
 
     @work_statuses = WorkStatus.where(id: @report.target_ids).order(:id)
 
