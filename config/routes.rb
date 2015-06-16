@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :projects
   resources :reports, except: [:edit, :update]
   
   resources :children do
