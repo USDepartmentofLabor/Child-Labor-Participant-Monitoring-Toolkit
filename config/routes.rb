@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :reports, except: [:edit, :update]
+    resources :children
   end
-  
-  resources :children do
+
+  # a trick to avoid generating children urls again
+  resources :children, only: [] do
     resources :child_statuses
   end
 

@@ -17,7 +17,7 @@
           </li>
           <% if @project && !@project.new_record? %>
             <li class=<%= "active" if controller_name == 'children' %>>
-              <%= link_to "Children", children_path %>
+              <%= link_to "Children", project_children_path %>
             </li>
             <li class=<%= "active" if controller_name == 'reports' %>>
               <%= link_to "Reports", project_reports_path(@project) %>

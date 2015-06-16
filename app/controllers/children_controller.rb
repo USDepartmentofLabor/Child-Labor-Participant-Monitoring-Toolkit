@@ -1,4 +1,5 @@
 class ChildrenController < ApplicationController
+  before_action :set_project
   before_action :set_child, only: [:show, :edit, :update, :destroy]
 
   # GET /children
@@ -50,6 +51,10 @@ class ChildrenController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_child
       @child = Child.find(params[:id])
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 
     # Only allow a trusted parameter "white list" through.

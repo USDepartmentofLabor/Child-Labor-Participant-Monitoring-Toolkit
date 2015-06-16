@@ -13,6 +13,9 @@ class Child < ActiveRecord::Base
 
   has_many :statuses, class_name: "ChildStatus", dependent: :destroy
 
+  has_many :projects_children
+  has_many :projects, through: :projects_children
+
   def country_name
     return nil if country.nil?
     country_iso = ISO3166::Country[country]
