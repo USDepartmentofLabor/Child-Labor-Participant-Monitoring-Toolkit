@@ -46,11 +46,12 @@ class ReportsController < ApplicationController
     end
 
     def set_report
-      @report = Report.find(params[:id])
+      # @report = Report.find(params[:id])
       # if @report.user_id != current_user.id
       #   raise ActiveRecord::RecordNotFound
       # end
       # @report
+      @report = @project.reports.find(params[:id])
     end
 
     def set_project

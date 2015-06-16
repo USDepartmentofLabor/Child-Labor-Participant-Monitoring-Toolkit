@@ -4,12 +4,12 @@ class ChildrenController < ApplicationController
 
   # GET /children
   def index
-    @children = Child.order(:id).page(params[:page])
+    @children = @project.children.order(:id).page(params[:page])
   end
 
   # GET /children/1
   def show
-    @child_statuses = @child.statuses.includes(:work_status, :education_status)
+    @child_statuses = ChildStatus.where(child_id: @child.id, project_id: @project.id).includes(:work_status, :education_status)
   end
 
   # GET /children/new
@@ -26,7 +26,8 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
 
     if @child.save
-      redirect_to @child, notice: t("action_messages.create", model: "Child")
+      @project.children << @child
+      redirect_to project_child_path(@project, @child), notice: t("action_messages.create", model: "Child")
     else
       render :new
     end
@@ -35,22 +36,22 @@ class ChildrenController < ApplicationController
   # PATCH/PUT /children/1
   def update
     if @child.update(child_params)
-      redirect_to @child, notice: t("action_messages.update", model: "Child")
+      redirect_to project_child_path(@project, @child), notice: t("action_messages.update", model: "Child")
     else
       render :edit
     end
   end
 
-  # DELETE /children/1
+  # only delete child-project relation. Never delete child record.
   def destroy
-    @child.destroy
-    redirect_to children_url, notice: t("action_messages.destroy", model: "Child")
+    ProjectsChild.where(project_id: @project.id, child_id: @child.id).first.destroy
+    redirect_to project_children_path(@project), notice: t("action_messages.destroy", model: "Child")
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_child
-      @child = Child.find(params[:id])
+      @child = @project.children.find(params[:id])
     end
 
     def set_project

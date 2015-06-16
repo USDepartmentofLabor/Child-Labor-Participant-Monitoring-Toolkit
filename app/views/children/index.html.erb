@@ -1,5 +1,5 @@
 <div class="page-header">
-  <%= link_to new_child_path, class: 'btn btn-primary' do %>
+  <%= link_to new_project_child_path(@project), class: 'btn btn-primary' do %>
     <%= fa_icon "plus" %>
     <%= t("children.index.add") %>
   <% end %>
@@ -31,9 +31,9 @@
       <td><%= child.gender_name %></td>
       <td><%= child.dob %></td>
       <td><%= format_time(child.updated_at) %></td>
-      <td><%= link_to t("general.show"), child %></td>
-      <td><%= link_to t("general.edit"), edit_child_path(child) %></td>
-      <td><%= link_to t("general.delete"), child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to t("general.show"), project_child_path(@project, child) %></td>
+      <td><%= link_to t("general.edit"), edit_project_child_path(@project, child) %></td>
+      <td><%= link_to t("general.delete"), project_child_path(@project, child), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tbody>
 </table>

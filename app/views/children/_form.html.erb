@@ -1,4 +1,4 @@
-<%= form_for(@child, html: { role: "form" }) do |f| %>
+<%= form_for([@project, @child], html: { role: "form" }) do |f| %>
   <%= error_messages(@child) %>
   
   <div class="panel panel-default">

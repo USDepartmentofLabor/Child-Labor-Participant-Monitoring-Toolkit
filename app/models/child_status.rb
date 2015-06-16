@@ -4,5 +4,6 @@ class ChildStatus < ActiveRecord::Base
   belongs_to :education_status
 
   validates :user_id, presence: true
+  validates :project_id, presence: true
   validates :start_date, presence: true
 end

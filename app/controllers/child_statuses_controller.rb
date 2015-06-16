@@ -1,11 +1,12 @@
 class ChildStatusesController < ApplicationController
-  def create
-    # authentication ...
-    @child = Child.find(params[:child_id])
+  before_action :set_project
+  before_action :set_child
 
+  def create
     @child_status = ChildStatus.new(child_status_params)
     @child_status.child_id = @child.id
     @child_status.user_id = current_user.id
+    @child_status.project_id = @project.id
 
     if @child_status.save
       redirect_to :back, notice: t("action_messages.create", model: "Child status")
@@ -16,7 +17,15 @@ class ChildStatusesController < ApplicationController
 
   private
 
+    def set_project
+      @project = Project.find(params[:child_status][:project_id])
+    end
+
+    def set_child
+      @child = Child.find(params[:child_id])
+    end
+
     def child_status_params
-      params.require(:child_status).permit(:start_date, :end_date, :work_status_id, :education_status_id, :note)
+      params.require(:child_status).permit(:start_date, :end_date, :work_status_id, :education_status_id, :note, :project_id)
     end
 end
