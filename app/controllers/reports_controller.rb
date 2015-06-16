@@ -2,9 +2,9 @@ class ReportsController < ApplicationController
   before_action :set_project
   before_action :set_report, only: [:show, :destroy]
 
-	def index
-		@reports = Report.where(project_id: @project.id).all
-	end
+  def index
+    @reports = Report.where(project_id: @project.id).all
+  end
 
   def show
     # Generate report on demand
@@ -18,9 +18,9 @@ class ReportsController < ApplicationController
     end
   end
 
-	def new
-		@report = Report.new
-	end
+  def new
+    @report = Report.new
+  end
 
   def create
     @report = Report.new(report_params)
