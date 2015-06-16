@@ -20,7 +20,7 @@
               <%= link_to "Children", children_path %>
             </li>
             <li class=<%= "active" if controller_name == 'reports' %>>
-              <%= link_to "Reports", reports_path %>
+              <%= link_to "Reports", project_reports_path(@project) %>
             </li>
           <% end %>
         </ul>

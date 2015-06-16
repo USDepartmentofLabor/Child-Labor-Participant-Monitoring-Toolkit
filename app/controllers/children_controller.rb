@@ -43,7 +43,7 @@ class ChildrenController < ApplicationController
   # DELETE /children/1
   def destroy
     @child.destroy
-    redirect_to children_url, t("action_messages.destroy", model: "Child")
+    redirect_to children_url, notice: t("action_messages.destroy", model: "Child")
   end
 
   private

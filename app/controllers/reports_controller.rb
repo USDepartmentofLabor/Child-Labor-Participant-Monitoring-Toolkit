@@ -1,8 +1,9 @@
 class ReportsController < ApplicationController
-  before_action :get_authed_report, only: [:show, :destroy]
+  before_action :set_project
+  before_action :set_report, only: [:show, :destroy]
 
 	def index
-		@reports = Report.where(user_id: current_user.id).all
+		@reports = Report.where(project_id: @project.id).all
 	end
 
   def show
@@ -24,8 +25,9 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user_id = current_user.id
+    @report.project_id = @project.id
     if @report.save
-      redirect_to reports_path, notice: t("action_messages.create", model: "Report")
+      redirect_to project_reports_path(@project), notice: t("action_messages.create", model: "Report")
     else
       render :new
     end
@@ -33,7 +35,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-    redirect_to reports_url, t("action_messages.destroy", model: "Report")
+    redirect_to project_reports_url(@project), notice: t("action_messages.destroy", model: "Report")
   end
 
   private
@@ -43,11 +45,15 @@ class ReportsController < ApplicationController
       params.require(:report).permit(:title, :start_date, :end_date, :service_type, :target_type, {service_ids: []}, {target_ids: []})
     end
 
-    def get_authed_report
+    def set_report
       @report = Report.find(params[:id])
-      if @report.user_id != current_user.id
-        raise ActiveRecord::RecordNotFound
-      end
-      @report
+      # if @report.user_id != current_user.id
+      #   raise ActiveRecord::RecordNotFound
+      # end
+      # @report
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 end

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :projects
-  resources :reports, except: [:edit, :update]
+  resources :projects do
+    resources :reports, except: [:edit, :update]
+  end
   
   resources :children do
     resources :child_statuses
