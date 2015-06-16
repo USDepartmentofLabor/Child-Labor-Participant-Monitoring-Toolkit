@@ -36,6 +36,7 @@ en:
     update_failed: "Failed to update %{model}. %{error}"
     destroy_failed: "Failed to delete %{model}. %{error}"
   registrations:
+    name: "Full Name"
     sign_up: "Sign Up"
     email: "Email Address"
     password: "Password"

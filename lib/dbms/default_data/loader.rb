@@ -65,7 +65,7 @@ module DBMS
 
         def load_dummy_data
           load if no_data?
-          user = User.create!(email: "admin@impaqint.com", password: "password")
+          user = User.create!(name: "Admin", email: "admin@impaqint.com", password: "password")
 
           index = 1
           year = Date.today.year - 13
