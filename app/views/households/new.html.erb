@@ -1,0 +1,8 @@
+<div class="page-header">
+  <%= link_to project_households_path(@project), class: 'btn btn-danger' do %>
+    <%= fa_icon "times" %> <%= t("general.cancel") %>
+  <% end %>
+  <h1><%= t("households.new.title") %></h1>
+</div>
+
+<%= render 'form' %>

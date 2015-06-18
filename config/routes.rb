@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :reports, except: [:edit, :update]
     resources :children
+    resources :households
   end
 
   # a trick to avoid generating children urls again

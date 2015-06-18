@@ -63,6 +63,12 @@ en:
       status_form_title: "Add A New Status"
     edit:
       title: "Edit Child Record"
+  households:
+    index:
+      add: "Add A Household"
+      title: "List of Households"
+    new:
+      title: "Add A Household"
   reports:
     index:
       add: "Generate A New Report"

@@ -5,5 +5,8 @@ class Project < ActiveRecord::Base
   has_many :projects_children, dependent: :destroy
   has_many :children, through: :projects_children
 
+  has_many :projects_households, dependent: :destroy
+  has_many :households, through: :projects_households
+
   has_many :reports
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616200927) do
+ActiveRecord::Schema.define(version: 20150618183051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 20150616200927) do
     t.string "name"
   end
 
+  create_table "households", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country",    limit: 2
+    t.string   "phone"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -65,6 +76,16 @@ ActiveRecord::Schema.define(version: 20150616200927) do
 
   add_index "projects_children", ["child_id"], name: "index_projects_children_on_child_id", using: :btree
   add_index "projects_children", ["project_id"], name: "index_projects_children_on_project_id", using: :btree
+
+  create_table "projects_households", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "household_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "projects_households", ["household_id"], name: "index_projects_households_on_household_id", using: :btree
+  add_index "projects_households", ["project_id"], name: "index_projects_households_on_project_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.string   "title"
@@ -105,4 +126,6 @@ ActiveRecord::Schema.define(version: 20150616200927) do
   end
 
   add_foreign_key "child_statuses", "children"
+  add_foreign_key "projects_households", "households"
+  add_foreign_key "projects_households", "projects"
 end

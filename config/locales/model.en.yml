@@ -3,6 +3,7 @@ en:
     models:
       child: "Child"
       report: "Report"
+      household: "Household"
     attributes:
       child:
         fname: "First Name (Given Name)"
