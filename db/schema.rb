@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618183051) do
+ActiveRecord::Schema.define(version: 20150618192404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adults", force: :cascade do |t|
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "mname"
+    t.integer  "sex",          limit: 2
+    t.date     "dob"
+    t.integer  "household_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "adults", ["household_id"], name: "index_adults_on_household_id", using: :btree
 
   create_table "child_statuses", force: :cascade do |t|
     t.date     "start_date"
@@ -35,14 +48,15 @@ ActiveRecord::Schema.define(version: 20150618183051) do
     t.string   "fname"
     t.string   "lname"
     t.string   "mname"
-    t.integer  "sex",        limit: 2
+    t.integer  "sex",          limit: 2
     t.date     "dob"
     t.string   "address"
     t.string   "city"
     t.string   "state"
-    t.string   "country",    limit: 2
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "country",      limit: 2
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "household_id"
   end
 
   create_table "education_statuses", force: :cascade do |t|
@@ -125,6 +139,7 @@ ActiveRecord::Schema.define(version: 20150618183051) do
     t.string "name"
   end
 
+  add_foreign_key "adults", "households"
   add_foreign_key "child_statuses", "children"
   add_foreign_key "projects_households", "households"
   add_foreign_key "projects_households", "projects"
