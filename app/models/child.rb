@@ -29,4 +29,8 @@ class Child < ActiveRecord::Base
     option = SEX_OPTIONS[sex - 1]
     return I18n.t(option[0])
   end
+
+  def full_name
+    mname ? "#{fname} #{mname} #{lname}" : "#{fname} #{lname}"
+  end
 end

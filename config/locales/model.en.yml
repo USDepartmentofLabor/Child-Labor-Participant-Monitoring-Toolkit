@@ -25,8 +25,17 @@ en:
         note: "Notes"
         created_at: "Created at"
         updated_at: "Updated at"
-      reports:
+      report:
         title: "Report Title"
         desc: "Description"
         start_date: "Start Date"
         end_date: "End Date"
+      household:
+        name: "Household Name"
+        address: "Address"
+        city: "City"
+        state: "State (Province)"
+        country: "Country"
+        phone: "Phone Number"
+        created_at: "Created at"
+        updated_at: "Updated at"

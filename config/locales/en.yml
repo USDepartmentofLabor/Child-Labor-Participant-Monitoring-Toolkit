@@ -69,6 +69,12 @@ en:
       title: "List of Households"
     new:
       title: "Add A Household"
+    edit:
+      title: "Edit Household Record"
+    show:
+      title: "Household Record"
+      family_information: "Family Information"
+      children: "Children Of This Household"
   reports:
     index:
       add: "Generate A New Report"

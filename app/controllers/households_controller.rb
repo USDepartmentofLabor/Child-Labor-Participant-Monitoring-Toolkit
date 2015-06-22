@@ -9,6 +9,7 @@ class HouseholdsController < ApplicationController
 
   # GET /households/1
   def show
+    @children = @household.children
   end
 
   # GET /households/new
@@ -26,6 +27,9 @@ class HouseholdsController < ApplicationController
 
     if @household.save
       @project.households << @household
+
+      @household.children.each{|child| @project.children << child}
+
       redirect_to project_household_path(@project, @household), notice: t("action_messages.create", model: "Household")
     else
       render :new
@@ -44,7 +48,7 @@ class HouseholdsController < ApplicationController
   # DELETE /households/1
   def destroy
     @household.destroy
-    redirect_to households_url, notice: 'Household was successfully destroyed.'
+    redirect_to project_households_path(@project), notice: 'Household was successfully destroyed.'
   end
 
   private
