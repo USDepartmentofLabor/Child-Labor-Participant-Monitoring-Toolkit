@@ -20,3 +20,4 @@
 //= require home
 //= require children
 //= require form_wizard
+//= require households

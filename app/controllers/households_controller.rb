@@ -25,7 +25,8 @@ class HouseholdsController < ApplicationController
     @household = Household.new(household_params)
 
     if @household.save
-      redirect_to @household, notice: 'Household was successfully created.'
+      @project.households << @household
+      redirect_to project_household_path(@project, @household), notice: t("action_messages.create", model: "Household")
     else
       render :new
     end
@@ -34,7 +35,7 @@ class HouseholdsController < ApplicationController
   # PATCH/PUT /households/1
   def update
     if @household.update(household_params)
-      redirect_to @household, notice: 'Household was successfully updated.'
+      redirect_to project_household_path(@project, @household), notice: t("action_messages.update", model: "Household")
     else
       render :edit
     end
@@ -58,6 +59,9 @@ class HouseholdsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def household_params
-      params.require(:household).permit(:name, :address, :city, :state, :country, :phone)
+      params.require(:household).permit(
+        :name, :address, :city, :state, :country, :phone,
+        children_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy]
+      )
     end
 end

@@ -1,63 +1,73 @@
-<%= form_for([@project, @household], html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <% if @household.errors.any? %>
-    <div class="alert alert-danger alert-dismissable" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@household.errors.count, "error") %> prohibited this household from being saved:</h4>
+<%= form_for([@project, @household], html: { role: "form" }) do |f| %>
+  <%= error_messages(@household) %>
 
-      <ul>
-      <% @household.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
 
+          <div class="form-group">
+            <%= f.label :address %>
+            <%= f.text_field :address, class: "form-control" %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :name, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-  </div>
+          <div class="form-group">
+            <%= f.label :city %>
+            <%= f.text_field :city, class: "form-control" %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :address, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :address, class: "form-control" %>
-    </div>
-  </div>
+          <div class="form-group">
+            <%= f.label :state %>
+            <%= f.text_field :state, class: "form-control" %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :city, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :city, class: "form-control" %>
-    </div>
-  </div>
+          <div class="form-group">
+            <%= f.label :country %>
+            <%= f.country_select :country, {}, {class: "form-control"} %>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :state, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :state, class: "form-control" %>
+          <div class="form-group">
+            <%= f.label :phone %>
+            <%= f.text_field :phone, class: "form-control" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :country, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :country, class: "form-control" %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= Child.model_name.human.pluralize %>
+        </div>
+        <div class="panel-body">
+          <%= f.fields_for :children do |builder| %>
+            <%= render 'child_fields', f: builder %>
+          <% end %>
+          <%= link_to_add_fields t("children.index.add"), f, :children, class: "add_fields btn btn-primary" %>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :phone, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :phone, class: "form-control" %>
-    </div>
-  </div>
+  <hr>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit class: "btn btn-primary" %>
+  <div class="row">
+    <div class="form-group">
+      <div class="col-sm-4 col-sm-offset-4">
+        <%= link_to project_households_path(@project), :class => 'btn btn-danger btn-block btn-lg' do %>
+          <i class="fa fa-times"></i>
+          <%= t("general.cancel") %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <button type="submit" class="btn btn-primary btn-block btn-lg"><%= t("general.submit") %></button>
+      </div>
     </div>
   </div>
 <% end %>

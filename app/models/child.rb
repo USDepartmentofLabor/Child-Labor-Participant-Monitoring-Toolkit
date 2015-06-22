@@ -16,6 +16,8 @@ class Child < ActiveRecord::Base
   has_many :projects_children, dependent: :destroy
   has_many :projects, through: :projects_children
 
+  belongs_to :household
+
   def country_name
     return nil if country.nil?
     country_iso = ISO3166::Country[country]
