@@ -8,4 +8,10 @@ module ChildrenHelper
 		end
 		str
 	end
+
+  def household_options
+    options = options_from_collection_for_select(Household.all, "id", "name")
+    options += "<option value='0'>#{t('children.new.create_household')}</option>".html_safe
+    options
+  end
 end

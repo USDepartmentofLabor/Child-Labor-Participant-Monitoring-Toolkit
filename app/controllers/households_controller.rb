@@ -27,10 +27,12 @@ class HouseholdsController < ApplicationController
 
     if @household.save
       @project.households << @household
-
       @household.children.each{|child| @project.children << child}
 
-      redirect_to project_household_path(@project, @household), notice: t("action_messages.create", model: "Household")
+      respond_to do |format|
+        format.html {redirect_to project_household_path(@project, @household), notice: t("action_messages.create", model: "Household")}
+        format.js
+      end
     else
       render :new
     end

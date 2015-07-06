@@ -29,10 +29,10 @@ en:
     back: "Back"
     copyright: "All Rights Reserved"
   action_messages:
-    create: "%{model} was successfully created."
+    create: "%{model} was successfully added."
     update: "%{model} was successfully updated."
     destroy: "%{model} was successfully deleted."
-    create_failed: "Failed to create %{model}. %{error}"
+    create_failed: "Failed to added %{model}. %{error}"
     update_failed: "Failed to update %{model}. %{error}"
     destroy_failed: "Failed to delete %{model}. %{error}"
   registrations:
@@ -53,6 +53,7 @@ en:
   children:
     new:
       form_title: "Child Intake Form"
+      create_household: "Create A New Household ..."
     index:
       add: "Add A Child"
       title: "List of Children"

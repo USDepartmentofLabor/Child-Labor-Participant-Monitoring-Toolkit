@@ -18,6 +18,7 @@ en:
         country: "Country"
         created_at: "Created at"
         updated_at: "Updated at"
+        household_id: "Household"
       child_status:
         start_date: "Start Date"
         end_date: "End Date"
