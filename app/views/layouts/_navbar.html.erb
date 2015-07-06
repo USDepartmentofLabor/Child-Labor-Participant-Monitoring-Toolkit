@@ -16,6 +16,9 @@
             <%= link_to "Home", root_path %>
           </li>
           <% if @project && !@project.new_record? %>
+            <li class=<%= "active" if controller_name == 'projects' %>>
+              <%= link_to Project.model_name.human.pluralize, project_path(@project) %>
+            </li>
             <li class=<%= "active" if controller_name == 'children' %>>
               <%= link_to Child.model_name.human.pluralize, project_children_path(@project) %>
             </li>

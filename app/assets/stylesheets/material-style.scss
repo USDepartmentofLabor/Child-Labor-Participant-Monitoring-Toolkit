@@ -113,3 +113,22 @@ a {
   padding-left: 72px;
 }
 
+.section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.section.no-pad {
+  padding: 0; 
+}
+.section.no-pad-bot {
+  padding-bottom: 0; 
+}
+.section.no-pad-top {
+  padding-top: 0; 
+}
+
+.divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: #e0e0e0;
+}

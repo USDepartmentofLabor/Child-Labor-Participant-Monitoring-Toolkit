@@ -18,6 +18,14 @@ class Child < ActiveRecord::Base
 
   belongs_to :household
 
+  # Input: the integer of sex field
+  # Return: the human readable text of the sex name 
+  def self.gender_name(i)
+    return nil if i.nil? || i <= 0
+    option = SEX_OPTIONS[i - 1]
+    return I18n.t(option[0])
+  end
+
   def country_name
     return nil if country.nil?
     country_iso = ISO3166::Country[country]
@@ -25,9 +33,7 @@ class Child < ActiveRecord::Base
   end
 
   def gender_name
-    return nil if sex.nil?
-    option = SEX_OPTIONS[sex - 1]
-    return I18n.t(option[0])
+    Child.gender_name(self.sex)
   end
 
   def full_name
