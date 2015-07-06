@@ -4,6 +4,7 @@ en:
       child: "Child"
       report: "Report"
       household: "Household"
+      adult: "Adult"
     attributes:
       child:
         fname: "First Name (Given Name)"
