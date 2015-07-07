@@ -14,7 +14,6 @@ jQuery ->
         cell.color = pieColors[count]
         pieData.push(cell)
         count += 1
-      console.log(pieData)
       myNewChart = new Chart(ctx).Pie(pieData, {
         legendTemplate: "<ul class=\"legend-lists ratio-pie-legend\"> \
         <% for (var i=0; i<segments.length; i++){%> \
@@ -24,4 +23,3 @@ jQuery ->
       })
       legendHtml = myNewChart.generateLegend()
       $("#ratio-legend").append(legendHtml)
-      console.log(legendHtml)

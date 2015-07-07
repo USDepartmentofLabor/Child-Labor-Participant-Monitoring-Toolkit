@@ -51,13 +51,13 @@
 
   <div class="form-group">
     <div class="col-sm-4 col-sm-offset-4">
-      <%= link_to project_households_path(@project), :class => 'btn btn-danger btn-block btn-lg' do %>
+      <%= link_to project_households_path(@project), :class => 'btn btn-danger btn-block' do %>
         <i class="fa fa-times"></i>
         <%= t("general.cancel") %>
       <% end %>
     </div>
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block btn-lg"><%= t("general.submit") %></button>
+      <button type="submit" class="btn btn-primary btn-block"><%= t("general.submit") %></button>
     </div>
   </div>
 <% end %>

@@ -21,5 +21,5 @@
 //= require home
 //= require children
 //= require projects
-//= require form_wizard
+//= require report_wizard
 //= require households

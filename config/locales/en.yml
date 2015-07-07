@@ -52,18 +52,18 @@ en:
     submit: "Submit"
   children:
     new:
-      form_title: "Child Intake Form"
+      form_title: "Beneficiary Intake Form"
       create_household: "Create A New Household ..."
     index:
-      add: "Add A Child"
-      title: "List of Children"
+      add: "Add A Beneficiary"
+      title: "List of Beneficiaries"
     show:
-      title: "Child Record"
+      title: "Beneficiary Record"
       personal_information: "Personal Information"
       statuses: "History Statuses"
       status_form_title: "Add A New Status"
     edit:
-      title: "Edit Child Record"
+      title: "Edit Beneficiary Record"
   households:
     index:
       add: "Add A Household"
