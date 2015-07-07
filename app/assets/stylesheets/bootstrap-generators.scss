@@ -131,3 +131,34 @@ ul.impact-table .i-count {
   color: #448aff;
   // text-shadow: 1px 1px 1px #000000;
 }
+
+.ratio-legend {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul.legend-lists {
+  list-style-type: none;
+  // -moz-column-count: 2;
+  // -moz-column-gap: 20px;
+  // -webkit-column-count: 2;
+  // -webkit-column-gap: 20px;
+  // column-count: 2;
+  // column-gap: 20px;
+}
+
+ul.legend-lists > li {
+  margin-bottom: 0.5em;
+  line-height: 1.2em;
+  padding: 0 0.3em;
+  text-align: left;
+}
+
+ul.legend-lists .legend-color {
+  display: block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  float: left
+}

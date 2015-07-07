@@ -15,4 +15,13 @@ jQuery ->
         pieData.push(cell)
         count += 1
       console.log(pieData)
-      myNewChart = new Chart(ctx).Pie(pieData)
+      myNewChart = new Chart(ctx).Pie(pieData, {
+        legendTemplate: "<ul class=\"legend-lists ratio-pie-legend\"> \
+        <% for (var i=0; i<segments.length; i++){%> \
+        <li><span class=\"legend-color\" style=\"background-color:<%=segments[i].fillColor%>\"></span> \
+        <%if(segments[i].label){%><%=segments[i].label%> (<%=segments[i].value%>)<%}%> \
+        </li><%}%></ul>"
+      })
+      legendHtml = myNewChart.generateLegend()
+      $("#ratio-legend").append(legendHtml)
+      console.log(legendHtml)
