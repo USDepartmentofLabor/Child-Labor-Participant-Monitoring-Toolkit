@@ -17,6 +17,9 @@
 //= require jquery.smartWizard
 //= require bootstrap-datepicker
 //= require jquery.validate.min
+//= require Chart.min
 //= require home
 //= require children
-//= require form_wizard
+//= require projects
+//= require report_wizard
+//= require households

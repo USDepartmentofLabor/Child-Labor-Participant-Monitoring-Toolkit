@@ -6,36 +6,40 @@
   <h1><%= t("children.index.title") %></h1>
 </div>
 
-<table class="table table-condensed table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th><%= Child.human_attribute_name(:fname) %></th>
-      <th><%= Child.human_attribute_name(:lname) %></th>
-      <th><%= Child.human_attribute_name(:mname) %></th>
-      <th><%= Child.human_attribute_name(:sex) %></th>
-      <th><%= Child.human_attribute_name(:dob) %></th>
-      <th><%= Child.human_attribute_name(:updated_at) %></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th><%= Child.human_attribute_name(:fname) %></th>
+          <th><%= Child.human_attribute_name(:lname) %></th>
+          <th><%= Child.human_attribute_name(:mname) %></th>
+          <th><%= Child.human_attribute_name(:sex) %></th>
+          <th><%= Child.human_attribute_name(:dob) %></th>
+          <th><%= Child.human_attribute_name(:updated_at) %></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <%= content_tag_for(:tr, @children) do |child| %>
-      <td><%= child.id %></td>
-      <td><%= child.fname %></td>
-      <td><%= child.lname %></td>
-      <td><%= child.mname %></td>
-      <td><%= child.gender_name %></td>
-      <td><%= child.dob %></td>
-      <td><%= format_time(child.updated_at) %></td>
-      <td><%= link_to t("general.show"), project_child_path(@project, child) %></td>
-      <td><%= link_to t("general.edit"), edit_project_child_path(@project, child) %></td>
-      <td><%= link_to t("general.delete"), project_child_path(@project, child), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <%= content_tag_for(:tr, @children) do |child| %>
+          <td><%= child.id %></td>
+          <td><%= child.fname %></td>
+          <td><%= child.lname %></td>
+          <td><%= child.mname %></td>
+          <td><%= child.gender_name %></td>
+          <td><%= child.dob %></td>
+          <td><%= format_time(child.updated_at) %></td>
+          <td><%= link_to t("general.show"), project_child_path(@project, child) %></td>
+          <td><%= link_to t("general.edit"), edit_project_child_path(@project, child) %></td>
+          <td><%= link_to t("general.delete"), project_child_path(@project, child), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= paginate @children %>

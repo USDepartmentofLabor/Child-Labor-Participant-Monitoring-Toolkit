@@ -1,0 +1,30 @@
+<h1><%= @project.name %></h1>
+<div class="divider"></div>
+<div class="section">
+  <h3><b>Impressions</b></h3>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="impact-table">
+        <li>
+          <span class="i-count"><%= @total_children %></span>
+          <h4>Total Beneficiaries</h4>
+        </li>
+        <li>
+          <span class="i-count"><%= @total_households %></span>
+          <h4>Total Households</h4>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="impact-table">
+        <li>
+          <canvas id="i-child-ratio-chart" class="hidden-xs"></canvas>
+          <div id="ratio-legend"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

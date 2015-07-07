@@ -1,0 +1,63 @@
+<div class="page-header">
+  <%= link_to project_households_path(@project), class: 'btn btn-default' do %>
+    <%= fa_icon "caret-left" %>
+    <%= t("general.back") %>
+  <% end %>
+  <%= link_to edit_project_household_path(@project, @household), class: 'btn btn-primary' do %>
+    <%= fa_icon "pencil" %>
+    <%= t("general.edit") %>
+  <% end %>
+  <h1><%= t("households.show.title") %></h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= t("households.show.family_information") %>
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-hover table-listing">
+      <tbody>
+        <tr>
+          <td>ID</td><td><%= @household.id %></td>
+        </tr>
+        <tr>
+          <td><%= Household.human_attribute_name(:name) %></td><td><%= @household.name %></td>
+        </tr>
+        <tr>
+          <td><%= Household.human_attribute_name(:address) %></td><td><%= @household.address %></td>
+        </tr>
+        <tr>
+          <td><%= Household.human_attribute_name(:city) %></td><td><%= @household.city %></td>
+        </tr>
+        <tr>
+          <td><%= Household.human_attribute_name(:state) %></td><td><%= @household.state %></td>
+        </tr>
+        <tr>
+          <td><%= Household.human_attribute_name(:country) %></td><td><%= @household.country_name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= t("households.show.children") %>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <%= render partial: "child", collection: @children %>
+    </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= t("households.show.adults") %>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <%= render partial: "adult", collection: @adults %>
+    </ul>
+  </div>
+</div>

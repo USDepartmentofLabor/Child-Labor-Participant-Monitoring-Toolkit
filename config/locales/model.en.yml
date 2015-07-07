@@ -1,9 +1,20 @@
 en:
   activerecord:
     models:
-      child: "Child"
+      child: "Beneficiary"
       report: "Report"
+      household: "Household"
+      adult: "Adult"
     attributes:
+      adult:
+        fname: "First Name (Given Name)"
+        lname: "Last Name (Family Name)"
+        mname: "Middle Name"
+        sex: "Gender"
+        dob: "Date of Birth"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        household_id: "Household"
       child:
         fname: "First Name (Given Name)"
         lname: "Last Name (Family Name)"
@@ -16,6 +27,7 @@ en:
         country: "Country"
         created_at: "Created at"
         updated_at: "Updated at"
+        household_id: "Household"
       child_status:
         start_date: "Start Date"
         end_date: "End Date"
@@ -24,8 +36,17 @@ en:
         note: "Notes"
         created_at: "Created at"
         updated_at: "Updated at"
-      reports:
+      report:
         title: "Report Title"
         desc: "Description"
         start_date: "Start Date"
         end_date: "End Date"
+      household:
+        name: "Household Name"
+        address: "Address"
+        city: "City"
+        state: "State (Province)"
+        country: "Country"
+        phone: "Phone Number"
+        created_at: "Created at"
+        updated_at: "Updated at"

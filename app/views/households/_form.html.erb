@@ -1,0 +1,75 @@
+<%= form_for([@project, @household], html: { role: "form" }) do |f| %>
+  <%= error_messages(@household) %>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address %>
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :state %>
+        <%= f.text_field :state, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :country %>
+        <%= f.country_select :country, {}, {class: "form-control"} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone %>
+        <%= f.text_field :phone, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= Adult.model_name.human.pluralize %>
+    </div>
+    <div class="panel-body">
+      <%= f.fields_for :adults do |builder| %>
+        <%= render 'adult_fields', f: builder %>
+      <% end %>
+      <%= link_to_add_fields t("adults.index.add"), f, :adults, class: "add_fields btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= Child.model_name.human.pluralize %>
+    </div>
+    <div class="panel-body">
+      <%= f.fields_for :children do |builder| %>
+        <%= render 'child_fields', f: builder %>
+      <% end %>
+      <%= link_to_add_fields t("children.index.add"), f, :children, class: "add_fields btn btn-primary" %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="form-group">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= link_to project_households_path(@project), :class => 'btn btn-danger btn-block' do %>
+        <i class="fa fa-times"></i>
+        <%= t("general.cancel") %>
+      <% end %>
+    </div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block"><%= t("general.submit") %></button>
+    </div>
+  </div>
+<% end %>

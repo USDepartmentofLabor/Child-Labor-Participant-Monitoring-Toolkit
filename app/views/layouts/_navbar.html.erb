@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-blue navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -16,11 +16,17 @@
             <%= link_to "Home", root_path %>
           </li>
           <% if @project && !@project.new_record? %>
+            <li class=<%= "active" if controller_name == 'projects' %>>
+              <%= link_to Project.model_name.human.pluralize, project_path(@project) %>
+            </li>
             <li class=<%= "active" if controller_name == 'children' %>>
-              <%= link_to "Children", project_children_path(@project) %>
+              <%= link_to Child.model_name.human.pluralize, project_children_path(@project) %>
+            </li>
+            <li class=<%= "active" if controller_name == 'households' %>>
+              <%= link_to Household.model_name.human.pluralize, project_households_path(@project) %>
             </li>
             <li class=<%= "active" if controller_name == 'reports' %>>
-              <%= link_to "Reports", project_reports_path(@project) %>
+              <%= link_to Report.model_name.human.pluralize, project_reports_path(@project) %>
             </li>
           <% end %>
         </ul>

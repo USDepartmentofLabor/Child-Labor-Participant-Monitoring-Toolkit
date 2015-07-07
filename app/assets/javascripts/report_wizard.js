@@ -1,4 +1,4 @@
-var FormWizard = function() {
+var ReportWizard = function() {
   var wizardContent = ".swMain";
   var wizardForm = "#report-wizard";
 
@@ -13,6 +13,8 @@ var FormWizard = function() {
     animateBar(1);
     initValidator();
     // runDatePicker();
+
+    $(wizardForm).show();
   };
 
   var animateBar = function(val) {

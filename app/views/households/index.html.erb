@@ -1,0 +1,42 @@
+<div class="page-header">
+  <%= link_to new_project_household_path(@project), class: 'btn btn-primary' do %>
+    <%= fa_icon "plus" %>
+    <%= t("households.index.add") %>
+  <% end %>
+  <h1><%= t("households.index.title") %></h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th><%= Household.human_attribute_name(:name) %></th>
+          <th><%= Household.human_attribute_name(:address) %></th>
+          <th><%= Household.human_attribute_name(:created_at) %></th>
+          <th><%= Household.human_attribute_name(:updated_at) %></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= content_tag_for(:tr, @households) do |household| %>
+          <td><%= household.name %></td>
+          <td><%= household.address %></td>
+          <td><%= format_time household.created_at %></td>
+          <td><%= format_time household.updated_at %></td>
+      
+          <td><%= link_to t("general.show"), project_household_path(@project, household) %></td>
+          <td><%= link_to t("general.edit"), edit_project_household_path(@project, household) %></td>
+          <td>
+            <%= link_to t("general.delete"), project_household_path(@project, household), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= paginate @households %>

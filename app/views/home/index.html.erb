@@ -12,23 +12,24 @@
 
 <div class="row">
   <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h3 class="panel-title">Select Project To Start</h3></div>
-      <div class="panel-body">
-        <% if @projects.length == 0 %>
-          <p class="text-center">You haven't created any project</p>
-        <% else %>
-          <ul>
-            <% @projects.each do |project| %>
-              <li><%= link_to(project.name, project) %></li>
-            <% end %>
-          </ul>
+    <h3>Choose A Project To Start</h3>
+
+    <% if @projects.length == 0 %>
+      <p class="text-center">You haven't created any project</p>
+    <% else %>
+      <div class="collection">
+        <% @projects.each do |project| %>
+          <%= link_to(project.name, project, class: "collection-item") %>
         <% end %>
-        <hr>
-        <div class="well">
-          <p>Create A New Project</p>
-          <%= render "projects/form" %>
-        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Create A New Project</h3></div>
+      <div class="panel-body">
+        <%= render "projects/form" %>
       </div>
     </div>
   </div>

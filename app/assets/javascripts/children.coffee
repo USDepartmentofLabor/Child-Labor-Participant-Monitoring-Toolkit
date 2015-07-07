@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-	if $(".child-status").length > 0
-		$(".child-status .status-note").popover()
-	
+  if $(".child-status").length > 0
+    $(".child-status .status-note").popover()
+
+  $("select#household-selection").on "change", (event) ->
+    optionSelected = $('option:selected', this)
+    if @value == "0"
+      $("#household-form-modal").modal("show")

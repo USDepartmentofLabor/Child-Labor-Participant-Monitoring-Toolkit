@@ -16,5 +16,6 @@
  *= require bootstrap-datepicker
  *= require bootstrap-variables
  *= require bootstrap-generators
+ *= require material-style
  *= require_self
  */
