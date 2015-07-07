@@ -37,6 +37,15 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="form-group">
+        <%= f.label :household_id %>
+        <%= f.select :household_id, household_options, { include_blank: true }, {class: "form-control", id: "household-selection"} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="form-group">
         <%= f.label :address %>
         <%= f.text_field :address, class: "form-control" %>
       </div>
@@ -51,15 +60,6 @@
       <div class="form-group">
         <%= f.label :country %>
         <%= f.country_select :country, {}, {class: "form-control"} %>
-      </div>
-    </div>
-  </div>
-
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="form-group">
-        <%= f.label :household_id %>
-        <%= f.select :household_id, household_options, {}, {class: "form-control", id: "household-selection"} %>
       </div>
     </div>
   </div>
