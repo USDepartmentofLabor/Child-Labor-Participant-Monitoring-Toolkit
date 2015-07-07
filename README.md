@@ -8,6 +8,8 @@ Direct Beneficiary Monitoring System Prototype (DOL-ILAB)
 
 1.	Start your console, and go to source code folder.
 
+1. 	For the first time before running `vagrant`, install vagrant NSF support for Windows: `vagrant plugin install vagrant-winnfsd`
+
 1.	Start rails development environment in a virtual machine: `vagrant up` (might take some take for the first time)
 
 1.	To enter into the VM, use `vagrant ssh`

@@ -4,7 +4,7 @@ class ChildrenController < ApplicationController
 
   # GET /children
   def index
-    @children = @project.children.order(:id).page(params[:page])
+    @children = @project.children.order("id DESC").page(params[:page])
   end
 
   # GET /children/1

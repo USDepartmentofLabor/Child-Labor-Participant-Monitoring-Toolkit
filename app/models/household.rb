@@ -4,7 +4,7 @@ class Household < ActiveRecord::Base
   has_many :projects_households, dependent: :destroy
   has_many :projects, through: :projects_households
 
-  has_many :adults
+  has_many :adults, dependent: :destroy
   has_many :children
 
   accepts_nested_attributes_for :adults, allow_destroy: true, reject_if: :all_blank

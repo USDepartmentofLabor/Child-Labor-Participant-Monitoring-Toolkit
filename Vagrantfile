@@ -45,4 +45,8 @@ Vagrant.configure("2") do |config|
   # nfs_setting = RUBY_PLATFORM =~ /darwin/ || RUBY_PLATFORM =~ /linux/
   # config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :nfs => nfs_setting
 
+  # speed up with nfs enabled on windows
+  # config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  # config.vm.network "private_network", type: "dhcp" 
+
 end
