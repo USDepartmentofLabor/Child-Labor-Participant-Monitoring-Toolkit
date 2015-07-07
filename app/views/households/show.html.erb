@@ -50,3 +50,14 @@
     </ul>
   </div>
 </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= t("households.show.adults") %>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <%= render partial: "adult", collection: @adults %>
+    </ul>
+  </div>
+</div>

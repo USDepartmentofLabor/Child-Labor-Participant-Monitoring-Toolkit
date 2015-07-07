@@ -64,6 +64,9 @@ en:
       status_form_title: "Add A New Status"
     edit:
       title: "Edit Beneficiary Record"
+  adults:
+    index:
+      add: "Add An Adult"
   households:
     index:
       add: "Add A Household"
@@ -76,6 +79,7 @@ en:
       title: "Household Record"
       family_information: "Family Information"
       children: "Children Of This Household"
+      adults: "Adults Of This Household"
   reports:
     index:
       add: "Generate A New Report"
@@ -100,3 +104,6 @@ en:
     child:
       male: "Boy"
       female: "Girl"
+    adult:
+      male: "Male"
+      female: "Female"

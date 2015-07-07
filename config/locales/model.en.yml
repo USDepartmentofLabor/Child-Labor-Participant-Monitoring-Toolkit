@@ -6,6 +6,15 @@ en:
       household: "Household"
       adult: "Adult"
     attributes:
+      adult:
+        fname: "First Name (Given Name)"
+        lname: "Last Name (Family Name)"
+        mname: "Middle Name"
+        sex: "Gender"
+        dob: "Date of Birth"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        household_id: "Household"
       child:
         fname: "First Name (Given Name)"
         lname: "Last Name (Family Name)"

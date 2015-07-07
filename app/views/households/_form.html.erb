@@ -37,6 +37,18 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
+      <%= Adult.model_name.human.pluralize %>
+    </div>
+    <div class="panel-body">
+      <%= f.fields_for :adults do |builder| %>
+        <%= render 'adult_fields', f: builder %>
+      <% end %>
+      <%= link_to_add_fields t("adults.index.add"), f, :adults, class: "add_fields btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
       <%= Child.model_name.human.pluralize %>
     </div>
     <div class="panel-body">

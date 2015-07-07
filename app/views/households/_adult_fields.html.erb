@@ -1,0 +1,38 @@
+<fieldset class="associated-fields">
+  <div class="form-group">
+    <%= f.label :fname %>
+    <%= f.text_field :fname, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lname %>
+    <%= f.text_field :lname, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mname %>
+    <%= f.text_field :mname, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sex %>
+    <div class="checkbox">
+      <% Adult::SEX_OPTIONS.each do |sex_option| %>
+        <label class="radio-inline">
+          <%= f.radio_button :sex, sex_option[1], class: "square-red" %> <%= t(sex_option[0]) %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :dob %> (yyy/mm/dd)
+    <div class="selection">
+      <%= f.date_select :dob, 
+        {start_year: Date.today.year - 100, end_year: Date.today.year, use_two_digit_numbers: true}, 
+        {class: "form-control select-inline"} 
+      %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :_destroy %>
+  <%= link_to '#', class: "remove_fields pull-right" do %>
+    <i class="fa fa-trash-o"></i><%= t("general.delete") %>
+  <% end %>
+</fieldset>

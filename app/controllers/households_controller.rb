@@ -10,6 +10,7 @@ class HouseholdsController < ApplicationController
   # GET /households/1
   def show
     @children = @household.children
+    @adults = @household.adults
   end
 
   # GET /households/new
@@ -67,7 +68,8 @@ class HouseholdsController < ApplicationController
     def household_params
       params.require(:household).permit(
         :name, :address, :city, :state, :country, :phone,
-        children_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy]
+        children_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy],
+        adults_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy]
       )
     end
 end
