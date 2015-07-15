@@ -13,7 +13,7 @@
       <% if user_signed_in? %>
         <ul class="nav navbar-nav">
           <li class=<%= "active" if controller_name == 'home' %>>
-            <%= link_to "Home", root_path %>
+            <%= link_to "Home", dashboard_path %>
           </li>
           <% if @project && !@project.new_record? %>
             <li class=<%= "active" if controller_name == 'projects' %>>
