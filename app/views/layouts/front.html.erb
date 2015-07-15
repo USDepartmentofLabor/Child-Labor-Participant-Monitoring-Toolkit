@@ -18,7 +18,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="home">
-  <%= render '/layouts/navbar' %>
+  <%= render '/layouts/home_header' %>
   <div class="container wrapper">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
