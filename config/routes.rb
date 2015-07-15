@@ -25,5 +25,7 @@ Rails.application.routes.draw do
     patch 'sign_up' => 'devise/registrations#update', as: nil
   end
 
+  get 'dashboard' => 'home#dashboard', as: :dashboard
+
   root to: "home#index"
 end

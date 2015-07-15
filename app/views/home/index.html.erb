@@ -1,36 +1,45 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <div class="container">
-        <h2>Hello, <%= current_user.name %>!</h2>
-        <p>Welcome to Direct Beneficiary Monitoring System</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
-      </div>
-    </div>
+  <div class="col-md-12" id="home-heading">
+    <h1>Direct Beneficiary Monitoring System</h1>
+    <h2>The more we connect, the better it gets.</h2>
   </div>
 </div>
 
+<div id="home-login">
 <div class="row">
-  <div class="col-md-6">
-    <h3>Choose A Project To Start</h3>
+  <div class="col-md-4">
+    <div id="">
+      <div class="panel panel-default">
 
-    <% if @projects.length == 0 %>
-      <p class="text-center">You haven't created any project</p>
-    <% else %>
-      <div class="collection">
-        <% @projects.each do |project| %>
-          <%= link_to(project.name, project, class: "collection-item") %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+        <div class="panel-heading"><%= t("sessions.login") %></div>
+        <div class="panel-body">
 
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h3 class="panel-title">Create A New Project</h3></div>
-      <div class="panel-body">
-        <%= render "projects/form" %>
+          <%= form_for(:user, url: session_path(:user)) do |f| %>
+
+            <div class="form-group">
+              <%= f.label t("registrations.email") %>
+              <%= f.email_field :email, autofocus: true, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label t("registrations.password") %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
+              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            </div>
+
+            <div class="checkbox">
+              <%= f.check_box :remember_me, class: "square-red" %> <%= t("sessions.remember_me") %>
+            </div>
+
+            <hr>
+
+            <%= f.submit t("sessions.submit"), class: "btn btn-primary btn-block" %>
+
+          <% end %>
+        </div>
       </div>
+      <%= link_to "Sign up", new_registration_path(:user) %><br />
+      <%= link_to "Forgot your password?", new_password_path(:user) %><br />
     </div>
   </div>
+</div>
 </div>

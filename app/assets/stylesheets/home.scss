@@ -1,0 +1,25 @@
+body#home {
+  background: image-url("child-bg.jpg") no-repeat scroll center center / cover #f2f2f2;
+}
+
+#home-heading {
+  text-align: center;
+}
+
+#home-heading h1 {
+  color: #FFF;
+  letter-spacing: -1px;
+  text-shadow: #222 0px 1px 3px;
+  font-size: 48px;
+}
+
+#home-heading h2 {
+  margin: 10px 0px 0px;
+  color: #FFF;
+  text-shadow: #222 0px 1px 3px;
+  word-wrap: break-word;
+}
+
+#home-login {
+  margin-top: 10%
+}

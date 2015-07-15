@@ -46,6 +46,7 @@ en:
     welcome_back: "Welcome Back"
     remember_me: "Remember me"
     submit: "Login"
+    login: "Login"
   passwords:
     forgot_password: "Forgot password"
     enter_email: "Please enter your email address"
