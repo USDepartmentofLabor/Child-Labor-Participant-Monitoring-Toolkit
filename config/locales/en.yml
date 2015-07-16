@@ -51,6 +51,10 @@ en:
     forgot_password: "Forgot password"
     enter_email: "Please enter your email address"
     submit: "Submit"
+  projects:
+    show:
+      dashboard: "Project Dashboard"
+      children_covered: "Beneficiaries"
   children:
     new:
       form_title: "Beneficiary Intake Form"

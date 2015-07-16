@@ -1,0 +1,127 @@
+<div class="text-center">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
+<div class="side-bar-wrapper navbar-collapse navbar-ex1-collapse collapse" style="height: 0px;">
+  <ul class="side-menu side-menu-blue">
+    <li>
+      <%= link_to project_path(@project) do %>
+        <i class="fa fa-tachometer"></i>
+        <%= t("projects.show.dashboard") %>
+      <% end %>
+    </li>
+    <%= content_tag :li, class: (controller_name == 'children' ? "current" : "")  do -%>
+      <%= link_to project_children_path(@project), class: 'is-dropdown-menu' do -%>
+        <i class="fa fa-male"></i><%= Child.model_name.human.pluralize %>
+      <% end -%>
+      <ul>
+        <li>
+          <%= link_to project_children_path(@project) do -%>
+            <i class="fa fa-angle-double-right"></i>
+            <%= t("children.index.title") %>
+          <% end -%>
+        </li>
+        <li>
+          <%= link_to new_project_child_path(@project) do -%>
+            <i class="fa fa-angle-double-right"></i>
+            <%= t("children.index.add") %>
+          <% end -%>
+        </li>
+      </ul>
+    <% end -%>
+    <li>
+      <a href="charts.html" class="is-dropdown-menu">
+        <span class="badge pull-right"></span>
+        <i class="icon-bar-chart"></i> Charts
+      </a>
+      <ul>
+        <li>
+          <a href="charts.html#area_chart_anchor">
+            <i class="icon-random"></i>
+            Area Chart
+          </a>
+        </li>
+        <li>
+          <a href="charts.html#circle_chart_anchor">
+            <i class="icon-bullseye"></i>
+            Circular Chart
+          </a>
+        </li>
+        <li>
+          <a href="charts.html#bar_chart_anchor">
+            <i class="icon-signal"></i>
+            Bar Chart
+          </a>
+        </li>
+        <li>
+          <a href="charts.html#line_chart_anchor">
+            <i class="icon-bar-chart"></i>
+            Line Chart
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="forms.html">
+        <span class="badge pull-right">12</span>
+        <i class="icon-terminal"></i> Forms
+      </a>
+    </li>
+    <li>
+      <a href="elements.html" class="is-dropdown-menu">
+        <span class="badge pull-right"></span>
+        <i class="icon-code-fork"></i> UI Elements
+      </a>
+      <ul>
+        <li>
+          <a href="elements.html">
+            <i class="icon-beaker"></i>
+            Elements
+          </a>
+        </li>
+        <li>
+          <a href="icons.html">
+            <i class="icon-picture"></i>
+            Icons
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="current">
+      <a href="datatable.html" class="current is-dropdown-menu">
+        <span class="badge pull-right">24</span>
+        <i class="icon-th"></i> Tables
+      </a>
+      <ul>
+        <li class="current">
+          <a class="current" href="datatable.html">
+            <i class="icon-list-alt"></i>
+            Data Tables
+          </a>
+        </li>
+        <li>
+          <a href="table.html">
+            <i class="icon-table"></i>
+            Regular Tables
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="calendar.html">
+        <span class="badge pull-right">11</span>
+        <i class="icon-calendar"></i> Calendar
+      </a>
+    </li>
+    <li>
+      <a href="login.html">
+        <span class="badge pull-right"></span>
+        <i class="icon-signin"></i> Login Page
+      </a>
+    </li>
+  </ul>
+</div>

@@ -1,5 +1,5 @@
 jQuery ->
-  if $(".impact-table").length > 0
+  if $("#i-child-ratio-chart").length > 0
     eid = window.location.pathname.split("/")[2]
     url = "/gender_count/" + eid
     pieColors = {1: "#517fa4", 2: "#FF5A5E"}

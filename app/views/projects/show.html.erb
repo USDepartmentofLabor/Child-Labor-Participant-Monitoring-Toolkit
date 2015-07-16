@@ -16,15 +16,24 @@
       </ul>
     </div>
   </div>
+</div>
 
+<div class="section">
   <div class="row">
     <div class="col-md-6">
-      <ul class="impact-table">
-        <li>
-          <canvas id="i-child-ratio-chart" class="hidden-xs"></canvas>
-          <div id="ratio-legend"></div>
-        </li>
-      </ul>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title"><%= t("projects.show.children_covered") %></h3></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <canvas id="i-child-ratio-chart" class="hidden-xs"></canvas>
+            </div>
+            <div class="col-md-4">
+              <div id="ratio-legend"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
