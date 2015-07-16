@@ -88,14 +88,13 @@
 }
 .side-bar-wrapper .side-menu
 {
-  border:1px solid #14161C;
-  background-color:#3b3f4d;
-  border-radius:4px;
+  background-color:#2196f3;
+  border-radius:2px;
   padding:0px 3px;
   list-style:none;
   margin-bottom:30px;
-  -webkit-box-shadow:inset 0px 2px 3px 0px rgba(0,0,0,0.4),0px 1px 2px 0px rgba(255,255,255,0.2);
-  box-shadow:inset 0px 2px 3px 0px rgba(0,0,0,0.4),0px 1px 2px 0px rgba(255,255,255,0.2)
+  -webkit-box-shadow:inset 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
   @media (max-width: 991px)
 {
@@ -128,9 +127,15 @@
   color:#fff;
   font-size:16px;
   font-weight:300;
-  text-transform:uppercase;
+  // text-transform:uppercase;
   padding:15px 18px
 }
+
+.side-bar-wrapper .side-menu>li > ul > li a {
+  font-size: 14px;
+  font-weight: normal;
+}
+
 .side-bar-wrapper .side-menu>li a i
 {
   margin-right:15px;
@@ -146,7 +151,6 @@
 .side-bar-wrapper .side-menu>li a .badge
 {
   background-color:#2e323f;
-  color:#81889a;
   font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight:700;
   -webkit-box-shadow:inset 1px 1px 2px 0px rgba(0,0,0,0.5),0px 1px 2px 0px rgba(255,255,255,0.15);
@@ -156,15 +160,15 @@
 }
 .side-bar-wrapper .side-menu>li:first-child a
 {
-  border-top-left-radius:4px;
-  border-top-right-radius:4px;
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
   -webkit-box-shadow:none;
   box-shadow:none
 }
 .side-bar-wrapper .side-menu>li:last-child a
 {
-  border-bottom-left-radius:4px;
-  border-bottom-right-radius:4px;
+  border-bottom-left-radius:2px;
+  border-bottom-right-radius:2px;
   border-bottom:none
 }
 .side-bar-wrapper .side-menu>li.active>a,.side-bar-wrapper .side-menu>li.current>a,.side-bar-wrapper .side-menu>li:hover>a
@@ -172,17 +176,12 @@
   margin:0px -3px;
   padding:15px 21px;
   position:relative;
-  border-bottom:1px solid #8f4949;
-  background-color:#8f4949;
   color:#fff;
   -webkit-box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3);
   box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3)
 }
 .side-bar-wrapper .side-menu>li.active>a i,.side-bar-wrapper .side-menu>li.current>a i,.side-bar-wrapper .side-menu>li:hover>a i
 {
-  border-right:1px solid #773A3A;
-  -webkit-box-shadow:1px 0px 0px 0px #9b5757;
-  box-shadow:1px 0px 0px 0px #9b5757;
   color:#fff
 }
 .side-bar-wrapper .side-menu>li.active li:first-child a,.side-bar-wrapper .side-menu>li.current li:first-child a,.side-bar-wrapper .side-menu>li:hover li:first-child a
@@ -247,36 +246,11 @@
 }
 
 }
-.side-bar-wrapper .side-menu.side-menu-dark-blue>li.active>a,.side-bar-wrapper .side-menu.side-menu-dark-blue>li.current>a,.side-bar-wrapper .side-menu.side-menu-dark-blue>li:hover>a
-{
-  border-bottom:1px solid #10161c;
-  background-color:#34495e;
-  -webkit-box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3);
-  box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3)
-}
-.side-bar-wrapper .side-menu.side-menu-dark-blue>li.active>a i,.side-bar-wrapper .side-menu.side-menu-dark-blue>li.current>a i,.side-bar-wrapper .side-menu.side-menu-dark-blue>li:hover>a i
-{
-  border-right:1px solid #10161c;
-  -webkit-box-shadow:1px 0px 0px 0px #46627f;
-  box-shadow:1px 0px 0px 0px #46627f
-}
-.side-bar-wrapper .side-menu.side-menu-orange>li.active>a,.side-bar-wrapper .side-menu.side-menu-orange>li.current>a,.side-bar-wrapper .side-menu.side-menu-orange>li:hover>a
-{
-  border-bottom:1px solid #6d2b00;
-  background-color:#d35400;
-  -webkit-box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3);
-  box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3)
-}
-.side-bar-wrapper .side-menu.side-menu-orange>li.active>a i,.side-bar-wrapper .side-menu.side-menu-orange>li.current>a i,.side-bar-wrapper .side-menu.side-menu-orange>li:hover>a i
-{
-  border-right:1px solid #6d2b00;
-  -webkit-box-shadow:1px 0px 0px 0px #ff6a07;
-  box-shadow:1px 0px 0px 0px #ff6a07
-}
+
 .side-bar-wrapper .side-menu.side-menu-blue>li.active>a,.side-bar-wrapper .side-menu.side-menu-blue>li.current>a,.side-bar-wrapper .side-menu.side-menu-blue>li:hover>a
 {
   border-bottom:1px solid #164666;
-  background-color:#2980b9;
+  background-color:#1565c0;
   -webkit-box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3);
   box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3)
 }
@@ -286,32 +260,7 @@
   -webkit-box-shadow:1px 0px 0px 0px #409ad5;
   box-shadow:1px 0px 0px 0px #409ad5
 }
-.side-bar-wrapper .side-menu.side-menu-green>li.active>a,.side-bar-wrapper .side-menu.side-menu-green>li.current>a,.side-bar-wrapper .side-menu.side-menu-green>li:hover>a
-{
-  border-bottom:1px solid #145b32;
-  background-color:#27ae60;
-  -webkit-box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3);
-  box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3)
-}
-.side-bar-wrapper .side-menu.side-menu-green>li.active>a i,.side-bar-wrapper .side-menu.side-menu-green>li.current>a i,.side-bar-wrapper .side-menu.side-menu-green>li:hover>a i
-{
-  border-right:1px solid #145b32;
-  -webkit-box-shadow:1px 0px 0px 0px #36d278;
-  box-shadow:1px 0px 0px 0px #36d278
-}
-.side-bar-wrapper .side-menu.side-menu-green-sea>li.active>a,.side-bar-wrapper .side-menu.side-menu-green-sea>li.current>a,.side-bar-wrapper .side-menu.side-menu-green-sea>li:hover>a
-{
-  border-bottom:1px solid #0a463a;
-  background-color:#16a085;
-  -webkit-box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3);
-  box-shadow:inset 0px 1px 2px 0px rgba(255,255,255,0.2),0px 2px 2px 0px rgba(0,0,0,0.3)
-}
-.side-bar-wrapper .side-menu.side-menu-green-sea>li.active>a i,.side-bar-wrapper .side-menu.side-menu-green-sea>li.current>a i,.side-bar-wrapper .side-menu.side-menu-green-sea>li:hover>a i
-{
-  border-right:1px solid #0a463a;
-  -webkit-box-shadow:1px 0px 0px 0px #1ccdaa;
-  box-shadow:1px 0px 0px 0px #1ccdaa
-}
+
 .side-bar-wrapper .side-menu .badge.badge-notifications
 {
   background-color:#B5A370;

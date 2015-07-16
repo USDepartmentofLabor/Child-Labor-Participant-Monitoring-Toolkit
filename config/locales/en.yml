@@ -53,7 +53,7 @@ en:
     submit: "Submit"
   projects:
     show:
-      dashboard: "Project Dashboard"
+      dashboard: "Dashboard"
       children_covered: "Beneficiaries"
   children:
     new:

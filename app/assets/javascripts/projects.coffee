@@ -1,4 +1,23 @@
+fixBar = ()->
+  $sidebar = $('#dbms-side-menu')
+  $window = $(window)
+  offset = $sidebar.offset()
+  topPadding = 80
+  $window.scroll ->
+    if $window.scrollTop() + 80 > offset.top
+      $sidebar.stop().animate marginTop: $window.scrollTop() - (offset.top) + topPadding
+    else
+      $sidebar.stop().animate marginTop: 0
+
+toggleMenu = () ->
+  $('.is-dropdown-menu').on 'click', ->
+    $(this).next('ul').slideToggle('fast', ->
+      $(this).closest('li').toggleClass 'active'
+    )
+
 jQuery ->
+  fixBar()
+  toggleMenu()
   if $("#i-child-ratio-chart").length > 0
     eid = window.location.pathname.split("/")[2]
     url = "/gender_count/" + eid
