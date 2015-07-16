@@ -12,45 +12,38 @@
       <% end %>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
-      <% if user_signed_in? %>
-        <ul class="nav navbar-nav">
-          <li class=<%= "active" if controller_name == 'home' %>>
-            <%= link_to "Home", dashboard_path %>
+      <ul class="nav navbar-nav">
+        <li class=<%= "active" if controller_name == 'home' %>>
+          <%= link_to "Home", dashboard_path %>
+        </li>
+        <% if @project && !@project.new_record? %>
+          <li class=<%= "active" if controller_name == 'projects' %>>
+            <%= link_to Project.model_name.human.pluralize, project_path(@project) %>
           </li>
-          <% if @project && !@project.new_record? %>
-            <li class=<%= "active" if controller_name == 'projects' %>>
-              <%= link_to Project.model_name.human.pluralize, project_path(@project) %>
-            </li>
-            <li class=<%= "active" if controller_name == 'children' %>>
-              <%= link_to Child.model_name.human.pluralize, project_children_path(@project) %>
-            </li>
-            <li class=<%= "active" if controller_name == 'households' %>>
-              <%= link_to Household.model_name.human.pluralize, project_households_path(@project) %>
-            </li>
-            <li class=<%= "active" if controller_name == 'reports' %>>
-              <%= link_to Report.model_name.human.pluralize, project_reports_path(@project) %>
-            </li>
-          <% end %>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= "#{current_user.email}" %> <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Account Settings</a></li>
-              <li>
-                <%= link_to destroy_user_session_path, :method => :delete do %>
-                  <% t("navbar.sign_out") %>
-                <% end %>
-              </li>
-            </ul>
+          <li class=<%= "active" if controller_name == 'children' %>>
+            <%= link_to Child.model_name.human.pluralize, project_children_path(@project) %>
           </li>
-        </ul>
-      <% else %>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to t("layouts.application.sign_in"), new_user_session_path %></li>
-          <li><%= link_to t("layouts.application.sign_up"), new_user_registration_path %></li>
-        </ul>
-      <% end %>
+          <li class=<%= "active" if controller_name == 'households' %>>
+            <%= link_to Household.model_name.human.pluralize, project_households_path(@project) %>
+          </li>
+          <li class=<%= "active" if controller_name == 'reports' %>>
+            <%= link_to Report.model_name.human.pluralize, project_reports_path(@project) %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= "#{current_user.email}" %> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Account Settings</a></li>
+            <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+                <% t("navbar.sign_out") %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
