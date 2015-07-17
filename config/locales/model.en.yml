@@ -5,6 +5,7 @@ en:
       report: "Report"
       household: "Household"
       adult: "Adult"
+      project: "Project"
     attributes:
       adult:
         fname: "First Name (Given Name)"
@@ -50,3 +51,5 @@ en:
         phone: "Phone Number"
         created_at: "Created at"
         updated_at: "Updated at"
+      project:
+        name: "Project Name"

@@ -11,6 +11,12 @@ html, body {
   background-color: #f4f4f4;
 }
 
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: 0;
+}
+
 .nav-wrapper {
   padding-left: 40px;
   padding-right: 40px;

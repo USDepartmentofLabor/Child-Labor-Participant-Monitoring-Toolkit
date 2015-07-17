@@ -84,12 +84,17 @@ a {
   border-bottom: 1px solid #e0e0e0; 
 }
 
+.collection.headings .collection-item {
+  font-size: 18px;
+  padding: 20px;
+}
+
 .collection .collection-item:last-child {
   border-bottom: none;
 }
 
 .collection .collection-item.active {
-  background-color: #26a69a;
+  background-color:#1565c0;
   color: #eafaf9;
 }
 
@@ -100,11 +105,12 @@ a {
   -o-transition: 0.25s;
   -ms-transition: 0.25s;
   transition: 0.25s;
-  color: #337ab7;
+  color: #333333;
 }
 
 .collection a.collection-item:not(.active):hover {
-  background-color: #ddd;
+  background-color: #1565c0;
+  color: #eafaf9;
 }
 
 .collection.with-header .collection-header {
