@@ -4,6 +4,12 @@ class ProjectsController < ApplicationController
   def show
     @total_children = @project.children.count
     @total_households = @project.households.count
+
+    if @total_children == 0 && @total_households == 0
+      render "show_init"
+    else
+      render "show"
+    end
   end
 
   def create
