@@ -8,12 +8,12 @@
 </div>
 <div class="side-bar-wrapper navbar-collapse navbar-ex1-collapse collapse" style="height: 0px;" id="dbms-side-menu">
   <ul class="side-menu side-menu-blue">
-    <li>
+    <%= content_tag :li, class: (controller_name == 'projects' ? "current" : "")  do -%>
       <%= link_to project_path(@project) do %>
         <i class="fa fa-tachometer"></i>
         <%= t("projects.show.dashboard") %>
       <% end %>
-    </li>
+    <% end -%>
 
     <%= content_tag :li, class: (controller_name == 'children' ? "current" : "")  do -%>
       <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
