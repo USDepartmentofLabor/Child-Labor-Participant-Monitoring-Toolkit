@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
 	gem 'quiet_assets'
+  gem 'faker', require: false
 end
 
 group :development, :test do

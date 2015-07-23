@@ -98,6 +98,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     ffi (1.9.8)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
@@ -295,6 +297,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  faker
   font-awesome-rails
   fuubar
   guard-rspec
