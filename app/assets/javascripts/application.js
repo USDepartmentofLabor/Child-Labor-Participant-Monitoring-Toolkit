@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jasny-bootstrap.min
 //= require icheck.min
 //= require jquery.smartWizard
 //= require bootstrap-datepicker

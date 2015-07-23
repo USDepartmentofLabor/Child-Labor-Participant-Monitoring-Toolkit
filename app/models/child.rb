@@ -18,12 +18,22 @@ class Child < ActiveRecord::Base
 
   belongs_to :household
 
+  mount_uploader :avatar, AvatarUploader
+
   # Input: the integer of sex field
   # Return: the human readable text of the sex name 
   def self.gender_name(i)
     return nil if i.nil? || i <= 0
     option = SEX_OPTIONS[i - 1]
     return I18n.t(option[0])
+  end
+
+  def male?
+    self.sex == 1
+  end
+
+  def female?
+    self.sex == 2
   end
 
   def country_name

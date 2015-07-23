@@ -14,4 +14,16 @@ module ChildrenHelper
     options += "<option value='0'>#{t('children.new.create_household')}</option>".html_safe
     options
   end
+
+  def preview_avatar(child)
+    if child.avatar.present?
+      return image_tag(child.avatar_url(:small))      
+    end
+    
+    if child.female?
+      return image_tag("default_avatar_female.jpg")
+    end
+
+    return image_tag("default_avatar_male.jpg")
+  end
 end

@@ -16,6 +16,7 @@
  *= require bootstrap-datepicker
  *= require bootstrap-variables
  *= require bootstrap-generators
+ *= require jasny-bootstrap.min
  *= require material-style
  *= require home
  *= require side-menu
