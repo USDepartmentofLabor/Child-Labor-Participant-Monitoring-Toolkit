@@ -15,15 +15,23 @@ module ChildrenHelper
     options
   end
 
-  def preview_avatar(child)
+  # options support all the options for image_tag
+  # Addtional options:
+  #   options[:size] : default is :small, if :full then will use full size
+  def preview_avatar(child, options={})
+    size = options.delete(:size)
+
+    size = (size == :full ? nil : :small)
+
     if child.avatar.present?
-      return image_tag(child.avatar_url(:small))      
+
+      return image_tag(child.avatar_url(size), options)
     end
     
     if child.female?
-      return image_tag("default_avatar_female.jpg")
+      return image_tag("default_avatar_female.jpg", options)
     end
 
-    return image_tag("default_avatar_male.jpg")
+    return image_tag("default_avatar_male.jpg", options)
   end
 end
