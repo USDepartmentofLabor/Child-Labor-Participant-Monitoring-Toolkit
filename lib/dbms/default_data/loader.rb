@@ -102,41 +102,80 @@ module DBMS
           child
         end
 
+        def create_adult(household, family_name)
+          adult = Adult.new(
+            fname: Faker::Name.first_name,
+            lname: family_name,
+            sex: rand(1..2)
+          )
+          adult.household_id = household.id
+          adult.save!
+          adult
+        end
+
+        def create_household(project, child)
+          family_name = "#{child.lname}'s Family"
+          household = Household.create!(
+            name: family_name,
+            address: Faker::Address.street_address,
+            city: Faker::Address.city,
+            state: Faker::Address.state,
+            country: "US"
+          )
+
+          project.households << household
+
+          child.update_column(:household_id, household.id)
+
+          create_adult(household, child.lname)
+
+          household
+        end
+
         def load_dummy_data
           load if no_data?
-          user = create_admin_user
-          project = create_dummy_project(user, "Child Labor Example Project")
 
-          index = 1
-          current_year = Date.today.year
+          User.transaction do
+            user = create_admin_user
+            project = create_dummy_project(user, "Child Labor Example Project")
 
-          # leave the day to be random
-          start_date = "#{Date.today.year}-10"
-          end_date = "#{Date.today.year+1}-3"
+            index = 1
+            current_year = Date.today.year
 
-          # create children with different work status
-          WorkStatus.all.each do |status|
+            # leave the day to be random
+            start_date = "#{Date.today.year}-10"
+            end_date = "#{Date.today.year+1}-3"
 
-            child_num = rand(10) + 2
+            # create children with different work status
+            WorkStatus.all.each do |status|
 
-            child_num.times do
+              child_num = rand(10) + 2
 
-              child = create_dummy_child(project)
+              child_num.times do
 
-              child_status = ChildStatus.create!(
-                start_date: start_date + "-#{rand(1..28)}",
-                end_date: end_date + "-#{rand(1..28)}",
-                work_status_id: status.id, 
-                education_status_id: EducationStatus.pluck(:id).sample,
-                child_id: child.id,
-                user_id: user.id,
-                project_id: project.id
-              )
-              index += 1
+                child = create_dummy_child(project)
+
+                child_status = ChildStatus.create!(
+                  start_date: start_date + "-#{rand(1..28)}",
+                  end_date: end_date + "-#{rand(1..28)}",
+                  work_status_id: status.id, 
+                  education_status_id: EducationStatus.pluck(:id).sample,
+                  child_id: child.id,
+                  user_id: user.id,
+                  project_id: project.id
+                )
+
+
+                if rand(1..2) == 2
+                  create_household(project, child)
+                end
+
+                index += 1
+              end
             end
-          end
 
-          create_report(user, project)
+            create_report(user, project)
+          end
         end
       end 
     end
