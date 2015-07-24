@@ -14,7 +14,6 @@
           <th>ID</th>
           <th><%= Child.human_attribute_name(:fname) %></th>
           <th><%= Child.human_attribute_name(:lname) %></th>
-          <th><%= Child.human_attribute_name(:mname) %></th>
           <th><%= Child.human_attribute_name(:sex) %></th>
           <th><%= Child.human_attribute_name(:dob) %></th>
           <th><%= Child.human_attribute_name(:updated_at) %></th>
@@ -29,7 +28,6 @@
           <td><%= child.id %></td>
           <td><%= child.fname %></td>
           <td><%= child.lname %></td>
-          <td><%= child.mname %></td>
           <td><%= child.gender_name %></td>
           <td><%= child.dob %></td>
           <td><%= format_time(child.updated_at) %></td>
