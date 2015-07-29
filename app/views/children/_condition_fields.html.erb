@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-12 field">
+    <%= f.attribute_fields do |a| %>
+      <div class="form-group">
+        <%= a.attribute_select({}, class: "form-control") %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.predicate_select({}, class: "form-control") %>
+    </div>
+    <%= f.value_fields do |v| %>
+      <div class="form-group">
+        <%= v.text_field :value, class: "form-control" %>
+      </div>
+    <% end %>
+
+    <div class="checkbox">
+      <%= link_to '#', class: "remove_fields" do %>
+        <i class='glyphicon glyphicon-remove icon-remove'></i>
+      <% end %>
+    </div>
+  </div>
+</div>

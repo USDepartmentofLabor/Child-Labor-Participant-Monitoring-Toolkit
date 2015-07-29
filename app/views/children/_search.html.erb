@@ -1,0 +1,12 @@
+<%= search_form_for(@search, url: search_children_path, remote: true, html: { method: :post, class: "form-inline filter_trigger" }) do |f| %>
+  <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+  <%= link_to_add_fields "Add Conditions", f, :condition %>
+  <hr>
+  <div class="row">
+    <div class="col-sm-12">
+    <%= f.submit "Filter", :class => "btn btn-success" %>
+    </div>
+  </div>
+<% end %>

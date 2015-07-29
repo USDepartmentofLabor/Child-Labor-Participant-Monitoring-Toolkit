@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # a trick to avoid generating children urls again
   resources :children, only: [] do
     resources :child_statuses
+    collection do
+      match "search" => 'children#search', via: [:get, :post], as: :search
+    end
   end
 
   devise_for :users, skip: [:sessions, :registrations]

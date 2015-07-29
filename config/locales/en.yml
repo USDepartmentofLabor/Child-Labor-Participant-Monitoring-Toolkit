@@ -67,6 +67,7 @@ en:
     index:
       add: "Add A Beneficiary"
       title: "List of Beneficiaries"
+      filter: "Filters"
     show:
       title: "Beneficiary Record"
       personal_information: "Personal Information"

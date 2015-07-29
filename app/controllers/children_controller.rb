@@ -5,6 +5,13 @@ class ChildrenController < ApplicationController
   # GET /children
   def index
     @children = @project.children.order("id DESC").page(params[:page])
+
+    @search = @project.children.ransack(params[:q])
+    @search.build_condition
+  end
+
+  def search
+    @search = @project.children.ransack(params[:q])
   end
 
   # GET /children/1
