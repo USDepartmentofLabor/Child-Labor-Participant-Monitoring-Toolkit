@@ -12,6 +12,7 @@ class ChildrenController < ApplicationController
 
   def search
     @search = @project.children.ransack(params[:q])
+    @children = @search.result(distinct: true)
   end
 
   # GET /children/1

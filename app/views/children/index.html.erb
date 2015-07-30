@@ -17,7 +17,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <table class="table table-condensed table-striped">
+    <table class="table table-condensed table-striped" id="child-data-table">
       <thead>
         <tr>
           <th>ID</th>
@@ -33,17 +33,7 @@
       </thead>
 
       <tbody>
-        <%= content_tag_for(:tr, @children) do |child| %>
-          <td><%= child.id %></td>
-          <td><%= child.fname %></td>
-          <td><%= child.lname %></td>
-          <td><%= child.gender_name %></td>
-          <td><%= child.dob %></td>
-          <td><%= format_time(child.updated_at) %></td>
-          <td><%= link_to t("general.show"), project_child_path(@project, child) %></td>
-          <td><%= link_to t("general.edit"), edit_project_child_path(@project, child) %></td>
-          <td><%= link_to t("general.delete"), project_child_path(@project, child), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <%= render(partial: "child", collection: @children) %>
       </tbody>
     </table>
   </div>
