@@ -31,8 +31,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development do
-	gem 'quiet_assets'
+  gem 'quiet_assets'
   gem 'faker', require: false
+  gem 'capistrano',  '~> 3.2.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-bundler', '~> 1.1.1'
+  gem 'capistrano3-puma'
+  gem 'capistrano-sidekiq', '~> 0.3.8'
 end
 
 group :development, :test do
@@ -47,8 +52,8 @@ group :development, :test do
 
   # testing
   gem 'rspec-rails', '~> 3.0'
-	gem 'rb-fsevent', require: RUBY_PLATFORM =~ /darwin/i ? 'rb-fsevent' : false
-	gem 'factory_girl_rails'
+  gem 'rb-fsevent', require: RUBY_PLATFORM =~ /darwin/i ? 'rb-fsevent' : false
+  gem 'factory_girl_rails'
   gem "guard-rspec", require: false
   gem 'spring-commands-rspec'
   gem "capybara"
