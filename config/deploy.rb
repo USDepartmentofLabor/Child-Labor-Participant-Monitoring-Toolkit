@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'dbms'
-set :repo_url, 'git@gitdev:syue/DBMS.git'
+set :repo_url, 'git@gitdev.impaq.impaqinternational.com:syue/DBMS.git'
 set :deploy_via, :remote_cache
 set :branch, "master"
 # set :branch, "dark_theme"
