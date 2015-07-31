@@ -60,3 +60,9 @@ You can load some dummy data to play with this system. To load the data:
 
   `bundle exec rake DBMS:load_dummy_data`
 
+
+## Deployment
+
+Run `cap production deploy` to deploy new code to live server. 
+
+The default user:pass for testing is `deployer:deploy`
