@@ -35,7 +35,7 @@ module ChildrenHelper
     return image_tag("default_avatar_male.jpg", options)
   end
 
-	def link_to_add_fields(name, f, type)
+	def link_to_add_conditions(name, f, type)
     new_object = f.object.send "build_#{type}"
     id = "new_#{type}"
     fields = f.send("#{type}_fields", new_object, child_index: id) do |builder|
