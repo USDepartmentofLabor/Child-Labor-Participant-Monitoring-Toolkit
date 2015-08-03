@@ -41,7 +41,7 @@ class HouseholdsController < ApplicationController
 
   # PATCH/PUT /households/1
   def update
-    if @household.update(household_params)
+    if @household.update_attributes(household_params)
       redirect_to project_household_path(@project, @household), notice: t("action_messages.update", model: "Household")
     else
       render :edit
@@ -68,8 +68,8 @@ class HouseholdsController < ApplicationController
     def household_params
       params.require(:household).permit(
         :name, :address, :city, :state, :country, :phone,
-        children_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy],
-        adults_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy]
+        children_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy, :id],
+        adults_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy, :id]
       )
     end
 end
