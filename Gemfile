@@ -32,7 +32,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   gem 'quiet_assets'
-  gem 'faker', require: false
   gem 'capistrano',  '~> 3.2.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-bundler', '~> 1.1.1'
@@ -87,3 +86,5 @@ gem 'country_select', github: 'stefanpenner/country_select'
 gem 'kaminari'
 
 gem 'ransack'
+
+gem 'faker', require: false
