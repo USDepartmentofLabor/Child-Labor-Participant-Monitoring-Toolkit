@@ -38,6 +38,7 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1.1'
   gem 'capistrano3-puma'
   gem 'capistrano-sidekiq', '~> 0.3.8'
+  gem "capistrano-scm-copy" # use this only because the server can not access to our internal git repo
 end
 
 group :development, :test do

@@ -9,6 +9,7 @@ require 'capistrano/rails/assets'
 require 'capistrano/puma'
 require 'capistrano/puma/workers'
 
+require 'capistrano/copy'
 # require 'capistrano/sidekiq'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
