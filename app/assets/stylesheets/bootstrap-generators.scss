@@ -187,22 +187,11 @@ ul.legend-lists .legend-color {
   float: left;
 }
 
-.navbar-toggle {
-  background-color: #eee;
-}
-
-.navbar-toggle.large-toggle {
-  
-  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.6),inset 0px 1px 1px 0px #c8cbce;
-}
-
 .navbar-toggle.large-toggle .icon-bar {
   width: 45px;
+  height: 4px;
   background-color: #828689;
-}
-
-.navbar-header .navbar-toggle {
-  background-color: transparent;
+  // box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.6),inset 0px 1px 1px 0px #c8cbce;
 }
 
 .navbar-toggle .icon-bar {
