@@ -17,6 +17,10 @@ h3, .h3 {
   margin-top: 0;
 }
 
+.float-none {
+  float: none !important;
+}
+
 .nav-wrapper {
   padding-left: 40px;
   padding-right: 40px;
@@ -180,7 +184,29 @@ ul.legend-lists .legend-color {
   width: 1em;
   height: 1em;
   margin-right: 0.5em;
-  float: left
+  float: left;
+}
+
+.navbar-toggle {
+  background-color: #eee;
+}
+
+.navbar-toggle.large-toggle {
+  
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.6),inset 0px 1px 1px 0px #c8cbce;
+}
+
+.navbar-toggle.large-toggle .icon-bar {
+  width: 45px;
+  background-color: #828689;
+}
+
+.navbar-header .navbar-toggle {
+  background-color: transparent;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: #333;
 }
 
 @media (min-width: 768px) {
