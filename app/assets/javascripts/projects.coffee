@@ -1,6 +1,11 @@
 fixBar = ()->
   $sidebar = $('#dbms-side-menu')
   $window = $(window)
+
+  # In a mobile mode
+  if $sidebar.width()*2 > $window.width()
+    return 
+
   offset = $sidebar.offset()
   topPadding = 80
   $window.scroll ->
