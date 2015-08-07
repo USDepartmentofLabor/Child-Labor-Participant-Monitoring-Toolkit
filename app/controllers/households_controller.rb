@@ -31,7 +31,7 @@ class HouseholdsController < ApplicationController
       @household.children.each{|child| @project.children << child}
 
       respond_to do |format|
-        format.html {redirect_to project_household_path(@project, @household), notice: t("action_messages.create", model: "Household")}
+        format.html {redirect_to project_household_path(@project, @household), notice: t("action_messages.create", model: Household.model_name.human)}
         format.js
       end
     else
@@ -42,7 +42,7 @@ class HouseholdsController < ApplicationController
   # PATCH/PUT /households/1
   def update
     if @household.update_attributes(household_params)
-      redirect_to project_household_path(@project, @household), notice: t("action_messages.update", model: "Household")
+      redirect_to project_household_path(@project, @household), notice: t("action_messages.update", model: Household.model_name.human)
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class HouseholdsController < ApplicationController
   # DELETE /households/1
   def destroy
     @household.destroy
-    redirect_to project_households_path(@project), notice: 'Household was successfully destroyed.'
+    redirect_to project_households_path(@project), notice: t("action_messages.destroy", model: Household.model_name.human)
   end
 
   private

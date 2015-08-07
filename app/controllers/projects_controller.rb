@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     @project.user_id = current_user.id
 
     if @project.save
-      redirect_to @project, notice: t("action_messages.create", model: "Project")
+      redirect_to @project, notice: t("action_messages.create", model: Project.model_name.human)
     else
       render :new
     end

@@ -2,10 +2,12 @@ en:
   activerecord:
     models:
       child: "Beneficiary"
+      child_status: "Child Status"
       report: "Report"
       household: "Household"
       adult: "Adult"
       project: "Project"
+      custom_field: "Customized Field"
     attributes:
       adult:
         fname: "First Name (Given Name)"
@@ -53,3 +55,7 @@ en:
         updated_at: "Updated at"
       project:
         name: "Project Name"
+      custom_field:
+        name: "Field Name"
+        field_type: "Field Type"
+        selections: "Options For Select"

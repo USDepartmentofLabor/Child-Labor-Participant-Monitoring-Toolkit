@@ -9,9 +9,9 @@ class ChildStatusesController < ApplicationController
     @child_status.project_id = @project.id
 
     if @child_status.save
-      redirect_to :back, notice: t("action_messages.create", model: "Child status")
+      redirect_to :back, notice: t("action_messages.create", model: ChildStatus.model_name.human)
     else
-      redirect_to :back, alert: t("action_messages.create_failed", model: "Child status")
+      redirect_to :back, alert: t("action_messages.create_failed", model: ChildStatus.model_name.human)
     end
   end
 
