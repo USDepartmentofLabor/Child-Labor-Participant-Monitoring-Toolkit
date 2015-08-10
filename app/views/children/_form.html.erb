@@ -34,6 +34,11 @@
               <%= f.date_select :dob, {start_year: Date.today.year - 30, end_year: Date.today.year, use_two_digit_numbers: true}, {class: "form-control select-inline"} %>
             </div>
           </div>
+
+          <% if @custom_fields && !@custom_fields.to_a.empty? %>
+            <%= render partial: 'customized_fields', locals: {custom_fields: @custom_fields} %>
+          <% end %>
+
         </div>
 
         <div class="col-md-offset-2 col-md-4">

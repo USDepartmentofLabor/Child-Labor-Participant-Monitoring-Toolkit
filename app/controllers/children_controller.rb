@@ -23,6 +23,7 @@ class ChildrenController < ApplicationController
   # GET /children/new
   def new
     @child = Child.new
+    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child")
   end
 
   # GET /children/1/edit
