@@ -43,4 +43,52 @@ module ChildrenHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def custom_input(field_object, name, options={})
+    field_type = field_object.field_type
+    content = nil
+    case field_type
+    when "text"
+      text_field_tag(name, content, {class: "form-control"}.merge(options))
+
+    when "textarea"
+      text_area_tag(name, content, {class: "form-control", rows: 5}.merge(options))
+
+    when "select"
+      options_for_select = field_object.selections.to_s.split(CustomFieldForm.option_delimiter)
+      # content should be the options for select in this case
+      select_tag(name, options_for_select, {class: "form-control"}.merge(options))
+
+    when "checkbox"
+      options_for_select = field_object.selections.to_s.split(CustomFieldForm.option_delimiter)
+      
+      checkbox_div = options_for_select.map.with_index do |opt, i|
+        content_tag(:div, class: "checkbox") do
+          content_tag(:label, class: "radio-inline") do
+            concat check_box_tag(name, opt, i == 0, {class: "square-red"}.merge(options))
+            concat " #{opt}"
+          end
+        end
+      end
+      checkbox_div.join.html_safe
+
+    when "radio_button"
+      options_for_select = field_object.selections.to_s.split(CustomFieldForm.option_delimiter)
+      
+      radio_div = options_for_select.map.with_index do |opt, i|
+        content_tag(:div, class: "radio") do
+          content_tag(:label, class: "radio-inline") do
+            concat radio_button_tag(name, opt, i == 0, {class: "square-red"}.merge(options))
+            concat " #{opt}"
+          end
+        end
+      end
+      radio_div.join.html_safe
+      
+    when "number"
+      number_field_tag(name, content, {class: "form-control"}.merge(options))
+    else
+      nil
+    end 
+  end
 end

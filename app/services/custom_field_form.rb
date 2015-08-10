@@ -1,9 +1,14 @@
 class CustomFieldForm
   FIELD_TYPES_OPTIONS = {
-    "Long Text" => "Long",
-    "Short Text" => "Short",
-    "Numeric Value" => "Numeric",
-    "Select" => "Select",
-    "Checkbox" => "Checkbox"
+    "Short Text" => "text",
+    "Long Text" => "textarea",
+    "Check Box" => "check_box",
+    "Radio Button" => "radio_button",
+    "Selection Field" => "select",
+    "Numeric Field" => "number"
   }
+
+  def self.option_delimiter
+    "\r\n"
+  end
 end

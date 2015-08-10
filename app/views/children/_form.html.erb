@@ -35,9 +35,7 @@
             </div>
           </div>
 
-          <% if @custom_fields && !@custom_fields.to_a.empty? %>
-            <%= render partial: 'customized_fields', locals: {custom_fields: @custom_fields} %>
-          <% end %>
+          <%= render partial: 'custom_field', collection: @custom_fields %>
 
         </div>
 
