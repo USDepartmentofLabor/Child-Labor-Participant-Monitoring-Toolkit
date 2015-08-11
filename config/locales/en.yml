@@ -68,6 +68,7 @@ en:
       add: "Add A Beneficiary"
       title: "List of Beneficiaries"
       filter: "Filters"
+      custom_fields: "Customize Fields"
     show:
       title: "Beneficiary Record"
       personal_information: "Personal Information"
@@ -75,6 +76,10 @@ en:
       status_form_title: "Add A New Status"
     edit:
       title: "Edit Beneficiary Record"
+    custom_fields:
+      title: "Customize Fields For Beneficiary Intake Forms"
+      list: "List Of Custom Fields"
+      add: "Add New Custom Field"
   adults:
     index:
       add: "Add An Adult"

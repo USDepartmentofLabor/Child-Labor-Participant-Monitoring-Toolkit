@@ -1,26 +1,38 @@
 <div class="page-header">
-  <h1>Add Fields For <%= t("children.new.form_title") %></h1>
+  <h1><%= t("children.custom_fields.title") %></h1>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <%= form_for @custom_field, url: create_fields_project_children_path(project_id: @custom_field.project_id) do |f| %>
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :field_type %>
-        <%= f.select :field_type, CustomFieldForm::FIELD_TYPES_OPTIONS, {}, id: "child_field_type", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :selections %> <i>(One line per option.)</i>
-        <%= f.text_area :selections, rows: 5, class: "form-control" %>
-      </div>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= t("children.custom_fields.list") %></div>
+  <div class="panel-body">
+    <form><%= render partial: 'custom_field', collection: @custom_fields, locals: { options: {fill: false, disabled: true}} %></form>
+  </div>
+</div>
 
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= t("children.custom_fields.add") %></div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <%= form_for @custom_field, url: create_fields_project_children_path(project_id: @custom_field.project_id) do |f| %>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :field_type %>
+            <%= f.select :field_type, CustomFieldGroup::FIELD_TYPES_OPTIONS, {}, id: "child_field_type", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :selections %> <i>(One line per option.)</i>
+            <%= f.text_area :selections, rows: 5, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>

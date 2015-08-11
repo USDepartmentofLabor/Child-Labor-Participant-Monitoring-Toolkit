@@ -1,4 +1,4 @@
-class CustomFieldForm
+class CustomFieldGroup
   FIELD_TYPES_OPTIONS = {
     "Short Text" => "text",
     "Long Text" => "textarea",

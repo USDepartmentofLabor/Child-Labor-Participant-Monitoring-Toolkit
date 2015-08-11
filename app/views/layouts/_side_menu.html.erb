@@ -33,6 +33,12 @@
             <%= t("children.index.add") %>
           <% end -%>
         </li>
+        <li>
+          <%= link_to new_fields_project_children_path(@project) do -%>
+            <i class="fa fa-angle-double-right"></i>
+            <%= t("children.index.custom_fields") %>
+          <% end -%>
+        </li>
       </ul>
     <% end -%>
 

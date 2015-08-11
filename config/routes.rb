@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resource :profile
+
   get 'gender_count/:id' => 'projects#gender_count'
   resources :projects do
     resources :reports, except: [:edit, :update]
