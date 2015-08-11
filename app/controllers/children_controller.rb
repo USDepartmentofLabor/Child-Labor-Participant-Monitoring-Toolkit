@@ -29,6 +29,7 @@ class ChildrenController < ApplicationController
 
   # GET /children/1/edit
   def edit
+    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child").with_values(@child.id)
   end
 
   # POST /children
@@ -49,7 +50,9 @@ class ChildrenController < ApplicationController
 
   # PATCH/PUT /children/1
   def update
+    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child")
     if @child.update(child_params)
+      CustomFieldForm.update(@custom_fields, params_for_custom_field)
       redirect_to project_child_path(@project, @child), notice: t("action_messages.update", model: Child.model_name.human)
     else
       render :edit

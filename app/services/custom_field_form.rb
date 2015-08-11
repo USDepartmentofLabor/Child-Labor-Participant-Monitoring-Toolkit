@@ -23,4 +23,14 @@ class CustomFieldForm
       custom_value.save
     end
   end
+
+  def self.update(fields, values)
+    ids = values.keys
+    field_ids = fields.map(&:id)
+
+    CustomValue.where(id: ids, custom_field_id: field_ids).each do |custom_value|
+      next if custom_value.value_text.to_s == values[custom_value.id.to_s]["value_text"].to_s
+      custom_value.update(value_text: values[custom_value.id.to_s]["value_text"])
+    end
+  end
 end

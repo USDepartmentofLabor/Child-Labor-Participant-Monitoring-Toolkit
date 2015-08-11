@@ -46,7 +46,7 @@ module ChildrenHelper
 
   def custom_input(field_object, name, options={})
     field_type = field_object.field_type
-    content = nil
+    content = field_object.custom_value.present? ? field_object.custom_value.value_text : nil
     case field_type
     when "text"
       text_field_tag(name, content, {class: "form-control"}.merge(options))
@@ -55,36 +55,36 @@ module ChildrenHelper
       text_area_tag(name, content, {class: "form-control", rows: 5}.merge(options))
 
     when "select"
-      options_for_select = field_object.selections.to_s.split(CustomFieldForm.option_delimiter)
+      options_dom = field_object.selections.to_s.split(CustomFieldForm.option_delimiter)
       # content should be the options for select in this case
-      select_tag(name, options_for_select, {class: "form-control"}.merge(options))
+      select_tag(name, options_for_select(options_dom, content), {class: "form-control"}.merge(options))
 
     when "checkbox"
       options_for_select = field_object.selections.to_s.split(CustomFieldForm.option_delimiter)
-      
-      checkbox_div = options_for_select.map.with_index do |opt, i|
+      checkbox_dom = options_for_select.map.with_index do |opt, i|
+        checked = content.blank? ? (i == 0) : (opt == content)
         content_tag(:div, class: "checkbox") do
           content_tag(:label, class: "radio-inline") do
-            concat check_box_tag(name, opt, i == 0, {class: "square-red"}.merge(options))
+            concat check_box_tag(name, opt, checked, {class: "square-red"}.merge(options))
             concat " #{opt}"
           end
         end
       end
-      checkbox_div.join.html_safe
+      checkbox_dom.join.html_safe
 
     when "radio_button"
       options_for_select = field_object.selections.to_s.split(CustomFieldForm.option_delimiter)
-      
-      radio_div = options_for_select.map.with_index do |opt, i|
+      radio_dom = options_for_select.map.with_index do |opt, i|
+        checked = content.blank? ? (i == 0) : (opt == content)
         content_tag(:div, class: "radio") do
           content_tag(:label, class: "radio-inline") do
-            concat radio_button_tag(name, opt, i == 0, {class: "square-red"}.merge(options))
+            concat radio_button_tag(name, opt, checked, {class: "square-red"}.merge(options))
             concat " #{opt}"
           end
         end
       end
-      radio_div.join.html_safe
-      
+      radio_dom.join.html_safe
+
     when "number"
       number_field_tag(name, content, {class: "form-control"}.merge(options))
     else
