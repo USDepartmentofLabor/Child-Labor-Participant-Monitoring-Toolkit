@@ -53,6 +53,11 @@
             <tr>
               <td><%= Child.human_attribute_name(:country) %></td><td><%= @child.country_name %></td>
             </tr>
+            <% @custom_fields.each do |custom_field| %>
+              <tr>
+                <td><%= custom_field.name %></td><td><%= custom_field.custom_value.value_text %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>

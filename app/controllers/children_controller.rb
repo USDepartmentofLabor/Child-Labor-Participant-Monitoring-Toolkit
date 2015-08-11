@@ -18,6 +18,7 @@ class ChildrenController < ApplicationController
   # GET /children/1
   def show
     @child_statuses = ChildStatus.where(child_id: @child.id, project_id: @project.id).includes(:work_status, :education_status)
+    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child").with_values(@child.id)
   end
 
   # GET /children/new
