@@ -33,9 +33,13 @@ class ChildrenController < ApplicationController
   # POST /children
   def create
     @child = Child.new(child_params)
+    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child")
 
     if @child.save
       @project.children << @child
+
+      CustomFieldForm.create(@child, @custom_fields, params_for_custom_field)
+
       redirect_to project_child_path(@project, @child), notice: t("action_messages.create", model: Child.model_name.human)
     else
       render :new
@@ -88,5 +92,9 @@ class ChildrenController < ApplicationController
 
     def custom_field_params
       params.require(:custom_field).permit(:name, :field_type, :selections)
+    end
+
+    def params_for_custom_field
+      params.require(:custom_fields)
     end
 end
