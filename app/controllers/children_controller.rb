@@ -40,7 +40,9 @@ class ChildrenController < ApplicationController
     if @child.save
       @project.children << @child
 
-      CustomFieldGroup.create(@child, @custom_fields, params_for_custom_field)
+      if params[:custom_fields].present? && @custom_fields.length > 0
+        CustomFieldGroup.create(@child, @custom_fields, params_for_custom_field)
+      end
 
       redirect_to project_child_path(@project, @child), notice: t("action_messages.create", model: Child.model_name.human)
     else
@@ -52,7 +54,9 @@ class ChildrenController < ApplicationController
   def update
     @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child")
     if @child.update(child_params)
-      CustomFieldGroup.update(@custom_fields, params_for_custom_field)
+      if params[:custom_fields].present? && @custom_fields.length > 0
+        CustomFieldGroup.update(@custom_fields, params_for_custom_field)
+      end
       redirect_to project_child_path(@project, @child), notice: t("action_messages.update", model: Child.model_name.human)
     else
       render :edit
