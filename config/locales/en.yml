@@ -80,6 +80,7 @@ en:
       title: "Customize Fields For Beneficiary Intake Forms"
       list: "Preview Of Custom Fields"
       add: "Add New Custom Field"
+      edit: "Edit Custom Field"
   adults:
     index:
       add: "Add An Adult"
