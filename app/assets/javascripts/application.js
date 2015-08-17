@@ -16,6 +16,7 @@
 //= require jasny-bootstrap.min
 //= require icheck.min
 //= require jquery.smartWizard
+//= require jquery.jgrowl.min
 //= require bootstrap-datepicker
 //= require jquery.validate.min
 //= require Chart.min

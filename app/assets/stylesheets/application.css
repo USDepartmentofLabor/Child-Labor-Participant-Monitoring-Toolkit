@@ -18,6 +18,7 @@
  *= require bootstrap-generators
  *= require jasny-bootstrap.min
  *= require material-style
+ *= require jGrowl
  *= require home
  *= require side-menu
  *= require_self
