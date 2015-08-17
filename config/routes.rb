@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resource :profile
+  # resource :profile
 
   get 'gender_count/:id' => 'projects#gender_count'
   resources :projects do
@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       end
     end
     resources :households
+
+    resources :custom_fields, only: [:destroy]
   end
 
   # a trick to avoid generating children urls again

@@ -32,3 +32,12 @@ jQuery ->
     optionSelected = $('option:selected', this)
     if @value == "0"
       $("#household-form-modal").modal("show")
+
+  $(".delete-custom-field").click (event) ->
+    url = $(this).data("url")
+    $.ajax
+      url: url
+      type: "DELETE"
+      success: (result) ->
+        divID = "#pre-field-" + result.id
+        $(divID).hide()

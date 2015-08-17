@@ -78,7 +78,7 @@ en:
       title: "Edit Beneficiary Record"
     custom_fields:
       title: "Customize Fields For Beneficiary Intake Forms"
-      list: "List Of Custom Fields"
+      list: "Preview Of Custom Fields"
       add: "Add New Custom Field"
   adults:
     index:

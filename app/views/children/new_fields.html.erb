@@ -5,7 +5,27 @@
 <div class="panel panel-default">
   <div class="panel-heading"><%= t("children.custom_fields.list") %></div>
   <div class="panel-body">
-    <form><%= render partial: 'custom_field', collection: @custom_fields, locals: { options: {fill: false, disabled: true}} %></form>
+    <form>
+      <% @custom_fields.each do |custom_field| %>
+        <div id="pre-field-<%= custom_field.id %>">
+          <div class="row">
+            <div class="col-md-8">
+              <%= render partial: 'custom_field', locals: { custom_field: custom_field, options: {fill: false, disabled: true}} %>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-default"><%= fa_icon "pencil" %> Edit</button>
+              <%= content_tag :button, class: "btn btn-default delete-custom-field", 
+                data: {
+                  url: project_custom_field_path(project_id: custom_field.project_id, id: custom_field.id, type: "Child") 
+                } do %>
+                <%= fa_icon "times" %> <%= t("general.delete") %>
+              <% end %>
+            </div>
+          </div>
+          <hr>
+        </div>
+      <% end %>
+    </form>
   </div>
 </div>
 
