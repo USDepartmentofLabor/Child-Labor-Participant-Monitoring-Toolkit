@@ -20,7 +20,7 @@ module CustomFieldsHelper
       # content should be the options for select in this case
       select_tag(name, options_for_select(options_dom, content), {class: "form-control"}.merge(options))
 
-    when "checkbox"
+    when "check_box"
       options_for_select = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
       checkbox_dom = options_for_select.map.with_index do |opt, i|
         checked = content.blank? ? (i == 0) : (opt == content)
