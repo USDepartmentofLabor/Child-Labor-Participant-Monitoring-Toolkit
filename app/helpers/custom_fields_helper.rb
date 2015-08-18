@@ -18,7 +18,7 @@ module CustomFieldsHelper
     when "select"
       options_dom = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
       # content should be the options for select in this case
-      select_tag(name, options_for_select(options_dom, content), {class: "form-control"}.merge(options))
+      select_tag(name, options_for_select(options_dom, content), {class: "form-control", include_blank: true}.merge(options))
 
     when "check_box"
       options_for_select = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
