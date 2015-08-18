@@ -34,7 +34,7 @@ en:
       child_status:
         start_date: "Start Date"
         end_date: "End Date"
-        work_status_id: "Work Status"
+        work_status_id: "Child Labor Status"
         education_status_id: "Education Status"
         note: "Notes"
         created_at: "Created at"

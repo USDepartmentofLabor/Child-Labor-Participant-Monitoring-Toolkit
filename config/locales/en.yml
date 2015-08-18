@@ -109,7 +109,7 @@ en:
       basic_infomation: "Basic Information"
       select_indicator: "Choose Indicator"
       select_subindicator: "Choose Sub-indicator"
-      select_work_status: "Choose Child Work Status"
+      select_work_status: "Choose Child Labor Status"
       confirm: "Final Confirmation"
       finish: "Generate Report"
       common_indicators: "Common Indicators"
