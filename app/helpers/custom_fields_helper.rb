@@ -1,9 +1,14 @@
 module CustomFieldsHelper
+  def custom_field_value(custom_field)
+    custom_field.custom_value_text.present? ? custom_field.custom_value_text : nil
+  end
+
   def custom_input(field_object, name, options={})
     field_type = field_object.field_type
     
     if options[:fill].nil? || options[:fill]
-      content = field_object.custom_value.present? ? field_object.custom_value.value_text : nil
+      # content = field_object.custom_value.present? ? field_object.custom_value.value_text : nil
+      content = custom_field_value(field_object)
     else
       content = nil
     end
