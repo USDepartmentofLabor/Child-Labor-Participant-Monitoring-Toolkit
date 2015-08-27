@@ -1,14 +1,13 @@
 FactoryGirl.define do
   factory :child do
-    fname "MyString"
-lname "MyString"
-mname "MyString"
-sex 1
-dob "2015-06-10"
-address "MyString"
-city "MyString"
-state "MyString"
-country "MyString"
+    sequence(:fname) { |n| "FN #{n}" }
+    sequence(:lname) { |n| "LN #{n}" }
+    mname "Middle Name"
+    sex { [1,2].sample }
+    # dob "2015-06-10"
+    sequence(:address) { |n| "#{n} Little Patuxent Parkway" }
+    city "Columbia"
+    state "Maryland"
+    country "US"
   end
-
 end
