@@ -17,28 +17,42 @@ RSpec.describe ChildrenController, type: :controller do
     end
   end
 
-  # describe "GET #show" do
-  #   it "assigns the requested child as @child" do
-  #     child = Child.create! valid_attributes
-  #     get :show, {:id => child.to_param}, valid_session
-  #     expect(assigns(:child)).to eq(child)
-  #   end
-  # end
+  describe "GET #show" do
+    it "assigns the requested child as @child" do
+      project = create(:project_with_children, num_child: 3, user_id: user.id)
+      child = project.children.first
+      get :show, {:id => child.to_param, project_id: project.id}
+      expect(assigns(:child)).to eq(child)
+    end
 
-  # describe "GET #new" do
-  #   it "assigns a new child as @child" do
-  #     get :new, {}, valid_session
-  #     expect(assigns(:child)).to be_a_new(Child)
-  #   end
-  # end
+    it "shows child with custom fields" do
+      project = create(:project_with_children, num_child: 3, user_id: user.id)
+      custom_fields = create_list(:custom_field, 3, project_id: project.id, model_type: "Child")
+      child = project.children.first
 
-  # describe "GET #edit" do
-  #   it "assigns the requested child as @child" do
-  #     child = Child.create! valid_attributes
-  #     get :edit, {:id => child.to_param}, valid_session
-  #     expect(assigns(:child)).to eq(child)
-  #   end
-  # end
+      get :show, {:id => child.to_param, project_id: project.id}
+      expect(assigns(:custom_fields).map { |e| e.id }).to eq(custom_fields.map { |e| e.id })
+    end
+  end
+
+  describe "GET #new" do
+    it "assigns a new child as @child" do
+      project = create(:project, user_id: user.id)
+      get :new, {project_id: project.id}
+      expect(assigns(:child)).to be_a_new(Child)
+    end
+  end
+
+  describe "GET #edit" do
+    it "assigns the requested child as @child" do
+      project = create(:project_with_children, num_child: 3, user_id: user.id)
+      custom_fields = create_list(:custom_field, 3, project_id: project.id, model_type: "Child")
+      child = project.children.first
+
+      get :edit, {:id => child.to_param, project_id: project.id}
+      expect(assigns(:custom_fields).map { |e| e.id }).to eq(custom_fields.map { |e| e.id })
+    end
+  end
 
   # describe "POST #create" do
   #   context "with valid params" do
