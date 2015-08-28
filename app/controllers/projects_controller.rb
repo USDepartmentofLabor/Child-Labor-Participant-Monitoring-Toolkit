@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :gender_count]
+  before_action :set_project, only: [:show, :gender_count, :update]
 
   def show
     @total_children = @project.children.count
@@ -21,6 +21,11 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    @project.update(project_params)
+    redirect_to @project, notice: t("action_messages.update", model: Project.model_name.human)
   end
 
   def gender_count

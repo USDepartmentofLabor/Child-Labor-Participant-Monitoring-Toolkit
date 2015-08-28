@@ -1,4 +1,11 @@
-<h1><%= @project.name %></h1>
+<div class="page-header">
+  <a href="javascript:void(0);" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-project-modal">
+    <%= fa_icon "cog" %>
+    <%= t("project.show.edit") %>
+  </a>
+  <h1><%= @project.name %></h1>
+</div>
+
 <div class="divider"></div>
 <div class="section">
   <h3><b>Impressions</b></h3>
@@ -33,6 +40,20 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="edit-project-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= t("households.new.title") %></h4>
+      </div>
+      <div class="modal-body">
+        <%= render "form" %>
       </div>
     </div>
   </div>
