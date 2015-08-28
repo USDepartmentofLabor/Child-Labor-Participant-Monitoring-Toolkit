@@ -32,6 +32,10 @@ Direct Beneficiary Monitoring System Prototype (DOL-ILAB)
 
 	`grant all privileges on database dbms_development to vagrant;`
 
+	`create database dbms_test owner vagrant;`
+
+	`grant all privileges on database dbms_test to vagrant;`
+
 	`\q`
 
 1. Install Nodejs

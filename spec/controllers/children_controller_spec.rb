@@ -54,38 +54,45 @@ RSpec.describe ChildrenController, type: :controller do
     end
   end
 
-  # describe "POST #create" do
-  #   context "with valid params" do
-  #     it "creates a new Child" do
-  #       expect {
-  #         post :create, {:child => valid_attributes}, valid_session
-  #       }.to change(Child, :count).by(1)
-  #     end
+  describe "POST #create" do
+    context "with valid params" do
+      it "creates a new Child under a project" do
+        project = create(:project, user_id: user.id)
+        expect {
+          post :create, {child: attributes_for(:child), project_id: project.id}
+        }.to change(Child, :count).by(1)
 
-  #     it "assigns a newly created child as @child" do
-  #       post :create, {:child => valid_attributes}, valid_session
-  #       expect(assigns(:child)).to be_a(Child)
-  #       expect(assigns(:child)).to be_persisted
-  #     end
+        project_child = ProjectsChild.last
 
-  #     it "redirects to the created child" do
-  #       post :create, {:child => valid_attributes}, valid_session
-  #       expect(response).to redirect_to(Child.last)
-  #     end
-  #   end
+        expect(project_child.project_id).to eq(project.id)
 
-  #   context "with invalid params" do
-  #     it "assigns a newly created but unsaved child as @child" do
-  #       post :create, {:child => invalid_attributes}, valid_session
-  #       expect(assigns(:child)).to be_a_new(Child)
-  #     end
+        expect(response).to redirect_to(project_child_path(project.id, project_child.child_id))
+      end
 
-  #     it "re-renders the 'new' template" do
-  #       post :create, {:child => invalid_attributes}, valid_session
-  #       expect(response).to render_template("new")
-  #     end
-  #   end
-  # end
+      # it "assigns a newly created child as @child" do
+      #   post :create, {:child => valid_attributes}, valid_session
+      #   expect(assigns(:child)).to be_a(Child)
+      #   expect(assigns(:child)).to be_persisted
+      # end
+
+      # it "redirects to the created child" do
+      #   post :create, {:child => valid_attributes}, valid_session
+      #   expect(response).to redirect_to(Child.last)
+      # end
+    end
+
+    # context "with invalid params" do
+    #   it "assigns a newly created but unsaved child as @child" do
+    #     post :create, {:child => invalid_attributes}, valid_session
+    #     expect(assigns(:child)).to be_a_new(Child)
+    #   end
+
+    #   it "re-renders the 'new' template" do
+    #     post :create, {:child => invalid_attributes}, valid_session
+    #     expect(response).to render_template("new")
+    #   end
+    # end
+  end
 
   # describe "PUT #update" do
   #   context "with valid params" do
