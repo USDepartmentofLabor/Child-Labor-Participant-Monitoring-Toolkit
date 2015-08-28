@@ -2,6 +2,8 @@ FactoryGirl.define do
   factory :project do
     sequence(:name){|n| "Project #{n}"}
 
+    country "US"
+
     factory :project_with_children do
       transient do
         num_child 3

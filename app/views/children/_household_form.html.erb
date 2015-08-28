@@ -29,7 +29,7 @@
 
           <div class="form-group">
             <%= f.label :country %>
-            <%= f.country_select :country, {}, {class: "form-control"} %>
+            <%= f.country_select :country, {selected: @project.country}, {class: "form-control"} %>
           </div>
 
           <div class="form-group">
