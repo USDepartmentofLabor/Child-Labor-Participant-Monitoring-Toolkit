@@ -1,6 +1,9 @@
 module CustomFieldsHelper
   def custom_field_value(custom_field)
-    custom_field.custom_value_text.present? ? custom_field.custom_value_text : nil
+    if custom_field.respond_to?(:custom_value_text) && custom_field.custom_value_text.present?
+      return custom_field.custom_value_text
+    end
+    return nil
   end
 
   def custom_input(field_object, name, options={})
