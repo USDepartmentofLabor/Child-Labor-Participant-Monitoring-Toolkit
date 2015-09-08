@@ -56,6 +56,8 @@ en:
       dashboard: "Dashboard"
       children_covered: "Beneficiaries"
       edit: "Settings"
+    new:
+      title: "Create New Project"
   children:
     new:
       form_title: "Beneficiary Intake Form"

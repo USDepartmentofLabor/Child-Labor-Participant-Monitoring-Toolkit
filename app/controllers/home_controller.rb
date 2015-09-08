@@ -11,6 +11,5 @@ class HomeController < ApplicationController
 
   def dashboard
     @projects = Project.all
-    @project = Project.new
   end
 end
