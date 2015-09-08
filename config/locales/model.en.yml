@@ -63,6 +63,7 @@ en:
         org: "Organization"
         proj_type: "Project Type"
         funding: "Funding Amount"
+        state: "State (Province)"
       custom_field:
         name: "Field Name"
         field_type: "Field Type"
