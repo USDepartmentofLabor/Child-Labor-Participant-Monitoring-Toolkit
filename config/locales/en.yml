@@ -125,3 +125,5 @@ en:
     adult:
       male: "Male"
       female: "Female"
+  project_regions:
+    add: "Add"

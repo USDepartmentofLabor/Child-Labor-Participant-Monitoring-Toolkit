@@ -56,15 +56,16 @@ en:
       project:
         name: "Project Name"
         title: "Project Title"
-        country: "Country"
         cop_num: "Cooperative Agreement Number"
         start_date: "Start Date"
         end_date: "End Date"
         org: "Organization"
         proj_type: "Project Type"
         funding: "Funding Amount"
-        state: "State (Province)"
       custom_field:
         name: "Field Name"
         field_type: "Field Type"
         selections: "Options For Select"
+      project_region:
+        country: "Country"
+        state: "State (Province)"

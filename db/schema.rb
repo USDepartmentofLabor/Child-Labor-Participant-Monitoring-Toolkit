@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901161000) do
+ActiveRecord::Schema.define(version: 20150908190344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,16 @@ ActiveRecord::Schema.define(version: 20150901161000) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "project_regions", force: :cascade do |t|
+    t.string   "country"
+    t.string   "state"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "project_regions", ["project_id"], name: "index_project_regions_on_project_id", using: :btree
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",           null: false
@@ -169,6 +179,7 @@ ActiveRecord::Schema.define(version: 20150901161000) do
 
   add_foreign_key "adults", "households"
   add_foreign_key "child_statuses", "children"
+  add_foreign_key "project_regions", "projects"
   add_foreign_key "projects_households", "households"
   add_foreign_key "projects_households", "projects"
 end

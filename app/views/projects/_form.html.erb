@@ -36,14 +36,12 @@
     <%= f.label :funding %>
     <%= f.text_field :funding, class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :country %>
-    <%= f.country_select :country, {include_blank: true}, {class: "form-control"} %>
-  </div>
-  <div class="form-group">
-    <%= f.label :state %>
-    <%= text_field_tag "projects[state]", nil, {include_blank: true, class: "form-control"} %>
-  </div>
+
+  <%= f.fields_for :project_regions do |builder| %>
+    <%= render 'project_region_fields ', f: builder %>
+  <% end %>
+  <%= link_to_add_fields t("project_regions.add"), f, :project_regions, class: "add_fields btn btn-primary" %>
+
   <div class="form-group">
     <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
   </div>
