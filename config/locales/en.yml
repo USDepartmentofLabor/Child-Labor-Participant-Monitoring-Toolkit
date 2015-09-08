@@ -128,4 +128,5 @@ en:
       male: "Male"
       female: "Female"
   project_regions:
+    title: "Add Country and State(Province)"
     add: "Add"

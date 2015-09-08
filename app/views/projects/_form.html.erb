@@ -37,10 +37,17 @@
     <%= f.text_field :funding, class: "form-control" %>
   </div>
 
-  <%= f.fields_for :project_regions do |builder| %>
-    <%= render 'project_region_fields ', f: builder %>
-  <% end %>
-  <%= link_to_add_fields t("project_regions.add"), f, :project_regions, class: "add_fields btn btn-primary" %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= t("project_regions.title") %>
+    </div>
+    <div class="panel-body">
+      <%= f.fields_for :project_regions do |builder| %>
+        <%= render 'project_region_fields', f: builder %>
+      <% end %>
+      <%= link_to_add_fields t("project_regions.add"), f, :project_regions, class: "add_fields btn btn-primary" %>
+    </div>
+  </div>
 
   <hr>
 
