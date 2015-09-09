@@ -62,6 +62,7 @@ class HouseholdsController < ApplicationController
 
     def set_project
       @project = Project.find(params[:project_id])
+      @project_regions = @project.project_regions
     end
 
     # Only allow a trusted parameter "white list" through.
