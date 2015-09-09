@@ -20,6 +20,7 @@
 //= require bootstrap-datepicker
 //= require jquery.validate.min
 //= require Chart.min
+//= require jquery.geocomplete.min
 //= require home
 //= require children
 //= require projects

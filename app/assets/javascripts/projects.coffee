@@ -21,8 +21,9 @@ toggleMenu = () ->
     )
 
 jQuery ->
-  fixBar()
-  toggleMenu()
+  if $('#dbms-side-menu').length > 0  
+    fixBar()
+    toggleMenu()
   if $("#i-child-ratio-chart").length > 0
     eid = window.location.pathname.split("/")[2]
     url = "/gender_count/" + eid
@@ -47,3 +48,5 @@ jQuery ->
       })
       legendHtml = myNewChart.generateLegend()
       $("#ratio-legend").append(legendHtml)
+  if $("#project_office_address").length > 0
+    $("#project_office_address").geocomplete()
