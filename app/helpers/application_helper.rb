@@ -31,4 +31,23 @@ module ApplicationHelper
     end
     link_to(name, '#', class: (options[:class] || "add_fields"), data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def country_name_in_text(country_code)
+    return nil if country_code.nil?
+    country_iso = ISO3166::Country[country_code]
+    country_iso.translations[I18n.locale.to_s] || country_iso.name
+  end
+
+  def group_state_options(project_regions)
+    grouped_options = {}
+    project_regions.each do |region|
+      country = country_name_in_text(region.country)
+      if grouped_options.has_key?(country)
+        grouped_options[country] << region.state
+      else
+        grouped_options[country] = [region.state]
+      end
+    end
+    grouped_options_for_select(grouped_options)
+  end
 end
