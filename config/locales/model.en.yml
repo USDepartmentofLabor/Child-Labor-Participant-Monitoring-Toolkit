@@ -44,6 +44,9 @@ en:
         desc: "Description"
         start_date: "Start Date"
         end_date: "End Date"
+        code: "#"
+        indicator: "Indicator"
+        indicator_type: "Indicator Type"
       household:
         name: "Household Name"
         address: "Address"
