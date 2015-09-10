@@ -7,4 +7,8 @@ class Report < ActiveRecord::Base
   def date_range_in_text
     "#{start_date.strftime("%d %b. %Y")} - #{end_date.strftime("%d %b. %Y")}"
   end
+
+  def self.create_default(project, user)
+    DBMS::DefaultData::Indicators.create(project, user)
+  end
 end
