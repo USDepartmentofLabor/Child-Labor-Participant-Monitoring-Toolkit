@@ -8,7 +8,7 @@ class Report < ActiveRecord::Base
     "#{start_date.strftime("%d %b. %Y")} - #{end_date.strftime("%d %b. %Y")}"
   end
 
-  def self.create_default(project, user)
-    DBMS::DefaultData::Indicators.create(project, user)
+  def self.create_default(project_id, user_id)
+    DBMS::DefaultData::Indicators.create(project_id, user_id)
   end
 end

@@ -2,7 +2,7 @@ module DBMS
   module DefaultData
     module Indicators
       class << self
-        def create(project, user)
+        def create(project_id, user_id)
           indicator = <<-eos
             % of livelihood beneficiary HHs with at least one child engaged in child labor
           eos
@@ -12,8 +12,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -25,8 +25,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -39,8 +39,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -52,8 +52,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -65,8 +65,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -78,8 +78,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -91,8 +91,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -104,8 +104,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -117,8 +117,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -130,8 +130,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
 
           indicator = <<-eos
@@ -143,8 +143,8 @@ module DBMS
             indicator_type: "Common",
             service_type: "EducationStatus",
             target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
+            user_id: user_id,
+            project_id: project_id
           )
         end
       end

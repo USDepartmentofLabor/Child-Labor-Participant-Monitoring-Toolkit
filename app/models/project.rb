@@ -13,4 +13,10 @@ class Project < ActiveRecord::Base
   has_many :project_regions, dependent: :destroy
 
   accepts_nested_attributes_for :project_regions, allow_destroy: true, reject_if: :all_blank
+
+  after_create :generate_reports
+
+  def generate_reports
+    Report.create_default(self.id, self.user_id)
+  end
 end
