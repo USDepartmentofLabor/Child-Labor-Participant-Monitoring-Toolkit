@@ -1,0 +1,53 @@
+<div class="page-header">
+  <%= link_to new_indicator_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Indicator
+  <% end %>
+  <h1>Listing indicators</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+    
+        <th>Code</th>
+    
+        <th>Desc</th>
+    
+        <th>Indicator type</th>
+    
+        <th>String</th>
+    
+        <th>User</th>
+    
+        <th>Project</th>
+    
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @indicators) do |indicator| %>
+    
+        <td><%= indicator.code %></td>
+    
+        <td><%= indicator.desc %></td>
+    
+        <td><%= indicator.indicator_type %></td>
+    
+        <td><%= indicator.string %></td>
+    
+        <td><%= indicator.user_id %></td>
+    
+        <td><%= indicator.project %></td>
+    
+        <td><%= link_to 'Show', indicator %></td>
+        <td><%= link_to 'Edit', edit_indicator_path(indicator) %></td>
+        <td><%= link_to 'Destroy', indicator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

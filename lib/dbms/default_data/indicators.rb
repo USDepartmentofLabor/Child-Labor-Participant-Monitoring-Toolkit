@@ -6,12 +6,10 @@ module DBMS
           indicator = <<-eos
             % of livelihood beneficiary HHs with at least one child engaged in child labor
           eos
-          Report.create!(
+          Indicator.create!(
             code: "POH1",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -19,12 +17,10 @@ module DBMS
           indicator = <<-eos
             % of livelihood beneficiary HHs with at least one child engaged in hazardous child labor (if applicable)
           eos
-          Report.create!(
+          Indicator.create!(
             code: "POH2",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -33,12 +29,10 @@ module DBMS
             % of livelihood beneficiary HHs with at least one child engaged in other WFCL 
             (only applicable if project specifically targets this population; majority of projects will not use)
           eos
-          Report.create!(
+          Indicator.create!(
             code: "POH3",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -46,12 +40,10 @@ module DBMS
           indicator = <<-eos
             % of livelihood beneficiary HHs with all children of compulsory school age attending school regularly
           eos
-          Report.create!(
+          Indicator.create!(
             code: "POH4",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -59,12 +51,10 @@ module DBMS
           indicator = <<-eos
             % of beneficiary children engaged in CL
           eos
-          Report.create!(
+          Indicator.create!(
             code: "POC1",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -72,12 +62,10 @@ module DBMS
           indicator = <<-eos
             % of beneficiary children engaged in HCL
           eos
-          Report.create!(
+          Indicator.create!(
             code: "POC2",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -85,12 +73,10 @@ module DBMS
           indicator = <<-eos
             % of beneficiary children in other WFCL (only applicable if project specifically targets this population; majority of projects will not use)
           eos
-          Report.create!(
+          Indicator.create!(
             code: "POC3",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -98,12 +84,10 @@ module DBMS
           indicator = <<-eos
             % of beneficiary children who regularly attended any form of education during the past six (6) months
           eos
-          Report.create!(
+          Indicator.create!(
             code: "POC4",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -111,12 +95,10 @@ module DBMS
           indicator = <<-eos
             # of children engaged in or at high-risk of entering CL provided education or vocational training services
           eos
-          Report.create!(
+          Indicator.create!(
             code: "E1",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -124,12 +106,10 @@ module DBMS
           indicator = <<-eos
             # of HHs receiving livelihood services
           eos
-          Report.create!(
+          Indicator.create!(
             code: "L1",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )
@@ -137,12 +117,10 @@ module DBMS
           indicator = <<-eos
             Capacity Indicator
           eos
-          Report.create!(
+          Indicator.create!(
             code: "C1",
             indicator: indicator,
             indicator_type: "Common",
-            service_type: "EducationStatus",
-            target_type: "WorkStatus",
             user_id: user_id,
             project_id: project_id
           )

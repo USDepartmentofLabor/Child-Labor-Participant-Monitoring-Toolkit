@@ -17,6 +17,6 @@ class Project < ActiveRecord::Base
   after_create :generate_reports
 
   def generate_reports
-    Report.create_default(self.id, self.user_id)
+    Indicator.create_default(self.id, self.user_id)
   end
 end

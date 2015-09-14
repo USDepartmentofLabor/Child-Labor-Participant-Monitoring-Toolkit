@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910190353) do
+ActiveRecord::Schema.define(version: 20150914190159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,21 @@ ActiveRecord::Schema.define(version: 20150910190353) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  create_table "indicators", force: :cascade do |t|
+    t.string   "code"
+    t.text     "indicator"
+    t.string   "indicator_type"
+    t.text     "use"
+    t.text     "definitions"
+    t.text     "frequency"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "indicators", ["project_id"], name: "index_indicators_on_project_id", using: :btree
 
   create_table "project_regions", force: :cascade do |t|
     t.string   "country"
@@ -182,6 +197,7 @@ ActiveRecord::Schema.define(version: 20150910190353) do
 
   add_foreign_key "adults", "households"
   add_foreign_key "child_statuses", "children"
+  add_foreign_key "indicators", "projects"
   add_foreign_key "project_regions", "projects"
   add_foreign_key "projects_households", "households"
   add_foreign_key "projects_households", "projects"

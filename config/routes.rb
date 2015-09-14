@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :indicators
+
   # resource :profile
 
   get 'gender_count/:id' => 'projects#gender_count'
