@@ -1,9 +1,10 @@
 class IndicatorsController < ApplicationController
+  before_action :set_project
   before_action :set_indicator, only: [:show, :edit, :update, :destroy]
 
   # GET /indicators
   def index
-    @indicators = Indicator.all
+    @indicators = Indicator.where(project_id: @project.id).all
   end
 
   # GET /indicators/1
@@ -22,9 +23,11 @@ class IndicatorsController < ApplicationController
   # POST /indicators
   def create
     @indicator = Indicator.new(indicator_params)
+    @indicator.user_id = current_user.id
+    @indicator.project_id = @project.id
 
     if @indicator.save
-      redirect_to @indicator, notice: 'Indicator was successfully created.'
+      redirect_to project_indicators_path(@indicator), notice: t("action_messages.create", model: "Indicator")
     else
       render :new
     end
@@ -33,7 +36,7 @@ class IndicatorsController < ApplicationController
   # PATCH/PUT /indicators/1
   def update
     if @indicator.update(indicator_params)
-      redirect_to @indicator, notice: 'Indicator was successfully updated.'
+      redirect_to project_indicators_path(@indicator), notice: t("action_messages.update", model: "Indicator")
     else
       render :edit
     end
@@ -42,17 +45,22 @@ class IndicatorsController < ApplicationController
   # DELETE /indicators/1
   def destroy
     @indicator.destroy
-    redirect_to indicators_url, notice: 'Indicator was successfully destroyed.'
+    redirect_to project_indicators_url, notice: t("action_messages.destroy", model: "Indicator")
   end
 
   private
+
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_indicator
-      @indicator = Indicator.find(params[:id])
+      @indicator = @project.indicators.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def indicator_params
-      params.require(:indicator).permit(:code, :desc, :indicator_type, :string, :user_id, :project_id)
+      params.require(:indicator).permit(:code, :indicator, :indicator_type, :use, :definitions, :frequency)
     end
 end
