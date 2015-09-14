@@ -44,9 +44,7 @@ en:
         desc: "Description"
         start_date: "Start Date"
         end_date: "End Date"
-        code: "#"
-        indicator: "Indicator"
-        indicator_type: "Indicator Type"
+        created_at: "Created at"
       household:
         name: "Household Name"
         address: "Address"
@@ -73,3 +71,8 @@ en:
       project_region:
         country: "Country"
         state: "State (Province)"
+      indicator:
+        code: "#"
+        indicator: "Indicator"
+        indicator_type: "Indicator Type"
+        created_at: "Created at"

@@ -116,6 +116,10 @@ en:
       confirm: "Final Confirmation"
       finish: "Generate Report"
       common_indicators: "Common Indicators"
+  indicators:
+    index:
+      add: "Add New Indicator"
+      title: "List of Indicators"
   layouts:
     application:
       sign_in: "Sign in"

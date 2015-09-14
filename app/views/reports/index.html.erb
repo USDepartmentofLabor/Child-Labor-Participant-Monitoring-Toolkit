@@ -9,9 +9,8 @@
 <table class="table table-condensed table-striped">
   <thead>
     <tr>
-      <th>#</th>
-      <th><%= Report.human_attribute_name(:indicator) %></th>
-      <th><%= Report.human_attribute_name(:indicator_type) %></th>
+      <th>ID</th>
+      <th><%= Report.human_attribute_name(:title) %></th>
       <th><%= Report.human_attribute_name(:start_date) %></th>
       <th><%= Report.human_attribute_name(:end_date) %></th>
       <th><%= Report.human_attribute_name(:created_at) %></th>
@@ -22,9 +21,8 @@
 
   <tbody>
     <%= content_tag_for(:tr, @reports) do |report| %>
-      <td><%= report.code || report.id %></td>
-      <td><%= report.indicator %></td>
-      <td><%= report.indicator_type %></td>
+      <td><%= report.id %></td>
+      <td><%= report.title %></td>
       <td><%= report.start_date %></td>
       <td><%= report.end_date %></td>
       <td><%= format_time report.created_at %></td>
