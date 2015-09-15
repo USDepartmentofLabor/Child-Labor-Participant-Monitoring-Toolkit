@@ -27,7 +27,7 @@ class IndicatorsController < ApplicationController
     @indicator.project_id = @project.id
 
     if @indicator.save
-      redirect_to project_indicators_path(@indicator), notice: t("action_messages.create", model: "Indicator")
+      redirect_to project_indicators_path(@project,@indicator), notice: t("action_messages.create", model: "Indicator")
     else
       render :new
     end
@@ -36,7 +36,7 @@ class IndicatorsController < ApplicationController
   # PATCH/PUT /indicators/1
   def update
     if @indicator.update(indicator_params)
-      redirect_to project_indicators_path(@indicator), notice: t("action_messages.update", model: "Indicator")
+      redirect_to project_indicators_path(@project,@indicator), notice: t("action_messages.update", model: "Indicator")
     else
       render :edit
     end
