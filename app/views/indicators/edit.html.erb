@@ -1,13 +1,20 @@
 <div class="page-header">
-  <%= link_to indicators_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+  <%= link_to project_indicators_path(@project), class: 'btn btn-default' do %>
+    <%= fa_icon "caret-left" %>
+    <%= t("general.back") %>
   <% end %>
-  <%= link_to @indicator, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-info-sign"></span>
-    Show
+  <%= link_to project_indicator_path(@project, @indicator), class: 'btn btn-primary' do %>
+    <%= fa_icon "info-circle" %> <%= t("general.show") %>
   <% end %>
-  <h1>Editing indicator</h1>
+  <h1><%= t("indicators.edit.title") %></h1>
 </div>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>

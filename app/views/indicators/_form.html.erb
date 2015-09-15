@@ -1,63 +1,41 @@
-<%= form_for(@indicator, html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <% if @indicator.errors.any? %>
-    <div class="alert alert-danger alert-dismissable" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@indicator.errors.count, "error") %> prohibited this indicator from being saved:</h4>
-
-      <ul>
-      <% @indicator.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for([@project, @indicator], html: { role: "form" }) do |f| %>
+  <%= error_messages(@indicator) %>
 
   <div class="form-group">
-    <%= f.label :code, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :code, class: "form-control" %>
-    </div>
+    <%= f.label :code %>
+    <%= f.text_field :code, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :desc, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_area :desc, class: "form-control" %>
-    </div>
+    <%= f.label :indicator %>
+    <%= f.text_area :indicator, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :indicator_type, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :indicator_type, class: "form-control" %>
-    </div>
+    <%= f.label :indicator_type %>
+    <%= f.text_field :indicator_type, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :string, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :string, class: "form-control" %>
-    </div>
+    <%= f.label :use %>
+    <%= f.text_area :use, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :user_id, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :user_id, class: "form-control" %>
-    </div>
+    <%= f.label :definitions %>
+    <%= f.text_area :definitions, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :project, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :project, class: "form-control" %>
-    </div>
+    <%= f.label :frequency %>
+    <%= f.text_area :frequency, class: "form-control" %>
   </div>
 
+  <hr>
+
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit class: "btn btn-primary" %>
+    <div class="col-sm-offset-8 col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block"><%= t("general.submit") %></button>
     </div>
   </div>
 <% end %>

@@ -120,8 +120,12 @@ en:
     index:
       add: "Add New Indicator"
       title: "List of Indicators"
+    edit:
+      title: "Edit Indicator"
     show:
       title: "Indicator Information"
+    new:
+      title: "New Indicator Form"
   layouts:
     application:
       sign_in: "Sign in"
