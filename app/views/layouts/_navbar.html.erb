@@ -26,6 +26,9 @@
           <li class=<%= "active" if controller_name == 'households' %>>
             <%= link_to Household.model_name.human.pluralize, project_households_path(@project) %>
           </li>
+          <li class=<%= "active" if controller_name == 'indicators' %>>
+            <%= link_to Indicator.model_name.human.pluralize, project_indicators_path(@project) %>
+          </li>
           <li class=<%= "active" if controller_name == 'reports' %>>
             <%= link_to Report.model_name.human.pluralize, project_reports_path(@project) %>
           </li>

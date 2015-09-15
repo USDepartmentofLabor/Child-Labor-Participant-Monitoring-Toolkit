@@ -8,6 +8,7 @@ en:
       adult: "Adult"
       project: "Project"
       custom_field: "Customized Field"
+      indicator: "Indicator"
     attributes:
       adult:
         fname: "First Name (Given Name)"

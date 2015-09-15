@@ -63,6 +63,27 @@
       </ul>
     <% end -%>
 
+    <%= content_tag :li, class: (controller_name == 'indicators' ? "current" : "")  do -%>
+      <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
+        <span class="badge pull-right"><b class="caret"></b></span>
+        <i class="fa fa-flag-o"></i><%= Indicator.model_name.human.pluralize %>
+      <% end -%>
+      <ul>
+        <li>
+          <%= link_to project_indicators_path(@project) do -%>
+            <i class="fa fa-angle-double-right"></i>
+            <%= t("indicators.index.title") %>
+          <% end -%>
+        </li>
+        <li>
+          <%= link_to new_project_indicator_path(@project) do -%>
+            <i class="fa fa-angle-double-right"></i>
+            <%= t("indicators.index.add") %>
+          <% end -%>
+        </li>
+      </ul>
+    <% end -%>
+
     <%= content_tag :li, class: (controller_name == 'reports' ? "current" : "")  do -%>
       <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
         <span class="badge pull-right"><b class="caret"></b></span>
