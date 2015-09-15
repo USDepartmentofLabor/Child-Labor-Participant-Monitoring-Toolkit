@@ -10,6 +10,8 @@ class Project < ActiveRecord::Base
 
   has_many :reports
 
+  has_many :indicators
+
   has_many :project_regions, dependent: :destroy
 
   accepts_nested_attributes_for :project_regions, allow_destroy: true, reject_if: :all_blank

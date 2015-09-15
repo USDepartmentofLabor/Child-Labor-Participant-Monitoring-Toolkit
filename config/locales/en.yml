@@ -120,6 +120,8 @@ en:
     index:
       add: "Add New Indicator"
       title: "List of Indicators"
+    show:
+      title: "Indicator Information"
   layouts:
     application:
       sign_in: "Sign in"

@@ -1,39 +1,41 @@
 <div class="page-header">
-  <%= link_to indicators_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+  <%= link_to project_indicators_path(@project), class: 'btn btn-default' do %>
+    <%= fa_icon "caret-left" %>
+    <%= t("general.back") %>
   <% end %>
-  <%= link_to edit_indicator_path(@indicator), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
+  <%= link_to edit_project_indicator_path(@project, @indicator), class: 'btn btn-primary' do %>
+    <%= fa_icon "pencil" %>
+    <%= t("general.edit") %>
   <% end %>
-  <h1>Show indicator</h1>
+  <h1><%= t("indicators.show.title") %></h1>
 </div>
 
-<dl class="dl-horizontal">
-
-  <dt>Code:</dt>
-  <dd><%= @indicator.code %></dd>
-
-
-  <dt>Desc:</dt>
-  <dd><%= @indicator.desc %></dd>
-
-
-  <dt>Indicator type:</dt>
-  <dd><%= @indicator.indicator_type %></dd>
-
-
-  <dt>String:</dt>
-  <dd><%= @indicator.string %></dd>
-
-
-  <dt>User:</dt>
-  <dd><%= @indicator.user_id %></dd>
-
-
-  <dt>Project:</dt>
-  <dd><%= @indicator.project %></dd>
-
-
-</dl>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= t("indicators.show.personal_information") %>
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-hover table-listing">
+      <tbody>
+        <tr>
+          <td>#</td><td><%= @indicator.code || @indicator.id %></td>
+        </tr>
+        <tr>
+          <td><%= Indicator.human_attribute_name(:indicator) %></td><td><%= @indicator.indicator %></td>
+        </tr>
+        <tr>
+          <td><%= Indicator.human_attribute_name(:indicator_type) %></td><td><%= @indicator.indicator_type %></td>
+        </tr>
+        <tr>
+          <td><%= Indicator.human_attribute_name(:use) %></td><td><%= @indicator.use %></td>
+        </tr>
+        <tr>
+          <td><%= Indicator.human_attribute_name(:definitions) %></td><td><%= @indicator.definitions %></td>
+        </tr>
+        <tr>
+          <td><%= Indicator.human_attribute_name(:frequency) %></td><td><%= @indicator.frequency %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
