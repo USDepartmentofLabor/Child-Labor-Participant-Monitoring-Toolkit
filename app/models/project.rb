@@ -18,7 +18,20 @@ class Project < ActiveRecord::Base
 
   after_create :generate_reports
 
+  after_commit :check_defaults, on: :create
+
   def generate_reports
     Indicator.create_default(self.id, self.user_id)
+  end
+
+  def check_defaults
+    return true if self.id > 1
+
+    # load default work status for the first time
+    begin
+      DBMS::DefaultData::Loader.load
+    rescue DBMS::DefaultData::DataAlreadyLoaded => error
+      return true
+    end
   end
 end

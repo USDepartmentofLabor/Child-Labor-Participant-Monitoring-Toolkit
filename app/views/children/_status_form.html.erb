@@ -4,7 +4,7 @@
 	  <div class="selection">
 	    <%= f.date_select :start_date, 
 	    	{ start_year: Date.today.year - 5, end_year: Date.today.year + 10, use_two_digit_numbers: true}, 
-	    	{class: "form-control select-inline"} 
+	    	{class: "form-control select-inline"}
 	    %>
 	  </div>
 	</div>
@@ -14,7 +14,7 @@
 	  <div class="selection">
 	    <%= f.date_select :end_date, 
 	    	{start_year: Date.today.year - 5, end_year: Date.today.year + 10, include_blank: true, use_two_digit_numbers: true}, 
-	    	{class: "form-control select-inline"} 
+	    	{class: "form-control select-inline"}
 	    %>
 	  </div>
 	</div>
@@ -26,7 +26,7 @@
   <%= f.label :work_status_id %>
   <%= f.select :work_status_id, 
   	options_from_collection_for_select(WorkStatus.all, 'id', 'name'), 
-  	{include_blank: true}, {class: "form-control"} 
+  	{include_blank: true}, {class: "form-control"}
   %>
 </div>
 
@@ -34,7 +34,7 @@
   <%= f.label :education_status_id %>
   <%= f.select :education_status_id, 
   	options_from_collection_for_select(EducationStatus.all, 'id', 'name'), 
-  	{include_blank: true}, {class: "form-control"} 
+  	{include_blank: true}, {class: "form-control"}
   %>
 </div>
 
