@@ -15,11 +15,9 @@ module DBMS
           raise DataAlreadyLoaded.new("Some configuration data is already loaded.") unless no_data?
 
           WorkStatus.create!(name: "Engaged in Child Labor")
-          WorkStatus.create!(name: "High-Risk of Entering Child Labor")
-          WorkStatus.create!(name: "Trafficked")
-          WorkStatus.create!(name: "High-Risk of being Trafficked")
-          WorkStatus.create!(name: "Commercial Sexual Exploitation")
-          WorkStatus.create!(name: "High-Risk of Entering Commercial Sexual Exploitation")
+          WorkStatus.create!(name: "Hazardous Child Labor")
+          WorkStatus.create!(name: "Worst Form of Child Labor (WFCL)")
+          WorkStatus.create!(name: "High Risk of Entering Child Labor")
 
           EducationStatus.create!(name: "Formal Education")
           EducationStatus.create!(name: "Non-formal Education")
