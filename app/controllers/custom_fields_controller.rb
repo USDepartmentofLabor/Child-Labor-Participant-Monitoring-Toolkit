@@ -56,7 +56,7 @@ class CustomFieldsController < ApplicationController
 
   def set_custom_field
     @custom_field = CustomField.find(params[:id])
-    if @custom_field.project_id != @project.id || @custom_field.model_type != params[:type]
+    if @custom_field.project_id != @project.id
       raise ActiveRecord::RecordNotFound
     end
     @custom_field

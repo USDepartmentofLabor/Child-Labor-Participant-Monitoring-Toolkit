@@ -1,4 +1,4 @@
-<%= form_for custom_field, url: project_custom_field_path(project_id: custom_field.project_id, id: custom_field.id, type: "Child") do |f| %>
+<%= form_for [@project, @custom_field] do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
@@ -11,6 +11,8 @@
     <%= f.label :selections %> <i>(One line per option.)</i>
     <%= f.text_area :selections, rows: 5, class: "form-control" %>
   </div>
+
+  <%= f.hidden_field :model_type %>
 
   <div class="form-group">
     <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
