@@ -1,4 +1,5 @@
 class EducationIndicator
+	# Education Indicator (E1) Generator
 	# start_date and end_date should be a Date Object
 	# should provide ids at the first place.
 	#  work_types = ["Engaged in Child Labor", "High-Risk of Entering Child Labor"]
@@ -10,7 +11,6 @@ class EducationIndicator
 	  @end_date = end_date
 	  @project_id = project_id
 	  @education_status_ids = education_status_ids
-
 	  @educated_children_ids = children_provided_education
 	end
 

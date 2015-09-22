@@ -2,6 +2,8 @@ Direct Beneficiary Monitoring System Prototype (DOL-ILAB)
 
 ## Development Environment
 
+**Notice**: running application from shared folder (folder shared between Windows OS and Virtual OS) can be [very slow](https://meta.discourse.org/t/vagrant-and-virtualbox-slow-on-windows-update/17176)! The **best solution** is: setup and run rails in Windows (troublesome), or do the coding directly inside of Virtual Linux OS (inconvenient), or buy a Mac :)
+
 1.	Download and Install [VirtualBox](www.virtualbox.org/wiki/Downloads)
 
 1.	Download and Install [Vagrant](vagrantup.com/downloads)
@@ -69,4 +71,4 @@ You can load some dummy data to play with this system. To load the data:
 
 Run `cap production deploy` to deploy new code to live server. 
 
-The default user:pass for testing is `deployer:deploy`
+The default user:pass for the testing server is: `deployer:deploy`
