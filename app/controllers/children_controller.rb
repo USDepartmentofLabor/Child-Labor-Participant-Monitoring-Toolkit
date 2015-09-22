@@ -55,7 +55,7 @@ class ChildrenController < ApplicationController
     @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child")
     if @child.update(child_params)
       if params[:custom_fields].present? && @custom_fields.length > 0
-        CustomFieldGroup.update(@custom_fields, params_for_custom_field)
+        CustomFieldGroup.update(@child, @custom_fields, params_for_custom_field)
       end
       redirect_to project_child_path(@project, @child), notice: t("action_messages.update", model: Child.model_name.human)
     else

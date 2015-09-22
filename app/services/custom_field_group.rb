@@ -24,13 +24,20 @@ class CustomFieldGroup
     end
   end
 
-  def self.update(fields, values)
-    ids = values.keys
+  def self.update(target, fields, values)
+    # ids = values.keys
     field_ids = fields.map(&:id)
+    # CustomValue.where(id: ids, custom_field_id: field_ids).each do |custom_value|
 
-    CustomValue.where(id: ids, custom_field_id: field_ids).each do |custom_value|
-      next if custom_value.value_text.to_s == values[custom_value.id.to_s]["value_text"].to_s
-      custom_value.update(value_text: values[custom_value.id.to_s]["value_text"].strip)
+    CustomValue.where(model_id: target.id, custom_field_id: field_ids).each do |custom_value|
+
+      next if values[custom_value.custom_field_id.to_s].blank?
+
+      input_value = values[custom_value.custom_field_id.to_s]["value_text"].to_s
+
+      next if custom_value.value_text.to_s == input_value
+
+      custom_value.update(value_text: input_value.strip)
     end
   end
 end

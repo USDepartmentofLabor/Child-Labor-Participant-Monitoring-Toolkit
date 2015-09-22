@@ -52,7 +52,7 @@ class HouseholdsController < ApplicationController
     @custom_fields = CustomField.where(project_id: @project.id, model_type: "Household")
     if @household.update_attributes(household_params)
       if params[:custom_fields].present? && @custom_fields.length > 0
-        CustomFieldGroup.update(@custom_fields, params_for_custom_field)
+        CustomFieldGroup.update(@household, @custom_fields, params_for_custom_field)
       end
       
       redirect_to project_household_path(@project, @household), notice: t("action_messages.update", model: Household.model_name.human)
