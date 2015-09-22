@@ -35,6 +35,11 @@
         <tr>
           <td><%= Household.human_attribute_name(:country) %></td><td><%= @household.country_name %></td>
         </tr>
+        <% @custom_fields.each do |custom_field| %>
+          <tr>
+            <td><%= custom_field.name %></td><td><%= custom_field_value(custom_field) %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

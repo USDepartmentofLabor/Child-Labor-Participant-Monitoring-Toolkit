@@ -32,6 +32,8 @@
         <%= f.label :phone %>
         <%= f.text_field :phone, class: "form-control" %>
       </div>
+
+      <%= render partial: 'custom_fields/custom_field', collection: @custom_fields %>
     </div>
   </div>
 

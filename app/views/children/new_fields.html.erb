@@ -1,9 +1,9 @@
 <div class="page-header">
-  <h1><%= t("children.custom_fields.title") %></h1>
+  <h1><%= t("custom_fields.new", model: @model_type.constantize.model_name.human) %></h1>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><%= t("children.custom_fields.list") %></div>
+  <div class="panel-heading"><%= t("custom_fields.preview") %></div>
   <div class="panel-body">
     <form>
       <% @custom_fields.each do |custom_field| %>
@@ -13,13 +13,13 @@
               <%= render partial: 'custom_field', locals: { custom_field: custom_field, options: {fill: false, disabled: true}} %>
             </div>
             <div class="col-md-4">
-              <%= link_to edit_project_custom_field_path(project_id: custom_field.project_id, id: custom_field.id, type: "Child"),
+              <%= link_to edit_project_custom_field_path(project_id: custom_field.project_id, id: custom_field.id, type: @model_type),
                 remote: true, class: "btn btn-default delete-custom-field" do
                %>
                 <%= fa_icon "pencil" %> <%= t("general.edit") %>
               <% end %>
 
-              <%= link_to project_custom_field_path(project_id: custom_field.project_id, id: custom_field.id, type: "Child"),
+              <%= link_to project_custom_field_path(project_id: custom_field.project_id, id: custom_field.id, type: @model_type),
                 method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default delete-custom-field" do
                %>
                 <%= fa_icon "times" %> <%= t("general.delete") %>
@@ -34,11 +34,11 @@
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><%= t("children.custom_fields.add") %></div>
+  <div class="panel-heading"><%= t("custom_fields.add") %></div>
   <div class="panel-body">
     <div class="row">
       <div class="col-md-12">
-        <%= form_for @custom_field, url: create_fields_project_children_path(project_id: @custom_field.project_id) do |f| %>
+        <%= form_for [@project, @custom_field] do |f| %>
           <div class="form-group">
             <%= f.label :name %>
             <%= f.text_field :name, class: "form-control" %>
@@ -51,6 +51,8 @@
             <%= f.label :selections %> <i>(One line per option.)</i>
             <%= f.text_area :selections, rows: 5, class: "form-control" %>
           </div>
+
+          <%= f.hidden_field :model_type, value: @model_type %>
 
           <div class="form-group">
             <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
@@ -67,7 +69,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="editFieldModalLabel"><%= t("children.custom_fields.edit") %></h4>
+          <h4 class="modal-title" id="editFieldModalLabel"><%= t("custom_fields.edit") %></h4>
         </div>
         <div class="modal-body">
         </div>

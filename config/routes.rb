@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
     resources :households
 
-    resources :custom_fields, only: [:edit, :update, :destroy]
+    resources :custom_fields
   end
 
   # a trick to avoid generating children urls again

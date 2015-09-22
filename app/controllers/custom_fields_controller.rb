@@ -2,7 +2,32 @@ class CustomFieldsController < ApplicationController
   before_action :set_project
   before_action :set_custom_field, only: [:edit, :update, :destroy]
 
+  def new
+    if params[:model_type].blank?
+      redirect_to :back, alert: "Failed to specify the model type."
+      return
+    end
+    @model_type = params[:model_type]
+
+    @custom_fields = CustomField.where(project_id: @project.id, model_type: @model_type)
+    @custom_field = CustomField.new(project_id: @project.id, model_type: @model_type)
+  end
+
   def edit
+  end
+
+  def create
+    if params[:custom_field][:model_type].blank?
+      redirect_to :back, alert: "Failed to specify the model type."
+      return
+    end
+
+    @custom_field = CustomField.new(custom_field_params)
+    @custom_field.project_id = @project.id
+
+    if @custom_field.save
+      redirect_to :back, notice: t("action_messages.create", model: CustomField.model_name.human)
+    end
   end
 
   def update
@@ -38,6 +63,6 @@ class CustomFieldsController < ApplicationController
   end
 
   def custom_field_params
-    params.require(:custom_field).permit(:name, :field_type, :selections)
+    params.require(:custom_field).permit(:name, :field_type, :selections, :model_type)
   end
 end

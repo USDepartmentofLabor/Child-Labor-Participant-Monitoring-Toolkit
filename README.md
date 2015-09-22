@@ -1,5 +1,9 @@
 Direct Beneficiary Monitoring System Prototype (DOL-ILAB)
 
+## Overview
+
+The text of presentation layer in this project follows [i18n](http://guides.rubyonrails.org/i18n.html) as much as possible. Locale files can be found under [/config/locales](./config/locales)
+
 ## Development Environment
 
 **Notice**: running application from shared folder (folder shared between Windows OS and Virtual OS) can be [very slow](https://meta.discourse.org/t/vagrant-and-virtualbox-slow-on-windows-update/17176)! The **best solution** is: setup and run rails in Windows (troublesome), or do the coding directly inside of Virtual Linux OS (inconvenient), or buy a Mac :)
