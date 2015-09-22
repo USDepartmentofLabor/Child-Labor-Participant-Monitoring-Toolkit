@@ -6,12 +6,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :indicators
     resources :reports, except: [:edit, :update]
-    resources :children do
-      collection do
-        get 'new_fields', as: :new_fields
-        post 'create_fields', as: :create_fields
-      end
-    end
+    resources :children
     resources :households
 
     resources :custom_fields

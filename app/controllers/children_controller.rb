@@ -69,21 +69,6 @@ class ChildrenController < ApplicationController
     redirect_to project_children_path(@project), notice: t("action_messages.destroy", model: Child.model_name.human)
   end
 
-  def new_fields
-    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child")
-    @custom_field = CustomField.new(project_id: @project.id, model_type: "Child")
-  end
-
-  def create_fields
-    @custom_field = CustomField.new(custom_field_params)
-    @custom_field.project_id = @project.id
-    @custom_field.model_type = "Child"
-
-    if @custom_field.save
-      redirect_to :back, notice: t("action_messages.create", model: CustomField.model_name.human)
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_child
@@ -98,10 +83,6 @@ class ChildrenController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def child_params
       params.require(:child).permit(:fname, :lname, :mname, :sex, :dob, :address, :city, :state, :country, :household_id, :avatar)
-    end
-
-    def custom_field_params
-      params.require(:custom_field).permit(:name, :field_type, :selections)
     end
 
     def params_for_custom_field
