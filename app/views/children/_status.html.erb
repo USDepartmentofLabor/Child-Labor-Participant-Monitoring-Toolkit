@@ -9,13 +9,13 @@
 		<% end %>
 	<% end %>
 	
-	<% if status.work_status_id.present? %>
+	<% if status.work_status.present? %>
 		<div class="status-info">
 			<b><%= ChildStatus.human_attribute_name(:work_status_id) %>:</b> <%= status.work_status.name %>
 		</div>
 	<% end %>
 
-	<% if status.education_status_id.present? %>
+	<% if status.education_status.present? %>
 		<div class="status-info">
 			<b><%= ChildStatus.human_attribute_name(:education_status_id) %>:</b> <%= status.education_status.name %>
 		</div>

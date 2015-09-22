@@ -4,7 +4,7 @@ class HouseholdsController < ApplicationController
 
   # GET /households
   def index
-    @households = @project.households.order(:id).page(params[:page])
+    @households = @project.households.order("id DESC").page(params[:page])
   end
 
   # GET /households/1
