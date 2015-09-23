@@ -12,7 +12,7 @@
       <% end %>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
-      <p class="navbar-text"><%= "#{Project.model_name.human}: #{@project.name}" %></p>
+      <p class="navbar-text"><%= link_to "Home", dashboard_path %>&nbsp;|&nbsp;<%= "#{Project.model_name.human}: #{@project.name}" %></p>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= "#{current_user.email}" %> <b class="caret"></b></a>

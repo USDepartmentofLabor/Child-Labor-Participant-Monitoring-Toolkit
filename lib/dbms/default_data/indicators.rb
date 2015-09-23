@@ -8,7 +8,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "POH1",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -19,7 +19,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "POH2",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -31,7 +31,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "POH3",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -42,7 +42,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "POH4",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -53,7 +53,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "POC1",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -64,7 +64,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "POC2",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -75,7 +75,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "POC3",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -86,7 +86,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "POC4",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -97,7 +97,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "E1",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -108,7 +108,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "L1",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
@@ -119,7 +119,7 @@ module DBMS
           eos
           Indicator.create!(
             code: "C1",
-            indicator: indicator,
+            indicator: indicator.strip,
             indicator_type: "Common",
             user_id: user_id,
             project_id: project_id
