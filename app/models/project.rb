@@ -16,11 +16,11 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :project_regions, allow_destroy: true, reject_if: :all_blank
 
-  after_create :generate_reports
+  after_create :generate_common_indicators
 
   after_commit :check_defaults, on: :create
 
-  def generate_reports
+  def generate_common_indicators
     Indicator.create_default(self.id, self.user_id)
   end
 
