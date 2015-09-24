@@ -13,12 +13,7 @@ class ReportsController < ApplicationController
     if @indicator.indicator_type == "Common" && @indicator.code == "E1"
       education_report = EducationIndicator.new(EducationStatus.pluck(:id), @report.start_date, @report.end_date, @report.project_id)
 
-      @work_statuses = WorkStatus.where(id: @report.target_ids).order(:id)
-
-      @results = []
-      @work_statuses.each do |work_status|
-        @results << education_report.generate(work_status.id)
-      end
+      @results = education_report.generate
     end
   end
 

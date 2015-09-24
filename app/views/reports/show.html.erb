@@ -6,11 +6,11 @@
   <thead>
     <tr>
       <th colspan="2"></th>
-      <th>Target</th>
-      <th colspan="3">Children provided with services</th>
+      <th>TARGET</th>
+      <th colspan="3">CHILDREN PROVIDED WITH SERVICES</th>
     </tr>
     <tr>
-      <th>Reporting period</th>
+      <th>REPORTING PERIOD</th>
       <th></th>
       <th>Total # of Children</th>
       <th>Girls</th>
@@ -19,17 +19,19 @@
     </tr>
   </thead>
   <tbody>
-    <% @work_statuses.each_with_index do |status, i| %>
+    <% [:cl, :cahr, :total].each_with_index  do |type, i| %>
       <tr>
         <% if i == 0 %>
-          <td rowspan="<%= @work_statuses.count %>"><%= @report.date_range_in_text %></td>
+          <td rowspan="3"><%= @report.date_range_in_text %></td>
         <% end %>
-        <td><%= status.name %></td>
-        <td><%= @results[i][:target_total] %></td>
-        <td><%= @results[i][:educated][:girls] %></td>
-        <td><%= @results[i][:educated][:boys] %></td>
-        <td><%= @results[i][:educated][:total] %></td>
+        <td><%= type.to_s.upcase %></td>
+        <td><%= @results[:target][type] %></td>
+        <td><%= @results[:educated][type][:girls] %></td>
+        <td><%= @results[:educated][type][:boys] %></td>
+        <td><%= @results[:educated][type][:total] %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<p>CL: Children Engaged in Child Labor</p>
+<p>CAHR: Children at High-Risk of Entering Child Labor</p>
