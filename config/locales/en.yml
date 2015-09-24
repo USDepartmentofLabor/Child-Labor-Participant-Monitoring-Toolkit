@@ -95,6 +95,8 @@ en:
       children: "Children Of This Household"
       adults: "Adults Of This Household"
   reports:
+    new:
+      title: "New Report Generator"
     index:
       add: "Generate A New Report"
       title: "List of Reports"

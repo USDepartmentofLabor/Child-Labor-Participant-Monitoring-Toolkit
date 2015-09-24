@@ -10,7 +10,7 @@
           </div>
           <span class="stepDesc"> <%= t("reports.wizard.step") %> 1
             <br />
-            <small><%= t("reports.wizard.basic_infomation") %></small>
+            <small><%= t("reports.wizard.select_indicator") %></small>
           </span>
         </a>
       </li>
@@ -21,7 +21,7 @@
           </div>
           <span class="stepDesc"> <%= t("reports.wizard.step") %> 2
             <br />
-            <small><%= t("reports.wizard.select_indicator") %></small>
+            <small><%= t("reports.wizard.basic_infomation") %></small>
           </span>
         </a>
       </li>
@@ -44,6 +44,45 @@
     </div>
 
     <div id="step-1">
+      <h3 class="StepTitle"><%= t("reports.wizard.step") %> 1 - <%= t("reports.wizard.select_indicator") %></h3>
+
+      <div class="form-group">
+        <div class="col-sm-7 col-sm-offset-3">
+          <div class="checkbox" style="padding-bottom: 20px;">
+          	<label style="font-size: 20px;">
+          		<%= check_box_tag "indicator_type[]", 1, true, class: "square-red" %>&nbsp;Education Indicators
+          	</label>
+          </div>
+          <div class="sub-indicators" style="padding-left: 20px; padding-bottom: 25px;">
+            <% EducationStatus.all.each do |e| %>
+              <div class="checkbox">
+                <label>
+                  <%= check_box_tag "report[service_ids][]", e.id, true, class: "square-red" %>&nbsp;<%= e.name %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+          <%= hidden_field_tag "report[service_type]", "EducationStatus" %>
+
+          <div class="checkbox" style="padding-bottom: 20px;">
+            <label style="font-size: 20px;">
+              <%= check_box_tag "indicator_type[]", 2, false, class: "square-red" %>&nbsp;Livelihood Indicators
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-8">
+          <button class="btn btn-success next-step btn-block btn-large">
+            <%= t("reports.wizard.next") %> <i class="fa fa-arrow-circle-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="step-2">
       <h3 class="StepTitle"><%= t("reports.wizard.step") %> 1 - <%= t("reports.wizard.basic_infomation") %></h3>
 
       <div class="form-group">
@@ -71,45 +110,6 @@
         <%= f.label :end_date, class: "col-sm-3 control-label" %>
         <div class="selection col-sm-7">
           <%= f.date_select :end_date, {start_year: Date.today.year - 10, end_year: Date.today.year + 10, use_two_digit_numbers: true}, {class: "form-control select-inline"} %>
-        </div>
-      </div>
-
-      <hr>
-      <div class="form-group">
-        <div class="col-sm-4 col-sm-offset-8">
-          <button class="btn btn-success next-step btn-block btn-large">
-            <%= t("reports.wizard.next") %> <i class="fa fa-arrow-circle-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="step-2">
-      <h3 class="StepTitle"><%= t("reports.wizard.step") %> 1 - <%= t("reports.wizard.select_indicator") %></h3>
-
-      <div class="form-group">
-        <div class="col-sm-7 col-sm-offset-3">
-          <div class="checkbox" style="padding-bottom: 20px;">
-          	<label style="font-size: 20px;">
-          		<%= check_box_tag "indicator_type[]", 1, true, class: "square-red" %>&nbsp;Education Indicators
-          	</label>
-          </div>
-          <div class="sub-indicators" style="padding-left: 20px; padding-bottom: 25px;">
-            <% EducationStatus.all.each do |e| %>
-              <div class="checkbox">
-                <label>
-                  <%= check_box_tag "report[service_ids][]", e.id, true, class: "square-red" %>&nbsp;<%= e.name %>
-                </label>
-              </div>
-            <% end %>
-          </div>
-          <%= hidden_field_tag "report[service_type]", "EducationStatus" %>
-
-          <div class="checkbox" style="padding-bottom: 20px;">
-            <label style="font-size: 20px;">
-              <%= check_box_tag "indicator_type[]", 2, false, class: "square-red" %>&nbsp;Livelihood Indicators
-            </label>
-          </div>
         </div>
       </div>
 
