@@ -29,7 +29,7 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
-    @indicators = Indicator.where(project_id: @project.id).all
+    @indicators = Indicator.where(project_id: @project.id).order("id ASC").all
   end
 
   def create
