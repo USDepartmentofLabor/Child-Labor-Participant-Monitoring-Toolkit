@@ -20,6 +20,7 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
+    @indicators = Indicator.where(project_id: @project.id).all
   end
 
   def create
