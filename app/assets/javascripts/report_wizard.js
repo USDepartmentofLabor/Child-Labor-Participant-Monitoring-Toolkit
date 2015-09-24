@@ -15,6 +15,12 @@ var ReportWizard = function() {
     // runDatePicker();
 
     $(wizardForm).show();
+
+    $("select#report_indicator_id").on('change', function(){
+      var iid = $(this).val();
+      $(".indicator-desc-section > div").hide();
+      $('#indicator-desc-' + iid).fadeIn();
+    });
   };
 
   var animateBar = function(val) {

@@ -47,27 +47,36 @@
       <h3 class="StepTitle"><%= t("reports.wizard.step") %> 1 - <%= t("reports.wizard.select_indicator") %></h3>
 
       <div class="form-group">
-        <div class="col-sm-7 col-sm-offset-3">
-          <div class="checkbox" style="padding-bottom: 20px;">
-          	<label style="font-size: 20px;">
-          		<%= check_box_tag "indicator_type[]", 1, true, class: "square-red" %>&nbsp;Education Indicators
-          	</label>
-          </div>
-          <div class="sub-indicators" style="padding-left: 20px; padding-bottom: 25px;">
-            <% EducationStatus.all.each do |e| %>
-              <div class="checkbox">
-                <label>
-                  <%= check_box_tag "report[service_ids][]", e.id, true, class: "square-red" %>&nbsp;<%= e.name %>
-                </label>
-              </div>
-            <% end %>
-          </div>
-          <%= hidden_field_tag "report[service_type]", "EducationStatus" %>
+        <div class="col-sm-4 col-sm-offset-2">
+          <% @indicators.group_by(&:indicator_type).each do |indicator_type, indicators| %>
+            <div class="checkbox" style="padding-bottom: 20px;">
+              <label style="font-size: 20px;">
+                <%= check_box_tag "indicator_type[]", indicator_type, false, class: "square-red" %>&nbsp;<%= indicator_type %> Indicators
+              </label>
+            </div>
+            <div class="sub-indicators" style="padding-left: 20px; padding-bottom: 25px;">
+              <%= f.select :indicator_id, options_from_collection_for_select(indicators, "id", "code"),
+                {include_blank: true}, {class: "form-control"}
+              %>
+            </div>
+          <% end %>
 
           <div class="checkbox" style="padding-bottom: 20px;">
             <label style="font-size: 20px;">
-              <%= check_box_tag "indicator_type[]", 2, false, class: "square-red" %>&nbsp;Livelihood Indicators
+              <%= check_box_tag "indicator_type[]", "Custom", false, class: "square-red" %>&nbsp;Custom Indicators
             </label>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="indicator-desc-section">
+            <% @indicators.each do |indicator| %>
+              <div id="<%= "indicator-desc-#{indicator.id}" %>" style="display: none;">
+                <h4># <%= indicator.code %>:</h4>
+                <%= content_tag(:p, indicator.indicator) %>
+                <h4><%= Indicator.human_attribute_name(:use) %>:</h4>
+                <%= content_tag(:p, indicator.use) %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
