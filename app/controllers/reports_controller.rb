@@ -8,13 +8,17 @@ class ReportsController < ApplicationController
 
   def show
     # Generate report on demand
-    education_report = EducationIndicator.new(@report.service_ids, @report.start_date, @report.end_date, @report.project_id)
+    @indicator = Indicator.where(id: @report.indicator_id, project_id: @project.id).first
 
-    @work_statuses = WorkStatus.where(id: @report.target_ids).order(:id)
+    if @indicator.indicator_type == "Common" && @indicator.code == "E1"
+      education_report = EducationIndicator.new(EducationStatus.pluck(:id), @report.start_date, @report.end_date, @report.project_id)
 
-    @results = []
-    @work_statuses.each do |work_status|
-      @results << education_report.generate(work_status.id)
+      @work_statuses = WorkStatus.where(id: @report.target_ids).order(:id)
+
+      @results = []
+      @work_statuses.each do |work_status|
+        @results << education_report.generate(work_status.id)
+      end
     end
   end
 
@@ -43,7 +47,11 @@ class ReportsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def report_params
-      params.require(:report).permit(:title, :start_date, :end_date, :service_type, :target_type, {service_ids: []}, {target_ids: []})
+      params.require(:report).permit(
+        :title, :start_date, :end_date,
+        :service_type, :target_type, {service_ids: []}, {target_ids: []},
+        :indicator_id, :desc
+      )
     end
 
     def set_report

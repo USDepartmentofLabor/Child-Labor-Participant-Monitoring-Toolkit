@@ -18,8 +18,16 @@ var ReportWizard = function() {
 
     $("select#report_indicator_id").on('change', function(){
       var iid = $(this).val();
-      $(".indicator-desc-section > div").hide();
-      $('#indicator-desc-' + iid).fadeIn();
+      var code = $(this).find("option:selected").text();
+      var indicator = $('#indicator-tips-' + iid);
+      var desc = indicator.find('#indicator-desc-' + iid).text();
+
+      $(".indicator-tips-section > div").hide();
+      indicator.fadeIn();
+
+      $("input#report_title").val(code + ' Report');
+      $("textarea#report_desc").val(desc);
+
     });
   };
 

@@ -68,11 +68,11 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="indicator-desc-section">
+          <div class="indicator-tips-section">
             <% @indicators.each do |indicator| %>
-              <div id="<%= "indicator-desc-#{indicator.id}" %>" style="display: none;">
+              <div id="<%= "indicator-tips-#{indicator.id}" %>" style="display: none;">
                 <h4># <%= indicator.code %>:</h4>
-                <%= content_tag(:p, indicator.indicator) %>
+                <%= content_tag(:p, indicator.indicator, id: "indicator-desc-#{indicator.id}") %>
                 <h4><%= Indicator.human_attribute_name(:use) %>:</h4>
                 <%= content_tag(:p, indicator.use) %>
               </div>
@@ -111,14 +111,33 @@
       <div class="form-group">
         <%= f.label :start_date, class: "col-sm-3 control-label" %>
         <div class="selection col-sm-7">
-          <%= f.date_select :start_date, {start_year: Date.today.year - 10, end_year: Date.today.year, use_two_digit_numbers: true}, {class: "form-control select-inline"} %>
+          <%= f.date_select :start_date, 
+            {
+              start_year: Date.today.year - 10, 
+              end_year: Date.today.year, 
+              use_two_digit_numbers: true,
+              selected: 6.months.ago
+            }, 
+            {
+              class: "form-control select-inline"
+            }
+          %>
         </div>
       </div>
 
       <div class="form-group">
         <%= f.label :end_date, class: "col-sm-3 control-label" %>
         <div class="selection col-sm-7">
-          <%= f.date_select :end_date, {start_year: Date.today.year - 10, end_year: Date.today.year + 10, use_two_digit_numbers: true}, {class: "form-control select-inline"} %>
+          <%= f.date_select :end_date, 
+            {
+              start_year: Date.today.year - 10, 
+              end_year: Date.today.year + 10, 
+              use_two_digit_numbers: true
+            }, 
+            {
+              class: "form-control select-inline"
+            }
+          %>
         </div>
       </div>
 

@@ -22,7 +22,7 @@
     <% @work_statuses.each_with_index do |status, i| %>
       <tr>
         <% if i == 0 %>
-          <td rowspan="<%= @work_statuses.count %>">PERIOD 1<br><%= @report.date_range_in_text %></td>
+          <td rowspan="<%= @work_statuses.count %>"><%= @report.date_range_in_text %></td>
         <% end %>
         <td><%= status.name %></td>
         <td><%= @results[i][:target_total] %></td>
