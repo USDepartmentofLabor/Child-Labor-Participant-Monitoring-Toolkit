@@ -1,0 +1,37 @@
+<h2 class="text-center"><%=  @report.title %></h2>
+
+<h3 class="text-center"><%= @report.desc %></h3>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th colspan="2"></th>
+      <th>TARGET</th>
+      <th colspan="3">CHILDREN PROVIDED WITH SERVICES</th>
+    </tr>
+    <tr>
+      <th>REPORTING PERIOD</th>
+      <th></th>
+      <th>Total # of Children</th>
+      <th>Girls</th>
+      <th>Boys</th>
+      <th>Total Children</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% [:cl, :cahr, :total].each_with_index  do |type, i| %>
+      <tr>
+        <% if i == 0 %>
+          <td rowspan="3"><%= @report.date_range_in_text %></td>
+        <% end %>
+        <td><%= type.to_s.upcase %></td>
+        <td><%= @results[:target][type] %></td>
+        <td><%= @results[:educated][type][:girls] %></td>
+        <td><%= @results[:educated][type][:boys] %></td>
+        <td><%= @results[:educated][type][:total] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>CL: Children Engaged in Child Labor</p>
+<p>CAHR: Children at High-Risk of Entering Child Labor</p>

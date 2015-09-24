@@ -3,17 +3,27 @@ class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :destroy]
 
   def index
-    @reports = Report.where(project_id: @project.id).all
+    @reports = Report.where(project_id: @project.id).order("id DESC").all
   end
 
   def show
     # Generate report on demand
     @indicator = Indicator.where(id: @report.indicator_id, project_id: @project.id).first
 
-    if @indicator.indicator_type == "Common" && @indicator.code == "E1"
-      education_report = EducationIndicator.new(EducationStatus.pluck(:id), @report.start_date, @report.end_date, @report.project_id)
+    if @indicator.indicator_type == "Common"
+      if @indicator.code == "E1"
+        education_report = EducationIndicator.new(EducationStatus.pluck(:id), @report.start_date, @report.end_date, @report.project_id)
 
-      @results = education_report.generate
+        @results = education_report.generate
+
+        render "show_e1"
+
+      elsif @indicator.code == "L1"
+        render "show_l1"
+      end
+
+    else
+      render :show
     end
   end
 
