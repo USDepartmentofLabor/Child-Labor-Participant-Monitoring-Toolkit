@@ -44,3 +44,5 @@ vendor/bundle/*
 ._.DS_Store
 
 /.metadata
+
+.env

@@ -88,3 +88,7 @@ gem 'kaminari'
 gem 'ransack'
 
 gem 'faker', require: false
+
+gem 'rails_12factor', group: :production
+
+ruby '2.2.2'
