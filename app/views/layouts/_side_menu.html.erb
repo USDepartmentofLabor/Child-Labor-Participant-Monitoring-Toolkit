@@ -6,7 +6,7 @@
     <span class="icon-bar"></span>
   </button>
 </div>
-<div class="side-bar-wrapper navbar-collapse navbar-ex1-collapse collapse" style="height: 0px;" id="dbms-side-menu">
+<div class="side-bar-wrapper navbar-collapse navbar-ex1-collapse collapse" id="dbms-side-menu" data-spy="affix" data-offset-top="0">
   <ul class="side-menu side-menu-blue">
     <%= content_tag :li, class: (controller_name == 'projects' ? "current" : "")  do -%>
       <%= link_to project_path(@project) do %>
