@@ -26,3 +26,7 @@
 //= require projects
 //= require report_wizard
 //= require households
+
+$(document).ready(function() {
+  $('.has-tooltip').tooltip();
+});

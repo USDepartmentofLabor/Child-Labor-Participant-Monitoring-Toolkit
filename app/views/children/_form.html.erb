@@ -8,7 +8,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <%= f.label :fname %>
-            <%= f.text_field :fname, class: "form-control" %>
+						<%= f.text_field :fname, class: "form-control has-tooltip", data_toggle: "tooltip", data_placement: "top", title: "Please enter the beneficiary’s first name or the given name." %>
           </div>
           <div class="form-group">
             <%= f.label :lname %>
