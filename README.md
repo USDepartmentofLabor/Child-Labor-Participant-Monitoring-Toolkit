@@ -46,7 +46,7 @@ The text of presentation layer in this project follows [i18n](http://guides.ruby
 
 1. Install Nodejs
 
-	`sudo add-apt-repository -y ppa:chris-lea/node.js`
+	`curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -`
 
 	`sudo apt-get -y update`
 
