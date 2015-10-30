@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
     # Generate report on demand
     @indicator = Indicator.where(id: @report.indicator_id, project_id: @project.id).first
 
-    if @indicator.indicator_type == "Common"
+    if !@indicator.nil? && @indicator.indicator_type == "Common"
       if @indicator.code == "E1"
         education_report = EducationIndicator.new(EducationStatus.pluck(:id), @report.start_date, @report.end_date, @report.project_id)
 
