@@ -8,9 +8,11 @@ Rails.application.routes.draw do
     resources :reports, except: [:edit, :update]
     resources :children
     resources :households
-
     resources :custom_fields
+    resources :users
   end
+
+  resources :users
 
   # a trick to avoid generating children urls again
   resources :children, only: [] do
