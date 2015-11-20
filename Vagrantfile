@@ -39,8 +39,8 @@ Vagrant.configure("2") do |config|
     # v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
-  config.vm.network :forwarded_port, guest: 3000, host: 4000
-  config.vm.network :forwarded_port, guest: 1080, host: 4080 # Mailcatcher
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
+  config.vm.network :forwarded_port, guest: 1080, host: 3080 # Mailcatcher
 
   # nfs_setting = RUBY_PLATFORM =~ /darwin/ || RUBY_PLATFORM =~ /linux/
   # config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :nfs => nfs_setting
