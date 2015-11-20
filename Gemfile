@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -71,24 +70,32 @@ gem "font-awesome-rails"
 
 gem 'bootstrap-generators', '~> 3.3.4'
 
+# carrierwave does file uploading
 gem 'carrierwave'
 
+# lightweight ImageMagick interface
 gem 'mini_magick'
 
+# background processes
 gem 'sidekiq'
 
 gem 'sinatra', :require => nil
 
+# web server
 gem 'puma'
 
 gem 'country_select', github: 'stefanpenner/country_select'
 
+# pagination
 gem 'kaminari'
 
+# object searching
 gem 'ransack'
 
 gem 'faker', require: false
 
+# for heroku deployment
 gem 'rails_12factor', group: :production
 
-ruby '2.2.2'
+# Role Based Authorization
+gem 'pundit'
