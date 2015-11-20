@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118215058) do
+ActiveRecord::Schema.define(version: 20151120220656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,6 +187,26 @@ ActiveRecord::Schema.define(version: 20151118215058) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "service_instances", force: :cascade do |t|
+    t.integer  "child_id"
+    t.integer  "service_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "hours"
+    t.text     "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "service_instances", ["child_id"], name: "index_service_instances_on_child_id", using: :btree
+  add_index "service_instances", ["service_id"], name: "index_service_instances_on_service_id", using: :btree
+
+  create_table "services", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -219,4 +239,6 @@ ActiveRecord::Schema.define(version: 20151118215058) do
   add_foreign_key "project_users", "users"
   add_foreign_key "projects_households", "households"
   add_foreign_key "projects_households", "projects"
+  add_foreign_key "service_instances", "children"
+  add_foreign_key "service_instances", "services"
 end

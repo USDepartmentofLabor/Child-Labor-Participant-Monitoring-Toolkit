@@ -13,6 +13,8 @@ class Child < ActiveRecord::Base
 
   has_many :statuses, class_name: "ChildStatus", dependent: :destroy
 
+  has_many :service_instances
+
   has_many :projects_children, dependent: :destroy
   has_many :projects, through: :projects_children
 
