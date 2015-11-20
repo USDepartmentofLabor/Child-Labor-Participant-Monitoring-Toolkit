@@ -1,0 +1,42 @@
+<%= f.hidden_field :project_id %>
+
+<div class="row">
+  <div class="col-md-3 form-group">
+    <%= f.label :service_id %>
+    <%= f.select :service_id,
+      options_from_collection_for_select(Service.all, 'id', 'name'),
+      {include_blank: true}, {class: "form-control"}
+    %>
+  </div>
+
+  <div class="col-md-3 form-group">
+    <%= f.label :start_date %> (yyy/mm/dd)
+    <div class="selection">
+      <%= f.date_select :start_date,
+        { start_year: Date.today.year - 5, end_year: Date.today.year + 10, use_two_digit_numbers: true},
+        {class: "form-control select-inline"}
+      %>
+    </div>
+  </div>
+
+  <div class="col-md-3 form-group">
+    <%= f.label :end_date %> (yyy/mm/dd)
+    <div class="selection">
+      <%= f.date_select :end_date,
+        {start_year: Date.today.year - 5, end_year: Date.today.year + 10, include_blank: true,
+          use_two_digit_numbers: true},
+        {class: "form-control select-inline"}
+      %>
+    </div>
+  </div>
+
+  <div class="col-md-3 form-group">
+    <%= f.label :hours %>
+    <%= f.text_field :hours, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :notes %>
+  <%= f.text_area :notes, class: "form-control", rows: "5" %>
+</div>

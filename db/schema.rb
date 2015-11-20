@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120220656) do
+ActiveRecord::Schema.define(version: 20151120225211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,9 +196,11 @@ ActiveRecord::Schema.define(version: 20151120220656) do
     t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "project_id"
   end
 
   add_index "service_instances", ["child_id"], name: "index_service_instances_on_child_id", using: :btree
+  add_index "service_instances", ["project_id"], name: "index_service_instances_on_project_id", using: :btree
   add_index "service_instances", ["service_id"], name: "index_service_instances_on_service_id", using: :btree
 
   create_table "services", force: :cascade do |t|
@@ -240,5 +242,6 @@ ActiveRecord::Schema.define(version: 20151120220656) do
   add_foreign_key "projects_households", "households"
   add_foreign_key "projects_households", "projects"
   add_foreign_key "service_instances", "children"
+  add_foreign_key "service_instances", "projects"
   add_foreign_key "service_instances", "services"
 end

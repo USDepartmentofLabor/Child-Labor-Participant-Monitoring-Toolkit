@@ -74,8 +74,10 @@ en:
     show:
       title: "Beneficiary Record"
       personal_information: "Personal Information"
-      statuses: "History Statuses"
-      status_form_title: "Add A New Status"
+      statuses: "Status History"
+      status_form_title: "Add New Status"
+      services: "Service History"
+      service_form_title: "Add New Service"
     edit:
       title: "Edit Beneficiary Record"
   adults:

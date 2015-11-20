@@ -18,6 +18,7 @@ class ChildrenController < ApplicationController
   # GET /children/1
   def show
     @child_statuses = ChildStatus.where(child_id: @child.id, project_id: @project.id).includes(:work_status, :education_status)
+    @service_instances = ServiceInstance.where(child_id: @child.id, project_id: @project.id).includes(:service)
     @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child").with_values(@child.id)
   end
 
@@ -44,7 +45,7 @@ class ChildrenController < ApplicationController
         CustomFieldGroup.create_or_update(@child, @custom_fields, params_for_custom_field)
       end
 
-      redirect_to project_child_path(@project, @child), notice: t("action_messages.create", model: Child.model_name.human)
+      redirect_to new_project_child_path(@project), notice: t("action_messages.create", model: Child.model_name.human)
     else
       render :new
     end

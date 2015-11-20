@@ -1,13 +1,14 @@
 module ChildrenHelper
-	def format_date_range(status)
-		str = ""
-		str += status.start_date.to_s
+  def format_date_range(status)
+    str = ""
+    str += status.start_date.to_s
 
-		if status.end_date.present?
-			str = str.empty? ? status.end_date.to_s : "#{str} - #{status.end_date}"
-		end
-		str
-	end
+    if status.end_date.present?
+      str = str.empty? ? status.end_date.to_s : "#{str} &ndash; #{status.end_date}".html_safe
+    end
+
+    str
+  end
 
   def household_options(project)
     options = options_from_collection_for_select(project.households.order("id DESC"), "id", "name")
@@ -24,7 +25,6 @@ module ChildrenHelper
     size = (size == :full ? nil : :small)
 
     if child.avatar.present?
-
       return image_tag(child.avatar_url(size), options)
     end
 
@@ -35,12 +35,20 @@ module ChildrenHelper
     return image_tag("default_avatar_male.jpg", options)
   end
 
-	def link_to_add_conditions(name, f, type)
+  def link_to_add_conditions(name, f, type)
     new_object = f.object.send "build_#{type}"
     id = "new_#{type}"
     fields = f.send("#{type}_fields", new_object, child_index: id) do |builder|
       render(type.to_s + "_fields", f: builder)
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+  end
+
+  def show_services_for(child)
+    child.service_instances.count > 0
+  end
+
+  def show_statuses_for(child)
+    child.statuses.count > 0
   end
 end

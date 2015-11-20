@@ -1,0 +1,10 @@
+<div class="child-status">
+  <b>Type:</b> <%= service.service.name %><br>
+  <b>Date:</b> <%= format_date_range(service) %><br>
+  <% if service.hours.present? %>
+  <b>Hours:</b> <%= service.hours %><br>
+  <% end %>
+  <% if service.notes.present? %>
+  <b>Notes:</b> <%= service.notes %>
+  <% end %>
+</div>
