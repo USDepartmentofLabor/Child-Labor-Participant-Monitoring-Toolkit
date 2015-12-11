@@ -10,6 +10,6 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @projects = Project.all
+		@projects = Project.where("user_id = ?", current_user.id)
   end
 end
