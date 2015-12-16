@@ -1,7 +1,7 @@
 <%= form_for([@project, @report], html: {class: "form-horizontal", role: "form", id: "report-wizard"}) do |f| %>
-	<%= error_messages(@report) %>
+  <%= error_messages(@report) %>
 
-	<div class="swMain">
+  <div class="swMain">
     <ul>
       <li>
         <a href="#step-1">
@@ -110,34 +110,25 @@
 
       <div class="form-group">
         <%= f.label :start_date, class: "col-sm-3 control-label" %>
-        <div class="selection col-sm-7">
-          <%= f.date_select :start_date, 
-            {
-              start_year: Date.today.year - 10, 
-              end_year: Date.today.year, 
-              use_two_digit_numbers: true,
-              selected: 6.months.ago
-            }, 
-            {
-              class: "form-control select-inline"
-            }
-          %>
+        <div class="col-sm-7">
+          <div class="input-group date">
+            <%= f.text_field :start_date, class: "form-control" %>
+            <span class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
         </div>
       </div>
 
       <div class="form-group">
         <%= f.label :end_date, class: "col-sm-3 control-label" %>
-        <div class="selection col-sm-7">
-          <%= f.date_select :end_date, 
-            {
-              start_year: Date.today.year - 10, 
-              end_year: Date.today.year + 10, 
-              use_two_digit_numbers: true
-            }, 
-            {
-              class: "form-control select-inline"
-            }
-          %>
+        <div class="col-sm-7">
+          <div class="input-group date">
+            <%= f.text_field :end_date, class: "form-control" %>
+            <span class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
         </div>
       </div>
 

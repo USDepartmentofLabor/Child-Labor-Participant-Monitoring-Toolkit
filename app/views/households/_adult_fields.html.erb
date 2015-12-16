@@ -23,11 +23,11 @@
   </div>
   <div class="form-group">
     <%= f.label :dob %> (yyy/mm/dd)
-    <div class="selection">
-      <%= f.date_select :dob, 
-        {start_year: Date.today.year - 100, end_year: Date.today.year, use_two_digit_numbers: true}, 
-        {class: "form-control select-inline"} 
-      %>
+    <div class="input-group date">
+      <%= f.text_field :dob, class: "form-control" %>
+      <span class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+      </span>
     </div>
   </div>
 
