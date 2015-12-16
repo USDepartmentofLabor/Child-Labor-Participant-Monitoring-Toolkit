@@ -69,6 +69,27 @@
       </ul>
     <% end -%>
 
+    <%= content_tag :li, class: (controller_name == "services" ? "current" : "")  do -%>
+      <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
+        <span class="badge pull-right"><b class="caret"></b></span>
+        <i class="fa fa-cutlery"></i><%= Service.model_name.human.pluralize %>
+      <% end -%>
+      <ul>
+        <li>
+          <%= link_to project_services_path(@project) do -%>
+            <i class="fa fa-angle-double-right"></i>
+            <%= t("services.index.title") %>
+          <% end -%>
+        </li>
+        <li>
+          <%= link_to new_project_service_path(@project) do -%>
+            <i class="fa fa-angle-double-right"></i>
+            <%= t("services.index.add") %>
+          <% end -%>
+        </li>
+      </ul>
+    <% end -%>
+
     <%= content_tag :li, class: (controller_name == 'indicators' ? "current" : "")  do -%>
       <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
         <span class="badge pull-right"><b class="caret"></b></span>

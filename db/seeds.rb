@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Service.create([{ name: 'Counseling' }, { name: 'Education' }, { name: 'Food' }, { name: 'Clothing' }])
+ServiceType.create([{ name: 'Counseling' }, { name: 'Education' }, { name: 'Food' }, { name: 'Clothing' }])

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :households
     resources :custom_fields
     resources :users
+    resources :services
   end
 
   resources :users

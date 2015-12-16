@@ -12,6 +12,8 @@ class Project < ActiveRecord::Base
 
   has_many :indicators
 
+  has_many :services
+
   has_many :project_regions, dependent: :destroy
 
   has_many :project_user

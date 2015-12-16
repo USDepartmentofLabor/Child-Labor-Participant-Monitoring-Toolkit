@@ -80,6 +80,12 @@ en:
       service_form_title: "Add New Service"
     edit:
       title: "Edit Beneficiary Record"
+  services:
+    new:
+      form_title: "Add Service"
+    index:
+      add: "Add a Service"
+      title: "List of Services"
   adults:
     index:
       add: "Add An Adult"

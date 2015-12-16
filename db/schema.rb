@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120225211) do
+ActiveRecord::Schema.define(version: 20151215223153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,11 +203,25 @@ ActiveRecord::Schema.define(version: 20151120225211) do
   add_index "service_instances", ["project_id"], name: "index_service_instances_on_project_id", using: :btree
   add_index "service_instances", ["service_id"], name: "index_service_instances_on_service_id", using: :btree
 
-  create_table "services", force: :cascade do |t|
+  create_table "service_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "services", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "service_type_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "description"
+    t.integer  "project_id"
+  end
+
+  add_index "services", ["project_id"], name: "index_services_on_project_id", using: :btree
+  add_index "services", ["service_type_id"], name: "index_services_on_service_type_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -244,4 +258,6 @@ ActiveRecord::Schema.define(version: 20151120225211) do
   add_foreign_key "service_instances", "children"
   add_foreign_key "service_instances", "projects"
   add_foreign_key "service_instances", "services"
+  add_foreign_key "services", "projects"
+  add_foreign_key "services", "service_types"
 end
