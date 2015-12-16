@@ -13,9 +13,11 @@
  *= require font-awesome
  *= require icheck-red
  *= require jquery.smartWizard
+ *= require bootstrap
  *= require bootstrap-datepicker
  *= require bootstrap-variables
  *= require bootstrap-generators
+ *= require bootstrap-datetimepicker
  *= require jasny-bootstrap.min
  *= require material-style
  *= require jGrowl

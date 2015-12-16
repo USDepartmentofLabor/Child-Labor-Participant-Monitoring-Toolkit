@@ -26,7 +26,13 @@
 //= require projects
 //= require report_wizard
 //= require households
+//= require moment
+//= require bootstrap-datetimepicker
 
 $(document).ready(function() {
   $('.has-tooltip').tooltip();
+
+  $('.date').datetimepicker({
+    format: 'YYYY-MM-DD'
+  });
 });
