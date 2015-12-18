@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215223153) do
+ActiveRecord::Schema.define(version: 20151218064239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 20151215223153) do
     t.integer  "household_id"
     t.string   "avatar"
   end
+
+  create_table "children_services", force: :cascade do |t|
+    t.integer  "child_id"
+    t.integer  "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "children_services", ["child_id"], name: "index_children_services_on_child_id", using: :btree
+  add_index "children_services", ["service_id"], name: "index_children_services_on_service_id", using: :btree
 
   create_table "custom_fields", force: :cascade do |t|
     t.string   "name"
@@ -249,6 +259,8 @@ ActiveRecord::Schema.define(version: 20151215223153) do
 
   add_foreign_key "adults", "households"
   add_foreign_key "child_statuses", "children"
+  add_foreign_key "children_services", "children"
+  add_foreign_key "children_services", "services"
   add_foreign_key "indicators", "projects"
   add_foreign_key "project_regions", "projects"
   add_foreign_key "project_users", "projects"

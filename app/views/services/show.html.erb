@@ -1,0 +1,50 @@
+<div class="page-header">
+  <%= link_to project_services_path(@project), class: 'btn btn-default' do %>
+    <%= fa_icon "caret-left" %>
+    <%= t("general.back") %>
+  <% end %>
+  <%= link_to edit_project_service_path(@project, @service), class: 'btn btn-primary' do %>
+    <%= fa_icon "pencil" %>
+    <%= t("general.edit") %>
+  <% end %>
+  <h1><%= t("services.show.title") %></h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="h4"><%= t("services.show.details") %></h2>
+  </div>
+  <table class="table table-hover table-listing">
+    <tbody>
+      <tr>
+        <td>ID</td><td><%= @service.id %></td>
+      </tr>
+      <tr>
+        <td><%= Service.human_attribute_name(:name) %></td><td><%= @service.name %></td>
+      </tr>
+      <tr>
+        <td><%= Service.human_attribute_name(:service_type) %></td><td><%= @service.service_type.name unless @service.service_type.nil? %></td>
+      </tr>
+      <tr>
+        <td><%= Service.human_attribute_name(:start_date) %></td><td><%= @service.start_date %></td>
+      </tr>
+      <tr>
+        <td><%= Service.human_attribute_name(:end_date) %></td><td><%= @service.end_date %></td>
+      </tr>
+      <tr>
+        <td><%= Service.human_attribute_name(:description) %></td><td><%= markdown @service.description %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="h4"><%= t("services.show.children") %></h2>
+  </div>
+  <ul class="list-group">
+    <% @service.children.by_last_name.each do |c| %>
+      <li class="list-group-item"><%= c.full_name %></li>
+    <% end %>
+  </ul>
+</div>

@@ -86,6 +86,10 @@ en:
     index:
       add: "Add a Service"
       title: "List of Services"
+    show:
+      title: "Service Record"
+      details: "Service Details"
+      children: "Beneficiary List"
   adults:
     index:
       add: "Add An Adult"

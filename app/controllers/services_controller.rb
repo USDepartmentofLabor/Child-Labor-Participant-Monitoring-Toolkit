@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_project
+  before_action :set_children
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services
@@ -67,8 +68,12 @@ class ServicesController < ApplicationController
       @project_regions = @project.project_regions
     end
 
+    def set_children
+      @children = @project.children.all
+    end
+
     # Only allow a trusted parameter "white list" through.
     def service_params
-      params.require(:service).permit(:service_type_id, :name, :start_date, :end_date, :description, :beneficiary_ids => [])
+      params.require(:service).permit(:service_type_id, :name, :start_date, :end_date, :description, :child_ids => [])
     end
 end

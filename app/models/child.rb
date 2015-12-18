@@ -5,6 +5,8 @@ class Child < ActiveRecord::Base
 
   scope :male, -> { where(sex: 1) }
   scope :female, -> { where(sex: 2) }
+  scope :by_last_name, -> { order(:lname, :fname, :mname) }
+  scope :by_first_name, -> { order(:fname, :mname, :lname) }
 
   validates :fname, presence: true
   validates :lname, presence: true
@@ -17,6 +19,7 @@ class Child < ActiveRecord::Base
 
   has_many :projects_children, dependent: :destroy
   has_many :projects, through: :projects_children
+  has_many :services, through: :child_service
 
   belongs_to :household
 

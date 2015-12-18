@@ -9,8 +9,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <%= f.label :service_type %>
-            <%= f.select :service_type, ServiceType.all.collect{|s| [s.name, s.id]}, {include_blank: true}, class: "form-control" %>
+            <%= f.label :service_type_id %>
+            <%= f.select :service_type_id, ServiceType.all.collect{|s| [s.name, s.id]}, {include_blank: true}, class: "form-control" %>
           </div>
         </div>
         <div class="col-md-4">
@@ -45,10 +45,8 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="form-group">
-        <%= f.label :beneficiary_search %>
-        <%= text_field_tag "beneficiary_search", "", class: "form-control" %>
-      </div>
-      <div class="well">
+        <%= f.label :beneficiaries %>
+        <%= f.select :child_ids, @children.map{|c| [c.full_name, c.id]}, {}, {class: "form-control", multiple: true, size: 15} %>
       </div>
     </div>
   </div>
