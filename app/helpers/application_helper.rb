@@ -1,9 +1,9 @@
 module ApplicationHelper
-	def format_time(time)
-		time.strftime("%Y-%m-%d at %I:%M %p")
-	end
+  def format_time(time)
+    time.strftime("%Y-%m-%d at %I:%M %p")
+  end
 
-	def error_messages(resource)
+  def error_messages(resource)
     return "" if resource.errors.empty?
     warn_sign = "<i class=\"fa fa-exclamation-circle\"></i>"
     messages = resource.errors.full_messages.map { |msg| "<li>" + warn_sign + msg + "</li>" }.join
@@ -49,5 +49,12 @@ module ApplicationHelper
       end
     end
     grouped_options_for_select(grouped_options)
+  end
+
+  def markdown(text)
+    return "" if text.nil?
+    renderer = Redcarpet::Render::HTML.new
+    markdown = Redcarpet::Markdown.new(renderer)
+    markdown.render(text).html_safe
   end
 end
