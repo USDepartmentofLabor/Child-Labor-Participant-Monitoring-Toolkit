@@ -90,6 +90,9 @@ en:
       title: "Service Record"
       details: "Service Details"
       children: "Beneficiary List"
+    form:
+      children_title: "Beneficiaries"
+      add_child: "Add Beneficiary"
   adults:
     index:
       add: "Add An Adult"
