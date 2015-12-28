@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228194258) do
+ActiveRecord::Schema.define(version: 20151228210837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -234,6 +234,18 @@ ActiveRecord::Schema.define(version: 20151228194258) do
   add_index "services", ["project_id"], name: "index_services_on_project_id", using: :btree
   add_index "services", ["service_type_id"], name: "index_services_on_service_type_id", using: :btree
 
+  create_table "targets", force: :cascade do |t|
+    t.integer  "period"
+    t.integer  "work_status_id"
+    t.integer  "gender",         limit: 2
+    t.decimal  "target_value"
+    t.integer  "indicator_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "targets", ["indicator_id"], name: "index_targets_on_indicator_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -273,4 +285,5 @@ ActiveRecord::Schema.define(version: 20151228194258) do
   add_foreign_key "service_instances", "services"
   add_foreign_key "services", "projects"
   add_foreign_key "services", "service_types"
+  add_foreign_key "targets", "indicators"
 end
