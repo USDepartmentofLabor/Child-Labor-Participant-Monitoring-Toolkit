@@ -1,0 +1,132 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <ul class="sidebar-menu">
+      <%= content_tag :li, class: (controller_name == 'projects' ? "active" : "")  do -%>
+        <%= link_to project_path(@project) do %>
+          <i class="fa fa-tachometer"></i>
+          <%= t("projects.show.dashboard") %>
+        <% end %>
+      <% end -%>
+
+      <%= content_tag :li, class: (controller_name == 'children' ? "active" : "")  do -%>
+        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
+          <span class="badge pull-right"><b class="caret"></b></span>
+          <i class="fa fa-child"></i><%= Child.model_name.human.pluralize %>
+        <% end -%>
+        <ul>
+          <li>
+            <%= link_to project_children_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("children.index.title") %>
+            <% end -%>
+          </li>
+          <li>
+            <%= link_to new_project_child_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("children.index.add") %>
+            <% end -%>
+          </li>
+          <li>
+            <%= link_to new_project_custom_field_path(@project, model_type: "Child") do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("custom_fields.index") %>
+            <% end -%>
+          </li>
+        </ul>
+      <% end -%>
+
+      <%= content_tag :li, class: (controller_name == 'households' ? "active" : "")  do -%>
+        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
+          <span class="badge pull-right"><b class="caret"></b></span>
+          <i class="fa fa-home"></i><%= Household.model_name.human.pluralize %>
+        <% end -%>
+        <ul>
+          <li>
+            <%= link_to project_households_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("households.index.title") %>
+            <% end -%>
+          </li>
+          <li>
+            <%= link_to new_project_household_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("households.index.add") %>
+            <% end -%>
+          </li>
+          <li>
+            <%= link_to new_project_custom_field_path(@project, model_type: "Household") do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("custom_fields.index") %>
+            <% end -%>
+          </li>
+        </ul>
+      <% end -%>
+
+      <%= content_tag :li, class: (controller_name == "services" ? "active" : "")  do -%>
+        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
+          <span class="badge pull-right"><b class="caret"></b></span>
+          <i class="fa fa-cutlery"></i><%= Service.model_name.human.pluralize %>
+        <% end -%>
+        <ul>
+          <li>
+            <%= link_to project_services_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("services.index.title") %>
+            <% end -%>
+          </li>
+          <li>
+            <%= link_to new_project_service_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("services.index.add") %>
+            <% end -%>
+          </li>
+        </ul>
+      <% end -%>
+
+      <%= content_tag :li, class: (controller_name == 'indicators' ? "active" : "")  do -%>
+        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
+          <span class="badge pull-right"><b class="caret"></b></span>
+          <i class="fa fa-flag-o"></i><%= Indicator.model_name.human.pluralize %>
+        <% end -%>
+        <ul>
+          <li>
+            <%= link_to project_indicators_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("indicators.index.title") %>
+            <% end -%>
+          </li>
+          <li>
+            <%= link_to new_project_indicator_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("indicators.index.add") %>
+            <% end -%>
+          </li>
+        </ul>
+      <% end -%>
+
+      <%= content_tag :li, class: (controller_name == 'reports' ? "active" : "")  do -%>
+        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
+          <span class="badge pull-right"><b class="caret"></b></span>
+          <i class="fa fa-file-text-o"></i><%= Report.model_name.human.pluralize %>
+        <% end -%>
+        <ul>
+          <li>
+            <%= link_to project_reports_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("reports.index.title") %>
+            <% end -%>
+          </li>
+          <li>
+            <%= link_to new_project_report_path(@project) do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("reports.index.add") %>
+            <% end -%>
+          </li>
+        </ul>
+      <% end -%>
+    </ul>
+  </section>
+</aside>

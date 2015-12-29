@@ -12,12 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require jasny-bootstrap.min
+//= require bootstrap-sprockets
 //= require icheck.min
 //= require jquery.smartWizard
 //= require jquery.jgrowl.min
-//= require bootstrap-datepicker
 //= require jquery.validate.min
 //= require Chart.min
 //= require jquery.geocomplete.min
@@ -26,13 +24,21 @@
 //= require projects
 //= require report_wizard
 //= require households
-//= require moment
-//= require bootstrap-datetimepicker
+
+function icheck(){
+  if($(".icheck").length > 0){
+    $(".icheck").each(function(){
+      var $el = $(this);
+      var opt = {
+        checkboxClass: 'icheckbox_square-red',
+        radioClass: 'iradio_square-red',
+      }
+      $el.iCheck(opt);
+    });
+  }
+}
 
 $(document).ready(function() {
   $('.has-tooltip').tooltip();
-
-  $('.date').datetimepicker({
-    format: 'YYYY-MM-DD'
-  });
+  icheck();
 });

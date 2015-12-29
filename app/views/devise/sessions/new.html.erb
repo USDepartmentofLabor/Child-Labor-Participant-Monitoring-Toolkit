@@ -1,32 +1,22 @@
 <div class="row" id="login-wrap">
-  
   <div class="panel panel-default">
-
     <div class="panel-heading"><%= t("sessions.welcome_back") %></div>
     <div class="panel-body">
-
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
         <div class="form-group">
           <%= f.label t("registrations.email") %>
           <%= f.email_field :email, autofocus: true, class: "form-control" %>
         </div>
-
         <div class="form-group">
           <%= f.label t("registrations.password") %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
           <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
         </div>
-
         <div class="checkbox">
           <%= f.check_box :remember_me, class: "square-red" %> <%= t("sessions.remember_me") %>
         </div>
-
         <hr>
-
         <%= f.submit t("sessions.submit"), class: "btn btn-primary btn-block" %>
-
       <% end %>
     </div>
   </div>
-  <%= render "devise/shared/links" %>
 </div>

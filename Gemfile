@@ -66,9 +66,10 @@ gem 'rails-i18n', '~> 4.0.0'
 
 gem 'devise'
 
-gem "font-awesome-rails"
-
-gem 'bootstrap-generators', '~> 3.3.4'
+gem 'font-awesome-rails'
+gem 'bootstrap-sass'
+gem 'adminlte2-rails'
+gem 'icheck-rails'
 
 # carrierwave does file uploading
 gem 'carrierwave'
@@ -99,10 +100,6 @@ gem 'rails_12factor', group: :production
 
 # Role Based Authorization
 gem 'pundit'
-
-# Datetime picker
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 # Format descriptions with markdown
 gem 'redcarpet'
