@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DBMS Home Page</title>
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -17,9 +16,18 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-  <body id="home">
-    <div class="container wrapper">
-      <%= yield %>
+  <body class="layout-top-nav skin-blue" id=<%= "home" unless current_user -%>>
+    <div class="wrapper">
+      <% if current_user %>
+        <%= render partial: "layouts/admin_lte_2_header" %>
+      <% end %>
+      <div class="content-wrapper" style="min-height: 900px">
+        <div class="container">
+          <section class="content">
+            <%= yield %>
+          </section>
+        </div>
+      </div>
     </div>
     <%= yield :scripts %>
   </body>

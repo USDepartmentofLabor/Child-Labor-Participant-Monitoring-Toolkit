@@ -11,5 +11,6 @@ class HomeController < ApplicationController
 
   def dashboard
     @projects = Project.where("user_id = ?", current_user.id)
+    render layout: "front"
   end
 end
