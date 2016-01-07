@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(
         :name, :title, :cop_num, :start_date, :end_date, :org, :proj_type, :funding, :office_address,
-        project_regions_attributes: [:country, :state, :id, :_destroy]
+				:total_target_children, project_regions_attributes: [:country, :state, :id, :_destroy]
       )
     end
 end
