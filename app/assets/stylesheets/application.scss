@@ -8,3 +8,24 @@
 @import "bootstrap-datepicker";
 @import "jGrowl";
 @import "home";
+
+.skin-blue .sidebar-menu > li.active > a,
+.skin-blue .sidebar-menu > li:hover > a {
+  border-left-color: transparent;
+  i {
+    color: #3C8DBC;
+  }
+}
+
+.main-header .logo {
+  overflow: visible;
+}
+
+.main-sidebar,
+.left-side {
+  padding-top: 65px;
+}
+
+body {
+  background-color: #ECF0F5;
+}
