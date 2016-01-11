@@ -1,10 +1,13 @@
 body#home {
   background: image-url("child-bg.jpg") no-repeat scroll center center / cover #f2f2f2;
+  .wrapper,
+  .content-wrapper {
+    background: none;
+  }
 }
 
 #home-heading {
   padding-top: 5%;
-  text-align: center;
 }
 
 #home-heading h1 {
@@ -23,4 +26,30 @@ body#home {
 
 #home-login {
   margin-top: 10%
+}
+
+.login-logo {
+  margin-bottom: 90px;
+}
+
+.login-box-body .panel-heading {
+  margin-top: -110px;
+  text-align: center;
+}
+
+.login-box-body {
+  box-shadow: 4px 4px 6px -2px rgba(20, 20, 140, 0.25);
+}
+
+.box-body {
+  .list-group-item {
+    line-height: 1.5rem;
+    font-size: 18px;
+    padding: 20px;
+
+    &:not(.active):hover {
+      background-color: #357CA5;
+      color: #FFF;
+    }
+  }
 }

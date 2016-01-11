@@ -1,15 +1,17 @@
 <div class="page-section">
-<div class="page-header">
-  <h1><%= t("projects.new.title") %></h1>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= render 'form' %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h1 class="box-title">
+            <%= fa_icon "file-text-o" -%>
+            <%= t("projects.new.title") %>
+          </h1>
+        </div>
+        <div class="box-body">
+          <%= render 'form' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

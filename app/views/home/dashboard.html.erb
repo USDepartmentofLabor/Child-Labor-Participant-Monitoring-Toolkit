@@ -1,22 +1,34 @@
-<div class="page-section">
+<% if @projects.length > 0 %>
+  <% title "Projects" %>
+<% end %>
 <div class="row">
+  <div class="col-md-8 col-md-offset-2">
   <% if @projects.length != 0 %>
-    <div class="col-md-6">
-      <h2>Choose A Project To Start</h2>
-      <div class="panel panel-default">
-        <div class="collection headings">
-          <% @projects.each do |project| %>
-            <%= link_to(project.name, project, class: "collection-item") %>
-          <% end %>
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Choose a Project to Start</h3>
+        <div class="box-tools pull-right">
+          <div class="has-feedback">
+            <input type="text" class="form-control input-sm" placeholder="Search...">
+            <%= fa_icon "search", class: "form-control-feedback" %>
+          </div>
         </div>
+      </div>
+      <div class="box-body list-group">
+      <% @projects.each do |project| %>
+        <%= link_to project, class: "list-group-item" do %>
+          <%= project.name %>
+          <span class="badge pull-right"><%= project.children.count %></span>
+        <% end %>
+      <% end %>
+      </div>
+      <div class="box-footer">
+        <%= link_to new_project_path, class: "btn btn-primary" do %>
+          <%= fa_icon "plus" %>
+          <%= t("projects.new.title") %>
+        <% end %>
       </div>
     </div>
   <% end %>
-  <div class="col-md-6">
-    <%= link_to new_project_path, class: 'btn btn-primary btn-lg btn-block' do %>
-      <%= fa_icon "plus" %>
-      <%= t("projects.new.title") %>
-    <% end %>
   </div>
-</div>
 </div>
