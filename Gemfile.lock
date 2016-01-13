@@ -155,6 +155,11 @@ GEM
       jquery-rails
       rails (>= 3.1.0)
       sass-rails
+    jquery-datatables-rails (3.3.0)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
+      sass-rails
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -361,6 +366,7 @@ DEPENDENCIES
   fuubar
   guard-rspec
   icheck-rails
+  jquery-datatables-rails
   jquery-rails
   kaminari
   launchy

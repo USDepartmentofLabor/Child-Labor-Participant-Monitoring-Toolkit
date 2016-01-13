@@ -19,6 +19,8 @@
 //= require jquery.validate.min
 //= require Chart.min
 //= require jquery.geocomplete.min
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require home
 //= require children
 //= require projects
@@ -41,4 +43,9 @@ function icheck(){
 $(document).ready(function() {
   $('.has-tooltip').tooltip();
   icheck();
+
+  $('.dataTable').DataTable({
+    "paging": false,
+    "searching": false
+  });
 });
