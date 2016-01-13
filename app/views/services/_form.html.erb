@@ -1,69 +1,56 @@
 <%= form_for([@project, @service], html: {role: "form"}) do |f| %>
-  <%= error_messages @service %>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
+  <div class="box-body">
+    <%= error_messages @service %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :service_type_id %>
+          <%= f.select :service_type_id,
+            ServiceType.all.collect{|s| [s.name, s.id]}.sort,
+            {include_blank: true},
+            class: "form-control" %>
+        </div>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <%= f.label :service_type_id %>
-            <%= f.select :service_type_id, ServiceType.all.collect{|s| [s.name, s.id]}, {include_blank: true}, class: "form-control" %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <%= f.label :start_date %>
-            <div class="input-group date">
-              <%= f.text_field :start_date, class: "form-control" %>
-              <span class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <%= f.label :end_date %>
-            <div class="input-group date">
-              <%= f.text_field :end_date, class: "form-control" %>
-              <span class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-              </span>
-            </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :start_date %>
+          <div class="input-group date">
+            <%= f.text_field :start_date, class: "form-control" %>
+            <span class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </span>
           </div>
         </div>
       </div>
-      <div class="form-group">
-        <%= f.label :description %>
-        <%= f.text_area :description, class: "form-control", rows: 10 %>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :end_date %>
+          <div class="input-group date">
+            <%= f.text_field :end_date, class: "form-control" %>
+            <span class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control", rows: 10 %>
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h2 class="panel-title"><%= t("services.form.children_title") %></h2>
-    </div>
-    <div class="panel-body">
-      <div class="form-group">
-        <%= link_to_add_fields t("services.form.add_child"), f, :service_instances, class: "add_fields btn btn-primary" %>
-      </div>
-      <ul class="list-group beneficiary-list">
-      </ul>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-4 col-sm-offset-4">
-      <%= link_to project_services_path(@project), class: "btn btn-danger btn-block" do %>
-        <i class="fa fa-times"></i><%= t "general.cancel" %>
-      <% end %>
-    </div>
-    <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block">
-        <%= t "general.submit" %>
-      </button>
-    </div>
+  <div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right">
+      <%= t "general.submit" %>
+    </button>
+    <%= link_to project_services_path(@project),
+      class: "btn btn-danger pull-right",
+      style: "margin-right: 1rem" do %>
+      <i class="fa fa-times"></i> <%= t "general.cancel" %>
+    <% end %>
   </div>
 <% end %>

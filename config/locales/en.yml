@@ -83,6 +83,8 @@ en:
   services:
     new:
       form_title: "Add Service"
+    edit:
+      form_title: "Edit Service"
     index:
       add: "Add a Service"
       title: "List of Services"
