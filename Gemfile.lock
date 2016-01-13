@@ -366,7 +366,7 @@ DEPENDENCIES
   fuubar
   guard-rspec
   icheck-rails
-  jquery-datatables-rails
+  jquery-datatables-rails (~> 3.3.0)
   jquery-rails
   kaminari
   launchy

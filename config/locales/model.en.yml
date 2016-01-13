@@ -74,7 +74,7 @@ en:
         country: "Country"
         state: "State (Province)"
       indicator:
-        code: "#"
-        indicator: "Indicator Description"
-        indicator_type: "Indicator Type"
+        code: "Code"
+        indicator: "Name"
+        indicator_type: "Type"
         created_at: "Created at"

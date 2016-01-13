@@ -4,7 +4,7 @@ class IndicatorsController < ApplicationController
 
   # GET /indicators
   def index
-    @indicators = Indicator.where(project_id: @project.id).all
+    @indicators = Indicator.where(project_id: @project.id).order(:code).all
   end
 
   # GET /indicators/1
