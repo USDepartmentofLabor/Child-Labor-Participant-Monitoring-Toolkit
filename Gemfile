@@ -103,3 +103,5 @@ gem 'pundit'
 
 # Format descriptions with markdown
 gem 'redcarpet'
+
+gem 'jquery-datatables-rails'
