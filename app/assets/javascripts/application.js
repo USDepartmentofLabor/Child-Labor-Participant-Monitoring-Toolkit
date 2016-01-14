@@ -26,6 +26,7 @@
 //= require projects
 //= require report_wizard
 //= require households
+//= require services
 
 function icheck(){
   if($(".icheck").length > 0){
@@ -43,9 +44,4 @@ function icheck(){
 $(document).ready(function() {
   $('.has-tooltip').tooltip();
   icheck();
-
-  $('.dataTable').DataTable({
-    "paging": false,
-    "searching": false
-  });
 });
