@@ -136,7 +136,7 @@ en:
     edit:
       title: "Edit Indicator"
     show:
-      title: "Indicator Information"
+      title: "Indicator"
     new:
       title: "Add Indicator"
   layouts:

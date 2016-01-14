@@ -13,32 +13,61 @@
   <h1><%= t("indicators.show.title") %></h1>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <%= t("indicators.show.personal_information") %>
-  </div>
-  <div class="panel-body">
-    <table class="table table-bordered table-hover table-listing">
-      <tbody>
-        <tr>
-          <td>#</td><td><%= @indicator.code || @indicator.id %></td>
-        </tr>
-        <tr>
-          <td><%= Indicator.human_attribute_name(:indicator) %></td><td><%= @indicator.indicator %></td>
-        </tr>
-        <tr>
-          <td><%= Indicator.human_attribute_name(:indicator_type) %></td><td><%= @indicator.indicator_type %></td>
-        </tr>
-        <tr>
-          <td><%= Indicator.human_attribute_name(:use) %></td><td><%= @indicator.use %></td>
-        </tr>
-        <tr>
-          <td><%= Indicator.human_attribute_name(:definitions) %></td><td><%= @indicator.definitions %></td>
-        </tr>
-        <tr>
-          <td><%= Indicator.human_attribute_name(:frequency) %></td><td><%= @indicator.frequency %></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="box box-primary">
+  <div class="box-body">
+		
+		<div class="row">
+			<div class="col-md-12">
+				<h2><%= @indicator.code || @indicator.id %> <%= @indicator.indicator %></h2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<strong><%= Indicator.human_attribute_name(:indicator_type) %></strong> <%= @indicator.indicator_type %>
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title"><strong><%= Indicator.human_attribute_name(:use) %></strong></h3>
+					</div>
+					<div class="box-body">
+						<%= raw(@indicator.use) %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title"><strong><%= Indicator.human_attribute_name(:definitions) %></strong></h3>
+					</div>
+					<div class="box-body">
+						<%= raw(@indicator.definitions) %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title"><strong><%= Indicator.human_attribute_name(:frequency) %></strong></h3>
+					</div>
+					<div class="box-body">
+						<%= raw(@indicator.frequency) %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
   </div>
 </div>
