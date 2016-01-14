@@ -21,6 +21,7 @@
 //= require jquery.geocomplete.min
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require ckeditor/init
 //= require home
 //= require children
 //= require projects

@@ -138,7 +138,7 @@ en:
     show:
       title: "Indicator Information"
     new:
-      title: "New Indicator Form"
+      title: "Add Indicator"
   layouts:
     application:
       sign_in: "Sign in"

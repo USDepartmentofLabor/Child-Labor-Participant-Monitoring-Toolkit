@@ -25,6 +25,7 @@ class IndicatorsController < ApplicationController
     @indicator = Indicator.new(indicator_params)
     @indicator.user_id = current_user.id
     @indicator.project_id = @project.id
+		@indicator.indicator_type = "Custom"
 
     if @indicator.save
       redirect_to project_indicators_path(@project,@indicator), notice: t("action_messages.create", model: "Indicator")
@@ -61,6 +62,6 @@ class IndicatorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def indicator_params
-      params.require(:indicator).permit(:code, :indicator, :indicator_type, :use, :definitions, :frequency)
+      params.require(:indicator).permit(:code, :indicator, :use, :definitions, :frequency, :unit_of_measure_id, :baseline)
     end
 end
