@@ -1,23 +1,14 @@
 <div class="page-header">
-  <%= link_to new_project_child_path(@project), class: 'btn btn-primary' do %>
+  <%= link_to new_project_child_path(@project), class: 'btn btn-primary pull-right' do %>
     <%= fa_icon "plus" %>
     <%= t("children.index.add") %>
   <% end %>
   <h1><%= t("children.index.title") %></h1>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <%= t("children.index.filter") %>
-  </div>
-  <div class="panel-body">
-    <%= render "search" %>
-  </div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <table class="table table-condensed table-striped" id="child-data-table">
+<div class="box">
+  <div class="box-body">
+    <table class="table table-bordered table-striped" id="child-data-table">
       <thead>
         <tr>
           <th>ID</th>
@@ -25,10 +16,6 @@
           <th><%= Child.human_attribute_name(:lname) %></th>
           <th><%= Child.human_attribute_name(:sex) %></th>
           <th><%= Child.human_attribute_name(:dob) %></th>
-          <th><%= Child.human_attribute_name(:updated_at) %></th>
-          <th></th>
-          <th></th>
-          <th></th>
         </tr>
       </thead>
 
@@ -38,5 +25,3 @@
     </table>
   </div>
 </div>
-
-<%= paginate @children %>
