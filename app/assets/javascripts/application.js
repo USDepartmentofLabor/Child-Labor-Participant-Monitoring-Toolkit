@@ -18,6 +18,7 @@
 //= require jquery.jgrowl.min
 //= require jquery.validate.min
 //= require Chart.min
+//= require bootstrap-datepicker
 //= require jquery.geocomplete.min
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
@@ -44,4 +45,8 @@ function icheck(){
 $(document).ready(function() {
   $('.has-tooltip').tooltip();
   icheck();
+
+  $('.input-group.date').datepicker({
+    format: 'yyyy-mm-dd'
+  });
 });

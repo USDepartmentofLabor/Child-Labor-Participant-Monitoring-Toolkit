@@ -36,7 +36,7 @@ class ServicesController < ApplicationController
     @service.project_id = @project.id
 
     if @service.save
-      redirect_to new_project_service_path(@project), notice: t("action_messages.create", model: Service.model_name.human)
+      redirect_to project_services_path(@project), notice: t("action_messages.create", model: Service.model_name.human)
     else
       render :new
     end
