@@ -8,6 +8,6 @@
       class: "text-center btn-block" do %>
       <span class="sr-only"><%= t("general.delete") %></span>
       <%= fa_icon "times" %>
-    <% end %>
+    <% end unless has_recipients(service) %>
   </td>
 </tr>
