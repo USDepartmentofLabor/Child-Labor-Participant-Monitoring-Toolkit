@@ -87,7 +87,7 @@ en:
       form_title: "Edit Service"
     index:
       add: "Add a Service"
-      title: "List of Services"
+      title: "Services"
     show:
       title: "Service Record"
       details: "Service Details"
