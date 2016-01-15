@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228210837) do
+ActiveRecord::Schema.define(version: 20160114190617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,22 @@ ActiveRecord::Schema.define(version: 20151228210837) do
   add_index "children_services", ["child_id"], name: "index_children_services_on_child_id", using: :btree
   add_index "children_services", ["service_id"], name: "index_children_services_on_service_id", using: :btree
 
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
   create_table "custom_fields", force: :cascade do |t|
     t.string   "name"
     t.string   "field_type"
@@ -113,11 +129,14 @@ ActiveRecord::Schema.define(version: 20151228210837) do
     t.text     "frequency"
     t.integer  "user_id"
     t.integer  "project_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.decimal  "baseline",           precision: 15, scale: 4
+    t.integer  "unit_of_measure_id"
   end
 
   add_index "indicators", ["project_id"], name: "index_indicators_on_project_id", using: :btree
+  add_index "indicators", ["unit_of_measure_id"], name: "index_indicators_on_unit_of_measure_id", using: :btree
 
   create_table "project_regions", force: :cascade do |t|
     t.string   "country"
@@ -246,6 +265,10 @@ ActiveRecord::Schema.define(version: 20151228210837) do
 
   add_index "targets", ["indicator_id"], name: "index_targets_on_indicator_id", using: :btree
 
+  create_table "unit_of_measures", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -275,6 +298,7 @@ ActiveRecord::Schema.define(version: 20151228210837) do
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
   add_foreign_key "indicators", "projects"
+  add_foreign_key "indicators", "unit_of_measures"
   add_foreign_key "project_regions", "projects"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"

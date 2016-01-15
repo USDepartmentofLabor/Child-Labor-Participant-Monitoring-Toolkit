@@ -44,3 +44,11 @@ jQuery ->
   #       divID = "#pre-field-" + result.id
   #       $(divID).hide()
   #       $("#jgrowl").jGrowl(result.message, {theme: 'success'})
+	
+	$('#child-data-table').DataTable
+		"paging": true
+		"lengthChange": false
+		"searching": true
+		"ordering": true
+		"info": true
+		"autoWidth": false
