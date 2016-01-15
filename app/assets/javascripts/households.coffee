@@ -2,6 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
+	
+	$('#households-data-table').DataTable
+		"paging": true
+		"lengthChange": false
+		"searching": true
+		"ordering": true
+		"info": true
+		"autoWidth": false
+	
   $('form').on 'click', '.remove_fields', (event) ->
     event.preventDefault()
     $(this).prev('input[type=hidden]').val('1')
@@ -17,3 +26,4 @@ jQuery ->
       checkboxClass: "icheckbox_square-red",
       radioClass: 'iradio_square-red',
       increaseArea: "10%" # optional
+			
