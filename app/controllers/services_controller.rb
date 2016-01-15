@@ -33,9 +33,9 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
 
-    if @service.save
-      @project.services << @service
+    @service.project_id = @project.id
 
+    if @service.save
       redirect_to new_project_service_path(@project), notice: t("action_messages.create", model: Service.model_name.human)
     else
       render :new
