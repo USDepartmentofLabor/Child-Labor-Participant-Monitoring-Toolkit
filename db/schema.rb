@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114190617) do
+ActiveRecord::Schema.define(version: 20160126194336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,18 +121,18 @@ ActiveRecord::Schema.define(version: 20160114190617) do
   end
 
   create_table "indicators", force: :cascade do |t|
-    t.string   "code"
-    t.text     "indicator"
+    t.string   "code",                                        null: false
+    t.text     "indicator",                                   null: false
     t.string   "indicator_type"
     t.text     "use"
     t.text     "definitions"
     t.text     "frequency"
     t.integer  "user_id"
-    t.integer  "project_id"
+    t.integer  "project_id",                                  null: false
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.decimal  "baseline",           precision: 15, scale: 4
-    t.integer  "unit_of_measure_id"
+    t.integer  "unit_of_measure_id",                          null: false
   end
 
   add_index "indicators", ["project_id"], name: "index_indicators_on_project_id", using: :btree
