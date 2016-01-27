@@ -3,6 +3,10 @@ module DBMS
     module Indicators
       class << self
         def create(project_id, user_id)
+
+          numeric_unit_of_measure = UnitOfMeasure.find_by name: 'Numeric'
+          percentage_unit_of_measure = UnitOfMeasure.find_by name: 'Percentage'
+
           indicator = <<-eos
             % of livelihood beneficiary HHs with at least one child engaged in child labor
           eos
@@ -15,7 +19,7 @@ module DBMS
           definitions = <<-eos
             Numerator: number of livelihood beneficiary HHs with at least one child engaged in CL in the past 12 months
             Denominator: total number of livelihood beneficiary HHs (HHs that have received services and were counted under L1)
-            'Child labor' is defined by project definitions for all children under 18 years of age, and includes any form of CL (including HCL and other WFCL) per national and international framework. 
+            'Child labor' is defined by project definitions for all children under 18 years of age, and includes any form of CL (including HCL and other WFCL) per national and international framework.
             Reference period for engagement in child labor: In the past 12 months, AND in the past week. If the answer is "yes" to either of these, the child is in child labor.
             'Household' is defined by project definitions.
           eos
@@ -31,7 +35,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: percentage_unit_of_measure.id
           )
 
           indicator = <<-eos
@@ -60,11 +65,12 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: percentage_unit_of_measure.id
           )
 
           indicator = <<-eos
-            % of livelihood beneficiary HHs with at least one child engaged in other WFCL 
+            % of livelihood beneficiary HHs with at least one child engaged in other WFCL
             (only applicable if project specifically targets this population; majority of projects will not use)
           eos
           use = <<-eos
@@ -73,7 +79,7 @@ module DBMS
           definitions = <<-eos
             Numerator: number of livelihood beneficiary HHs with at least one child engaged in other WFCL (other than HCL) in the past 12 months
             Denominator:  total number of livelihood beneficiary HHs (HHs that have received services and were counted under L1)
-            'Worst Forms of Child labor other than HCL' is defined by ILO Convention 182, Article 3 (a-c). 
+            'Worst Forms of Child labor other than HCL' is defined by ILO Convention 182, Article 3 (a-c).
             Reference period for engagement in other worst forms of child labor: In the past 12 months, AND in the past week. If the answer is "yes" to either of these, the child is in child labor.
             'Household' is defined by project definitions.
           eos
@@ -89,7 +95,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: percentage_unit_of_measure.id
           )
 
           indicator = <<-eos
@@ -99,7 +106,7 @@ module DBMS
             Shows educational outcomes at the HH level. May help provide evidence regarding shifting of labor across child members of HH.  Same resource implications as above, since education status of ALL children in HH will have to be gathered.
           eos
           definitions = <<-eos
-            Numerator: Number of livelihood beneficiary HHs with all children of compulsory age attending school regularly during the past six months. 
+            Numerator: Number of livelihood beneficiary HHs with all children of compulsory age attending school regularly during the past six months.
             Denominator: Number of livelihood beneficiary HHs (HHs that have been counted as receiving services under L1) with children of compulsory school age
             'Compulsory school age' should be defined according to national law
             'Attending school regularly' should be defined by the project and should take into account any national guidelines; in the absence of such guidelines a default is 75%. A reference period of six months should be used, and school holidays should be excluded.
@@ -117,7 +124,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: percentage_unit_of_measure.id
           )
 
           indicator = <<-eos
@@ -129,7 +137,7 @@ module DBMS
           definitions = <<-eos
             Beneficiary children: Children receiving project education, training, or livelihood services
             Numerator: Number of beneficiary children engaged in child labor in the past six months.
-            Denominator: Total number of beneficiary children 
+            Denominator: Total number of beneficiary children
             'Child labor' is defined by project definitions for all children under 18 years of age, and includes any form of CL (including HCL and other WFCL) per national and international framework
             Reference period for engagement in child labor: In the past 6 months, AND in the past week. If the answer is "yes" to either of these, the child is in child labor.
           eos
@@ -144,7 +152,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: percentage_unit_of_measure.id
           )
 
           indicator = <<-eos
@@ -156,7 +165,7 @@ module DBMS
           definitions = <<-eos
             Beneficiary children: Children receiving project education, training, or livelihood services
             Numerator: Number of beneficiary children engaged in HCL in the past six months.
-            Denominator: Total number of beneficiary children 
+            Denominator: Total number of beneficiary children
             'Hazardous Child labor' is defined by project definitions for children engaged in hazardous work per ILO Convention 182, Article 3(d); ILO Recommendation 190; and the national legal framework, and excludes other WFCL as outlined in Convention 182 Article 3 (a-c), in the past 6 months
             Reference period for engagement in hazardous child labor: In the past 6 months, AND in the past week. If the answer is "yes" to either of these, the child is in hazardous child labor.
           eos
@@ -171,7 +180,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: percentage_unit_of_measure.id
           )
 
           indicator = <<-eos
@@ -183,8 +193,8 @@ module DBMS
           definitions = <<-eos
             Beneficiary children: Children receiving project education, training, or livelihood services
             Numerator: Number of beneficiary children engaged in WFCL other than HCL in the past six months.
-            Denominator: Total number of beneficiary children 
-            Worst Forms of Child labor other than HCL' is defined by ILO Convention 182, Article 3 (a-c).  
+            Denominator: Total number of beneficiary children
+            Worst Forms of Child labor other than HCL' is defined by ILO Convention 182, Article 3 (a-c).
             Reference period for engagement in WFCL other than HCL: In the past 6 months, AND in the past week. If the answer is "yes" to either of these, the child is in WFCL other than HCL.
           eos
           freq = <<-eos
@@ -198,7 +208,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: percentage_unit_of_measure.id
           )
 
           indicator = <<-eos
@@ -224,7 +235,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: percentage_unit_of_measure.id
           )
 
           indicator = <<-eos
@@ -234,7 +246,7 @@ module DBMS
             Shows if projects are providing education/vocation services to beneficiary population as planned.
           eos
           definitions = <<-eos
-            Each project has its own unique menu of education or vocational training services. These services are defined in the project's CMEP. 
+            Each project has its own unique menu of education or vocational training services. These services are defined in the project's CMEP.
             Grantees must report the total number and disaggregated figures by the type of education or training service provided.
           eos
           freq = <<-eos
@@ -248,7 +260,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: numeric_unit_of_measure.id
           )
 
           indicator = <<-eos
@@ -258,7 +271,7 @@ module DBMS
             Shows if projects are providing livelihood services to beneficiary HHs as planned.
           eos
           definitions = <<-eos
-            Each project offers its own unique menu of livelihood services. These services are defined in the project's CMEP. 
+            Each project offers its own unique menu of livelihood services. These services are defined in the project's CMEP.
             Grantees must report the total number and disaggregated figures by the type of livelihood service received.
           eos
           freq = <<-eos
@@ -272,7 +285,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: numeric_unit_of_measure.id
           )
 
           indicator = <<-eos
@@ -282,7 +296,7 @@ module DBMS
             # of countries with increased capacity to address child labor or forced labor.
           eos
           freq = <<-eos
-            Projects report their achievements towards building capacity in narrative in their TPRs. 
+            Projects report their achievements towards building capacity in narrative in their TPRs.
             They may also have specific related goals or milestones in their CMEP.
           eos
           Indicator.create!(
@@ -292,7 +306,8 @@ module DBMS
             frequency: freq.strip,
             indicator_type: "Common",
             user_id: user_id,
-            project_id: project_id
+            project_id: project_id,
+            unit_of_measure_id: numeric_unit_of_measure.id
           )
         end
       end

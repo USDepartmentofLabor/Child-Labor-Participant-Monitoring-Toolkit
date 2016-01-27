@@ -29,7 +29,7 @@ class Project < ActiveRecord::Base
   after_commit :check_defaults, on: :create
 
   def generate_common_indicators
-    Indicator.create_default(self.id, self.user_id)
+    Indicator.create_common_indicators(self.id, self.user_id)
   end
 
   def check_defaults
