@@ -11,6 +11,6 @@ staging:
   script:
     - gem install dpl
     - dpl --provider=heroku --app=ilabtoolkit --api-key=$HEROKU_STAGING_API_KEY
-    only:
-      - master
+  only:
+    - master
 
