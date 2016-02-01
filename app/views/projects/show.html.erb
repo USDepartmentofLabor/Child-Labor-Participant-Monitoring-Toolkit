@@ -1,60 +1,112 @@
-<div class="page-header">
-  <a href="javascript:void(0);" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-project-modal">
-    <%= fa_icon "cog" %>
-    <%= t("project.show.edit") %>
-  </a>
-  <h1><%= @project.name %></h1>
-</div>
+<% provide(:title, @project.name + " Dashboard") %>
 
-<div class="divider"></div>
-<div class="section">
-  <h3><b>Impressions</b></h3>
-  <div class="row">
-    <div class="col-md-12">
-      <ul class="impact-table">
-        <li>
-          <span class="i-count"><%= @total_children %></span>
-          <h4>Total Beneficiaries</h4>
-        </li>
-        <li>
-          <span class="i-count"><%= @total_households %></span>
-          <h4>Total Households</h4>
-        </li>
-      </ul>
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-aqua">
+      <span class="info-box-icon">
+        <i class="fa fa-child"></i>
+      </span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Beneficiaries</span>
+        <span class="info-box-number">10,252</span>
+
+        <div class="progress">
+          <div class="progress-bar" style="width: 37%"></div>
+        </div>
+        <span class="progress-description">
+          37% of 28,000 targeted beneficiaries serviced
+        </span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-green">
+      <span class="info-box-icon">
+        <i class="fa fa-home"></i>
+      </span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Households</span>
+        <span class="info-box-number">2,546</span>
+
+        <div class="progress">
+          <div class="progress-bar" style="width: 18%"></div>
+        </div>
+        <span class="progress-description">
+          18% of 14,000 targeted households serviced
+        </span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+
+  <!-- /.col -->
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-red">
+      <span class="info-box-icon">
+        <i class="fa fa-cutlery"></i>
+      </span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Services</span>
+        <span class="info-box-number">1,000</span>
+
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box bg-yellow">
+      <span class="info-box-icon">
+        <i class="fa fa-calendar"></i>
+      </span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Timeline</span>
+        <span class="info-box-number">Sep 30, 2014</span>
+
+        <div class="progress">
+          <div class="progress-bar" style="width: 25%"></div>
+        </div>
+        <span class="progress-description">
+          276 days into your project
+        </span>
+      </div>
     </div>
   </div>
+
 </div>
 
-<div class="section">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title"><%= t("projects.show.children_covered") %></h3></div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-8">
-              <canvas id="i-child-ratio-chart" class="hidden-xs"></canvas>
-            </div>
-            <div class="col-md-4">
-              <div id="ratio-legend"></div>
-            </div>
-          </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Target vs Actual by Reporting Period</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove">
+            <i class="fa fa-times"></i>
+          </button>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="edit-project-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= t("households.new.title") %></h4>
+      <div class="box-body">
+        <div class="chart">
+          <canvas id="targetVsActualChart" style="height:230px"></canvas>
+        </div>
       </div>
-      <div class="modal-body">
-        <%= render "form" %>
-      </div>
+      <!-- /.box-body -->
     </div>
   </div>
 </div>
