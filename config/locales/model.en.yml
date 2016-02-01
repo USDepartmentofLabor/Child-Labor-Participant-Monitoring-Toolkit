@@ -74,7 +74,10 @@ en:
         country: "Country"
         state: "State (Province)"
       indicator:
-        code: "#"
-        indicator: "Indicator Description"
-        indicator_type: "Indicator Type"
+        code: "Indicator Code"
+        indicator: "Indicator Name"
+        indicator_type: "Type"
+        frequency: "Collection and Reporting Frequency"
+        unit_of_measure: "Unit of Measure"
+        baseline: "Baseline"			
         created_at: "Created at"

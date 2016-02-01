@@ -1,31 +1,29 @@
 <div class="page-header">
-  <%= link_to new_project_indicator_path, class: 'btn btn-primary' do %>
+  <%= link_to new_project_indicator_path, class: 'btn btn-primary pull-right' do %>
     <%= fa_icon "plus" %>
     <%= t("indicators.index.add") %>
   <% end %>
   <h1><%= t("indicators.index.title") %></h1>
 </div>
 
-<table class="table table-condensed table-striped">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th><%= Indicator.human_attribute_name(:indicator) %></th>
-      <th><%= Indicator.human_attribute_name(:indicator_type) %></th>
-      <th><%= Indicator.human_attribute_name(:created_at) %></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="box">
+  <div class="box-body">
+    <table id='indicatorTable' class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= Indicator.human_attribute_name(:code) %></th>
+          <th><%= Indicator.human_attribute_name(:indicator) %></th>
+          <th><%= Indicator.human_attribute_name(:indicator_type) %></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <%= content_tag_for(:tr, @indicators) do |indicator| %>
-      <td><%= indicator.code || indicator.id %></td>
-      <td><%= indicator.indicator %></td>
-      <td><%= indicator.indicator_type %></td>
-      <td><%= format_time indicator.created_at %></td>
-      <td><%= link_to t("general.show"), project_indicator_path(@project, indicator) %></td>
-      <td><%= link_to t("general.delete"), project_indicator_path(@project, indicator), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <%= content_tag_for(:tr, @indicators) do |indicator| %>
+        <td><%= indicator.code || indicator.id %></td>
+				<td><%= link_to indicator.indicator, project_indicator_path(@project, indicator) %></td>
+        <td><%= indicator.indicator_type %></td>
+    	<% end %>
+  	</tbody>
+	</table>
+	</div>
+</div>

@@ -4,7 +4,7 @@ class IndicatorsController < ApplicationController
 
   # GET /indicators
   def index
-    @indicators = Indicator.where(project_id: @project.id).all
+    @indicators = Indicator.where(project_id: @project.id).order(:code).all
   end
 
   # GET /indicators/1
@@ -25,6 +25,7 @@ class IndicatorsController < ApplicationController
     @indicator = Indicator.new(indicator_params)
     @indicator.user_id = current_user.id
     @indicator.project_id = @project.id
+		@indicator.indicator_type = "Custom"
 
     if @indicator.save
       redirect_to project_indicators_path(@project,@indicator), notice: t("action_messages.create", model: "Indicator")
@@ -36,7 +37,7 @@ class IndicatorsController < ApplicationController
   # PATCH/PUT /indicators/1
   def update
     if @indicator.update(indicator_params)
-      redirect_to project_indicators_path(@project,@indicator), notice: t("action_messages.update", model: "Indicator")
+      redirect_to project_indicator_path(@project,@indicator), notice: t("action_messages.update", model: "Indicator")
     else
       render :edit
     end
@@ -61,6 +62,6 @@ class IndicatorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def indicator_params
-      params.require(:indicator).permit(:code, :indicator, :indicator_type, :use, :definitions, :frequency)
+      params.require(:indicator).permit(:code, :indicator, :use, :definitions, :frequency, :unit_of_measure_id, :baseline)
     end
 end

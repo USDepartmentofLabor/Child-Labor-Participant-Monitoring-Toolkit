@@ -1,25 +1,26 @@
 <div class="row">
-  <div class="col-md-6 col-xs-12">
-    <div class="box">
+  <div class="col-xs-12">
+    <div class="box box-primary">
       <div class="box-header">
+        <%= fa_icon "cutlery" %>
         <h1 class="box-title"><%= t("services.index.title") %></h1>
         <div class="box-tools">
-          <%= link_to new_project_service_path(@project), class: 'btn btn-primary btn-sm' do %>
+          <%= link_to new_project_service_path(@project), class: "btn btn-primary" do %>
             <%= fa_icon "plus" %>
             <%= t("services.index.add") %>
           <% end %>
         </div>
       </div>
 
-      <div class="box-body table-responsive no-padding dataTables_wrapper form-inline dt-bootstrap">
-        <table class="table table-condensed table-striped table-bordered dataTable" role="grid" id="child-data-table">
+      <div class="box-body">
+        <table class="table table-condensed table-striped table-bordered" role="grid" id="services-dt">
           <thead>
             <tr>
               <th><%= Service.human_attribute_name(:name) %></th>
               <th><%= Service.human_attribute_name(:service_type) %></th>
               <th style="width: 10rem"><%= Service.human_attribute_name(:start_date) %></th>
               <th style="width: 10rem"><%= Service.human_attribute_name(:end_date) %></th>
-              <th style="width:  5rem"></th>
+              <th style="max-width: 2rem"></th>
             </tr>
           </thead>
 

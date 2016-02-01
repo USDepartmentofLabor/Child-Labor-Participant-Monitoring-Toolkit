@@ -105,3 +105,5 @@ gem 'pundit'
 gem 'redcarpet'
 
 gem 'jquery-datatables-rails'
+gem 'ckeditor'
+gem 'paperclip'

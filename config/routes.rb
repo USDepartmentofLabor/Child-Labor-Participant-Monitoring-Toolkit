@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+  get 'targets/index'
+
   # resource :profile
 
   get 'gender_count/:id' => 'projects#gender_count'
   resources :projects do
-    resources :indicators
+		resources :indicators do 
+			resources :targets
+		end
     resources :reports, except: [:edit, :update]
     resources :children
     resources :households

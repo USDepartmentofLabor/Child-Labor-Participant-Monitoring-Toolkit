@@ -5,7 +5,7 @@
 @import "bootstrap";
 @import "AdminLTE/AdminLTE";
 @import "AdminLTE/skins/skin-blue";
-@import "bootstrap-datepicker";
+@import "datepicker3";
 @import "dataTables/bootstrap/3/jquery.dataTables.bootstrap";
 @import "jGrowl";
 @import "home";
@@ -29,4 +29,35 @@
 
 body {
   background-color: #ECF0F5;
+}
+
+.box-header {
+  padding: 10px 10px 0;
+}
+
+.box-header .box-title,
+.box-header > .fa {
+  line-height: 34px;
+  font-size: 24px;
+  padding-left: 5px;
+}
+
+.box-header > .fa + .box-title {
+  padding-left: 0;
+}
+
+.box-header > .box-tools {
+  top: 9px;
+}
+
+.box.box-primary > .box-header > .fa {
+  color: #3C8DBC;
+}
+
+.dataTables_wrapper {
+  margin-top: -10px;
+}
+
+div.dataTables_info {
+  padding-left: 5px;
 }

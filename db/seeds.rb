@@ -5,5 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-ServiceType.create([{ name: 'Counseling' }, { name: 'Education' }, { name: 'Food' }, { name: 'Clothing' }])
+ServiceType.create([{ name: 'Formal Educational' }, { name: 'Non-Formal Educational' }, { name: 'Vocational' }, { name: 'Other Educational' }, { name: 'Livelihood Employment' }, { name: 'Livelihood Economic Strengthening' }, { name: 'Other Livelihood' }])
+UnitOfMeasure.create([{ name: 'Numeric' }, { name: 'Percentage' }])

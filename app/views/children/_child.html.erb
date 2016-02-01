@@ -1,11 +1,7 @@
 <tr>
-<td><%= child.id %></td>
+<td><%= link_to child.id, project_child_path(@project, child) %></td>
 <td><%= child.fname %></td>
 <td><%= child.lname %></td>
 <td><%= child.gender_name %></td>
 <td><%= child.dob %></td>
-<td><%= format_time(child.updated_at) %></td>
-<td><%= link_to t("general.show"), project_child_path(@project, child) %></td>
-<td><%= link_to t("general.edit"), edit_project_child_path(@project, child) %></td>
-<td><%= link_to t("general.delete"), project_child_path(@project, child), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
