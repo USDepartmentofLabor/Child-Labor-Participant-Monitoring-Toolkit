@@ -5,11 +5,8 @@ module ApplicationHelper
 
   def error_messages(resource)
     return "" if resource.errors.empty?
-    warn_sign = "<i class=\"fa fa-exclamation-circle\"></i>"
+    warn_sign = "<i class=\"fa fa-exclamation-circle\"></i> "
     messages = resource.errors.full_messages.map { |msg| "<li>" + warn_sign + msg + "</li>" }.join
-    # sentence = I18n.t("errors.messages.not_saved",
-    #                   count: resource.errors.count,
-    #                   resource: resource.class.model_name.human.downcase)
 
     html = <<-HTML
     <div class="error_explanation">
