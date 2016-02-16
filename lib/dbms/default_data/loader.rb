@@ -1,4 +1,5 @@
 require "faker"
+require "csv"
 
 module DBMS
   module DefaultData
@@ -7,8 +8,8 @@ module DBMS
     module Loader
       class << self
         def no_data?
-          !WorkStatus.exists? &&
-            !EducationStatus.exists?
+          !WorkStatus.exists? && !EducationStatus.exists? &&
+          !UnitOfMeasure.exists? && !ServiceType.exists?
         end
 
         def load
@@ -28,46 +29,9 @@ module DBMS
           true
         end
 
-        def create_report(user, project)
-          # create report template for education indicators
-          start_date = "#{Date.today.year}-10-1"
-          end_date = "#{Date.today.year+1}-3-31"
-
-          e1_desc = <<-eos
-            E1: Number of children engaged in or at high-risk of entering child labor provided education or vocational services
-          eos
-          Report.create!(
-            title: "Education Indicator E1", 
-            desc: e1_desc,
-            start_date: start_date,
-            end_date: end_date,
-            service_ids: ["1", "2", "3"],
-            service_type: "EducationStatus",
-            target_ids: ["1", "2", "3", "4", "5", "6"],
-            target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
-          )
-
-          e11_desc = <<-eos
-            E1.1: Number of children trafficked or in commercial sexual exploitation, or at high-risk of being
-            trafficked or entering commercial sexual exploitation, provided education or vocational services
-          eos
-          Report.create!(
-            title: "Education Indicator E1.1 CSEC & Trafficked Children", 
-            desc: e11_desc,
-            start_date: start_date,
-            end_date: end_date,
-            service_ids: ["1", "2", "3"],
-            service_type: "EducationStatus",
-            target_ids: ["3", "4", "5", "6"],
-            target_type: "WorkStatus",
-            user_id: user.id,
-            project_id: project.id
-          )
-        end
-
         def create_admin_user
+					puts "creating admin user ..."
+					
           user = User.where(email: "admin@impaqint.com").first_or_create do |user|
             user.name = "Admin"
             user.password = "password"
@@ -76,31 +40,93 @@ module DBMS
         end
 
         def create_dummy_project(user, project_name)
-          project = Project.where(name: "Child Labor Example Project").first_or_create do |project|
+					puts "creating project ..."
+					
+          project = Project.where(name: "EXCEL").first_or_create do |project|
+            project.title = 'Cambodians EXCEL Project Eliminating eXploitive Child Labot through Education and Livelihoods'
             project.user_id = user.id
+            project.cop_num = 'IL-23979-13-75-K'
+            project.start_date = Date.new(2012, 12, 28)
+            project.end_date = Date.new(2016, 12, 31)
+            project.org = "World Vision"
+            project.proj_type = "CLEP"
+            project.funding = 10000000
+            project.total_target_children = 28000
           end
           project
         end
 
-        def create_dummy_child(project)
-          year = Date.today.year - rand(3...18)
-          month = rand(1..12)
-          day = rand(1..28)
+        def load_children_from_file(project)
+					puts "loading children ..."
+					
+          child_inserts = []
+          CSV.foreach("#{::Rails.root}/lib/dbms/default_data/children.csv", :headers => true) do |child_row|
+              first_name = child_row[4].gsub(/\\/, '\&\&').gsub(/'/, "''")
+              middle_name = child_row[5].gsub(/\\/, '\&\&').gsub(/'/, "''")
+              last_name = child_row[6].gsub(/\\/, '\&\&').gsub(/'/, "''")
+              gender = child_row[1] == "male" ? 1 : 2
+              date_of_birth = child_row[21]
+              address = child_row[7].gsub(/\\/, '\&\&').gsub(/'/, "''")
+              city = child_row[8].gsub(/\\/, '\&\&').gsub(/'/, "''")
+              state = child_row[9].gsub(/\\/, '\&\&').gsub(/'/, "''")
+              country = child_row[12].gsub(/\\/, '\&\&').gsub(/'/, "''")
+              child_inserts.push "('#{first_name}', '#{middle_name}', '#{last_name}', #{gender}, '#{date_of_birth}', '#{address}', '#{city}', '#{state}', '#{country}', now(), now())"
+          end
 
-          rand_birth = Date.new(year, month, day)
+          sql = "INSERT INTO children (fname, mname, lname, sex, dob, address, city, state, country, created_at, updated_at) VALUES #{child_inserts.join(", ")}"
+          conn = ActiveRecord::Base.connection
+          conn.execute sql
 
-          child = Child.create!(
-            fname: Faker::Name.first_name,
-            lname: Faker::Name.last_name,
-            sex: rand(1..2),
-            dob: rand_birth, 
-            country: 'US'
-          )
-              
-          project.children << child
-
-          child
+          sql = "INSERT INTO projects_children (project_id, child_id, created_at, updated_at) (SELECT #{project.id} AS project_id, c.id AS child_id, now() AS create_at, now() AS update_at from children c);"
+          conn.execute sql
         end
+				
+				def load_households_from_children(project)
+					
+					puts "loading households ..."
+					
+					(1..11000).each do | household_number |
+						
+						child_id = rand(1..28000)
+						child = Child.find(child_id)
+						
+						if Household.find_by name: child.lname
+							
+							heads_or_tails = rand(1..2)
+							
+							if heads_or_tails == 1
+								household = Household.create(name: child.lname, address: child.address, city: child.city, state: child.state, country: child.country)
+								household.children << child
+								project.households << household
+							else
+								household = Household.find_by name: child.lname
+								household.children << child
+							end
+						else
+							household = Household.create(name: child.lname, address: child.address, city: child.city, state: child.state, country: child.country)
+							household.children << child
+							project.households << household
+						end
+						
+					end
+				end
+				
+				def load_adults_from_households()
+					
+					puts "loading adults ..."
+					
+					Household.all.each do |household|
+						
+						number_of_adults = rand(1..4)
+						
+						number_of_adults.times do |adult_number|
+							gender = rand(1..2)
+							Adult.create(fname: Faker::Name.first_name, lname: household.name, sex: gender, household_id: household.id)
+						end
+						
+					end
+					
+				end
 
         def create_adult(household, family_name)
           adult = Adult.new(
@@ -113,71 +139,18 @@ module DBMS
           adult
         end
 
-        def create_household(project, child)
-          family_name = "#{child.lname}'s Family"
-          household = Household.create!(
-            name: family_name,
-            address: Faker::Address.street_address,
-            city: Faker::Address.city,
-            state: Faker::Address.state,
-            country: "US"
-          )
-
-          project.households << household
-
-          child.update_column(:household_id, household.id)
-
-          create_adult(household, child.lname)
-
-          household
-        end
-
-        def load_dummy_data
+        def load_example_data
           load if no_data?
 
           User.transaction do
             user = create_admin_user
             project = create_dummy_project(user, "Child Labor Example Project")
-
-            index = 1
-            current_year = Date.today.year
-
-            # leave the day to be random
-            start_date = "#{Date.today.year}-10"
-            end_date = "#{Date.today.year+1}-3"
-
-            # create children with different work status
-            WorkStatus.all.each do |status|
-
-              child_num = rand(10) + 2
-
-              child_num.times do
-
-                child = create_dummy_child(project)
-
-                child_status = ChildStatus.create!(
-                  start_date: start_date + "-#{rand(1..28)}",
-                  end_date: end_date + "-#{rand(1..28)}",
-                  work_status_id: status.id, 
-                  education_status_id: EducationStatus.pluck(:id).sample,
-                  child_id: child.id,
-                  user_id: user.id,
-                  project_id: project.id
-                )
-
-
-                if rand(1..2) == 2
-                  create_household(project, child)
-                end
-
-                index += 1
-              end
-            end
-
-            create_report(user, project)
+            load_children_from_file(project)
+						load_households_from_children(project)
+						load_adults_from_households()
           end
         end
-      end 
+      end
     end
   end
 end
