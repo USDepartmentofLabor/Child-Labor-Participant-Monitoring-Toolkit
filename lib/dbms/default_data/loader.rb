@@ -74,6 +74,40 @@ module DBMS
           sql = "INSERT INTO projects_children (project_id, child_id, created_at, updated_at) (SELECT #{project.id} AS project_id, c.id AS child_id, now() AS create_at, now() AS update_at from children c);"
           conn.execute sql
         end
+				
+				def load_households_from_children(project)
+					# from 1 to 11,000
+					(1..11000).each do | household_number |
+						#		child_id = random_number_from_1_to_28000
+						child_id = rand(1..28000)
+						#		child = get_child(child_id)
+						child = Child.find(child_id)
+						#		if child.last_name exists as household.name
+						if Household.find_by name: child.lname
+							#			heads_tails = get_random_50_50
+							heads_or_tails = rand(1..2)
+							# 		if heads
+							if heads_or_tails == 1
+								#				add_as_new_household
+								household = Household.create(name: child.lname, address: child.address, city: child.city, state: child.state, country: child.country)
+								household.children << child
+								project.households << household
+							#			else
+							else
+								#				add_to_existing_household
+								household = Household.find_by name: child.lname
+								household.children << child
+							end
+						#		else
+						else
+							#			add_as_new_household
+							household = Household.create(name: child.lname, address: child.address, city: child.city, state: child.state, country: child.country)
+							household.children << child
+							project.households << household
+						end
+						
+					end
+				end
 
         def create_adult(household, family_name)
           adult = Adult.new(
@@ -112,6 +146,7 @@ module DBMS
             user = create_admin_user
             project = create_dummy_project(user, "Child Labor Example Project")
             load_children_from_file(project)
+						load_households_from_children(project)
           end
         end
       end
