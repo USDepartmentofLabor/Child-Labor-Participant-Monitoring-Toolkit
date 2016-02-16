@@ -30,6 +30,8 @@ module DBMS
         end
 
         def create_admin_user
+					puts "creating admin user ..."
+					
           user = User.where(email: "admin@impaqint.com").first_or_create do |user|
             user.name = "Admin"
             user.password = "password"
@@ -38,6 +40,8 @@ module DBMS
         end
 
         def create_dummy_project(user, project_name)
+					puts "creating project ..."
+					
           project = Project.where(name: "EXCEL").first_or_create do |project|
             project.title = 'Cambodians EXCEL Project Eliminating eXploitive Child Labot through Education and Livelihoods'
             project.user_id = user.id
@@ -53,6 +57,8 @@ module DBMS
         end
 
         def load_children_from_file(project)
+					puts "loading children ..."
+					
           child_inserts = []
           CSV.foreach("#{::Rails.root}/lib/dbms/default_data/children.csv", :headers => true) do |child_row|
               first_name = child_row[4].gsub(/\\/, '\&\&').gsub(/'/, "''")
@@ -76,37 +82,50 @@ module DBMS
         end
 				
 				def load_households_from_children(project)
-					# from 1 to 11,000
+					
+					puts "loading households ..."
+					
 					(1..11000).each do | household_number |
-						#		child_id = random_number_from_1_to_28000
+						
 						child_id = rand(1..28000)
-						#		child = get_child(child_id)
 						child = Child.find(child_id)
-						#		if child.last_name exists as household.name
+						
 						if Household.find_by name: child.lname
-							#			heads_tails = get_random_50_50
+							
 							heads_or_tails = rand(1..2)
-							# 		if heads
+							
 							if heads_or_tails == 1
-								#				add_as_new_household
 								household = Household.create(name: child.lname, address: child.address, city: child.city, state: child.state, country: child.country)
 								household.children << child
 								project.households << household
-							#			else
 							else
-								#				add_to_existing_household
 								household = Household.find_by name: child.lname
 								household.children << child
 							end
-						#		else
 						else
-							#			add_as_new_household
 							household = Household.create(name: child.lname, address: child.address, city: child.city, state: child.state, country: child.country)
 							household.children << child
 							project.households << household
 						end
 						
 					end
+				end
+				
+				def load_adults_from_households()
+					
+					puts "loading adults ..."
+					
+					Household.all.each do |household|
+						
+						number_of_adults = rand(1..4)
+						
+						number_of_adults.times do |adult_number|
+							gender = rand(1..2)
+							Adult.create(fname: Faker::Name.first_name, lname: household.name, sex: gender, household_id: household.id)
+						end
+						
+					end
+					
 				end
 
         def create_adult(household, family_name)
@@ -120,25 +139,6 @@ module DBMS
           adult
         end
 
-        def create_household(project, child)
-          family_name = "#{child.lname}'s Family"
-          household = Household.create!(
-            name: family_name,
-            address: Faker::Address.street_address,
-            city: Faker::Address.city,
-            state: Faker::Address.state,
-            country: "US"
-          )
-
-          project.households << household
-
-          child.update_column(:household_id, household.id)
-
-          create_adult(household, child.lname)
-
-          household
-        end
-
         def load_example_data
           load if no_data?
 
@@ -147,6 +147,7 @@ module DBMS
             project = create_dummy_project(user, "Child Labor Example Project")
             load_children_from_file(project)
 						load_households_from_children(project)
+						load_adults_from_households()
           end
         end
       end
