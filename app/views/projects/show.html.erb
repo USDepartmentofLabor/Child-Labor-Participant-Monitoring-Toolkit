@@ -9,13 +9,13 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Beneficiaries</span>
-        <span class="info-box-number">10,252</span>
+				<span class="info-box-number"><%= number_with_delimiter(@total_children, delimiter: ',') %></span>
 
         <div class="progress">
-          <div class="progress-bar" style="width: 37%"></div>
+          <div class="progress-bar" style="width: <%=number_to_percentage((@total_children / @total_children_target) * 100, precision: 0) %>"></div>
         </div>
         <span class="progress-description">
-          37% of 28,000 targeted beneficiaries serviced
+					<%= number_to_percentage(@total_children_percentage, precision: 0) %> of <%= number_with_delimiter(@total_children_target, delimiter: ',') %> targeted beneficiaries serviced
         </span>
       </div>
       <!-- /.info-box-content -->
@@ -31,13 +31,13 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Households</span>
-        <span class="info-box-number">2,546</span>
+				<span class="info-box-number"><%= number_with_delimiter(@total_households, delimiter: ',') %></span>
 
         <div class="progress">
           <div class="progress-bar" style="width: 18%"></div>
         </div>
         <span class="progress-description">
-          18% of 14,000 targeted households serviced
+					<%= number_to_percentage(@total_households_percentage, precision: 0) %> of <%= number_with_delimiter(@total_households_target) %> targeted households serviced
         </span>
       </div>
       <!-- /.info-box-content -->
@@ -55,7 +55,7 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Services</span>
-        <span class="info-box-number">1,000</span>
+				<span class="info-box-number"><%= number_with_delimiter(@total_services, delimiter: ',') %></span>
 
       </div>
       <!-- /.info-box-content -->
@@ -87,10 +87,10 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Target vs Actual by Reporting Period</h3> (12/28/2013 - 12/31/2016)
+        <h3 class="box-title">Beneficiaries Target vs Actual by Reporting Period</h3> (12/28/2013 - 12/31/2016)
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -104,6 +104,28 @@
       <div class="box-body">
         <div class="chart">
           <canvas id="targetVsActualChart" style="height:230px"></canvas>
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+	<div class="col-md-6">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Households Target vs Actual by Reporting Period</h3> (12/28/2013 - 12/31/2016)
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+            <i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="chart">
+          <canvas id="householdsTargetVsActualChart" style="height:230px"></canvas>
         </div>
       </div>
       <!-- /.box-body -->

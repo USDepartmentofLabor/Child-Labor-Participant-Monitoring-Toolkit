@@ -87,7 +87,7 @@ module DBMS
 					
 					(1..11000).each do | household_number |
 						
-						child_id = rand(1..28000)
+						child_id = rand(1..2546)
 						child = Child.find(child_id)
 						
 						if Household.find_by name: child.lname
