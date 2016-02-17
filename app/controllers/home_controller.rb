@@ -11,6 +11,15 @@ class HomeController < ApplicationController
 
   def dashboard
     @projects = Project.where("user_id = ?", current_user.id)
-    render layout: "front"
+
+    if @projects.length == 0
+      # go to new project page
+      redirect_to new_project_path
+    elsif @projects.length == 1
+      # go to project
+      redirect_to project_path(@projects[0])
+    else
+      render layout: "front"
+    end
   end
 end
