@@ -3,7 +3,12 @@ class ProjectsController < ApplicationController
 
   def show
     @total_children = @project.children.count
+		@total_children_target = @project.total_target_children
+		@total_children_percentage = (@total_children.to_f / @total_children_target.to_f) * 100.0
     @total_households = @project.households.count
+		@total_households_target = 14000
+		@total_households_percentage = (@total_households.to_f / @total_households_target.to_f) * 100.0
+		@total_services = @project.services.count
 
     if @total_children == 0 && @total_households == 0
       render "show_init"
