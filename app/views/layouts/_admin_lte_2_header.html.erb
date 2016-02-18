@@ -1,6 +1,7 @@
 <!-- Main Header -->
 <header class="main-header">
 
+<% if controller_name != 'home' -%>
   <!-- Logo -->
   <%= link_to dashboard_path, class: "logo" do %>
     <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -8,9 +9,19 @@
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg"><%= image_tag "logo.png" %></span>
   <% end %>
+<% end -%>
 
   <!-- Header Navbar -->
   <nav class="navbar navbar-static-top" role="navigation">
+    <% if controller_name == 'home' -%>
+      <!-- Logo -->
+      <%= link_to dashboard_path, class: "logo", style: "background: none" do %>
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><%= image_tag "logo.png" %></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><%= image_tag "logo.png" %></span>
+      <% end %>
+    <% end -%>
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
