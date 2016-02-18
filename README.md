@@ -51,28 +51,36 @@ The text of presentation layer in this project follows [i18n](http://guides.ruby
 	`sudo apt-get -y update`
 
 	`sudo apt-get -y install nodejs`
-	
+
 
 1. `bundle install`
 
 1. `bundle exec rake db:migrate`
 
-1. `bundle exec rake DBMS:load_default_data`
+1. `bundle exec rake db:seed`
+
+1. `bundle exec rake DBMS:load_example_data`
 
 1. Start the server: `bundle exec rails s -b 0.0.0.0`
 
 1. Open up a web browser on your local workstation and navigate to [http://localhost:4000](http://localhost:4000)
 
 
-## Load Dummy Data
+## Load Example Data
 
-You can load some dummy data to play with this system. To load the data:
+You can load some example data to play with this system. To load the data:
 
-  `bundle exec rake DBMS:load_dummy_data`
+  `bundle exec rake DBMS:load_example_data`
 
 
 ## Deployment
 
-Run `cap production deploy` to deploy new code to live server. 
+Run `cap production deploy` to deploy new code to live server.
 
 The default user:pass for the testing server is: `deployer:deploy`
+
+## Reload Example Data
+
+1. `bundle exec rake db:reset`
+
+1. `bundle exec rake DBMS:load_example_data`
