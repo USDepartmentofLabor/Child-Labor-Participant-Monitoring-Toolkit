@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :gender_count, :update]
 
+  def index
+    redirect_to :dashboard
+  end
+
   def show
     @total_children = @project.children.count
 		@total_children_target = @project.total_target_children
@@ -57,7 +61,7 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(
         :name, :title, :cop_num, :start_date, :end_date, :org, :proj_type, :funding, :office_address,
-				:total_target_children, project_regions_attributes: [:country, :state, :id, :_destroy]
+        :total_target_children, project_regions_attributes: [:country, :state, :id, :_destroy]
       )
     end
 end

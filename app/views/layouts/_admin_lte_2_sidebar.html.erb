@@ -11,6 +11,13 @@
         <% end %>
       <% end -%>
 
+      <%= content_tag :li do -%>
+        <%= link_to new_project_path do -%>
+          <i class="fa fa-plus"></i>
+          <%= t("projects.new.title") %>
+        <% end -%>
+      <% end if controller_name == 'projects' -%>
+
       <%= content_tag :li, class: (controller_name == 'children' ? "active" : "")  do -%>
         <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
           <span class="badge pull-right"><b class="caret"></b></span>
