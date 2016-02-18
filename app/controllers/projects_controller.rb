@@ -1,18 +1,14 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :gender_count, :update]
 
-  def index
-    redirect_to :dashboard
-  end
-
   def show
     @total_children = @project.children.count
-		@total_children_target = @project.total_target_children
-		@total_children_percentage = (@total_children.to_f / @total_children_target.to_f) * 100.0
+    @total_children_target = @project.total_target_children
+    @total_children_percentage = (@total_children.to_f / @total_children_target.to_f) * 100.0
     @total_households = Household.count
-		@total_households_target = 14000
-		@total_households_percentage = (@total_households.to_f / @total_households_target.to_f) * 100.0
-		@total_services = @project.services.count
+    @total_households_target = 14000
+    @total_households_percentage = (@total_households.to_f / @total_households_target.to_f) * 100.0
+    @total_services = @project.services.count
 
     if @total_children == 0 && @total_households == 0
       render "show_init"
@@ -54,14 +50,14 @@ class ProjectsController < ApplicationController
 
   private
 
-    def set_project
-      @project = Project.find(params[:id])
-    end
+  def set_project
+    @project = Project.first
+  end
 
-    def project_params
-      params.require(:project).permit(
-        :name, :title, :cop_num, :start_date, :end_date, :org, :proj_type, :funding, :office_address,
-        :total_target_children, project_regions_attributes: [:country, :state, :id, :_destroy]
-      )
-    end
+  def project_params
+    params.require(:project).permit(
+      :name, :title, :cop_num, :start_date, :end_date, :org, :proj_type, :funding, :office_address,
+      :total_target_children, project_regions_attributes: [:country, :state, :id, :_destroy]
+    )
+  end
 end

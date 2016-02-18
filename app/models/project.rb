@@ -13,12 +13,6 @@ class Project < ActiveRecord::Base
 
   has_many :project_regions, dependent: :destroy
 
-  has_many :project_user
-
-  has_many :roles, through: :project_user
-
-  has_many :users, through: :project_user
-
   accepts_nested_attributes_for :project_regions, allow_destroy: true, reject_if: :all_blank
 
   after_create :generate_common_indicators

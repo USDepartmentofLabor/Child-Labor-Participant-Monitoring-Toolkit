@@ -147,17 +147,6 @@ ActiveRecord::Schema.define(version: 20160222164723) do
 
   add_index "project_regions", ["project_id"], name: "index_project_regions_on_project_id", using: :btree
 
-  create_table "project_users", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
-    t.integer  "role_ids",   default: [],              array: true
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  add_index "project_users", ["project_id"], name: "index_project_users_on_project_id", using: :btree
-  add_index "project_users", ["user_id"], name: "index_project_users_on_user_id", using: :btree
-
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",            null: false
@@ -289,8 +278,6 @@ ActiveRecord::Schema.define(version: 20160222164723) do
   add_foreign_key "indicators", "projects"
   add_foreign_key "indicators", "unit_of_measures"
   add_foreign_key "project_regions", "projects"
-  add_foreign_key "project_users", "projects"
-  add_foreign_key "project_users", "users"
   add_foreign_key "service_instances", "children"
   add_foreign_key "service_instances", "projects"
   add_foreign_key "service_instances", "services"
