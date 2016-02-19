@@ -1,8 +1,6 @@
 class Household < ActiveRecord::Base
+  validates :name, presence: true
   validates :country, length: {maximum: 2}
-
-  has_many :projects_households, dependent: :destroy
-  has_many :projects, through: :projects_households
 
   has_many :adults, dependent: :destroy
   has_many :children

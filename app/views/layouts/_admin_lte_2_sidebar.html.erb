@@ -52,13 +52,13 @@
         <% end -%>
         <ul>
           <li>
-            <%= link_to project_households_path(@project) do -%>
+            <%= link_to households_path() do -%>
               <i class="fa fa-angle-double-right"></i>
               <%= t("households.index.title") %>
             <% end -%>
           </li>
           <li>
-            <%= link_to new_project_household_path(@project) do -%>
+            <%= link_to new_household_path() do -%>
               <i class="fa fa-angle-double-right"></i>
               <%= t("households.index.add") %>
             <% end -%>

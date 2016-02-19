@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to project_households_path(@project), class: 'btn btn-default' do %>
+  <%= link_to households_path(), class: 'btn btn-default' do %>
     <%= fa_icon "caret-left" %>
     <%= t("general.back") %>
   <% end %>
-  <%= link_to edit_project_household_path(@project, @household), class: 'btn btn-primary' do %>
+  <%= link_to edit_household_path(@household), class: 'btn btn-primary' do %>
     <%= fa_icon "pencil" %>
     <%= t("general.edit") %>
   <% end %>

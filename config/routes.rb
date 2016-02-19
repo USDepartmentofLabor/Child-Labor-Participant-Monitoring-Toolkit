@@ -7,17 +7,17 @@ Rails.application.routes.draw do
 
   get 'gender_count/:id' => 'projects#gender_count'
   resources :projects do
-		resources :indicators do 
+		resources :indicators do
 			resources :targets
 		end
     resources :reports, except: [:edit, :update]
     resources :children
-    resources :households
     resources :custom_fields
     resources :users
     resources :services
   end
-
+  
+  resources :households
   resources :users
 
   # a trick to avoid generating children urls again

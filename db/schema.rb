@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126194336) do
+ActiveRecord::Schema.define(version: 20160218203735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20160126194336) do
   end
 
   create_table "households", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                 null: false
     t.string   "address"
     t.string   "city"
     t.string   "state"
@@ -184,16 +184,6 @@ ActiveRecord::Schema.define(version: 20160126194336) do
 
   add_index "projects_children", ["child_id"], name: "index_projects_children_on_child_id", using: :btree
   add_index "projects_children", ["project_id"], name: "index_projects_children_on_project_id", using: :btree
-
-  create_table "projects_households", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "household_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "projects_households", ["household_id"], name: "index_projects_households_on_household_id", using: :btree
-  add_index "projects_households", ["project_id"], name: "index_projects_households_on_project_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.string   "title"
@@ -302,8 +292,6 @@ ActiveRecord::Schema.define(version: 20160126194336) do
   add_foreign_key "project_regions", "projects"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
-  add_foreign_key "projects_households", "households"
-  add_foreign_key "projects_households", "projects"
   add_foreign_key "service_instances", "children"
   add_foreign_key "service_instances", "projects"
   add_foreign_key "service_instances", "services"

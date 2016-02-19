@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe "households/edit", type: :view do
   before(:each) do
     @household = assign(:household, Household.create!(
-      :name => "MyString",
-      :address => "MyString",
-      :city => "MyString",
-      :state => "MyString",
-      :country => "MyString",
-      :phone => "MyString"
+      :name => "Name",
+      :address => "Address",
+      :city => "City",
+      :state => "State",
+      :country => "US",
+      :phone => "Phone"
     ))
   end
 

@@ -7,7 +7,7 @@ RSpec.describe "households/show", type: :view do
       :address => "Address",
       :city => "City",
       :state => "State",
-      :country => "Country",
+      :country => "US",
       :phone => "Phone"
     ))
   end
