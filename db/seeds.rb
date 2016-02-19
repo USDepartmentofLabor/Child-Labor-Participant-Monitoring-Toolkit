@@ -29,3 +29,6 @@ WorkStatus.create([
   { name: 'Worst Form of Child Labor (WFCL)', work_type: 'CL' },
   { name: 'High Risk of Entering Child Labor', work_type: 'CACHR' }
 ])
+ProjectRegion.create([
+  { country: 'US', state: 'MD'}
+])

@@ -38,9 +38,9 @@ module ApplicationHelper
     country_iso.translations[I18n.locale.to_s] || country_iso.name
   end
 
-  def group_state_options(project_regions)
+  def group_state_options(regions)
     grouped_options = {}
-    project_regions.each do |region|
+    regions.each do |region|
       country = country_name_in_text(region.country)
       if grouped_options.has_key?(country)
         grouped_options[country] << region.state
