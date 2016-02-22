@@ -13,13 +13,13 @@
               <%= render partial: 'custom_field', locals: { custom_field: custom_field, options: {fill: false, disabled: true}} %>
             </div>
             <div class="col-md-4">
-              <%= link_to edit_project_custom_field_path(project_id: custom_field.project_id, id: custom_field.id, type: @model_type),
+              <%= link_to edit_custom_field_path(id: custom_field.id, type: @model_type),
                 remote: true, class: "btn btn-default delete-custom-field" do
                %>
                 <%= fa_icon "pencil" %> <%= t("general.edit") %>
               <% end %>
 
-              <%= link_to project_custom_field_path(project_id: custom_field.project_id, id: custom_field.id, type: @model_type),
+              <%= link_to custom_field_path(id: custom_field.id, type: @model_type),
                 method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default delete-custom-field" do
                %>
                 <%= fa_icon "times" %> <%= t("general.delete") %>
