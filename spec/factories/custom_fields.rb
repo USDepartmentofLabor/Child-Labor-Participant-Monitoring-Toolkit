@@ -4,7 +4,6 @@ FactoryGirl.define do
     field_type { CustomFieldGroup::FIELD_TYPES_OPTIONS[CustomFieldGroup::FIELD_TYPES_OPTIONS.keys.sample] }
     selections "a\r\nb\r\nc\r\nd"
     validation_rules nil
-    project_id 1
     model_type nil
   end
 end
