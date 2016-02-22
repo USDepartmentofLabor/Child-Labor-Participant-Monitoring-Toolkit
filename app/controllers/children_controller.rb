@@ -53,7 +53,7 @@ class ChildrenController < ApplicationController
 
   # PATCH/PUT /children/1
   def update
-    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child")
+    @custom_fields = CustomField.where(model_type: "Child")
     if @child.update(child_params)
       if params[:custom_fields].present? && @custom_fields.length > 0
         CustomFieldGroup.create_or_update(@child, @custom_fields, params_for_custom_field)

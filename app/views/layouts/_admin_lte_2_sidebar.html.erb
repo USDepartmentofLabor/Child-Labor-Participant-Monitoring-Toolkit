@@ -37,7 +37,7 @@
             <% end -%>
           </li>
           <li>
-            <%= link_to new_project_custom_field_path(@project, model_type: "Child") do -%>
+            <%= link_to new_custom_field_path(@project, model_type: "Child") do -%>
               <i class="fa fa-angle-double-right"></i>
               <%= t("custom_fields.index") %>
             <% end -%>
@@ -64,7 +64,7 @@
             <% end -%>
           </li>
           <li>
-            <%= link_to new_project_custom_field_path(@project, model_type: "Household") do -%>
+            <%= link_to new_custom_field_path(@project, model_type: "Household") do -%>
               <i class="fa fa-angle-double-right"></i>
               <%= t("custom_fields.index") %>
             <% end -%>

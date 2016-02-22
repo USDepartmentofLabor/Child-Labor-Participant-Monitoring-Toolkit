@@ -1,5 +1,4 @@
 class CustomFieldsController < ApplicationController
-  before_action :set_project
   before_action :set_custom_field, only: [:edit, :update, :destroy]
 
   def new
@@ -9,8 +8,9 @@ class CustomFieldsController < ApplicationController
     end
     @model_type = params[:model_type]
 
-    @custom_fields = CustomField.where(project_id: @project.id, model_type: @model_type)
-    @custom_field = CustomField.new(project_id: @project.id, model_type: @model_type)
+    @custom_fields = CustomField.where(model_type: @model_type)
+    @custom_field = CustomField.new(model_type: @model_type)
+    @project = 1
   end
 
   def edit
@@ -23,7 +23,6 @@ class CustomFieldsController < ApplicationController
     end
 
     @custom_field = CustomField.new(custom_field_params)
-    @custom_field.project_id = @project.id
 
     if @custom_field.save
       redirect_to :back, notice: t("action_messages.create", model: CustomField.model_name.human)
@@ -47,19 +46,11 @@ class CustomFieldsController < ApplicationController
       format.json { render json: {id: @custom_field.id, message: t("action_messages.destroy", model: CustomField.model_name.human)} }
     end
   end
-  
-  private
 
-  def set_project
-    @project = Project.find(params[:project_id])
-  end
+  private
 
   def set_custom_field
     @custom_field = CustomField.find(params[:id])
-    if @custom_field.project_id != @project.id
-      raise ActiveRecord::RecordNotFound
-    end
-    @custom_field
   end
 
   def custom_field_params

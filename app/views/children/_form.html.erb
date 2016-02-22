@@ -72,7 +72,7 @@
     <div class="panel-body">
       <div class="form-group">
         <%= f.label :household_id %>
-        <%= f.select :household_id, household_options(@project), { include_blank: true }, {class: "form-control", id: "household-selection"} %>
+        <%= f.select :household_id, household_options(), { include_blank: true }, {class: "form-control", id: "household-selection"} %>
       </div>
     </div>
   </div>

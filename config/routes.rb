@@ -12,13 +12,13 @@ Rails.application.routes.draw do
 		end
     resources :reports, except: [:edit, :update]
     resources :children
-    resources :custom_fields
     resources :users
     resources :services
   end
   
   resources :households
   resources :users
+	resources :custom_fields
 
   # a trick to avoid generating children urls again
   resources :children, only: [] do
