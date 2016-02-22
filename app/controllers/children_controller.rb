@@ -19,24 +19,24 @@ class ChildrenController < ApplicationController
   def show
     @child_statuses = ChildStatus.where(child_id: @child.id, project_id: @project.id).includes(:work_status, :education_status)
     @service_instances = ServiceInstance.where(child_id: @child.id, project_id: @project.id).includes(:service)
-    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child").with_values(@child.id)
+    @custom_fields = CustomField.where(model_type: "Child").with_values(@child.id)
   end
 
   # GET /children/new
   def new
     @child = Child.new
-    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child")
+    @custom_fields = CustomField.where(model_type: "Child")
   end
 
   # GET /children/1/edit
   def edit
-    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child").with_values(@child.id)
+    @custom_fields = CustomField.where(model_type: "Child").with_values(@child.id)
   end
 
   # POST /children
   def create
     @child = Child.new(child_params)
-    @custom_fields = CustomField.where(project_id: @project.id, model_type: "Child")
+    @custom_fields = CustomField.where(model_type: "Child")
 
     if @child.save
       @project.children << @child
