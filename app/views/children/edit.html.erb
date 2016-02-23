@@ -1,16 +1,16 @@
 <div class="page-header">
-  <%= link_to project_children_path(@project), class: 'btn btn-default' do %>
+  <%= link_to children_path, class: 'btn btn-default' do %>
     <%= fa_icon "caret-left" %>
     <%= t("general.back") %>
   <% end %>
-  <%= link_to project_child_path(@project, @child), class: 'btn btn-primary' do %>
+  <%= link_to child_path(@child), class: 'btn btn-primary' do %>
     <%= fa_icon "info-circle" %> <%= t("general.show") %>
   <% end %>
   <h1><%= t("children.edit.title") %></h1>
 </div>
 
 <div class="row">
-	<div class="col-md-12">
-		<%= render 'form' %>
-	</div>
+  <div class="col-md-12">
+    <%= render 'form' %>
+  </div>
 </div>

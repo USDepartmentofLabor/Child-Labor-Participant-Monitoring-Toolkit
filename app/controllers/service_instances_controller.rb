@@ -1,11 +1,9 @@
 class ServiceInstancesController < ApplicationController
-  before_action :set_project
   before_action :set_child
 
   def create
     @service_instance = ServiceInstance.new(service_instance_params)
     @service_instance.child_id = @child.id
-    @service_instance.project_id = @project.id
 
     if @service_instance.save
       redirect_to :back, notice: t("action_messages.create", model: ServiceInstance.model_name.human)
@@ -16,10 +14,6 @@ alert)
   end
 
   private
-
-    def set_project
-      @project = Project.find(params[:service_instance][:project_id])
-    end
 
     def set_child
       @child = Child.find(params[:child_id])
