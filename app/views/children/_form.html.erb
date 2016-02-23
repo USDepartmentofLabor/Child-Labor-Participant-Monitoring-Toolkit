@@ -1,4 +1,4 @@
-<%= form_for([@project, @child], html: { role: "form" }) do |f| %>
+<%= form_for(@child, html: { role: "form" }) do |f| %>
   <%= error_messages(@child) %>
   <div class="panel panel-default">
     <div class="panel-body">
@@ -72,7 +72,7 @@
     <div class="panel-body">
       <div class="form-group">
         <%= f.label :household_id %>
-        <%= f.select :household_id, household_options(), { include_blank: true }, {class: "form-control", id: "household-selection"} %>
+        <%= f.select :household_id, household_options, { include_blank: true }, {class: "form-control", id: "household-selection"} %>
       </div>
     </div>
   </div>
@@ -89,18 +89,18 @@
       </div>
       <div class="form-group">
         <%= f.label :state %>
-        <%= f.select :state, group_state_options(@project_regions), {}, {class: "form-control"} %>
+        <%= f.select :state, group_state_options(ProjectRegion.all), {}, {class: "form-control"} %>
       </div>
       <div class="form-group">
         <%= f.label :country %>
-        <%= f.country_select :country, {only: @project_regions.map(&:country).uniq}, {class: "form-control"} %>
+        <%= f.country_select :country, {only: ProjectRegion.all.map(&:country).uniq}, {class: "form-control"} %>
       </div>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-4 col-sm-offset-4">
-      <%= link_to project_children_path(@project), :class => 'btn btn-danger btn-block' do %>
+      <%= link_to children_path, :class => 'btn btn-danger btn-block' do %>
         <i class="fa fa-times"></i>
         <%= t("general.cancel") %>
       <% end %>

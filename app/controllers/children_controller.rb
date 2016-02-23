@@ -1,24 +1,15 @@
 class ChildrenController < ApplicationController
-  before_action :set_project
   before_action :set_child, only: [:show, :edit, :update, :destroy]
 
   # GET /children
   def index
-		@children = @project.children
-
-    @search = @project.children.ransack(params[:q])
-    @search.build_condition
-  end
-
-  def search
-    @search = @project.children.ransack(params[:q])
-    @children = @search.result(distinct: true)
+    @children = Child.all
   end
 
   # GET /children/1
   def show
-    @child_statuses = ChildStatus.where(child_id: @child.id, project_id: @project.id).includes(:work_status, :education_status)
-    @service_instances = ServiceInstance.where(child_id: @child.id, project_id: @project.id).includes(:service)
+    @child_statuses = @child.statuses.includes(:work_status, :education_status)
+    @service_instances = @child.service_instances.includes(:service)
     @custom_fields = CustomField.where(model_type: "Child").with_values(@child.id)
   end
 
@@ -39,13 +30,11 @@ class ChildrenController < ApplicationController
     @custom_fields = CustomField.where(model_type: "Child")
 
     if @child.save
-      @project.children << @child
-
       if params[:custom_fields].present? && @custom_fields.length > 0
         CustomFieldGroup.create_or_update(@child, @custom_fields, params_for_custom_field)
       end
 
-      redirect_to new_project_child_path(@project), notice: t("action_messages.create", model: Child.model_name.human)
+      redirect_to new_child_path, notice: t("action_messages.create", model: Child.model_name.human)
     else
       render :new
     end
@@ -58,32 +47,29 @@ class ChildrenController < ApplicationController
       if params[:custom_fields].present? && @custom_fields.length > 0
         CustomFieldGroup.create_or_update(@child, @custom_fields, params_for_custom_field)
       end
-      redirect_to project_child_path(@project, @child), notice: t("action_messages.update", model: Child.model_name.human)
+      redirect_to child_path(@child), notice: t("action_messages.update", model: Child.model_name.human)
     else
       render :edit
     end
   end
 
-  # only delete child-project relation. Never delete child record.
   def destroy
-    ProjectsChild.where(project_id: @project.id, child_id: @child.id).first.destroy
-    redirect_to project_children_path(@project), notice: t("action_messages.destroy", model: Child.model_name.human)
+    @child.destroy
+    redirect_to children_path, notice: t("action_messages.destroy", model: Child.model_name.human)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_child
-      @child = @project.children.find(params[:id])
-    end
-
-    def set_project
-      @project = Project.find(params[:project_id])
-      @project_regions = @project.project_regions
+      @child = Child.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def child_params
-      params.require(:child).permit(:fname, :lname, :mname, :sex, :dob, :address, :city, :state, :country, :household_id, :avatar)
+      params.require(:child).permit(
+        :fname, :lname, :mname, :sex, :dob, :address, :city, :state, :country,
+        :household_id, :avatar
+      )
     end
 
     def params_for_custom_field
