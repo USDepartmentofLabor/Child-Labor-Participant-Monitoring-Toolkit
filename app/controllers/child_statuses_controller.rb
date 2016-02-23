@@ -20,6 +20,6 @@ class ChildStatusesController < ApplicationController
     end
 
     def child_status_params
-      params.require(:child_status).permit(:start_date, :end_date, :work_status_id, :education_status_id, :note, :project_id)
+      params.require(:child_status).permit(:start_date, :end_date, :work_status_id, :education_status_id, :note)
     end
 end
