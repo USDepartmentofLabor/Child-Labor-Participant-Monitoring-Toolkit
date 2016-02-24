@@ -5,7 +5,7 @@
         <%= fa_icon "cutlery" %>
         <h1 class="box-title"><%= t("services.index.title") %></h1>
         <div class="box-tools">
-          <%= link_to new_service_path(), class: "btn btn-primary" do %>
+          <%= link_to new_service_path, class: "btn btn-primary" do %>
             <%= fa_icon "plus" %>
             <%= t("services.index.add") %>
           <% end %>
