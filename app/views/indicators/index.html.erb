@@ -17,13 +17,13 @@
         </tr>
       </thead>
 
-    <tbody>
-      <%= content_tag_for(:tr, @indicators) do |indicator| %>
-        <td><%= indicator.code || indicator.id %></td>
-				<td><%= link_to indicator.indicator, indicator_path(indicator) %></td>
-        <td><%= indicator.indicator_type %></td>
-    	<% end %>
-  	</tbody>
-	</table>
-	</div>
+      <tbody>
+        <%= content_tag_for(:tr, @indicators) do |indicator| %>
+          <td><%= indicator.code || indicator.id %></td>
+          <td><%= link_to indicator.indicator, indicator_path(indicator) %></td>
+          <td><%= indicator.indicator_type %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
