@@ -36,6 +36,12 @@ RSpec.describe IndicatorsController, type: :controller do
   # IndicatorsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  let(:user) { create(:user) }
+
+  before(:each) do
+    sign_in user
+  end
+
   describe "GET #index" do
     it "assigns all indicators as @indicators" do
       indicator = Indicator.create! valid_attributes
@@ -54,7 +60,7 @@ RSpec.describe IndicatorsController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new indicator as @indicator" do
-      get :new, {}, valid_session
+      get :new, {}
       expect(assigns(:indicator)).to be_a_new(Indicator)
     end
   end

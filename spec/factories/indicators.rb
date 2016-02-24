@@ -1,18 +1,15 @@
 require 'faker'
 
 FactoryGirl.define do
-	factory :indicator do
-		code "IND 1.1"
-		indicator "TI : Number of items we are counting "
-		indicator_type "Custom"
-		use { Faker::Lorem.paragraph }
-		definitions { Faker::Lorem.paragraph }
-		#user_id 1
-		project_id 1
-		baseline { Faker::Number.decimal(4) }
-		unit_of_measure_id 1
+  factory :indicator do
+    code "IND 1.1"
+    indicator "TI : Number of items we are counting "
+    indicator_type "Custom"
+    use { Faker::Lorem.paragraph }
+    definitions { Faker::Lorem.paragraph }
+    baseline { Faker::Number.decimal(4) }
+    unit_of_measure_id 1
 
-		project
-		unit_of_measure
+    unit_of_measure
   end
 end

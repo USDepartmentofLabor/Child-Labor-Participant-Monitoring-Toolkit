@@ -1,5 +1,4 @@
 class IndicatorsController < ApplicationController
-  before_action :set_project
   before_action :set_indicator, only: [:show, :edit, :update, :destroy]
 
   # GET /indicators
@@ -24,7 +23,7 @@ class IndicatorsController < ApplicationController
   def create
     @indicator = Indicator.new(indicator_params)
     @indicator.user_id = current_user.id
-		@indicator.indicator_type = "Custom"
+    @indicator.indicator_type = "Custom"
 
     if @indicator.save
       redirect_to indicators_path(@indicator), notice: t("action_messages.create", model: "Indicator")
@@ -49,10 +48,6 @@ class IndicatorsController < ApplicationController
   end
 
   private
-
-    def set_project
-      @project = Project.first
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_indicator
