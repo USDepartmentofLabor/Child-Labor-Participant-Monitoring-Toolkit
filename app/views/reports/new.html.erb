@@ -3,19 +3,19 @@
 </div>
 
 <div class="row">
-<div class="col-sm-12">
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<%= render("form") %>
-		</div>
-	</div>
-</div>
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render("form") %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <% content_for :scripts do %>
-<script type="text/javascript">
-jQuery(document).ready(function() {
-	ReportWizard.init();
-});
-</script>
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+      ReportWizard.init();
+    });
+  </script>
 <% end %>

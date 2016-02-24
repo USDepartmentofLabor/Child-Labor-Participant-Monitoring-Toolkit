@@ -1,5 +1,4 @@
 class ReportsController < ApplicationController
-  before_action :set_project
   before_action :set_report, only: [:show, :destroy]
 
   def index
@@ -12,7 +11,7 @@ class ReportsController < ApplicationController
 
     if !@indicator.nil? && @indicator.indicator_type == "Common"
       if @indicator.code == "E1"
-        education_report = EducationIndicator.new(EducationStatus.pluck(:id), @report.start_date, @report.end_date, @report.project_id)
+        education_report = EducationIndicator.new(EducationStatus.pluck(:id), @report.start_date, @report.end_date)
 
         @results = education_report.generate
 
@@ -35,8 +34,9 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user_id = current_user.id
+
     if @report.save
-      redirect_to reports_path(), notice: t("action_messages.create", model: "Report")
+      redirect_to reports_path, notice: t("action_messages.create", model: "Report")
     else
       render :new
     end
@@ -44,7 +44,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-    redirect_to reports_url(), notice: t("action_messages.destroy", model: "Report")
+    redirect_to reports_url, notice: t("action_messages.destroy", model: "Report")
   end
 
   private
@@ -58,16 +58,7 @@ class ReportsController < ApplicationController
       )
     end
 
-    def set_project
-      @project = Project.first
-    end
-
     def set_report
-      # @report = Report.find(params[:id])
-      # if @report.user_id != current_user.id
-      #   raise ActiveRecord::RecordNotFound
-      # end
-      # @report
       @report = Report.find(params[:id])
     end
 end
