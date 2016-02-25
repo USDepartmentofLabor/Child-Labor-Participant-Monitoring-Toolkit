@@ -5,14 +5,14 @@ class ServicesController < ApplicationController
 
   # GET /services
   def index
-    @services = @project.services.order(:name).page(params[:page])
+    @services = Service.order(:name).page(params[:page])
 
-    @search = @project.services.ransack(params[:q])
+    @search = Service.ransack(params[:q])
     @search.build_condition
   end
 
   def search
-    @search = @project.services.ransack(params[:q])
+    @search = Service.ransack(params[:q])
     @services = @search.result(distinct: true)
   end
 
@@ -33,10 +33,8 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
 
-    @service.project_id = @project.id
-
     if @service.save
-      redirect_to project_services_path(@project), notice: t("action_messages.create", model: Service.model_name.human)
+      redirect_to services_path(), notice: t("action_messages.create", model: Service.model_name.human)
     else
       render :new
     end
@@ -45,7 +43,7 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   def update
     if @service.update(service_params)
-      redirect_to project_service_path(@project, @service), notice: t("action_messages.update", model: Service.model_name.human)
+      redirect_to service_path(@service), notice: t("action_messages.update", model: Service.model_name.human)
     else
       render :edit
     end
@@ -53,23 +51,23 @@ class ServicesController < ApplicationController
 
   # only delete service-project relation. Never delete service record.
   def destroy
-    ProjectsService.where(project_id: @project.id, service_id: @service.id).first.destroy
-    redirect_to project_services_path(@project), notice: t("action_messages.destroy", model: Service.model_name.human)
+    Service.where(service_id: @service.id).first.destroy
+    redirect_to services_path(), notice: t("action_messages.destroy", model: Service.model_name.human)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service
-      @service = @project.services.find(params[:id])
+      @service = Service.find(params[:id])
     end
 
     def set_project
-      @project = Project.find(params[:project_id])
-      @project_regions = @project.project_regions
+      @project = Project.first
+      @regions = ProjectRegion.all
     end
 
     def set_children
-      @children = @project.children.all
+      @children = Child.all
     end
 
     # Only allow a trusted parameter "white list" through.

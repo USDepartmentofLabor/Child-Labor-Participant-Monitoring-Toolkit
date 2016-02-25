@@ -2,7 +2,6 @@ class Service < ActiveRecord::Base
   has_many :service_instances
   has_and_belongs_to_many :children
   belongs_to :service_type
-  belongs_to :project
 
   validates :name, :service_type_id, :start_date, :end_date, presence: true
 

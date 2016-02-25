@@ -1,10 +1,10 @@
 <tr>
-  <td><%= link_to service.name, project_service_path(@project, service) %></td>
+  <td><%= link_to service.name, service_path(service) %></td>
   <td><%= service.service_type.name unless service.service_type.nil? %></td>
   <td><%= service.start_date %></td>
   <td><%= service.end_date %></td>
   <td>
-    <%= link_to project_service_path(@project, service), method: :delete, data: { confirm: 'Are you sure?' },
+    <%= link_to service_path(service), method: :delete, data: { confirm: 'Are you sure?' },
       class: "text-center btn-block" do %>
       <span class="sr-only"><%= t("general.delete") %></span>
       <%= fa_icon "times" %>
