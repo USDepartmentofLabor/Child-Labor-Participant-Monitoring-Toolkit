@@ -18,7 +18,7 @@
       <% @projects.each do |project| %>
         <%= link_to project, class: "list-group-item" do %>
           <%= project.name %>
-          <span class="badge pull-right"><%= project.children.count %></span>
+          <span class="badge pull-right"><%= Child.count %></span>
         <% end %>
       <% end %>
       </div>

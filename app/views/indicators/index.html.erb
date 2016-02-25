@@ -1,5 +1,5 @@
 <div class="page-header">
-  <%= link_to new_project_indicator_path, class: 'btn btn-primary pull-right' do %>
+  <%= link_to new_indicator_path, class: 'btn btn-primary pull-right' do %>
     <%= fa_icon "plus" %>
     <%= t("indicators.index.add") %>
   <% end %>
@@ -20,7 +20,7 @@
     <tbody>
       <%= content_tag_for(:tr, @indicators) do |indicator| %>
         <td><%= indicator.code || indicator.id %></td>
-				<td><%= link_to indicator.indicator, project_indicator_path(@project, indicator) %></td>
+				<td><%= link_to indicator.indicator, indicator_path(indicator) %></td>
         <td><%= indicator.indicator_type %></td>
     	<% end %>
   	</tbody>

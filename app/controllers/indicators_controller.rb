@@ -4,7 +4,7 @@ class IndicatorsController < ApplicationController
 
   # GET /indicators
   def index
-    @indicators = Indicator.where(project_id: @project.id).order(:code).all
+    @indicators = Indicator.order(:code).all
   end
 
   # GET /indicators/1
@@ -24,11 +24,10 @@ class IndicatorsController < ApplicationController
   def create
     @indicator = Indicator.new(indicator_params)
     @indicator.user_id = current_user.id
-    @indicator.project_id = @project.id
 		@indicator.indicator_type = "Custom"
 
     if @indicator.save
-      redirect_to project_indicators_path(@project,@indicator), notice: t("action_messages.create", model: "Indicator")
+      redirect_to indicators_path(@indicator), notice: t("action_messages.create", model: "Indicator")
     else
       render :new
     end
@@ -37,7 +36,7 @@ class IndicatorsController < ApplicationController
   # PATCH/PUT /indicators/1
   def update
     if @indicator.update(indicator_params)
-      redirect_to project_indicator_path(@project,@indicator), notice: t("action_messages.update", model: "Indicator")
+      redirect_to indicator_path(@indicator), notice: t("action_messages.update", model: "Indicator")
     else
       render :edit
     end
@@ -46,18 +45,18 @@ class IndicatorsController < ApplicationController
   # DELETE /indicators/1
   def destroy
     @indicator.destroy
-    redirect_to project_indicators_url, notice: t("action_messages.destroy", model: "Indicator")
+    redirect_to indicators_url, notice: t("action_messages.destroy", model: "Indicator")
   end
 
   private
 
     def set_project
-      @project = Project.find(params[:project_id])
+      @project = Project.first
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_indicator
-      @indicator = @project.indicators.find(params[:id])
+      @indicator = Indicator.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

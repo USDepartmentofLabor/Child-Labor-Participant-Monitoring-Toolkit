@@ -1,10 +1,10 @@
 <div class="page-header">
-  <%= link_to project_indicators_path(@project), class: 'btn btn-default' do %>
+  <%= link_to indicators_path(), class: 'btn btn-default' do %>
     <%= fa_icon "caret-left" %>
     <%= t("general.back") %>
   <% end %>
   <% if @indicator.indicator_type == "Custom" %>
-    <%= link_to edit_project_indicator_path(@project, @indicator), 
+    <%= link_to edit_indicator_path(@indicator), 
                 class: 'btn btn-primary' do %>
       <%= fa_icon "pencil" %>
       <%= t("general.edit") %>
@@ -15,21 +15,21 @@
 
 <div class="box box-primary">
   <div class="box-body">
-		
+
 		<div class="row">
 			<div class="col-md-12">
 				<h2><%= @indicator.code || @indicator.id %> <%= @indicator.indicator %></h2>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-md-12">
 				<strong><%= Indicator.human_attribute_name(:indicator_type) %></strong> <%= @indicator.indicator_type %>
 			</div>
 		</div>
-		
+
 		<br/>
-		
+
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-info">
@@ -42,7 +42,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-info">
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-info">
@@ -68,6 +68,6 @@
 				</div>
 			</div>
 		</div>
-		
+
   </div>
 </div>
