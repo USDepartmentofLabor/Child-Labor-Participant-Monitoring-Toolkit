@@ -2,8 +2,6 @@ class Project < ActiveRecord::Base
   validates :name, presence: true
   validates :user_id, presence: true
 
-  has_many :indicators
-
   has_many :project_regions, dependent: :destroy
 
   accepts_nested_attributes_for :project_regions, allow_destroy: true, reject_if: :all_blank

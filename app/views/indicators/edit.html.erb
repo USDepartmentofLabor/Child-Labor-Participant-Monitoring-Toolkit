@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to project_indicators_path(@project), class: 'btn btn-default' do %>
+  <%= link_to indicators_path(), class: 'btn btn-default' do %>
     <%= fa_icon "caret-left" %>
     <%= t("general.back") %>
   <% end %>
-  <%= link_to project_indicator_path(@project, @indicator), class: 'btn btn-primary' do %>
+  <%= link_to indicator_path(@indicator), class: 'btn btn-primary' do %>
     <%= fa_icon "info-circle" %> <%= t("general.show") %>
   <% end %>
   <h1><%= t("indicators.edit.title") %></h1>
