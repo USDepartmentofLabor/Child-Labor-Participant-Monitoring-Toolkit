@@ -1,31 +1,28 @@
 Rails.application.routes.draw do
-
   mount Ckeditor::Engine => '/ckeditor'
   get 'targets/index'
 
   # resource :profile
 
   get 'gender_count/:id' => 'projects#gender_count'
-  resources :projects do
-		resources :indicators do
-			resources :targets
-		end
-    resources :reports, except: [:edit, :update]
-    resources :children
-    resources :users
-    resources :services
-  end
-  
+  resources :projects
+
+  resources :children
   resources :households
+  resources :services
   resources :users
-	resources :custom_fields
+  resources :indicators do
+    resources :targets
+  end
+  resources :custom_fields
+  resources :reports, except: [:edit, :update]
 
   # a trick to avoid generating children urls again
   resources :children, only: [] do
     resources :child_statuses
     resources :service_instances
     collection do
-      match "search" => 'children#search', via: [:get, :post], as: :search
+      match 'search' => 'children#search', via: [:get, :post], as: :search
     end
   end
 
@@ -44,5 +41,5 @@ Rails.application.routes.draw do
 
   get 'home' => 'home#dashboard', as: :dashboard
 
-  root to: "home#index"
+  root to: 'home#index'
 end

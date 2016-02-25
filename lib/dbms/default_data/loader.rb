@@ -7,27 +7,6 @@ module DBMS
 
     module Loader
       class << self
-        def no_data?
-          !WorkStatus.exists? && !EducationStatus.exists? &&
-            !UnitOfMeasure.exists? && !ServiceType.exists?
-        end
-
-        def load
-          raise DataAlreadyLoaded.new('Some configuration data is already loaded.') unless no_data?
-
-          # CL: Children Engaged in Child Labor
-          # CAHR: Children at High-Risk of Entering Child Labor
-          WorkStatus.create!(name: 'Engaged in Child Labor', work_type: 'CL')
-          WorkStatus.create!(name: 'Hazardous Child Labor', work_type: 'CL')
-          WorkStatus.create!(name: 'Worst Form of Child Labor (WFCL)', work_type: 'CL')
-          WorkStatus.create!(name: 'High Risk of Entering Child Labor', work_type: 'CACHR')
-
-          EducationStatus.create!(name: 'Formal Education')
-          EducationStatus.create!(name: 'Non-formal Education')
-          EducationStatus.create!(name: 'Vocational Education')
-
-          true
-        end
 
         def create_admin_user
           puts 'creating admin user ...'
@@ -131,7 +110,6 @@ module DBMS
         end
 
         def load_example_data
-          load if no_data?
 
           User.transaction do
             user = create_admin_user
@@ -139,7 +117,6 @@ module DBMS
             load_children_from_file(project)
             load_households_from_children(project)
             load_adults_from_households
-            load_regions
           end
         end
       end

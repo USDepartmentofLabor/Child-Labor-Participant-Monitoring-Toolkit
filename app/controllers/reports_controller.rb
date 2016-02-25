@@ -3,12 +3,12 @@ class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :destroy]
 
   def index
-    @reports = Report.where(project_id: @project.id).order("id DESC").all
+    @reports = Report.order("id DESC").all
   end
 
   def show
     # Generate report on demand
-    @indicator = Indicator.where(id: @report.indicator_id, project_id: @project.id).first
+    @indicator = Indicator.where(id: @report.indicator_id).first
 
     if !@indicator.nil? && @indicator.indicator_type == "Common"
       if @indicator.code == "E1"
@@ -29,15 +29,14 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
-    @indicators = Indicator.where(project_id: @project.id).order("id ASC").all
+    @indicators = Indicator.order("id ASC").all
   end
 
   def create
     @report = Report.new(report_params)
     @report.user_id = current_user.id
-    @report.project_id = @project.id
     if @report.save
-      redirect_to project_reports_path(@project), notice: t("action_messages.create", model: "Report")
+      redirect_to reports_path(), notice: t("action_messages.create", model: "Report")
     else
       render :new
     end
@@ -45,7 +44,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-    redirect_to project_reports_url(@project), notice: t("action_messages.destroy", model: "Report")
+    redirect_to reports_url(), notice: t("action_messages.destroy", model: "Report")
   end
 
   private
@@ -59,16 +58,16 @@ class ReportsController < ApplicationController
       )
     end
 
+    def set_project
+      @project = Project.first
+    end
+
     def set_report
       # @report = Report.find(params[:id])
       # if @report.user_id != current_user.id
       #   raise ActiveRecord::RecordNotFound
       # end
       # @report
-      @report = @project.reports.find(params[:id])
-    end
-
-    def set_project
-      @project = Project.find(params[:project_id])
+      @report = Report.find(params[:id])
     end
 end

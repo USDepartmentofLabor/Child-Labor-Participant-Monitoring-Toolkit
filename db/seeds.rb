@@ -14,15 +14,18 @@ ServiceType.create([
   { name: 'Livelihood Economic Strengthening' },
   { name: 'Other Livelihood' }
 ])
+
 UnitOfMeasure.create([
   { name: 'Numeric' },
   { name: 'Percentage' }
 ])
+
 EducationStatus.create([
   { name: 'Formal Education'},
   { name: 'Non-formal Education' },
   { name: 'Vocational Education' }
 ])
+
 WorkStatus.create([
   { name: 'Engaged in Child Labor', work_type: 'CL' },
   { name: 'Hazardous Child Labor', work_type: 'CL' },

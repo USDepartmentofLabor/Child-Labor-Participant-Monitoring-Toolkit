@@ -24,12 +24,12 @@
 
           <div class="form-group">
             <%= f.label :state %>
-            <%= f.select :state, group_state_options(@project_regions), {}, {class: "form-control"} %>
+            <%= f.select :state, group_state_options(@regions), {}, {class: "form-control"} %>
           </div>
 
           <div class="form-group">
             <%= f.label :country %>
-            <%= f.country_select :country, {only: @project_regions.map(&:country).uniq}, {class: "form-control"} %>
+            <%= f.country_select :country, {only: @regions.map(&:country).uniq}, {class: "form-control"} %>
           </div>
 
           <div class="form-group">
