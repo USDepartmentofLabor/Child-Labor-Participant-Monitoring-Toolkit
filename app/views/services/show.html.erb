@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to project_services_path(@project), class: 'btn btn-default' do %>
+  <%= link_to services_path(), class: 'btn btn-default' do %>
     <%= fa_icon "caret-left" %>
     <%= t("general.back") %>
   <% end %>
-  <%= link_to edit_project_service_path(@project, @service), class: 'btn btn-primary' do %>
+  <%= link_to edit_service_path(@service), class: 'btn btn-primary' do %>
     <%= fa_icon "pencil" %>
     <%= t("general.edit") %>
   <% end %>

@@ -17,8 +17,6 @@ class Child < ActiveRecord::Base
 
   has_many :service_instances
 
-  has_many :projects_children, dependent: :destroy
-  has_many :projects, through: :projects_children
   has_many :services, through: :child_service
 
   belongs_to :household
@@ -26,7 +24,7 @@ class Child < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   # Input: the integer of sex field
-  # Return: the human readable text of the sex name 
+  # Return: the human readable text of the sex name
   def self.gender_name(i)
     return nil if i.nil? || i <= 0
     option = SEX_OPTIONS[i - 1]
