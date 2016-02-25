@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225203337) do
+ActiveRecord::Schema.define(version: 20160225213859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20160225203337) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "user_id"
-    t.integer  "project_id"
   end
 
   add_index "child_statuses", ["child_id"], name: "index_child_statuses_on_child_id", using: :btree
@@ -135,16 +134,6 @@ ActiveRecord::Schema.define(version: 20160225203337) do
 
   add_index "indicators", ["unit_of_measure_id"], name: "index_indicators_on_unit_of_measure_id", using: :btree
 
-  create_table "project_regions", force: :cascade do |t|
-    t.string   "country"
-    t.string   "state"
-    t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "project_regions", ["project_id"], name: "index_project_regions_on_project_id", using: :btree
-
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",            null: false
@@ -159,6 +148,13 @@ ActiveRecord::Schema.define(version: 20160225203337) do
     t.decimal  "funding"
     t.string   "office_address"
     t.integer  "total_target_children"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string   "country"
+    t.string   "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reports", force: :cascade do |t|
@@ -191,11 +187,9 @@ ActiveRecord::Schema.define(version: 20160225203337) do
     t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "project_id"
   end
 
   add_index "service_instances", ["child_id"], name: "index_service_instances_on_child_id", using: :btree
-  add_index "service_instances", ["project_id"], name: "index_service_instances_on_project_id", using: :btree
   add_index "service_instances", ["service_id"], name: "index_service_instances_on_service_id", using: :btree
 
   create_table "service_types", force: :cascade do |t|
@@ -261,9 +255,7 @@ ActiveRecord::Schema.define(version: 20160225203337) do
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
   add_foreign_key "indicators", "unit_of_measures"
-  add_foreign_key "project_regions", "projects"
   add_foreign_key "service_instances", "children"
-  add_foreign_key "service_instances", "projects"
   add_foreign_key "service_instances", "services"
   add_foreign_key "services", "service_types"
   add_foreign_key "targets", "indicators"

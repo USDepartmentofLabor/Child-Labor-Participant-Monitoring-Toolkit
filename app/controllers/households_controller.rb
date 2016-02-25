@@ -77,7 +77,7 @@ class HouseholdsController < ApplicationController
     end
 
     def set_regions
-      @regions = ProjectRegion.all
+      @regions = Region.all
     end
 
     # Only allow a trusted parameter "white list" through.

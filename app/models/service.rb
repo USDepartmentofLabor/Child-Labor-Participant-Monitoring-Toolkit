@@ -10,7 +10,7 @@ class Service < ActiveRecord::Base
   validate :start_date_before_end_date
 
   def start_date_and_end_date_must_exist_in_project_time
-    project = Project.find(project_id)
+    project = Project.first
     if project.start_date && start_date < project.start_date
       errors.add(:start_date, "can't be before project start date")
     elsif project.end_date && start_date > project.end_date

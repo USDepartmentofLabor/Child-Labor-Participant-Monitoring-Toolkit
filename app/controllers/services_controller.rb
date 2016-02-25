@@ -63,7 +63,7 @@ class ServicesController < ApplicationController
 
     def set_project
       @project = Project.first
-      @regions = ProjectRegion.all
+      @regions = Region.all
     end
 
     def set_children

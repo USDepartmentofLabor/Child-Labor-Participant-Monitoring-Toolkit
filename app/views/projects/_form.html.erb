@@ -53,13 +53,13 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <%= t("project_regions.title") %>
+      <%= t("regions.title") %>
     </div>
     <div class="panel-body">
-      <%= f.fields_for :project_regions do |builder| %>
-        <%= render 'project_region_fields', f: builder %>
+      <%= f.fields_for :regions do |builder| %>
+        <%= render 'region_fields', f: builder %>
       <% end %>
-      <%= link_to_add_fields t("project_regions.add"), f, :project_regions, class: "add_fields btn btn-primary" %>
+      <%= link_to_add_fields t("_regions.add"), f, :regions, class: "add_fields btn btn-primary" %>
     </div>
   </div>
 

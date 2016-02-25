@@ -70,7 +70,7 @@ en:
         name: "Field Name"
         field_type: "Field Type"
         selections: "Options For Select"
-      project_region:
+      region:
         country: "Country"
         state: "State (Province)"
       indicator:
@@ -79,5 +79,5 @@ en:
         indicator_type: "Type"
         frequency: "Collection and Reporting Frequency"
         unit_of_measure: "Unit of Measure"
-        baseline: "Baseline"			
+        baseline: "Baseline"
         created_at: "Created at"
