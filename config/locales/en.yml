@@ -150,7 +150,7 @@ en:
     adult:
       male: "Male"
       female: "Female"
-  project_regions:
+  regions:
     title: "Add Country and State(Province)"
     add: "Add"
   custom_fields:

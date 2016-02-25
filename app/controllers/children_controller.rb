@@ -1,7 +1,7 @@
 class ChildrenController < ApplicationController
   before_action :set_project
   before_action :set_child, only: [:show, :edit, :update, :destroy]
-  before_action :set_regions, only: [:new, :show, :edit, :update]
+  before_action :set_regions, only: [:new, :create, :show, :edit, :update]
 
   # GET /children
   def index
@@ -66,7 +66,7 @@ class ChildrenController < ApplicationController
     end
 
     def set_regions
-      @regions = ProjectRegion.all
+      @regions = Region.all
     end
 
     # Use callbacks to share common setup or constraints between actions.
