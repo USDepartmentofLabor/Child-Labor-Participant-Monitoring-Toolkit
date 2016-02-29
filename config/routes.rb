@@ -1,21 +1,24 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
+
   get 'targets/index'
 
-  # resource :profile
-
   get 'gender_count/:id' => 'projects#gender_count'
-  resources :projects
 
-  resources :children
-  resources :households
-  resources :services
-  resources :users
+  resource :project
+
   resources :indicators do
     resources :targets
   end
-  resources :custom_fields
+
   resources :reports, except: [:edit, :update]
+  resources :children
+  resources :households
+  resources :custom_fields
+  resources :users
+  resources :services
+  resources :users
 
   # a trick to avoid generating children urls again
   resources :children, only: [] do
@@ -27,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, skip: [:sessions, :registrations]
+
   as :user do
     get 'sign_in' => 'devise/sessions#new', as: :new_user_session
     post 'sign_in' => 'devise/sessions#create', as: :user_session
@@ -39,7 +43,5 @@ Rails.application.routes.draw do
     patch 'sign_up' => 'devise/registrations#update', as: nil
   end
 
-  get 'home' => 'home#dashboard', as: :dashboard
-
-  root to: 'home#index'
+  root to: "projects#show"
 end

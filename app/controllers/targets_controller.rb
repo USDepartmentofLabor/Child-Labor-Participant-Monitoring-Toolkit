@@ -1,14 +1,17 @@
 class TargetsController < ApplicationController
-	def new
-		@target = Target.new
+  before_action :set_indicator
+
+  def index
+    @targets = Target.where(indicator_id: params[:indicator_id]).all
   end
-	
-	private
-		def set_project
-      @project = Project.find(params[:project_id])
-    end
-	
-		def set_indicator
-			@indicator = Indicator.find(params[:indicator_id])
-		end
+
+  def new
+    @target = Target.new
+  end
+
+  private
+
+  def set_indicator
+    @indicator = Indicator.find(params[:indicator_id])
+  end
 end
