@@ -153,9 +153,12 @@ ActiveRecord::Schema.define(version: 20160225143531) do
   create_table "regions", force: :cascade do |t|
     t.string   "country"
     t.string   "state"
+    t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "regions", ["project_id"], name: "index_regions_on_project_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.string   "title"
@@ -255,6 +258,7 @@ ActiveRecord::Schema.define(version: 20160225143531) do
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
   add_foreign_key "indicators", "unit_of_measures"
+  add_foreign_key "regions", "projects"
   add_foreign_key "service_instances", "children"
   add_foreign_key "service_instances", "services"
   add_foreign_key "services", "service_types"
