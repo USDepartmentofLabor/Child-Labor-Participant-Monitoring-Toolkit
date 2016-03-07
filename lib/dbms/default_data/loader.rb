@@ -18,20 +18,35 @@ module DBMS
           user
         end
 
-        def create_dummy_project(user, _project_name)
+        def create_dummy_project(user)
           puts 'creating project ...'
 
-          project = Project.where(name: 'EXCEL').first_or_create do |project|
-            project.title = 'Cambodians EXCEL Project Eliminating eXploitive Child Labot through Education and Livelihoods'
-            project.user_id = user.id
-            project.cop_num = 'IL-23979-13-75-K'
-            project.start_date = Date.new(2012, 12, 28)
-            project.end_date = Date.new(2016, 12, 31)
-            project.org = 'World Vision'
-            project.proj_type = 'CLEP'
-            project.funding = 10_000_000
-            project.total_target_children = 28_000
-          end
+          #project = Project.where(name: 'EXCEL').first_or_create do |project|
+          #  project.title = 'Cambodians EXCEL Project Eliminating eXploitive Child Labot through Education and Livelihoods'
+          #  project.user_id = user.id
+          #  project.cop_num = 'IL-23979-13-75-K'
+          #  project.start_date = Date.new(2012, 12, 28)
+          #  project.end_date = Date.new(2016, 12, 31)
+          #  project.org = 'World Vision'
+          #  project.proj_type = 'CLEP'
+          #  project.funding = 10_000_000
+          #  project.total_target_children = 28_000
+          #end
+
+          project = Project.create(
+            name: 'EXCEL',
+            title: 'Cambodians EXCEL Project Eliminating eXploitive Child Labot through Education and Livelihoods',
+            #user_id: user.id,
+            cop_num: 'IL-23979-13-75-K',
+            start_date: Date.new(2012, 12, 28),
+            end_date: Date.new(2016, 12, 31),
+            org: 'World Vision',
+            proj_type: 'CLEP',
+            funding: 10_000_000,
+            total_target_children: 28_000
+          )
+
+          puts 'project created'
           project
         end
 
@@ -56,8 +71,6 @@ module DBMS
           conn = ActiveRecord::Base.connection
           conn.execute sql
 
-          sql = "INSERT INTO projects_children (project_id, child_id, created_at, updated_at) (SELECT #{project.id} AS project_id, c.id AS child_id, now() AS create_at, now() AS update_at from children c);"
-          conn.execute sql
         end
 
         def load_households_from_children(_project)
@@ -113,7 +126,7 @@ module DBMS
 
           User.transaction do
             user = create_admin_user
-            project = create_dummy_project(user, 'Child Labor Example Project')
+            project = create_dummy_project(user)
             load_children_from_file(project)
             load_households_from_children(project)
             load_adults_from_households
