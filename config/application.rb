@@ -18,7 +18,7 @@ module DBMS
   class Application < Rails::Application
 
       config.to_prepare do
-        Devise::SessionsController.layout 'admin_lte_2_login'
+        Devise::SessionsController.layout 'front'
       end
 
     # Settings in config/environments/* take precedence over those specified here.
