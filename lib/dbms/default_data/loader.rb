@@ -18,7 +18,7 @@ module DBMS
           user
         end
 
-        def create_dummy_project(user)
+        def create_dummy_project()
           puts 'creating project ...'
 
           #project = Project.where(name: 'EXCEL').first_or_create do |project|
@@ -33,10 +33,9 @@ module DBMS
           #  project.total_target_children = 28_000
           #end
 
-          project = Project.create(
+          project = Project.new(
             name: 'EXCEL',
             title: 'Cambodians EXCEL Project Eliminating eXploitive Child Labot through Education and Livelihoods',
-            #user_id: user.id,
             cop_num: 'IL-23979-13-75-K',
             start_date: Date.new(2012, 12, 28),
             end_date: Date.new(2016, 12, 31),
@@ -46,7 +45,9 @@ module DBMS
             total_target_children: 28_000
           )
 
-          puts 'project created'
+          project.save!
+
+          puts "project created : #{project.id}"
           project
         end
 
@@ -126,7 +127,7 @@ module DBMS
 
           User.transaction do
             user = create_admin_user
-            project = create_dummy_project(user)
+            project = create_dummy_project()
             load_children_from_file(project)
             load_households_from_children(project)
             load_adults_from_households

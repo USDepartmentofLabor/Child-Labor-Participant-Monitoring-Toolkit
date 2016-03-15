@@ -5,7 +5,7 @@ class Indicator < ActiveRecord::Base
   validates :indicator, presence: true
   validates :unit_of_measure_id, presence: true
 
-  def self.create_common_indicators(user_id)
-    DBMS::DefaultData::Indicators.create(user_id)
+  def self.create_common_indicators()
+    DBMS::DefaultData::Indicators.create()
   end
 end
