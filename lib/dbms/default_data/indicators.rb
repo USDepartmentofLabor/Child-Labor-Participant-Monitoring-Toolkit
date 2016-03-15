@@ -2,7 +2,7 @@ module DBMS
   module DefaultData
     module Indicators
       class << self
-        def create(project_id, user_id)
+        def create()
 
           numeric_unit_of_measure = UnitOfMeasure.find_by name: 'Numeric'
           percentage_unit_of_measure = UnitOfMeasure.find_by name: 'Percentage'
@@ -34,8 +34,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: percentage_unit_of_measure.id
           )
 
@@ -64,8 +62,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: percentage_unit_of_measure.id
           )
 
@@ -94,8 +90,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: percentage_unit_of_measure.id
           )
 
@@ -123,8 +117,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: percentage_unit_of_measure.id
           )
 
@@ -151,8 +143,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: percentage_unit_of_measure.id
           )
 
@@ -179,8 +169,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: percentage_unit_of_measure.id
           )
 
@@ -207,8 +195,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: percentage_unit_of_measure.id
           )
 
@@ -234,8 +220,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: percentage_unit_of_measure.id
           )
 
@@ -259,8 +243,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: numeric_unit_of_measure.id
           )
 
@@ -284,8 +266,6 @@ module DBMS
             definitions: definitions.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: numeric_unit_of_measure.id
           )
 
@@ -305,8 +285,6 @@ module DBMS
             use: use.strip,
             frequency: freq.strip,
             indicator_type: "Common",
-            user_id: user_id,
-            project_id: project_id,
             unit_of_measure_id: numeric_unit_of_measure.id
           )
         end
