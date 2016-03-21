@@ -1,5 +1,5 @@
 <div class="page-header">
-  <%= link_to new_indicator_path, class: 'btn btn-primary pull-right' do %>
+  <%= link_to new_service_type_path, class: 'btn btn-primary pull-right' do %>
     <%= fa_icon "plus" %>
     <%= t("service_types.index.add") %>
   <% end %>
@@ -17,7 +17,7 @@
 
       <tbody>
         <%= content_tag_for(:tr, @service_types) do |service_type| %>
-          <td><%= link_to service_type.name, service_type_path(service_type) %></td>
+          <td><%= link_to service_type.name, edit_service_type_path(service_type) %></td>
         <% end %>
       </tbody>
     </table>

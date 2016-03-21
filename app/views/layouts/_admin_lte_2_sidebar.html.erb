@@ -111,19 +111,13 @@
 
       <%= content_tag :li  do -%>
         <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
-          <i class="fa fa-lock-o"></i>Admin
+          <i class="fa fa-lock"></i>Admin
         <% end -%>
         <ul style="list-style:none">
           <li>
             <%= link_to service_types_path do -%>
               <i class="fa fa-angle-double-right"></i>
               <%= t("service_types.index.title") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to new_indicator_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("indicators.index.add") %>
             <% end -%>
           </li>
         </ul>
