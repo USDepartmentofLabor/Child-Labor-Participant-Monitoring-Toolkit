@@ -32,3 +32,10 @@ WorkStatus.create([
   { name: 'Worst Form of Child Labor (WFCL)', work_type: 'CL' },
   { name: 'High Risk of Entering Child Labor', work_type: 'CACHR' }
 ])
+
+ProjectTargetType.create([
+  { name: 'Child' },
+  { name: 'Youth' },
+  { name: 'Household' },
+  { name: 'Adult Forced Labor'}
+])

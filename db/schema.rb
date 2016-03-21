@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225143531) do
+ActiveRecord::Schema.define(version: 20160318195411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,20 +134,34 @@ ActiveRecord::Schema.define(version: 20160225143531) do
 
   add_index "indicators", ["unit_of_measure_id"], name: "index_indicators_on_unit_of_measure_id", using: :btree
 
-  create_table "projects", force: :cascade do |t|
+  create_table "project_target_types", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "project_targets", force: :cascade do |t|
+    t.integer  "project_id",             null: false
+    t.integer  "project_target_type_id", null: false
+    t.decimal  "target"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "project_targets", ["project_id"], name: "index_project_targets_on_project_id", using: :btree
+  add_index "project_targets", ["project_target_type_id"], name: "index_project_targets_on_project_target_type_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",                         null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "title"
-    t.string   "cop_num"
+    t.string   "cooperative_agreement_number"
     t.date     "start_date"
     t.date     "end_date"
-    t.string   "org"
-    t.string   "proj_type"
-    t.decimal  "funding"
+    t.string   "organization"
+    t.decimal  "funding_amount"
     t.string   "office_address"
-    t.integer  "total_target_children"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -258,6 +272,8 @@ ActiveRecord::Schema.define(version: 20160225143531) do
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
   add_foreign_key "indicators", "unit_of_measures"
+  add_foreign_key "project_targets", "project_target_types"
+  add_foreign_key "project_targets", "projects"
   add_foreign_key "regions", "projects"
   add_foreign_key "service_instances", "children"
   add_foreign_key "service_instances", "services"
