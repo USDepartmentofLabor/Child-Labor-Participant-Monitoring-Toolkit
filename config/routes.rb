@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   end
 
   resources :reports, except: [:edit, :update]
-  resources :children
+  resources :children do
+    resources :timelines
+  end
   resources :households
   resources :custom_fields
   resources :users
