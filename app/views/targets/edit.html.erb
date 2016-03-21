@@ -7,7 +7,6 @@
 
 <div class="row">
   <div class="col-md-12">
-    <%= form_tag create_multiple_indicator_targets_path(@indicator) do %>
     <div class="box box-primary">
 
       <div class="box-body">
@@ -28,9 +27,16 @@
           </thead>
           <tbody>
             <tr>
-              <% for target in @targets %>
-                <td><%= text_field_tag "targets[]", target.target_value %>
-              <% end %>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
+              <td><input type="text" id="period1Target" name="period1Target"/></td>
             </tr>
           </tbody>
         </table>
@@ -48,6 +54,5 @@
       </div>
 
     </div>
-    <% end %>
   </div>
 </div>
