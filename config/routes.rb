@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resource :project
 
+  resource :home
+
   resources :indicators do
     resources :targets do
       collection do
@@ -50,5 +52,5 @@ Rails.application.routes.draw do
     patch 'sign_up' => 'devise/registrations#update', as: nil
   end
 
-  root to: "projects#show"
+  root to: "home#index"
 end

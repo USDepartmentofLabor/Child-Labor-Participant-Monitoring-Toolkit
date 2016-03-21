@@ -9,13 +9,10 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Beneficiaries</span>
-				<span class="info-box-number"><%= number_with_delimiter(@total_children, delimiter: ',') %></span>
-
-        <div class="progress">
-          <div class="progress-bar" style="width: <%=number_to_percentage((@total_children / @total_children_target) * 100, precision: 0) %>"></div>
-        </div>
+        <span class="info-box-number"><%= number_with_delimiter(@total_children, delimiter: ',') %></span>
+        <%= progress_bar @total_children_percentage %>
         <span class="progress-description">
-					<%= number_to_percentage(@total_children_percentage, precision: 0) %> of <%= number_with_delimiter(@total_children_target, delimiter: ',') %> targeted beneficiaries serviced
+          <%= number_to_percentage(@total_children_percentage, precision: 0) %> of <%= number_with_delimiter(@total_children_target, delimiter: ',') %> targeted beneficiaries serviced
         </span>
       </div>
       <!-- /.info-box-content -->
@@ -31,13 +28,10 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Households</span>
-				<span class="info-box-number"><%= number_with_delimiter(@total_households, delimiter: ',') %></span>
-
-        <div class="progress">
-          <div class="progress-bar" style="width: 18%"></div>
-        </div>
+        <span class="info-box-number"><%= number_with_delimiter(@total_households, delimiter: ',') %></span>
+        <%= progress_bar @total_children_percentage %>
         <span class="progress-description">
-					<%= number_to_percentage(@total_households_percentage, precision: 0) %> of <%= number_with_delimiter(@total_households_target) %> targeted households serviced
+          <%= number_to_percentage(@total_households_percentage, precision: 0) %> of <%= number_with_delimiter(@total_households_target) %> targeted households serviced
         </span>
       </div>
       <!-- /.info-box-content -->
@@ -55,7 +49,7 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Services</span>
-				<span class="info-box-number"><%= number_with_delimiter(@total_services, delimiter: ',') %></span>
+        <span class="info-box-number"><%= number_with_delimiter(@total_services, delimiter: ',') %></span>
 
       </div>
       <!-- /.info-box-content -->
@@ -109,7 +103,7 @@
       <!-- /.box-body -->
     </div>
   </div>
-	<div class="col-md-6">
+  <div class="col-md-6">
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">Households Target vs Actual by Reporting Period</h3> (12/28/2013 - 12/31/2016)
