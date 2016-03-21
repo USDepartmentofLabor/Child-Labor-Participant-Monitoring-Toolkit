@@ -1,5 +1,6 @@
 class Indicator < ActiveRecord::Base
   has_one :unit_of_measure
+  has_many :targets
 
   validates :code, presence: true
   validates :indicator, presence: true

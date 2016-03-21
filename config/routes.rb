@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :targets do
       collection do
         post :create_multiple
+        get :edit_multiple
+        put :update_multiple
       end
     end
   end
