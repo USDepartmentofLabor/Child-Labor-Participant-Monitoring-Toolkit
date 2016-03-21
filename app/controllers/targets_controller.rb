@@ -6,7 +6,19 @@ class TargetsController < ApplicationController
   end
 
   def new
-    @target = Target.new
+    @targets = [Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new]
+  end
+
+  def create_multiple
+
+    @target_values = params[:targets]
+
+    @target_values.each_with_index do |target_value, index|
+      Target.create(period: index, target_value: target_value, indicator_id: @indicator.id)
+    end
+
+    redirect_to indicators_path(@indicator), notice: t("action_messages.create_multiple", model: "Targets")
+
   end
 
   private

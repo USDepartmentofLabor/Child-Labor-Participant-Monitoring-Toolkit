@@ -30,6 +30,7 @@ en:
     copyright: "All Rights Reserved"
   action_messages:
     create: "%{model} was successfully added."
+    create_multiple: "%{model} were successfully added."
     update: "%{model} was successfully updated."
     destroy: "%{model} was successfully deleted."
     create_failed: "Failed to added %{model}. %{error}"
@@ -139,6 +140,16 @@ en:
       title: "Indicator"
     new:
       title: "Add Indicator"
+  targets:
+    index:
+      add: "Add New Target"
+      title: "List of Targets"
+    edit:
+      title: "Edit Target"
+    show:
+      title: "Target"
+    new:
+      title: "Add Target"
   service_types:
     index:
       add: "Add New Service Types"
