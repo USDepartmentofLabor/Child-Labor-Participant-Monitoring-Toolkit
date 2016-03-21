@@ -71,10 +71,18 @@
   </div>
 
   <div class="box-footer">
-    <%= link_to new_indicator_target_path(@indicator),
-      class: "btn btn-primary pull-right",
-      style: "margin-right: 1rem" do %>
-      <i class="fa fa-dot-circle-o"> </i> Enter Targets
+    <% if @indicator.targets.count > 0 %>
+      <%= link_to edit_multiple_indicator_targets_path(@indicator),
+        class: "btn btn-primary pull-right",
+        style: "margin-right: 1rem" do %>
+        <i class="fa fa-dot-circle-o"> </i> Update Targets
+      <% end %>
+    <% else %>
+      <%= link_to new_indicator_target_path(@indicator),
+        class: "btn btn-primary pull-right",
+        style: "margin-right: 1rem" do %>
+        <i class="fa fa-dot-circle-o"> </i> Enter Targets
+      <% end %>
     <% end %>
   </div>
 </div>

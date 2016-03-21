@@ -9,6 +9,9 @@ class TargetsController < ApplicationController
     @targets = [Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new]
   end
 
+  def edit_mulitple
+  end
+
   def create_multiple
 
     @target_values = params[:targets]
@@ -18,6 +21,21 @@ class TargetsController < ApplicationController
     end
 
     redirect_to indicators_path(@indicator), notice: t("action_messages.create_multiple", model: "Targets")
+
+  end
+
+  def update_multiple
+    @target_values = params[:targets]
+
+    @target_values.each_with_index do |target_value, index|
+      target = Target.find_by(period: index, indicator_id: @indicator.id)
+      if target
+        target.target_value = target_value
+        target.save
+      end
+    end
+
+    redirect_to indicators_path(@indicator), notice: t("action_messages.update_multiple", model: "Targets")
 
   end
 
