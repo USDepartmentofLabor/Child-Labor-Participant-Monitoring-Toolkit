@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
 
     total_children_target = @project.project_targets.find_by(project_target_type_id: 1)
     if total_children_target
-      @total_children_target = total_children_target.total
+      @total_children_target = total_children_target.target
       @total_children_percentage = (@total_children.to_f / @total_children_target.to_f) * 100.0
     else
       @total_children_target = 0
