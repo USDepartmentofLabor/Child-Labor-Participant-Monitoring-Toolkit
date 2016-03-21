@@ -36,16 +36,20 @@ module DBMS
           project = Project.new(
             name: 'EXCEL',
             title: 'Cambodians EXCEL Project Eliminating eXploitive Child Labot through Education and Livelihoods',
-            cop_num: 'IL-23979-13-75-K',
+            cooperative_agreement_number: 'IL-23979-13-75-K',
             start_date: Date.new(2012, 12, 28),
             end_date: Date.new(2016, 12, 31),
-            org: 'World Vision',
-            proj_type: 'CLEP',
-            funding: 10_000_000,
-            total_target_children: 28_000
+            organization: 'World Vision',
+            funding_amount: 10_000_000
           )
 
           project.save!
+
+          child_target_type = ProjectTargetType.find_by name: 'Child'
+          household_target_type = ProjectTargetType.find_by name: 'Household'
+
+          ProjectTarget.create(project: project, project_target_type: child_target_type, target: 28_000)
+          ProjectTarget.create(project: project, project_target_type: household_target_type, target: 14_000)
 
           puts "project created : #{project.id}"
           project

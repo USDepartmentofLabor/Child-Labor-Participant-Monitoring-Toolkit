@@ -3,10 +3,10 @@ class ProjectsController < ApplicationController
 
   def show
     @total_children = Child.count
-    @total_children_target = @project.total_target_children
+    @total_children_target = @project.project_targets.find_by(project_target_type_id: 1).target
     @total_children_percentage = (@total_children.to_f / @total_children_target.to_f) * 100.0
     @total_households = Household.count
-    @total_households_target = 14000
+    @total_households_target = @project.project_targets.find_by(project_target_type_id: 3).target
     @total_households_percentage = (@total_households.to_f / @total_households_target.to_f) * 100.0
     @total_services = Service.count
 
