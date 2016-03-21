@@ -66,13 +66,11 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Timeline</span>
-        <span class="info-box-number">Sep 30, 2014</span>
+        <span class="info-box-number"><%= Date.today.strftime('%A, %B %d, %Y') %></span>
+        <%= progress_bar @project_complete_percentage %>
 
-        <div class="progress">
-          <div class="progress-bar" style="width: 25%"></div>
-        </div>
         <span class="progress-description">
-          276 days into your project
+          <%= Date.today.mjd - @project.start_date.mjd %> days into your project
         </span>
       </div>
     </div>

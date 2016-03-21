@@ -29,6 +29,8 @@ class ProjectsController < ApplicationController
 
     @total_services = Service.count
 
+    @project_complete_percentage = (Date.today.mjd - @project.start_date.mjd) / (@project.end_date.mjd - @project.start_date.mjd).to_f * 100.0
+
     if @total_children == 0 && @total_households == 0
       render "show_init"
     else
