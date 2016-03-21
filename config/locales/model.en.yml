@@ -3,7 +3,7 @@ en:
     models:
       child: "Beneficiary"
       child_status: "Child Status"
-      report: "Report"
+      report: "Analysis"
       household: "Household"
       adult: "Adult"
       project: "Project"
@@ -80,4 +80,7 @@ en:
         frequency: "Collection and Reporting Frequency"
         unit_of_measure: "Unit of Measure"
         baseline: "Baseline"
+        created_at: "Created at"
+      service_type:
+        service_type: "Indicator Name"
         created_at: "Created at"

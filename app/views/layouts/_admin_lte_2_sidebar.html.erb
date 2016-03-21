@@ -105,9 +105,30 @@
 
       <%= content_tag :li, class: (controller_name == 'reports' ? "active" : "")  do -%>
         <%= link_to reports_path do -%>
-          <i class="fa fa-file-text-o"></i><%= Report.model_name.human.pluralize %>
+          <i class="fa fa-file-text-o"></i>Analysis
         <% end -%>
       <% end -%>
+
+      <%= content_tag :li  do -%>
+        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
+          <i class="fa fa-lock-o"></i>Admin
+        <% end -%>
+        <ul style="list-style:none">
+          <li>
+            <%= link_to service_types_path do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("service_types.index.title") %>
+            <% end -%>
+          </li>
+          <li>
+            <%= link_to new_indicator_path do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("indicators.index.add") %>
+            <% end -%>
+          </li>
+        </ul>
+      <% end -%>
+
     </ul>
   </section>
 </aside>

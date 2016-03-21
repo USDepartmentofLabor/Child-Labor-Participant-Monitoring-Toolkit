@@ -139,6 +139,16 @@ en:
       title: "Indicator"
     new:
       title: "Add Indicator"
+  service_types:
+    index:
+      add: "Add New Service Types"
+      title: "List of Service Types"
+    edit:
+      title: "Edit Service Type"
+    show:
+      title: "Service Type"
+    new:
+      title: "Add Service Type"
   layouts:
     application:
       sign_in: "Sign in"

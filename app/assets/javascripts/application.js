@@ -30,6 +30,7 @@
 //= require households
 //= require indicators
 //= require services
+//= require service_types
 
 function icheck(){
   if($(".icheck").length > 0){

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :users
   resources :services
   resources :users
+  resources :service_types
 
   # a trick to avoid generating children urls again
   resources :children, only: [] do
