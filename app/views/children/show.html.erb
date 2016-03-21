@@ -7,6 +7,10 @@
     <%= fa_icon "pencil" %>
     <%= t("general.edit") %>
   <% end %>
+  <%= link_to child_timelines_path(@child), class: 'btn btn-primary' do %>
+    <%= fa_icon "calendar" %>
+    Timeline
+  <% end %>
   <h1><%= t("children.show.title") %></h1>
 </div>
 
