@@ -12,7 +12,7 @@
         <span class="info-box-number"><%= number_with_delimiter(@total_children, delimiter: ',') %></span>
         <%= progress_bar @total_children_percentage %>
         <span class="progress-description">
-          <%= number_to_percentage(@total_children_percentage, precision: 0) %> of <%= number_with_delimiter(@total_children_target, delimiter: ',') %> targeted beneficiaries serviced
+          <%= number_to_percentage(@total_children_percentage, precision: 0) %> of <%= number_with_delimiter(@total_children_target) %> targeted beneficiaries serviced
         </span>
       </div>
       <!-- /.info-box-content -->
@@ -49,7 +49,7 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Services</span>
-        <span class="info-box-number"><%= number_with_delimiter(@total_services, delimiter: ',') %></span>
+        <span class="info-box-number"><%= number_with_delimiter(@total_services) %></span>
 
       </div>
       <!-- /.info-box-content -->
@@ -59,7 +59,7 @@
   <!-- /.col -->
 
   <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box bg-yellow">
+    <div class="info-box bg-yellow clickable" id="timeline">
       <span class="info-box-icon">
         <i class="fa fa-calendar"></i>
       </span>
@@ -69,9 +69,12 @@
         <span class="info-box-number"><%= Date.today.strftime('%A, %B %d, %Y') %></span>
         <%= progress_bar @project_complete_percentage %>
 
-        <span class="progress-description">
-          <%= Date.today.mjd - @project.start_date.mjd %> days into your project
+        <span class="progress-description" id="time-elapsed">
+          <%= distance_of_time_in_words @project.start_date, Date.today %> into your project
         </span>
+        <span class="progress-description hidden" id="time-remaining">
+          about <%= distance_of_time_in_words Date.today, @project.end_date %> remain in your project
+        <span class="progress-description">
       </div>
     </div>
   </div>
