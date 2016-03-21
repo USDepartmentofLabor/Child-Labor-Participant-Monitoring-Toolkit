@@ -1,0 +1,24 @@
+<%= form_for(@service_type, html: { role: "form" }) do |f| %>
+  <%= error_messages(@service_type) %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <hr>
+
+  <div class="form-group">
+    <div class="col-sm-offset-8 col-sm-2">
+      <%= link_to service_types_path, class: "btn btn-danger btn-block" do %>
+        <%= fa_icon :times %>
+        <%= t("general.cancel") %>
+      <% end %>
+    </div>
+    <div class="col-sm-2">
+      <button type="submit" class="btn btn-primary btn-block">
+        <%= t("general.submit") %>
+      </button>
+    </div>
+  </div>
+<% end %>
