@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resource :home
 
   resources :indicators do
-    resources :targets
+    resources :targets do
+      collection do
+        post :create_multiple
+      end
+    end
   end
 
   resources :reports, except: [:edit, :update]
