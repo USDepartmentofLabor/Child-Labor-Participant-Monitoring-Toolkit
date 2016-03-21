@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require icheck.min
+//= require app
 //= require jquery.smartWizard
 //= require jquery.jgrowl.min
 //= require jquery.validate.min
