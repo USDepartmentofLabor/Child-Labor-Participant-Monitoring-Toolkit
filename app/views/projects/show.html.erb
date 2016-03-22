@@ -127,3 +127,108 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Beneficiaries by Age</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-1">
+            <div class="chart-responsive">
+              <canvas id="beneficiariesByAgeChart" style="width: 330px; height: 230px;" width="330" height="230"></canvas>
+            </div>
+            <!-- ./chart-responsive -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-4">
+            <ul class="chart-legend clearfix">
+              <li><i class="fa fa-circle-o text-red"></i> Under 10</li>
+              <li><i class="fa fa-circle-o text-green"></i> 10&ndash;12</li>
+              <li><i class="fa fa-circle-o text-yellow"></i> 13&ndash;15</li>
+              <li><i class="fa fa-circle-o text-aqua"></i> 16&ndash;18</li>
+            </ul>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Beneficiaries by Gender</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-2">
+            <div class="chart-responsive">
+              <canvas id="beneficiariesByGenderChart" style="width: 330px; height: 230px;" width="330" height="230"></canvas>
+            </div>
+            <!-- ./chart-responsive -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-4">
+            <ul class="chart-legend clearfix">
+              <li><i class="fa fa-circle-o text-red"></i> Female</li>
+              <li><i class="fa fa-circle-o text-aqua"></i> Male</li>
+            </ul>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+  <div class="col-md-4">
+    <!-- USERS LIST -->
+    <div class="box box-danger">
+      <div class="box-header with-border">
+        <h3 class="box-title">Newest Beneficiares</h3>
+
+        <div class="box-tools pull-right">
+          <span class="label label-danger">8 New Members</span>
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body no-padding">
+        <ul class="users-list clearfix">
+          <% @new_children.each do |child| %>
+            <li>
+              <%= preview_avatar child, {size: "small"} %>
+              <%= link_to child.full_name, child, {class: "users-list-name"} %>
+              <span class="users-list-date"><%= child.created_at %></span>
+            </li>
+          <% end %>
+        </ul>
+        <!-- /.users-list -->
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer text-center">
+        <%= link_to "View all Beneficiaries", children_path, {class: "uppercase"} %>
+      </div>
+      <!-- /.box-footer -->
+    </div>
+    <!--/.box -->
+  </div>
+</div>
