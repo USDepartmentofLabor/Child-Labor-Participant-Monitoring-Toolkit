@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
     @new_children = Child.order("RANDOM()").limit(8) # TODO: Get non-random children
 
     if @total_children == 0 && @total_households == 0
-      redirect_to "show"
+      redirect_to @project
     else
       render "dashboard"
     end
