@@ -5,7 +5,7 @@
   <section class="sidebar">
     <ul class="sidebar-menu">
       <%= content_tag :li, class: (controller_name == 'projects' ? "active" : "")  do -%>
-        <%= link_to project_path do %>
+        <%= link_to dashboard_project_path do %>
           <i class="fa fa-tachometer"></i>
           <%= t("projects.show.dashboard") %>
         <% end %>
@@ -114,6 +114,12 @@
           <i class="fa fa-lock"></i>Admin
         <% end -%>
         <ul style="list-style:none">
+          <li>
+            <%= link_to project_path do -%>
+              <i class="fa fa-angle-double-right"></i>
+              Project Details
+            <% end -%>
+          </li>
           <li>
             <%= link_to service_types_path do -%>
               <i class="fa fa-angle-double-right"></i>

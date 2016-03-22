@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   get 'gender_count/:id' => 'projects#gender_count'
 
-  resource :project
+  resource :project do
+    get :dashboard
+  end
 
   resource :home
 

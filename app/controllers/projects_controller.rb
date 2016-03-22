@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :gender_count, :update]
+  before_action :set_project, only: [:show, :dashboard, :gender_count, :update]
 
-  def show
+  def dashboard
     if @project.nil?
       redirect_to "new"
     end
@@ -34,9 +34,9 @@ class ProjectsController < ApplicationController
     @new_children = Child.order("RANDOM()").limit(8) # TODO: Get non-random children
 
     if @total_children == 0 && @total_households == 0
-      render "show_init"
+      redirect_to "show"
     else
-      render "show"
+      render "dashboard"
     end
   end
 
