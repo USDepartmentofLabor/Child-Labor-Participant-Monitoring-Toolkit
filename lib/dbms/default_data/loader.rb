@@ -21,29 +21,15 @@ module DBMS
         def create_dummy_project()
           puts 'creating project ...'
 
-          #project = Project.where(name: 'EXCEL').first_or_create do |project|
-          #  project.title = 'Cambodians EXCEL Project Eliminating eXploitive Child Labot through Education and Livelihoods'
-          #  project.user_id = user.id
-          #  project.cop_num = 'IL-23979-13-75-K'
-          #  project.start_date = Date.new(2012, 12, 28)
-          #  project.end_date = Date.new(2016, 12, 31)
-          #  project.org = 'World Vision'
-          #  project.proj_type = 'CLEP'
-          #  project.funding = 10_000_000
-          #  project.total_target_children = 28_000
-          #end
-
-          project = Project.new(
+          project = Project.create(
             name: 'EXCEL',
-            title: 'Cambodians EXCEL Project Eliminating eXploitive Child Labot through Education and Livelihoods',
+            title: 'Cambodians EXCEL Project Eliminating eXploitive Child Labor through Education and Livelihoods',
             cooperative_agreement_number: 'IL-23979-13-75-K',
             start_date: Date.new(2012, 12, 28),
             end_date: Date.new(2016, 12, 31),
             organization: 'World Vision',
             funding_amount: 10_000_000
           )
-
-          project.save!
 
           child_target_type = ProjectTargetType.find_by name: 'Child'
           household_target_type = ProjectTargetType.find_by name: 'Household'
