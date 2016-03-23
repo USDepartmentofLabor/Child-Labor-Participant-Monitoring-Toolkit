@@ -8,14 +8,14 @@ module DeviseHelper
   def devise_error_messages!
     return "" if resource.errors.empty?
     warn_sign = "<i class=\"fa fa-exclamation-circle\"></i>"
-    messages = resource.errors.full_messages.map { |msg| "<li>" + warn_sign + msg + "</li>" }.join
+    messages = resource.errors.full_messages.map { |msg| "<li>" + msg + "</li>" }.join
     # sentence = I18n.t("errors.messages.not_saved",
     #                   count: resource.errors.count,
     #                   resource: resource.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div class="error_explanation">
-      <ul class="text-danger list-unstyled">
+    <div class="callout callout-danger">
+      <ul class="list-unstyled">
         #{messages}
       </ul>
     </div>
