@@ -6,7 +6,7 @@ class HomeController < ApplicationController
       redirect_to project_path
       return
     end
-    render layout: "front"
+    render layout: "login"
   end
 
   def dashboard
@@ -19,7 +19,7 @@ class HomeController < ApplicationController
       # go to project
       redirect_to project_path(@projects[0])
     else
-      render layout: "front"
+      render layout: "login"
     end
   end
 end

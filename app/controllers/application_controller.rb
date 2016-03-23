@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  layout 'admin_lte_2'
-
   include Pundit
 
   # Prevent CSRF attacks by raising an exception.
