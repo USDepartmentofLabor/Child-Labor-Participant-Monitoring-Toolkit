@@ -28,6 +28,7 @@ en:
     delete: "Delete"
     back: "Back"
     copyright: "All Rights Reserved"
+    logo_alt: "Department of Labor Seal"
   action_messages:
     create: "%{model} was successfully added."
     create_multiple: "%{model} were successfully added."
@@ -37,25 +38,25 @@ en:
     create_failed: "Failed to added %{model}. %{error}"
     update_failed: "Failed to update %{model}. %{error}"
     destroy_failed: "Failed to delete %{model}. %{error}"
-  registrations:
+  login:
+    banner: "Direct Beneficiary Monitoring System"
+    tagline: "The more we connect, the better it gets."
+    instruction: "Login with your email address and password"
     name: "Full Name"
     sign_up: "Sign Up"
     email: "Email Address"
     password: "Password"
     password_confirmation: "Password Confirmation"
-    submit: "Register"
-  sessions:
-    welcome_back: "Welcome Back"
-    remember_me: "Remember me"
-    submit: "Login"
     login: "Login"
+    remember_me: "Remember me"
+    welcome_back: "Welcome Back"
+    forgot_password: "Forgot your password?"
   passwords:
     forgot_password: "Forgot password"
     enter_email: "Please enter your email address"
-    submit: "Submit"
   projects:
     show:
-      dashboard: "Dashboard"
+      dashboard: "Project Dashboard"
       children_covered: "Beneficiaries"
       edit: "Settings"
     new:
