@@ -53,4 +53,11 @@ $(document).ready(function() {
   $('.input-group.date').datepicker({
     format: 'yyyy-mm-dd'
   });
+
+  $(function() {
+    $('.alert-success').fadeIn('normal', function() {
+      $(this).delay(3000).fadeOut();
+    });
+  });
+
 });
