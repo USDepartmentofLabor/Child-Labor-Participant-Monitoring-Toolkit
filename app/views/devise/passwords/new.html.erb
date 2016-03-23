@@ -1,22 +1,32 @@
-<div class="row" id="login-wrap">
-  <div class="panel panel-default">
-  	<div class="panel-heading"><%= t("passwords.forgot_password") %></div>
-    <div class="panel-body">
-
-			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-				<%= devise_error_messages! %>
-
-				<p><%= fa_icon "info-circle" %><%= t("passwords.enter_email") %></p>
-			  <div class="form-group">
-			  	<%= f.email_field :email, autofocus: true, class: "form-control" %>
-			  </div>
-
-			  <hr>
-
-			  <%= f.submit t("passwords.submit"), class: "btn btn-primary btn-block" %>
-
-			<% end %>
-		</div>
-	</div>
-	<%= render "devise/shared/links" %>
+<div class="row">
+  <div class="col-md-4" id="home-heading">
+    <div class="login-box">
+      <div class="login-logo">
+        <h1><%= t("login.banner") -%></h1>
+        <h2><%= t("login.tagline") -%></h2>
+      </div>
+      <div class="login-box-body">
+        <div class="panel-heading">
+          <%= link_to root_path do %>
+            <%= image_tag "145px_dol_seal.png", alt: t("general.logo_alt") %>
+          <% end %>
+        </div>
+        <p class="login-box-msg"><%= t("passwords.enter_email") %></p>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= devise_error_messages! %>
+          <div class="form-group has-feedback">
+            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: t("login.email") %>
+            <i class="fa fa-envelope form-control-feedback"></i>
+          </div>
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-8">
+              <%= f.submit t("general.submit"), class: "btn btn-primary btn-block btn-flat" %>
+            </div>
+          </div>
+          <hr>
+          <%= render "devise/shared/links" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
