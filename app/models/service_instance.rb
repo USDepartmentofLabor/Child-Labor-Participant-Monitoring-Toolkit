@@ -4,4 +4,6 @@ class ServiceInstance < ActiveRecord::Base
 
   belongs_to :child
   belongs_to :service
+
+  scope :by_start_date, -> { order(:start_date) }
 end
