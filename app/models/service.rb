@@ -1,6 +1,6 @@
 class Service < ActiveRecord::Base
   has_many :service_instances
-  has_and_belongs_to_many :children
+  has_many :children, :through => :service_instances
   belongs_to :service_type
 
   validates :name, :service_type_id, :start_date, presence: true

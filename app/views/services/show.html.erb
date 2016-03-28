@@ -7,6 +7,12 @@
     <%= fa_icon "pencil" %>
     <%= t("general.edit") %>
   <% end %>
+  <% if @service.service_instances.empty? %>
+    <%= link_to destroy_service(@service), class: 'btn btn-warning' do %>
+      <%= fa_icon "times" %>
+      <%= Delete %>
+    <% end %>
+  <% end %>
   <h1><%= t("services.show.title") %></h1>
 </div>
 
@@ -42,9 +48,22 @@
   <div class="panel-heading">
     <h2 class="h4"><%= t("services.show.children") %></h2>
   </div>
-  <ul class="list-group">
-    <% @service.children.by_last_name.each do |c| %>
-      <li class="list-group-item"><%= c.full_name %></li>
-    <% end %>
-  </ul>
+  <table class="table table-hover table-listing">
+    <thead>
+      <tr>
+        <th>Beneficiary</th>
+        <th>Service Date</th>
+        <th>Hours</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @service.service_instances.by_start_date.each do |s| %>
+        <tr>
+          <td><%= s.child.full_name %></td>
+          <td><%= s.start_date %></td>
+          <td><%= s.hours %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
