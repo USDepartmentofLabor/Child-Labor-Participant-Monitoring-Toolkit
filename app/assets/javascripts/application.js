@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require icheck.min
+//= require jquery.slimscroll
 //= require app
 //= require jquery.smartWizard
 //= require jquery.jgrowl.min
