@@ -1,22 +1,10 @@
-<div class="row">
-  <div class="col-md-6 form-group">
-    <%= f.label :start_date %> (yyy/mm/dd)
-    <div class="input-group date">
-      <%= f.text_field :start_date, class: "form-control" %>
-      <span class="input-group-addon">
-        <i class="fa fa-calendar"></i>
-      </span>
-    </div>
-  </div>
-
-  <div class="col-md-6 form-group">
-    <%= f.label :end_date %> (yyy/mm/dd)
-    <div class="input-group date">
-      <%= f.text_field :end_date, class: "form-control" %>
-      <span class="input-group-addon">
-        <i class="fa fa-calendar"></i>
-      </span>
-    </div>
+<div class="form-group">
+  <%= f.label :start_date %>
+  <div class="input-group date">
+    <%= f.text_field :start_date, class: "form-control" %>
+    <span class="input-group-addon">
+      <i class="fa fa-calendar"></i>
+    </span>
   </div>
 </div>
 

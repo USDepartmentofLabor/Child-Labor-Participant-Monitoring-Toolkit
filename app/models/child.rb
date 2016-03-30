@@ -52,4 +52,26 @@ class Child < ActiveRecord::Base
   def full_name
     mname ? "#{fname} #{mname} #{lname}" : "#{fname} #{lname}"
   end
+
+  def current_education_status
+    status = statuses.latest_education
+    if status.is_a? ChildStatus
+      status.name = status.education_status.name
+    else
+      return nil
+    end
+
+    status
+  end
+
+  def current_work_status
+    status = statuses.latest_work
+    if status.is_a? ChildStatus
+      status.name = status.work_status.name
+    else
+      return nil
+    end
+
+    status
+  end
 end
