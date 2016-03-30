@@ -1,0 +1,25 @@
+<span data-toggle="tooltip" title="<%= status.start_date %>">
+  <%= status.name %>
+</span>
+<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target='<%= "#edit-#{status.id}" %>'>Update</button>
+<div class="modal fade" tabindex="-1" role="dialog" id='<%= "edit-#{status.id}" %>'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for([child, ChildStatus.new], remote: true, html: { role: "form" }) do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" arial-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Update Status</h4>
+        </div>
+        <div class="modal-body">
+          <%= render partial: 'status_form', locals: {f: f} %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update Status</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

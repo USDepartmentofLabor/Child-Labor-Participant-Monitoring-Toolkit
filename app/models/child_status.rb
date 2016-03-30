@@ -5,4 +5,16 @@ class ChildStatus < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :start_date, presence: true
+
+  scope :latest, -> { order(start_date: :desc).first }
+  scope :latest_education, -> { where("education_status_id is not null").order(start_date: :desc).first }
+  scope :latest_work, -> { where("work_status_id is not null").order(start_date: :desc).first }
+
+  def name= name
+    @name = name
+  end
+
+  def name
+    @name
+  end
 end

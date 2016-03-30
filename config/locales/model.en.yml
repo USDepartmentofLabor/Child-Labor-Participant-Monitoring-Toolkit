@@ -36,10 +36,9 @@ en:
         updated_at: "Updated at"
         household_id: "Household"
       child_status:
-        start_date: "Start Date"
-        end_date: "End Date"
-        work_status_id: "Child Labor Status"
-        education_status_id: "Education Status"
+        start_date: "Status Change Date"
+        work_status_id: "New Child Labor Status"
+        education_status_id: "New Education Status"
         note: "Notes"
         created_at: "Created at"
         updated_at: "Updated at"
