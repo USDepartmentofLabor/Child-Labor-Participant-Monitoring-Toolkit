@@ -70,6 +70,9 @@ en:
       remove_image: "Remove"
       max_image_size: "This file exceeds the maximum allowed file size (%{size})."
       image_format: "Only image file with extension .png, .gif, .jpg, .jpeg is allowed."
+      household_title: "Choose a Household"
+      address_title: "Enter Address"
+      details_title: "Enter Beneficiary Details"
     index:
       add: "Add A Beneficiary"
       title: "List of Beneficiaries"
