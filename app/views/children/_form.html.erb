@@ -37,7 +37,7 @@
         </div>
         <div class="form-group">
           <%= f.label :dob %>
-          (yyy/mm/dd)
+          (YYYY-MM-DD)
           <div class="input-group date">
             <%= f.text_field :dob, class: "form-control" %>
             <span class="input-group-addon">
@@ -48,6 +48,16 @@
         <div class="form-group">
           <%= f.label :code %>
           <%= f.text_field :code, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :intake_date %>
+          (YYYY-MM-DD)
+          <div class="input-group date">
+            <%= f.text_field :intake_date, class: "form-control" %>
+            <span class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
         </div>
         <%= render partial: 'custom_fields/custom_field', collection: @custom_fields %>
       </div>
