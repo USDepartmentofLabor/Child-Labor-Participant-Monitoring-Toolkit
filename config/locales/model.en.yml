@@ -9,6 +9,7 @@ en:
       project: "Project"
       custom_field: "Customized Field"
       indicator: "Indicator"
+      project_target: "Project Target"
     attributes:
       adult:
         fname: "First Name (Given Name)"
@@ -58,15 +59,15 @@ en:
         created_at: "Created at"
         updated_at: "Updated at"
       project:
-        name: "Project Name"
-        title: "Project Title"
-        cop_num: "Cooperative Agreement Number"
+        id: "Project ID"
+        name: "Short Name"
+        title: "Full Name"
+        cooperative_agreement_number: "Cooperative Agreement Number"
         start_date: "Start Date"
         end_date: "End Date"
-        org: "Organization"
-        proj_type: "Project Type"
-        funding: "Funding Amount"
-        office_address: "Central Local Office"
+        organization: "Organization"
+        funding_amount: "Funding Amount"
+        office_address: "Local Office Location (Headquarter)"
         total_target_children: "Total Number of Children Targeted by Project"
       custom_field:
         name: "Field Name"
@@ -86,3 +87,6 @@ en:
       service_type:
         service_type: "Indicator Name"
         created_at: "Created at"
+      project_target:
+        project_target_type_id: "Target Type"
+        target: "Target Value"
