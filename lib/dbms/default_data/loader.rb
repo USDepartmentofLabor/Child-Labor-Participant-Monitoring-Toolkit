@@ -44,6 +44,7 @@ module DBMS
         def load_children_from_file(project)
           puts 'loading children ...'
 
+          project_id = 1000
           child_inserts = []
           CSV.foreach("#{::Rails.root}/lib/dbms/default_data/children.csv", headers: true) do |child_row|
             first_name = child_row[4].gsub(/\\/, '\&\&').gsub(/'/, "''")
@@ -51,14 +52,16 @@ module DBMS
             last_name = child_row[6].gsub(/\\/, '\&\&').gsub(/'/, "''")
             gender = child_row[1] == 'male' ? 1 : 2
             date_of_birth = child_row[21]
+            code = (child_row[1] == 'male' ? 'B' : 'G') + project_id.to_s
             address = child_row[7].gsub(/\\/, '\&\&').gsub(/'/, "''")
             city = child_row[8].gsub(/\\/, '\&\&').gsub(/'/, "''")
             state = child_row[9].gsub(/\\/, '\&\&').gsub(/'/, "''")
             country = child_row[12].gsub(/\\/, '\&\&').gsub(/'/, "''")
-            child_inserts.push "('#{first_name}', '#{middle_name}', '#{last_name}', #{gender}, '#{date_of_birth}', '#{address}', '#{city}', '#{state}', '#{country}', now(), now())"
+            child_inserts.push "('#{first_name}', '#{middle_name}', '#{last_name}', #{gender}, '#{date_of_birth}', '#{code}', '#{address}', '#{city}', '#{state}', '#{country}', now(), now())"
+            project_id += 1
           end
 
-          sql = "INSERT INTO children (fname, mname, lname, sex, dob, address, city, state, country, created_at, updated_at) VALUES #{child_inserts.join(', ')}"
+          sql = "INSERT INTO children (fname, mname, lname, sex, dob, code, address, city, state, country, created_at, updated_at) VALUES #{child_inserts.join(', ')}"
           conn = ActiveRecord::Base.connection
           conn.execute sql
 

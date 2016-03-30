@@ -1,112 +1,130 @@
 <%= form_for(@child, html: { role: "form" }) do |f| %>
-  <%= error_messages(@child) %>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :fname %>
-            <%= f.text_field :fname, class: "form-control has-tooltip", data_toggle: "tooltip",
+<%= error_messages(@child) %>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "info" %>
+    <h3 class="box-title">
+      <%= t "children.new.details_title" %>
+    </h3>
+  </div>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :fname %>
+          <%= f.text_field :fname, class: "form-control has-tooltip", data_toggle: "tooltip",
               data_placement: "top", title: "Please enter the beneficiary’s first name or the given name." %>
-          </div>
-          <div class="form-group">
-            <%= f.label :lname %>
-            <%= f.text_field :lname, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :mname %>
-            <%= f.text_field :mname, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :sex %>
-            <div class="checkbox">
-              <% Child::SEX_OPTIONS.each do |sex_option| %>
-                <label class="radio-inline">
-                  <%= f.radio_button :sex, sex_option[1], class: "square-red" %> <%= t(sex_option[0]) %>
-                </label>
-              <% end %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :dob %> (yyy/mm/dd)
-            <div class="input-group date">
-              <%= f.text_field :dob, class: "form-control" %>
-              <span class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-              </span>
-            </div>
-          </div>
-          <%= render partial: 'custom_fields/custom_field', collection: @custom_fields %>
         </div>
-        <div class="col-md-offset-2 col-md-4">
-          <div class="fileinput fileinput-new" data-provides="fileinput">
-            <div class="fileinput-new thumbnail" style="width: 200px">
-              <%=  preview_avatar(@child) %>
-            </div>
-            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px"></div>
-            <div>
-              <span class="btn btn-default btn-file">
-                <span class="fileinput-new"><%= t("children.new.select_image") %></span>
-                <span class="fileinput-exists"><%= t("children.new.change") %></span>
-                <%= f.file_field :avatar,
-                  accept: 'image/png,image/gif,image/jpeg,image/jpg',
-                  onchange: "validateFiles(this);",
-                  data: {
-                    max_file_size: 5.megabytes,
-                    max_file_size_message: t("children.new.select_image", size: 5.megabytes),
-                    file_format_message: t("children.new.image_format")
-                  }
-                %>
-              </span>
-              <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">
-                <%= t("children.new.remove_image") %>
-              </a>
-            </div>
+        <div class="form-group">
+          <%= f.label :lname %>
+          <%= f.text_field :lname, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :mname %>
+          <%= f.text_field :mname, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :sex %>
+          <div class="checkbox">
+            <% Child::SEX_OPTIONS.each do |sex_option| %>
+            <label class="radio-inline">
+              <%= f.radio_button :sex, sex_option[1], class: "square-red" %>
+              <%= t(sex_option[0]) %>
+            </label>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :dob %>
+          (yyy/mm/dd)
+          <div class="input-group date">
+            <%= f.text_field :dob, class: "form-control" %>
+            <span class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :code %>
+          <%= f.text_field :code, class: "form-control" %>
+        </div>
+        <%= render partial: 'custom_fields/custom_field', collection: @custom_fields %>
+      </div>
+      <div class="col-md-offset-2 col-md-4">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+          <div class="fileinput-new thumbnail" style="width: 200px">
+            <%=  preview_avatar(@child) %>
+          </div>
+          <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px"></div>
+          <div>
+            <span class="btn btn-default btn-file">
+              <span class="fileinput-new"><%= t("children.new.select_image") %></span>
+              <span class="fileinput-exists"><%= t("children.new.change") %></span>
+              <%= f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg,image/jpg', onchange: "validateFiles(this);", data: { max_file_size: 5.megabytes, max_file_size_message: t("children.new.select_image", size: 5.megabytes), file_format_message:
+              t("children.new.image_format") } %>
+            </span>
+            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">
+              <%= t("children.new.remove_image") %>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="form-group">
-        <%= f.label :household_id %>
-        <%= f.select :household_id, household_options, { include_blank: true }, {class: "form-control", id: "household-selection"} %>
-      </div>
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "home" %>
+    <h3 class="box-title">
+      <%= t "children.new.household_title" %>
+    </h3>
+  </div>
+  <div class="box-body">
+    <div class="form-group">
+      <%= f.label :household_id %>
+      <%= f.select :household_id, household_options, { include_blank: true }, {class: "form-control", id: "household-selection"} %>
     </div>
   </div>
+</div>
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="form-group">
-        <%= f.label :address %>
-        <%= f.text_field :address, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :city %>
-        <%= f.text_field :city, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :state %>
-        <%= f.select :state, group_state_options(@regions.all), {}, {class: "form-control"} %>
-      </div>
-      <div class="form-group">
-        <%= f.label :country %>
-        <%= f.country_select :country, {only: @regions.all.map(&:country).uniq}, {class: "form-control"} %>
-      </div>
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "map-marker" %>
+    <h3 class="box-title">
+      <%= t "children.new.address_title" %>
+    </h3>
+  </div>
+  <div class="box-body">
+    <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :state %>
+      <%= f.select :state, group_state_options(@regions.all), {}, {class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :country %>
+      <%= f.country_select :country, {only: @regions.all.map(&:country).uniq}, {class: "form-control"} %>
     </div>
   </div>
+</div>
 
-  <div class="form-group">
-    <div class="col-sm-4 col-sm-offset-4">
-      <%= link_to children_path, :class => 'btn btn-danger btn-block' do %>
-        <i class="fa fa-times"></i>
-        <%= t("general.cancel") %>
-      <% end %>
-    </div>
-    <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block"><%= t("general.submit") %></button>
-    </div>
+<div class="form-group">
+  <div class="col-sm-4 col-sm-offset-4">
+    <%= link_to children_path, :class => 'btn btn-danger btn-block' do %>
+    <i class="fa fa-times"></i>
+    <%= t("general.cancel") %>
+    <% end %>
   </div>
+  <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary btn-block"><%= t("general.submit") %></button>
+  </div>
+</div>
 <% end %>
