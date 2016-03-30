@@ -110,6 +110,7 @@ en:
       title: "List of Households"
     new:
       title: "Add A Household"
+      details_title: "Enter Household Details"
     edit:
       title: "Edit Household Record"
     show:

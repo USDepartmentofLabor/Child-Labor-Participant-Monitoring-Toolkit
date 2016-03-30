@@ -83,7 +83,7 @@ class HouseholdsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def household_params
       params.require(:household).permit(
-        :name, :address, :city, :state, :country, :phone,
+        :name, :address, :city, :state, :country, :phone, :code,
         children_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy, :id],
         adults_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy, :id]
       )
