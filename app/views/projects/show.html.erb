@@ -1,17 +1,81 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h2 class="h4">Project Details</h2>
+<div class="page-header">
+  <%= link_to edit_project_path(@project), class: 'btn btn-primary' do %>
+  <%= fa_icon "pencil" %>
+  <%= t("general.edit") %>
+  <% end %>
+  <h1>Project Record</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <%= fa_icon "fort-awesome" %>
+        <h3 class="box-title"><%= t("projects.show.details") %></h3>
+      </div>
+      <div class="box-body">
+        <table class="table table-hover table-listing">
+          <tbody>
+            <tr>
+              <td>ID</td>
+              <td><%= @project.id %></td>
+            </tr>
+            <tr>
+              <td>Name</td>
+              <td><%= @project.name %></td>
+            </tr>
+            <tr>
+              <td>Title</td>
+              <td><%= @project.title %></td>
+            </tr>
+            <tr>
+              <td>Cooperative Agreement Number</td>
+              <td><%= @project.cooperative_agreement_number %></td>
+            </tr>
+            <tr>
+              <td>Start Date</td>
+              <td><%= @project.start_date %></td>
+            </tr>
+            <tr>
+              <td>End Date</td>
+              <td><%= @project.end_date %></td>
+            </tr>
+            <tr>
+              <td>Organization</td>
+              <td><%= @project.organization %></td>
+            </tr>
+            <tr>
+              <td>Region</td>
+              <td>FIX</td>
+            </tr>
+            <tr>
+              <td>Office Location</td>
+              <td><%= @project.office_address %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <%= fa_icon "bullseye" %>
+        <h3 class="box-title"><%= t("projects.show.targets") %></h3>
+      </div>
+      <div class="box-body">
+        <table class="table table-hover table-listing">
+          <thead>
+            <tr>
+              <th>Target Type</th>
+              <th>Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "target", collection: @targets %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
-  <table class="table table-hover table-listing">
-    <tbody>
-      <tr><td>ID</td><td><%= @project.id %></td></tr>
-      <tr><td>Name</td><td><%= @project.name %></td></tr>
-      <tr><td>Title</td><td><%= @project.title %></td></tr>
-      <tr><td>Cooperative Agreement Number</td><td><%= @project.cooperative_agreement_number %></td></tr>
-      <tr><td>Start Date</td><td><%= @project.start_date %></td></tr>
-      <tr><td>End Date</td><td><%= @project.end_date %></td></tr>
-      <tr><td>Organization</td><td><%= @project.organization %></td></tr>
-      <tr><td>Office Location</td><td><%= @project.office_address %></td></tr>
-    </tbody>
-  </table>
 </div>
