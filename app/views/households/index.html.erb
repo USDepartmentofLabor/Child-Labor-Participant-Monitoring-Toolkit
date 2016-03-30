@@ -13,6 +13,7 @@
         <tr>
 					<th><%= Household.human_attribute_name(:id) %></th>
           <th><%= Household.human_attribute_name(:name) %></th>
+          <th><%= Household.human_attribute_name(:intake_date) %></th>
           <th><%= Household.human_attribute_name(:code) %></th>
         </tr>
       </thead>
@@ -21,6 +22,7 @@
         <%= content_tag_for(:tr, @households) do |household| %>
 				  <td><%= link_to household.id, household_path(household) %></td>
           <td><%= household.name %></td>
+          <td><%= household.intake_date %></td>
           <td><%= household.code %></td>
         <% end %>
       </tbody>

@@ -52,6 +52,7 @@ en:
       household:
         name: "Household Name"
         code: "Project ID"
+        intake_date: "Intake Date"
         address: "Address"
         city: "City"
         state: "State (Province)"
