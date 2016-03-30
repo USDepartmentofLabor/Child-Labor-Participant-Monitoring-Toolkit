@@ -17,39 +17,43 @@
         <table class="table table-hover table-listing">
           <tbody>
             <tr>
-              <td>ID</td>
+              <td><%= Project.human_attribute_name(:id) %></td>
               <td><%= @project.id %></td>
             </tr>
             <tr>
-              <td>Name</td>
+              <td><%= Project.human_attribute_name(:name) %></td>
               <td><%= @project.name %></td>
             </tr>
             <tr>
-              <td>Title</td>
+              <td><%= Project.human_attribute_name(:title) %></td>
               <td><%= @project.title %></td>
             </tr>
             <tr>
-              <td>Cooperative Agreement Number</td>
+              <td><%= Project.human_attribute_name(:cooperative_agreement_number) %></td>
               <td><%= @project.cooperative_agreement_number %></td>
             </tr>
             <tr>
-              <td>Start Date</td>
+              <td><%= Project.human_attribute_name(:start_date) %></td>
               <td><%= @project.start_date %></td>
             </tr>
             <tr>
-              <td>End Date</td>
+              <td><%= Project.human_attribute_name(:end_date) %></td>
               <td><%= @project.end_date %></td>
             </tr>
             <tr>
-              <td>Organization</td>
+              <td><%= Project.human_attribute_name(:organization) %></td>
               <td><%= @project.organization %></td>
+            </tr>
+            <tr>
+              <td><%= Project.human_attribute_name(:funding_amount) %></td>
+              <td><%= number_with_precision(@project.funding_amount, precision: 0, delimiter: ',') %></td>
             </tr>
             <tr>
               <td>Region</td>
               <td>FIX</td>
             </tr>
             <tr>
-              <td>Office Location</td>
+              <td><%= Project.human_attribute_name(:office_address) %></td>
               <td><%= @project.office_address %></td>
             </tr>
           </tbody>
@@ -66,8 +70,8 @@
         <table class="table table-hover table-listing">
           <thead>
             <tr>
-              <th>Target Type</th>
-              <th>Target</th>
+              <th><%= ProjectTarget.human_attribute_name(:project_target_type_id) %></th>
+              <th><%= ProjectTarget.human_attribute_name(:target_value) %></th>
             </tr>
           </thead>
           <tbody>
