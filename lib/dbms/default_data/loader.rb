@@ -79,14 +79,14 @@ module DBMS
               heads_or_tails = rand(1..2)
 
               if heads_or_tails == 1
-                household = Household.create(name: child.lname, address: child.address, city: child.city, state: child.state, country: child.country)
+                household = Household.create(name: child.lname, code: 'F' + _household_number.to_s.rjust(5, "0"), address: child.address, city: child.city, state: child.state, country: child.country)
                 household.children << child
               else
                 household = Household.find_by name: child.lname
                 household.children << child
               end
             else
-              household = Household.create(name: child.lname, address: child.address, city: child.city, state: child.state, country: child.country)
+              household = Household.create(name: child.lname, code: 'F' + _household_number.to_s.rjust(5, "0"), address: child.address, city: child.city, state: child.state, country: child.country)
               household.children << child
             end
           end
