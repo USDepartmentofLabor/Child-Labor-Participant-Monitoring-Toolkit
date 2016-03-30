@@ -27,6 +27,7 @@ en:
         sex: "Gender"
         dob: "Date of Birth"
         code: "Project ID"
+        intake_date: "Intake Date"
         address: "Address"
         city: "City"
         state: "State (Province)"
