@@ -1,10 +1,8 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :dashboard, :gender_count, :update]
+  before_action :set_project, only: [:show, :dashboard, :gender_count, :edit, :update]
 
   def dashboard
-    if @project.nil?
-      redirect_to "new"
-    end
+    redirect_to 'new' if @project.nil?
 
     @total_children = Child.count
     @total_households = Household.count
@@ -31,33 +29,28 @@ class ProjectsController < ApplicationController
 
     @project_complete_percentage = (Date.today.mjd - @project.start_date.mjd) / (@project.end_date.mjd - @project.start_date.mjd).to_f * 100.0
 
-    @new_children = Child.order("RANDOM()").limit(8) # TODO: Get non-random children
+    @new_children = Child.order('RANDOM()').limit(8) # TODO: Get non-random children
 
     if @total_children == 0 && @total_households == 0
       redirect_to @project
     else
-      render "dashboard"
+      render 'dashboard'
     end
   end
 
-  def new
-    @project = Project.new
+  def show
+    @targets = @project.project_targets
   end
 
-  def create
-    @project = Project.new(project_params)
-    @project.user_id = current_user.id
-
-    if @project.save
-      redirect_to @project, notice: t("action_messages.create", model: Project.model_name.human)
-    else
-      render :new
-    end
+  def edit
   end
 
   def update
-    @project.update(project_params)
-    redirect_to @project, notice: t("action_messages.update", model: Project.model_name.human)
+    if @project.update_attributes(project_params)
+      redirect_to @project, notice: t('action_messages.update', model: Project.model_name.human)
+    else
+      render :edit
+    end
   end
 
   def gender_count
@@ -67,7 +60,7 @@ class ProjectsController < ApplicationController
     res[Child.gender_name(2)] = count_in_sex[2] || 0
 
     respond_to do |format|
-      format.json {render json: res}
+      format.json { render json: res }
     end
   end
 
@@ -79,8 +72,8 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(
-      :name, :title, :cop_num, :start_date, :end_date, :org, :proj_type, :funding, :office_address,
-      :total_target_children, project_regions_attributes: [:country, :state, :id, :_destroy]
-    )
+      :name, :title, :cooperative_agreement_number, :start_date,
+      :end_date, :organization, :funding_amount, :office_address, :region_id,
+      project_targets_attributes: [:project_target_types_id, :target, :_destroy, :id])
   end
 end
