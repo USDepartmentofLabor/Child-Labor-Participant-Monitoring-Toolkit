@@ -33,6 +33,10 @@
               <td><%= @household.code %></td>
             </tr>
             <tr>
+              <td><%= Household.human_attribute_name(:intake_date) %></td>
+              <td><%= @household.intake_date %></td>
+            </tr>
+            <tr>
               <td><%= Household.human_attribute_name(:address) %></td>
               <td><%= @household.address %></td>
             </tr>
