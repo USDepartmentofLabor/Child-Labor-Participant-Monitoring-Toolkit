@@ -34,8 +34,8 @@ module DBMS
           child_target_type = ProjectTargetType.find_by name: 'Child'
           household_target_type = ProjectTargetType.find_by name: 'Household'
 
-          ProjectTarget.create(project: project, project_target_type: child_target_type, target: 28_000)
-          ProjectTarget.create(project: project, project_target_type: household_target_type, target: 14_000)
+          ProjectTarget.create(project: project, project_target_type: child_target_type, target: 1000)
+          ProjectTarget.create(project: project, project_target_type: household_target_type, target: 500)
 
           puts "project created : #{project.id}"
           project
@@ -45,6 +45,7 @@ module DBMS
           puts 'loading children ...'
 
           project_id = 1000
+          intake_date = '2013-04-01'
           child_inserts = []
           CSV.foreach("#{::Rails.root}/lib/dbms/default_data/children.csv", headers: true) do |child_row|
             first_name = child_row[4].gsub(/\\/, '\&\&').gsub(/'/, "''")
@@ -57,21 +58,35 @@ module DBMS
             city = child_row[8].gsub(/\\/, '\&\&').gsub(/'/, "''")
             state = child_row[9].gsub(/\\/, '\&\&').gsub(/'/, "''")
             country = child_row[12].gsub(/\\/, '\&\&').gsub(/'/, "''")
-            child_inserts.push "('#{first_name}', '#{middle_name}', '#{last_name}', #{gender}, '#{date_of_birth}', '#{code}', '#{address}', '#{city}', '#{state}', '#{country}', now(), now())"
+            child_inserts.push "('#{first_name}', '#{middle_name}', '#{last_name}', #{gender}, '#{date_of_birth}', '#{code}', '#{intake_date}', '#{address}', '#{city}', '#{state}', '#{country}', now(), now())"
             project_id += 1
           end
 
-          sql = "INSERT INTO children (fname, mname, lname, sex, dob, code, address, city, state, country, created_at, updated_at) VALUES #{child_inserts.join(', ')}"
+          sql = "INSERT INTO children (fname, mname, lname, sex, dob, code, intake_date, address, city, state, country, created_at, updated_at) VALUES #{child_inserts.join(', ')}"
           conn = ActiveRecord::Base.connection
           conn.execute sql
 
         end
 
+        def load_child_baselines
+          puts 'loading child baselines ...'
+
+          status_date = '2013-04-01'
+          user = User.first
+
+          Child.all.each do |child|
+            work_status = WorkStatus.find(rand(1..4))
+            education_status = EducationStatus.find(rand(1..3))
+            ChildStatus.create(child: child, work_status: work_status, education_status: education_status, user_id: user.id, start_date: status_date, note: 'Baseline statuses')
+          end
+        end
+
         def load_households_from_children(_project)
           puts 'loading households ...'
 
-          (1..11_000).each do |_household_number|
-            child_id = rand(1..2546)
+          intake_date = '2013-04-01'
+          (1..400).each do |_household_number|
+            child_id = rand(1..750)
             child = Child.find(child_id)
 
             if Household.find_by name: child.lname
@@ -79,14 +94,14 @@ module DBMS
               heads_or_tails = rand(1..2)
 
               if heads_or_tails == 1
-                household = Household.create(name: child.lname, code: 'F' + _household_number.to_s.rjust(5, "0"), address: child.address, city: child.city, state: child.state, country: child.country)
+                household = Household.create(name: child.lname, code: 'F' + _household_number.to_s.rjust(5, "0"), intake_date: intake_date, address: child.address, city: child.city, state: child.state, country: child.country)
                 household.children << child
               else
                 household = Household.find_by name: child.lname
                 household.children << child
               end
             else
-              household = Household.create(name: child.lname, code: 'F' + _household_number.to_s.rjust(5, "0"), address: child.address, city: child.city, state: child.state, country: child.country)
+              household = Household.create(name: child.lname, code: 'F' + _household_number.to_s.rjust(5, "0"), intake_date: intake_date, address: child.address, city: child.city, state: child.state, country: child.country)
               household.children << child
             end
           end
@@ -122,6 +137,7 @@ module DBMS
             user = create_admin_user
             project = create_dummy_project()
             load_children_from_file(project)
+            load_child_baselines()
             load_households_from_children(project)
             load_adults_from_households
           end
