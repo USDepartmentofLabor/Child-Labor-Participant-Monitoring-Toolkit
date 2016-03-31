@@ -4,7 +4,7 @@
 @validateFiles = (inputEl) ->
   maxFileSize = $(inputEl).data("max-file-size")
   maxFileSizeExceeded = $(inputEl).data("max-file-size-message")
-  formatWrong = $(inputEl).data("file-format-message") 
+  formatWrong = $(inputEl).data("file-format-message")
   allowedExtension = ["jpg", "jpeg", "gif", "png"]
   extName = undefined
   sizeExceeded = false
@@ -23,7 +23,7 @@
     window.alert maxFileSizeExceeded
     $(inputEl).val ""
     return false
-    
+
 jQuery ->
   if $(".child-status").length > 0
     $(".child-status .status-note").popover()
@@ -44,11 +44,30 @@ jQuery ->
   #       divID = "#pre-field-" + result.id
   #       $(divID).hide()
   #       $("#jgrowl").jGrowl(result.message, {theme: 'success'})
-	
-	$('#child-data-table').DataTable
-		"paging": true
-		"lengthChange": false
-		"searching": true
-		"ordering": true
-		"info": true
-		"autoWidth": false
+
+  $.fn.dataTableExt.oStdClasses.sWrapper = "dataTables_wrapper dt-bootstrap";
+
+  $('#child-data-table').DataTable
+    "paging": true
+    "lengthChange": false
+    "searching": true
+    "ordering": true
+    "info": true
+    "autoWidth": false
+
+  $('#status-modal').on 'show.bs.modal', (event) ->
+    button = $(event.relatedTarget)
+    id = button.data 'model-id'
+    status_type = button.data 'status-type'
+    modal = $(this)
+    form = modal.find('form')
+
+    if id != undefined
+      form.attr('action', '/children/' + id + '/child_statuses')
+
+      if status_type == 'work'
+        $('#education-status').addClass 'hidden'
+        $('#work-status').removeClass 'hidden'
+      else
+        $('#education-status').removeClass 'hidden'
+        $('#work-status').addClass 'hidden'

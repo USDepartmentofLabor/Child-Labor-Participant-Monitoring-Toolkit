@@ -52,9 +52,9 @@ module ChildrenHelper
     child.statuses.count > 0
   end
 
-  def edit_status_for(child, status)
+  def edit_status_for(child, type, status)
     if status
-      render partial: 'status_edit_link', locals: {child: child, status: status}
+      render partial: 'status_edit_link', locals: {child: child, status: status, type: type}
     end
   end
 end
