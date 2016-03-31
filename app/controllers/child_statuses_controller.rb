@@ -6,10 +6,19 @@ class ChildStatusesController < ApplicationController
     @child_status.child_id = @child.id
     @child_status.user_id = current_user.id
 
-    if @child_status.save
-      redirect_to :back, notice: t("action_messages.create", model: ChildStatus.model_name.human)
-    else
-      redirect_to :back, alert: t("action_messages.create_failed", model: ChildStatus.model_name.human, error: alert)
+    respond_to do |format|
+      if @child_status.save
+        format.html {
+          redirect_to :back, notice: t("action_messages.create", model: ChildStatus.model_name.human)
+        }
+        format.js
+      else
+        format.html {
+          redirect_to :back, alert: t("action_messages.create_failed",
+                                      model: ChildStatus.model_name.human, error: alert)
+        }
+        format.js
+      end
     end
   end
 
