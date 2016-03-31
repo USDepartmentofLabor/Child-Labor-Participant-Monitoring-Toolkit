@@ -1,1 +1,22 @@
 $('#status-modal').modal('hide');
+
+$('#status-modal form').trigger('reset');
+
+var ed_span = $('<%= "#child-#{@child_status.child_id} .child-ed-status span" %>');
+var wk_span = $('<%= "#child-#{@child_status.child_id} .child-wk-status span" %>');
+
+<% if @child_status.education_status %>
+  $(ed_span)
+    .tooltip('destroy')
+    .attr('title', '<%= @child_status.start_date %>')
+    .tooltip()
+    .text('<%= @child_status.education_status.name %>');
+<% end %>
+
+<% if @child_status.work_status %>
+  $(wk_span)
+    .tooltip('destroy')
+    .attr('title', '<%= @child_status.start_date %>')
+    .tooltip()
+    .text('<%= @child_status.work_status.name %>');
+<% end %>
