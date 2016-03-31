@@ -80,6 +80,7 @@ en:
       household_title: "Choose a Household"
       address_title: "Enter Address"
       details_title: "Enter Beneficiary Details"
+      baseline_title: "Enter Baseline Statuses"
     index:
       add: "Add A Beneficiary"
       title: "List of Beneficiaries"
