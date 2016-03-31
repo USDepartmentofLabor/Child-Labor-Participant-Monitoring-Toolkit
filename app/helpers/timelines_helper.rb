@@ -8,6 +8,8 @@ module TimelinesHelper
       background_color = 'bg-aqua'
     elsif event_type == "EDUCATION_STATUS"
       background_color = 'bg-yellow'
+    elsif event_type == "SERVICE"
+      background_color = 'bg-fuchsia'
     end
 
     background_color
@@ -22,6 +24,8 @@ module TimelinesHelper
       icon = "fa-briefcase"
     elsif event_type == "EDUCATION_STATUS"
       icon = "fa-graduation-cap"
+    elsif event_type == "SERVICE"
+      icon = "fa-cutlery"
     end
 
     icon

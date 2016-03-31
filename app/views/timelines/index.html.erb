@@ -5,7 +5,9 @@
   <% end %>
   <h1>Timeline for
     <%= @child.fname %>
-    <%= @child.lname %></h1>
+    <%= @child.lname %>
+    (<%= @child.id %>)
+  </h1>
 </div>
 
 <div class="row">
@@ -17,7 +19,7 @@
         <% if current_date != event.event_date %>
           <% current_date = event.event_date %>
           <li class="time-label">
-            <span class="bg-green">
+            <span class="bg-light-blue">
               <%= event.event_date.strftime("%d %b. %Y") %>
             </span>
           </li>
