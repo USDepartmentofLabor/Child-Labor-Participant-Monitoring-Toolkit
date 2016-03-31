@@ -23,6 +23,10 @@ class Child < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  accepts_nested_attributes_for :statuses,
+    :allow_destroy => true,
+    :reject_if     => :all_blank
+
   # Input: the integer of sex field
   # Return: the human readable text of the sex name
   def self.gender_name(i)
