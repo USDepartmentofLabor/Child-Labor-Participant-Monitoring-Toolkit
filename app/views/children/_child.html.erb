@@ -1,4 +1,4 @@
-<tr>
+<tr id='<%= "child-#{child.id}" %>'>
 <td><%= link_to child.id, child_path(child) %></td>
 <td><%= child.fname %></td>
 <td><%= child.lname %></td>
@@ -6,6 +6,6 @@
 <td><%= child.dob %></td>
 <td><%= child.intake_date %></td>
 <td><%= child.code %></td>
-<td><%= edit_status_for child, :edu, child.current_education_status %></td>
-<td><%= edit_status_for child, :work, child.current_work_status %></td>
+<td class="child-ed-status"><%= edit_status_for child, :edu, child.current_education_status %></td>
+<td class="child-wk-status"><%= edit_status_for child, :work, child.current_work_status %></td>
 </tr>
