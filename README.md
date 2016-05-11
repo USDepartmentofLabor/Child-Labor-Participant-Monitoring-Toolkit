@@ -1,4 +1,4 @@
-Direct Beneficiary Monitoring System Prototype (DOL-ILAB)
+# Direct Beneficiary Monitoring System Prototype (DOL-ILAB)
 
 ## Overview
 
@@ -15,8 +15,8 @@ Mac :)
 1. Download and Install [VirtualBox](www.virtualbox.org/wiki/Downloads)
 2. Download and Install [Vagrant](vagrantup.com/downloads)
 3. Start your console, and go to source code folder.
-4. For the first time before running `vagrant`, install vagrant NSF support for Windows: `vagrant plugin install
-   vagrant-winnfsd`
+4. For the first time before running `vagrant`, install vagrant NSF support for Windows:
+   `vagrant plugin install vagrant-winnfsd`
 5. Start rails development environment in a virtual machine: `vagrant up` (might take some take for the first time)
 6. To enter into the VM, use `vagrant ssh`
 7. To stop the VM, use: `vagrant halt`
