@@ -1,52 +1,34 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-# See https://github.com/discourse/discourse/blob/master/docs/VAGRANT.md
 #
-Vagrant.configure("2") do |config|
-  config.vm.box     = 'discourse/discourse-1.3.0'
-  config.vm.box_url = "http://discourse-vms.s3.amazonaws.com/discourse-1.3.0.box"
 
-  # Make this VM reachable on the host network as well, so that other
-  # VM's running other browsers can access our dev server.
-  # config.vm.network :private_network, ip: "10.0.2.200"
+$script = <<SCRIPT
+curl -sL https://deb.nodesource.com/setup_4.x | sh
+apt-get upgrade -y
+apt-get install -y git build-essential postgresql libpq-dev ruby libruby ruby-dev nodejs vim
+gem install bundle
+sudo -u postgres -- createuser -sU postgres vagrant
+SCRIPT
 
-  # Make it so that network access from the vagrant guest is able to
-  # use SSH private keys that are present on the host without copying
-  # them into the VM.
+Vagrant.configure(2) do |config|
+  # Use a simple, current Ubuntu box
+  config.vm.box = "cargomedia/ubuntu-1504-plain"
+
+  # 3000 is the rails dev server, 3080 is for mailcatcher
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 3080, host: 3080
+
+  # Use local ssh keypairs
   config.ssh.forward_agent = true
 
-  config.vm.provider :virtualbox do |v|
-    # This setting gives the VM 1024MB of RAM instead of the default 384.
-    v.customize ["modifyvm", :id, "--memory", [ENV['DISCOURSE_VM_MEM'].to_i, 1024].max]
-
-    # Who has a single core cpu these days anyways?
-    cpu_count = 2
-
-    # Determine the available cores in host system.
-    # This mostly helps on linux, but it couldn't hurt on MacOSX.
-    if RUBY_PLATFORM =~ /linux/
-      cpu_count = `nproc`.to_i
-    elsif RUBY_PLATFORM =~ /darwin/
-      cpu_count = `sysctl -n hw.ncpu`.to_i
-    end
-
-    # Assign additional cores to the guest OS.
-    v.customize ["modifyvm", :id, "--cpus", cpu_count]
+  # Customize VirtualBox VM
+  config.vm.provider "virtualbox" do |v|
+    v.name = "DBMS Development"
+    v.customize ["modifyvm", :id, "--memory", 1024]
+    v.customize ["modifyvm", :id, "--cpus", 2]
     v.customize ["modifyvm", :id, "--ioapic", "on"]
-
-    # This setting makes it so that network access from inside the vagrant guest
-    # is able to resolve DNS using the hosts VPN connection.
-    # v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
-  config.vm.network :forwarded_port, guest: 3000, host: 3000
-  config.vm.network :forwarded_port, guest: 1080, host: 3080 # Mailcatcher
-
-  # nfs_setting = RUBY_PLATFORM =~ /darwin/ || RUBY_PLATFORM =~ /linux/
-  # config.vm.synced_folder ".", "/vagrant", id: "vagrant-root", :nfs => nfs_setting
-
-  # speed up with nfs enabled on windows
-  # config.vm.synced_folder ".", "/vagrant", type: "nfs"
-  # config.vm.network "private_network", type: "dhcp" 
+  config.vm.provision "shell", inline: $script
 
 end
