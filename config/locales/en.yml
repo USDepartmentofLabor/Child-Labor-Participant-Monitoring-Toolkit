@@ -60,14 +60,14 @@ en:
       dashboard: "Project Dashboard"
       children_covered: "Beneficiaries"
       edit: "Settings"
-      targets: "Project Targets"
+      targets: "Direct Beneficiary Targets"
       details: "Project Details"
     new:
       title: "Create New Project"
     edit:
       title: "Edit Project Record"
       details_title: "Project Details"
-      targets_title: "Project Targets"
+      targets_title: "Direct Beneficiary Targets"
   children:
     new:
       form_title: "Beneficiary Intake Form"
