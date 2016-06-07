@@ -66,9 +66,9 @@ en:
         cooperative_agreement_number: "Cooperative Agreement Number"
         start_date: "Start Date"
         end_date: "End Date"
-        organization: "Organization"
+        organization: "Grantee Name"
         funding_amount: "Funding Amount"
-        office_address: "Local Office Location (Headquarter)"
+        office_address: "Project Headquarters Location"
         total_target_children: "Total Number of Children Targeted by Project"
       custom_field:
         name: "Field Name"
