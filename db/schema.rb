@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330220427) do
+ActiveRecord::Schema.define(version: 20160622171053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,17 +170,14 @@ ActiveRecord::Schema.define(version: 20160330220427) do
     t.string   "organization"
     t.decimal  "funding_amount"
     t.string   "office_address"
+    t.integer  "region_id"
   end
 
   create_table "regions", force: :cascade do |t|
-    t.string   "country"
-    t.string   "state"
-    t.integer  "project_id"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "regions", ["project_id"], name: "index_regions_on_project_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.string   "title"
@@ -282,7 +279,7 @@ ActiveRecord::Schema.define(version: 20160330220427) do
   add_foreign_key "indicators", "unit_of_measures"
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"
-  add_foreign_key "regions", "projects"
+  add_foreign_key "projects", "regions"
   add_foreign_key "service_instances", "children"
   add_foreign_key "service_instances", "services"
   add_foreign_key "services", "service_types"
