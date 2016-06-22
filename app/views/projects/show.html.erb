@@ -49,8 +49,8 @@
               <td><%= number_with_precision(@project.funding_amount, precision: 0, delimiter: ',') %></td>
             </tr>
             <tr>
-              <td>Region</td>
-              <td>FIX</td>
+              <td><%= Project.human_attribute_name(:region) %></td>
+              <td><%= @project.region.name %></td>
             </tr>
             <tr>
               <td><%= Project.human_attribute_name(:office_address) %></td>
