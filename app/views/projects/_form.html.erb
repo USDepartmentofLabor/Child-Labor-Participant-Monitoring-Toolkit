@@ -61,6 +61,11 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :region %>
+      <%= f.collection_select :region_id, Region.all, :id, :name, {prompt: true}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
       <%= f.label :office_address %>
       <%= f.text_field :office_address, class: "form-control" %>
     </div>
