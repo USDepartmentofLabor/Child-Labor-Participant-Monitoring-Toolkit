@@ -39,7 +39,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @targets = @project.project_targets
   end
 
   def edit
@@ -67,13 +66,20 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = Project.first
+    @project = Project.joins(:locations, :project_targets, :region).first
   end
 
   def project_params
     params.require(:project).permit(
       :name, :title, :cooperative_agreement_number, :start_date,
-      :end_date, :organization, :funding_amount, :office_address, :region_id,
-      project_targets_attributes: [:project_target_types_id, :target, :_destroy, :id])
+      :end_date, :organization, :funding_amount, :region_id,
+      project_targets_attributes: [
+        :id, :project_target_type_id, :target, :_destroy
+      ],
+      locations_attributes: [
+        :id, :name, :location_type_id, :address_line1, :address_line2, :city,
+        :state, :zip, :country, :_destroy
+      ]
+    )
   end
 end
