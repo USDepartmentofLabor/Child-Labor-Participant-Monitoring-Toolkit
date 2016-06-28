@@ -28,7 +28,8 @@ module DBMS
             start_date: Date.new(2012, 12, 28),
             end_date: Date.new(2016, 12, 31),
             organization: 'World Vision',
-            funding_amount: 10_000_000
+            funding_amount: 10_000_000,
+            region_id: 3
           )
 
           child_target_type = ProjectTargetType.find_by name: 'Child'
