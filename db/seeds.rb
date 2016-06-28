@@ -39,3 +39,15 @@ ProjectTargetType.create([
   { name: 'Household' },
   { name: 'Adult Forced Labor'}
 ])
+
+Region.create([
+  { name: 'Africa', },
+  { name: 'Latin America' },
+  { name: 'Asia-MENA' },
+  { name: 'Unknown' }
+])
+
+LocationType.create([
+  { name: 'Project Headquarters Location' },
+  { name: 'Project Field Location' }
+])

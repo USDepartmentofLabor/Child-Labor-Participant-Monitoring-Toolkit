@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330220427) do
+ActiveRecord::Schema.define(version: 20160622221322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,6 +142,29 @@ ActiveRecord::Schema.define(version: 20160330220427) do
 
   add_index "indicators", ["unit_of_measure_id"], name: "index_indicators_on_unit_of_measure_id", using: :btree
 
+  create_table "location_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "project_id"
+    t.integer  "location_type_id"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "country"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "locations", ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
+  add_index "locations", ["project_id"], name: "index_locations_on_project_id", using: :btree
+
   create_table "project_target_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -169,18 +192,14 @@ ActiveRecord::Schema.define(version: 20160330220427) do
     t.date     "end_date"
     t.string   "organization"
     t.decimal  "funding_amount"
-    t.string   "office_address"
+    t.integer  "region_id"
   end
 
   create_table "regions", force: :cascade do |t|
-    t.string   "country"
-    t.string   "state"
-    t.integer  "project_id"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "regions", ["project_id"], name: "index_regions_on_project_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.string   "title"
@@ -280,9 +299,11 @@ ActiveRecord::Schema.define(version: 20160330220427) do
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
   add_foreign_key "indicators", "unit_of_measures"
+  add_foreign_key "locations", "location_types"
+  add_foreign_key "locations", "projects"
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"
-  add_foreign_key "regions", "projects"
+  add_foreign_key "projects", "regions"
   add_foreign_key "service_instances", "children"
   add_foreign_key "service_instances", "services"
   add_foreign_key "services", "service_types"
