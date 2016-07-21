@@ -241,4 +241,22 @@ $(document).ready(function () {
       // You can switch between pie and douhnut using the method below.
     pieChart.Doughnut(PieData, pieOptions);
   }
+
+  $("#project-info a").editable({
+    mode: 'inline',
+    resource: 'project',
+    url: '/project',
+    combodate: {
+      minYear: 2000,
+      maxYear: 2040
+    }
+  });
+
+  $("#title").on('save', function(e, p) {
+    $(".content-header h1 span").text(p.newValue);
+  });
+
+  $("#cooperative_agreement_number").on('save', function(e, p) {
+    $(".content-header h1 small").text(p.newValue);
+  });
 });
