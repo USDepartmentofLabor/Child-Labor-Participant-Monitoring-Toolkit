@@ -15,43 +15,77 @@
       </div>
       <div class="box-body">
         <div class="table-responsive">
-          <table class="table table-hover table-listing table-condensed">
+          <table class="table table-hover table-listing table-condensed"
+id="project-info">
             <tbody>
               <tr>
-                <th><%= Project.human_attribute_name(:id) %></th>
-                <td><%= @project.id %></td>
-              </tr>
-              <tr>
                 <th><%= Project.human_attribute_name(:name) %></th>
-                <td><%= @project.name %></td>
+                <td>
+                  <a href="#" id="name" data-type="text"
+                    data-name="name"><%= @project.name %></a>
+                </td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:title) %></th>
-                <td><%= @project.title %></td>
+                <td>
+                  <a href="#" id="title" data-type="text" data-name="title">
+                    <%= @project.title %>
+                  </a>
+                </td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:cooperative_agreement_number) %></th>
-                <td><%= @project.cooperative_agreement_number %></td>
+                <td>
+                  <a href="#" id="cooperative_agreement_number" data-type="text"
+                    data-name="cooperative_agreement_number">
+                    <%= @project.cooperative_agreement_number %>
+                  </a>
+                </td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:start_date) %></th>
-                <td><%= @project.start_date %></td>
+                <td>
+                  <a href="#" id="start_date" data-type="combodate"
+                    data-name="start_date">
+                    <%= @project.start_date %>
+                  </a>
+                </td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:end_date) %></th>
-                <td><%= @project.end_date %></td>
+                <td>
+                  <a href="#" id="end_date" data-type="combodate"
+                    data-name="end_date">
+                    <%= @project.end_date %>
+                  </a>
+                </td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:organization) %></th>
-                <td><%= @project.organization %></td>
+                <td>
+                  <a href="#" id="organization" data-type="text"
+                    data-name="organization">
+                    <%= @project.organization %>
+                  </a>
+                </td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:funding_amount) %></th>
-                <td><%= number_with_precision(@project.funding_amount, precision: 0, delimiter: ',') %></td>
+                <td>
+                  <a href="#" id="funding_amount" data-type="text"
+                    data-name="funding_amount">
+                    <%= number_with_precision(@project.funding_amount, precision: 0, delimiter: ',') %>
+                  </a>
+                </td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:region) %></th>
-                <td><%= @project.region.name %></td>
+                <td>
+                  <a href="#" id="region_id" data-type="select"
+                    data-value="<%= @project.region.id %>"
+                    data-source="/regions">
+                    <%= @project.region.name %>
+                </td>
               </tr>
             </tbody>
           </table>
