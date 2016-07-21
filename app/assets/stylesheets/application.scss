@@ -31,17 +31,6 @@ body {
   background-color: #ECF0F5;
 }
 
-.box-header {
-  padding: 10px 10px 0;
-}
-
-.box-header .box-title,
-.box-header > .fa {
-  line-height: 34px;
-  font-size: 24px;
-  padding-left: 5px;
-}
-
 .box-header > .fa + .box-title {
   padding-left: 0;
 }
@@ -52,6 +41,26 @@ body {
 
 .box.box-primary > .box-header > .fa {
   color: #3C8DBC;
+}
+
+.table-listing tr:first-child {
+  td, th {
+    border: none;
+  }
+}
+
+.table-listing {
+  th {
+    white-space: nowrap;
+  }
+
+  td {
+    width: 100%;
+  }
+}
+
+.box .table {
+  margin-bottom: 0;
 }
 
 .dataTables_wrapper {
