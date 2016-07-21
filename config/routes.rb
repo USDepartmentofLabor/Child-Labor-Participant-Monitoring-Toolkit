@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resource :project do
     get :dashboard
+    resources :locations
   end
 
   resource :home
