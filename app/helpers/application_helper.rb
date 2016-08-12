@@ -38,19 +38,6 @@ module ApplicationHelper
     country_iso.translations[I18n.locale.to_s] || country_iso.name
   end
 
-  def group_state_options(regions)
-    grouped_options = {}
-    regions.each do |region|
-      country = country_name_in_text(region.country)
-      if grouped_options.has_key?(country)
-        grouped_options[country] << region.state
-      else
-        grouped_options[country] = [region.state]
-      end
-    end
-    grouped_options_for_select(grouped_options)
-  end
-
   def markdown(text)
     return "" if text.nil?
     renderer = Redcarpet::Render::HTML.new
