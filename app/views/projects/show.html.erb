@@ -7,11 +7,6 @@
       <div class="box-header with-border">
         <%= fa_icon "fort-awesome" %>
         <h3 class="box-title"><%= t("projects.show.details") %></h3>
-        <div class="box-tools pull-right">
-          <%= link_to edit_project_path do %>
-            <%= fa_icon "pencil", text: t("general.edit") %>
-          <% end %>
-        </div>
       </div>
       <div class="box-body">
         <div class="table-responsive">
@@ -135,13 +130,15 @@
         <%= fa_icon "bullseye" %>
         <h3 class="box-title"><%= t("projects.show.targets") %></h3>
         <div class="box-tools pull-right">
-          <%= link_to edit_project_path(@project) do %>
+          <%= link_to '#add-target', 'data-show' => 'project-target-fields' do %>
             <%= fa_icon "plus", text: t("general.add") %>
           <% end %>
         </div>
       </div>
       <div class="box-body">
         <div class="table-responsive">
+          <%= form_for(ProjectTarget.new, html: { role: "form" }) do |f| %>
+          <%= f.hidden_field :project_id, value: @project.id %>
           <table class="table table-hover table-condensed">
             <thead>
               <tr>
@@ -153,8 +150,10 @@
             <tbody>
               <%= render partial: "project_target_show",
                 collection: @project.project_targets, as: 'project_target' %>
+              <%= render partial: 'project_target_fields', locals: {f: f} %>
             </tbody>
           </table>
+          <% end %>
         </div>
       </div>
     </div>
