@@ -1,12 +1,33 @@
 class LocationsController < ApplicationController
+  before_action :set_project
+
   def create
     @location = Location.new(location_params)
-    
-    if @location.save
+    @location.project_id = @project.id
+
+    respond_to do |format|
+      if @location.save
+        format.html {
+          redirect_to :back, notice: t("action_messages.create",
+                                       model: Location.model_name.human)
+        }
+        format.js
+      else
+        format.html {
+          redirect_to :back, alert: t("action_messages.create_failed",
+                                      model: Location.model_name.human,
+                                      error: alert)
+        }
+        format.js
+      end
     end
   end
 
   private
+
+  def set_project
+    @project = Project.first
+  end
 
   def location_params
     params.require(:location).permit(

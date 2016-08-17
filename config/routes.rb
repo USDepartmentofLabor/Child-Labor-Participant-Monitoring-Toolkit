@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   resource :project do
     get :dashboard
-    resources :locations
   end
 
   resource :home
@@ -27,6 +26,7 @@ Rails.application.routes.draw do
   resources :children do
     resources :timelines
   end
+  resources :locations
   resources :households
   resources :custom_fields
   resources :users

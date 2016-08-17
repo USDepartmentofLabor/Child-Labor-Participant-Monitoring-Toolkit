@@ -15,8 +15,7 @@
       </div>
       <div class="box-body">
         <div class="table-responsive">
-          <table class="table table-hover table-listing table-condensed"
-id="project-info">
+          <table class="table table-hover table-listing table-condensed" id="project-info">
             <tbody>
               <tr>
                 <th><%= Project.human_attribute_name(:name) %></th>
@@ -98,13 +97,15 @@ id="project-info">
         <%= fa_icon "map-marker" %>
         <h3 class="box-title"><%= t("projects.show.locations") %></h3>
         <div class="box-tools pull-right">
-          <%= link_to '#new_location_modal', 'data-toggle' => 'modal' do %>
+          <%= link_to '#add-location', 'data-show' => 'location-fields' do %>
             <%= fa_icon "plus", text: t("general.add") %>
           <% end %>
         </div>
       </div>
       <div class="box-body">
         <div class="tabled-responsive">
+          <%= form_for(Location.new, html: { role: "form" }) do |f| %>
+          <%= f.hidden_field :project_id, value: @project.id %>
           <table class="table table-hover table-condensed">
             <thead>
               <tr>
@@ -122,8 +123,10 @@ id="project-info">
             <tbody>
               <%= render partial: "location_show",
                 collection: @project.locations, as: 'location' %>
+              <%= render partial: 'location_fields', locals: {f: f} %>
             </tbody>
           </table>
+          <% end %>
         </div>
       </div>
     </div>
@@ -154,34 +157,6 @@ id="project-info">
           </table>
         </div>
       </div>
-    </div>
-
-  </div>
-</div>
-<div class="modal fade" id="new_location_modal" tabindex="-1" role="dialog"
-  aria-labelledby="new_location_modal_label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" data-dismiss="modal"
-          aria-label="<%= t('general.close') %>">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title"><%= t("projects.add_location") %></h4>
-      </div>
-      <%= form_for([@project, @location], remote: true, html: { role: "form" }) do |f| %>
-        <div class="modal-body">
-          <%= f.hidden_field :project_id, :value => @project.id %>
-          <%= render 'location_fields', f: f %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left"
-            data-dismiss="modal"><%= t("general.close") %></button>
-          <button type="submit" class="btn btn-primary">
-            <%= t("general.save") %>
-          </button>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
