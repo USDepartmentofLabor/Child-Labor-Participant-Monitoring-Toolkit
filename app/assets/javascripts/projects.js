@@ -259,4 +259,11 @@ $(document).ready(function () {
   $("#cooperative_agreement_number").on('save', function(e, p) {
     $(".content-header h1 small").text(p.newValue);
   });
+
+  $('[data-show]').on('click', function(e) {
+    if(e.currentTarget.dataset['show']) {
+      var selector = '#' + e.currentTarget.dataset['show'];
+      $(selector).show();
+    }
+  });
 });
