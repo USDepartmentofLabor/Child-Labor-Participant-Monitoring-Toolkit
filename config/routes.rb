@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :users
   resources :service_types
   resources :regions, defaults: {format: :json}
+  resources :project_targets
 
   # a trick to avoid generating children urls again
   resources :children, only: [] do
