@@ -25,6 +25,9 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require ckeditor/init
+//= require moment
+//= require bootstrap-editable
+//= require bootstrap-editable-rails
 //= require home
 //= require children
 //= require projects
@@ -60,5 +63,4 @@ $(document).ready(function() {
       $(this).delay(3000).fadeOut();
     });
   });
-
 });

@@ -39,16 +39,23 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @location = Location.new
   end
 
   def edit
   end
 
   def update
-    if @project.update_attributes(project_params)
-      redirect_to @project, notice: t('action_messages.update', model: Project.model_name.human)
-    else
-      render :edit
+    respond_to do |format|
+      if @project.update_attributes(project_params)
+        format.html {
+          redirect_to(@project, notice: t('action_messages.update', model: Project.model_name.human))
+        }
+        format.json { head :no_content }
+      else
+        format.html { render :edit }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
     end
   end
 

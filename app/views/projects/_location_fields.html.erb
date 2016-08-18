@@ -1,0 +1,30 @@
+<tr id="location-fields" style="display:none">
+  <td>
+    <%= f.collection_select :location_type_id, LocationType.all, :id, :name,
+             { include_blank: true, prompt: true }, class: "form-control" %>
+  </td>
+  <td>
+    <%= f.text_field :name, class: "form-control" %>
+  </td>
+  <td>
+    <%= f.text_field :address_line1, class: "form-control" %>
+  </td>
+  <td>
+    <%= f.text_field :address_line2, class: "form-control" %>
+  </td>
+  <td>
+    <%= f.text_field :city, class: "form-control" %>
+  </td>
+  <td>
+    <%= f.text_field :state, class: "form-control" %>
+  </td>
+  <td>
+    <%= f.text_field :zip, class: "form-control" %>
+  </td>
+  <td>
+    <%= f.text_field :country, class: "form-control" %>
+  </td>
+  <td>
+    <button type="submit" class="btn btn-primary"><%= fa_icon :plus %></button>
+  </td>
+<tr>

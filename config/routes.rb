@@ -26,12 +26,15 @@ Rails.application.routes.draw do
   resources :children do
     resources :timelines
   end
+  resources :locations
   resources :households
   resources :custom_fields
   resources :users
   resources :services
   resources :users
   resources :service_types
+  resources :regions, defaults: {format: :json}
+  resources :project_targets
 
   # a trick to avoid generating children urls again
   resources :children, only: [] do
