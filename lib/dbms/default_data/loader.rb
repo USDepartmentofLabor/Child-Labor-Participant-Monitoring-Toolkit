@@ -46,7 +46,7 @@ module DBMS
           puts 'loading children ...'
 
           project_id = 1000
-          intake_date = '2016-04-01'
+          intake_date = '2015-11-01'
           child_inserts = []
           CSV.foreach("#{::Rails.root}/lib/dbms/default_data/children.csv", headers: true) do |child_row|
             first_name = child_row[4].gsub(/\\/, '\&\&').gsub(/'/, "''")
@@ -72,7 +72,7 @@ module DBMS
         def load_child_baselines
           puts 'loading child baselines ...'
 
-          status_date = '2016-04-01'
+          status_date = '2016-03-01'
           user = User.first
 
           Child.all.each do |child|
@@ -85,7 +85,7 @@ module DBMS
         def load_households_from_children(_project)
           puts 'loading households ...'
 
-          intake_date = '2016-04-01'
+          intake_date = '2015-11-01'
           (1..30).each do |_household_number|
             child_id = rand(1..100)
             child = Child.find(child_id)
@@ -132,6 +132,38 @@ module DBMS
           adult
         end
 
+        def create_services
+          puts 'creating services ...'
+          Service.create(
+            name: 'Education support for child laborers',
+            service_type_id: 1,
+            start_date: '2016-01-01',
+            description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et'
+          )
+
+          Service.create(
+            name: 'Provision of livelihood skills for children',
+            service_type_id: 5,
+            start_date: '2016-01-01',
+            description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et'
+          )
+        end
+
+        def create_child_services
+          puts 'creating child services ...'
+
+          Child.all.each do |child|
+            Service.all.each do |service|
+              #child.services << service
+              ServiceInstance.create(
+                child_id: child.id,
+                service_id: service.id,
+                start_date: '2016-03-01'
+              )
+            end
+          end
+        end
+
         def load_example_data
 
           User.transaction do
@@ -141,6 +173,8 @@ module DBMS
             load_child_baselines()
             load_households_from_children(project)
             load_adults_from_households
+            create_services
+            create_child_services
           end
         end
       end
