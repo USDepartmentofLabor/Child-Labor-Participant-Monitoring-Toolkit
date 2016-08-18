@@ -22,14 +22,14 @@ module DBMS
           puts 'creating project ...'
 
           project = Project.create(
-            name: 'EXCEL',
-            title: 'Cambodians EXCEL Project Eliminating eXploitive Child Labor through Education and Livelihoods',
+            name: 'ADVANCE Brazil',
+            title: 'Brazilian ADVANCE Project Eliminating Exploitive Child Labor through Education and Livelihoods',
             cooperative_agreement_number: 'IL-23979-13-75-K',
-            start_date: Date.new(2012, 12, 28),
-            end_date: Date.new(2016, 12, 31),
-            organization: 'World Vision',
+            start_date: Date.new(2015, 12, 28),
+            end_date: Date.new(2019, 12, 31),
+            organization: 'IMPAQ International',
             funding_amount: 10_000_000,
-            region_id: 3
+            region_id: 2
           )
 
           child_target_type = ProjectTargetType.find_by name: 'Child'
@@ -46,7 +46,7 @@ module DBMS
           puts 'loading children ...'
 
           project_id = 1000
-          intake_date = '2013-04-01'
+          intake_date = '2016-04-01'
           child_inserts = []
           CSV.foreach("#{::Rails.root}/lib/dbms/default_data/children.csv", headers: true) do |child_row|
             first_name = child_row[4].gsub(/\\/, '\&\&').gsub(/'/, "''")
@@ -72,7 +72,7 @@ module DBMS
         def load_child_baselines
           puts 'loading child baselines ...'
 
-          status_date = '2013-04-01'
+          status_date = '2016-04-01'
           user = User.first
 
           Child.all.each do |child|
@@ -85,9 +85,9 @@ module DBMS
         def load_households_from_children(_project)
           puts 'loading households ...'
 
-          intake_date = '2013-04-01'
-          (1..400).each do |_household_number|
-            child_id = rand(1..750)
+          intake_date = '2016-04-01'
+          (1..30).each do |_household_number|
+            child_id = rand(1..100)
             child = Child.find(child_id)
 
             if Household.find_by name: child.lname

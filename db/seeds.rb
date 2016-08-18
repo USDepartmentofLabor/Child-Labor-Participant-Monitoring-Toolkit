@@ -51,3 +51,15 @@ LocationType.create([
   { name: 'Project Headquarters Location' },
   { name: 'Project Field Location' }
 ])
+
+ReportingPeriod.create([
+  { start_date: '2015-10-01', end_date: '2016-03-31', name: 'PERIOD 1 : 1 Oct. 2015 - 31 Mar. 2016'},
+  { start_date: '2016-04-01', end_date: '2016-09-30', name: 'PERIOD 2 : 1 Apr. 2016 - 30 Sept. 2016'},
+  { start_date: '2016-10-01', end_date: '2017-03-31', name: 'PERIOD 3 : 1 Oct. 2016 - 31 Mar. 2017'},
+  { start_date: '2017-04-01', end_date: '2017-09-30', name: 'PERIOD 4 : 1 Apr. 2017 - 30 Sept. 2017'},
+  { start_date: '2017-10-01', end_date: '2018-03-31', name: 'PERIOD 5 : 1 Oct. 2017 - 31 Mar. 2018'},
+  { start_date: '2018-04-01', end_date: '2018-09-30', name: 'PERIOD 6 : 1 Apr. 2018 - 30 Sept. 2018'},
+  { start_date: '2018-10-01', end_date: '2019-03-31', name: 'PERIOD 7 : 1 Oct. 2018 - 31 Mar. 2019'},
+  { start_date: '2019-04-01', end_date: '2019-09-30', name: 'PERIOD 8 : 1 Apr. 2019 - 30 Sept. 2019'},
+  { start_date: '2019-10-01', end_date: '2020-03-31', name: 'PERIOD 9 : 1 Oct. 2019 - 31 Mar. 2020'},
+])

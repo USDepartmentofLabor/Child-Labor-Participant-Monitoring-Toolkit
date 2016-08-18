@@ -3,9 +3,8 @@
 #
 
 $script = <<SCRIPT
-curl -sL https://deb.nodesource.com/setup_4.x | sh
 apt-get upgrade -y
-apt-get install -y git build-essential postgresql libpq-dev ruby libruby ruby-dev nodejs vim
+apt-get install -y git build-essential postgresql libpq-dev ruby libruby ruby-dev nodejs vim tmux
 gem install bundle
 sudo -u postgres -- createuser -sU postgres vagrant
 SCRIPT
