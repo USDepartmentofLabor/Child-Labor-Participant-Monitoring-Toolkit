@@ -6,7 +6,7 @@ class TargetsController < ApplicationController
   end
 
   def new
-    @targets = [Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new]
+    @targets = [Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new]
   end
 
   def edit_mulitple

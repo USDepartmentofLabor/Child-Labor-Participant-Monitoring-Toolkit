@@ -1,8 +1,11 @@
 <div class="page-header">
   <%= link_to indicator_path(@indicator), class: 'btn btn-default' do %>
-    <%= fa_icon "caret-left" %> Back to Indicator
+  <%= fa_icon "caret-left" %>
+  Back to Indicator
   <% end %>
-  <h1><%= t("targets.edit.title") %> - <%= @indicator.indicator %></h1>
+  <h1><%= t("targets.edit.title") %>
+    -
+    <%= @indicator.indicator %></h1>
 </div>
 
 <div class="row">
@@ -14,24 +17,18 @@
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>Period 1</th>
-              <th>Period 2</th>
-              <th>Period 3</th>
-              <th>Period 4</th>
-              <th>Period 5</th>
-              <th>Period 6</th>
-              <th>Period 7</th>
-              <th>Period 8</th>
-              <th>Period 9</th>
-              <th>Period 10</th>
+              <th>Reporting Period</th>
+              <th>Target Value</th>
             </tr>
           </thead>
           <tbody>
+            <% @targets.each_with_index do |target, index| %>
             <tr>
-              <% for target in @targets %>
-                <td><%= text_field_tag "targets[]", target.target_value %>
-              <% end %>
+              <td>Period
+                <%= index + 1 %></td>
+              <td><%= text_field_tag "targets[]", target.target_value %></td>
             </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
@@ -43,7 +40,8 @@
         <%= link_to indicators_path,
           class: "btn btn-danger pull-right",
           style: "margin-right: 1rem" do %>
-          <i class="fa fa-times"> </i> <%= t "general.cancel" %>
+        <i class="fa fa-times"></i>
+        <%= t "general.cancel" %>
         <% end %>
       </div>
 

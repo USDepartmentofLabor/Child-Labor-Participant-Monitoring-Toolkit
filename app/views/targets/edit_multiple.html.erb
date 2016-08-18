@@ -14,24 +14,17 @@
         <table class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>Period 1</th>
-              <th>Period 2</th>
-              <th>Period 3</th>
-              <th>Period 4</th>
-              <th>Period 5</th>
-              <th>Period 6</th>
-              <th>Period 7</th>
-              <th>Period 8</th>
-              <th>Period 9</th>
-              <th>Period 10</th>
+              <th>Reporting Period</th>
+              <th>Target Value</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <% for target in @indicator.targets %>
-                <td><%= text_field_tag "targets[]", target.target_value %>
+              <% @indicator.targets.each_with_index do |target, index| %>
+                <tr>
+                  <td>Period <%= index + 1 %></td>
+                  <td><%= text_field_tag "targets[]", target.target_value %></td>
+                </tr>
               <% end %>
-            </tr>
           </tbody>
         </table>
       </div>
