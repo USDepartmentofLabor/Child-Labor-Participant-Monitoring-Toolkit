@@ -54,6 +54,9 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-editable-rails (0.0.9)
+      railties (>= 3.1)
+      sass-rails
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
@@ -192,6 +195,8 @@ GEM
     mini_magick (4.2.7)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    momentjs-rails (2.11.1)
+      railties (>= 3.1)
     nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -362,6 +367,7 @@ PLATFORMS
 
 DEPENDENCIES
   adminlte2-rails
+  bootstrap-editable-rails
   bootstrap-sass
   byebug
   capistrano (~> 3.2.1)
@@ -388,6 +394,7 @@ DEPENDENCIES
   kaminari
   launchy
   mini_magick
+  momentjs-rails
   paperclip
   pg
   puma

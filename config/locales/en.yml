@@ -20,9 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  date:
+    formats:
+      default: "%d/%m/%Y"
   general:
     submit: "Submit"
     cancel: "Cancel"
+    close: "Close"
     show: "View"
     edit: "Edit"
     delete: "Delete"
@@ -56,6 +60,7 @@ en:
     forgot_password: "Forgot password"
     enter_email: "Please enter your email address"
   projects:
+    add_location: "Add Location"
     show:
       dashboard: "Project Dashboard"
       children_covered: "Beneficiaries"
