@@ -6,6 +6,7 @@ class TechnicalProgressReportsController < ApplicationController
   end
 
   def show
+    @project = Project.first
   end
 
   private
