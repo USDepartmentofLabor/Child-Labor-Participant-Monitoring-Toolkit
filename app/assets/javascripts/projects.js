@@ -10,7 +10,7 @@ $(document).ready(function () {
     var targetVsActualChart = new Chart(targetVsActualChartCanvas);
 
     var targetVsActualChartData = {
-      labels: ["Period 1", "Period 2", "Period 3", "Period 4", "Period 5", "Period 6", "Period 7", "Period 8", "Period 9", "Period 10"],
+      labels: ["Period 1", "Period 2", "Period 3", "Period 4", "Period 5", "Period 6", "Period 7", "Period 8", "Period 9"],
       datasets: [{
         label: "Targets",
         fillColor: "rgb(210, 214, 222)",
@@ -20,7 +20,7 @@ $(document).ready(function () {
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgb(220,220,220)",
         //data: [0, 0, 5794, 5745, 7964, 6677, 1554, 1553, 0, 0]
-        data: [0, 4000, 8000, 12000, 16000, 20000, 24000, 28000, 0, 0]
+        data: [100, 200, 300, 400, 500, 600, 700, 800, 900]
       }, {
         label: "Actuals",
         fillColor: "rgba(60,141,188,0.9)",
@@ -30,7 +30,7 @@ $(document).ready(function () {
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(60,141,188,1)",
         //data: [0, 1192, 5349, 3711, 0, 0, 0, 0, 0, 0]
-        data: [0, 1192, 6541, 10252, 0, 0, 0, 0, 0, 0]
+        data: [100, 0, 0, 0, 0, 0, 0, 0, 0]
       }]
     };
     targetVsActualChartData.datasets[1].fillColor = "#00a65a";
@@ -75,7 +75,7 @@ $(document).ready(function () {
     var householdsTargetVsActualChart = new Chart(householdsTargetVsActualChartCanvas);
 
     var householdsTargetVsActualChartData = {
-      labels: ["Period 1", "Period 2", "Period 3", "Period 4", "Period 5", "Period 6", "Period 7", "Period 8", "Period 9", "Period 10"],
+      labels: ["Period 1", "Period 2", "Period 3", "Period 4", "Period 5", "Period 6", "Period 7", "Period 8", "Period 9"],
       datasets: [{
         label: "Targets",
         fillColor: "rgb(210, 214, 222)",
@@ -85,7 +85,7 @@ $(document).ready(function () {
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgb(220,220,220)",
         //data: [0, 251, 2700, 3000, 4628, 4629, 1215, 1204, 0, 0]
-        data: [0, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 0, 0]
+        data: [50, 100, 150, 200, 250, 300, 350, 400, 450]
       }, {
         label: "Actuals",
         fillColor: "rgba(60,141,188,0.9)",
@@ -95,7 +95,7 @@ $(document).ready(function () {
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(60,141,188,1)",
         //data: [0, 222, 699, 1625, 0, 0, 0, 0, 0, 0]
-        data: [0, 222, 921, 2546, 0, 0, 0, 0, 0, 0]
+        data: [28, 0, 0, 0, 0, 0, 0, 0, 0]
       }]
     };
     householdsTargetVsActualChartData.datasets[1].fillColor = "#00a65a";
