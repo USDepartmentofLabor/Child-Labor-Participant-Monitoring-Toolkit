@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = Project.joins(:locations, :project_targets, :region).first
+    @project = Project.first#Project.joins(:locations, :project_targets, :region).first
   end
 
   def project_params
