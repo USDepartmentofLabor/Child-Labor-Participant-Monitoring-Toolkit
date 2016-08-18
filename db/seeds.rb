@@ -52,6 +52,13 @@ LocationType.create([
   { name: 'Project Field Location' }
 ])
 
+ReportingStatus.create([
+  { name: 'New' },
+  { name: 'In Review' },
+  { name: 'Sent for Revision' },
+  { name: 'Approved' }
+])
+
 ReportingPeriod.create([
   { start_date: '2015-10-01', end_date: '2016-03-31', name: 'PERIOD 1 : 1 Oct. 2015 - 31 Mar. 2016'},
   { start_date: '2016-04-01', end_date: '2016-09-30', name: 'PERIOD 2 : 1 Apr. 2016 - 30 Sept. 2016'},

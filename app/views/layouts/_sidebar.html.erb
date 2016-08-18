@@ -105,8 +105,16 @@
 
       <%= content_tag :li, class: (controller_name == 'reports' ? "active" : "")  do -%>
         <%= link_to reports_path do -%>
-          <i class="fa fa-file-text-o"></i>Analysis
+          <i class="fa fa-file-text-o"></i>Reporting
         <% end -%>
+        <ul style="list-style:none">
+          <li>
+            <%= link_to '#' do -%>
+              <i class="fa fa-angle-double-right"></i>
+              Technical Progress Reports
+            <% end -%>
+          </li>
+        </ul>
       <% end -%>
 
       <%= content_tag :li  do -%>
