@@ -32,59 +32,59 @@
             <table class="table table-bordered table-hover table-listing">
               <tbody>
                 <tr>
-                  <td>ID</td>
+                  <th>ID</th>
                   <td><%= @child.id %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:fname) %></td>
+                  <th><%= Child.human_attribute_name(:fname) %></th>
                   <td><%= @child.fname %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:lname) %></td>
+                  <th><%= Child.human_attribute_name(:lname) %></th>
                   <td><%= @child.lname %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:mname) %></td>
+                  <th><%= Child.human_attribute_name(:mname) %></th>
                   <td><%= @child.mname %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:sex) %></td>
+                  <th><%= Child.human_attribute_name(:sex) %></th>
                   <td><%= @child.gender_name %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:dob) %></td>
+                  <th><%= Child.human_attribute_name(:dob) %></th>
                   <td><%= @child.dob %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:code) %></td>
+                  <th><%= Child.human_attribute_name(:code) %></th>
                   <td><%= @child.code %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:intake_date) %></td>
+                  <th><%= Child.human_attribute_name(:intake_date) %></th>
                   <td><%= @child.intake_date %></td>
                 </tr>
                 <tr>
                   <td colspan="2"></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:address) %></td>
+                  <th><%= Child.human_attribute_name(:address) %></th>
                   <td><%= @child.address %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:city) %></td>
+                  <th><%= Child.human_attribute_name(:city) %></th>
                   <td><%= @child.city %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:state) %></td>
+                  <th><%= Child.human_attribute_name(:state) %></th>
                   <td><%= @child.state %></td>
                 </tr>
                 <tr>
-                  <td><%= Child.human_attribute_name(:country) %></td>
+                  <th><%= Child.human_attribute_name(:country) %></th>
                   <td><%= @child.country_name %></td>
                 </tr>
                 <% @custom_fields.each do |custom_field| %>
                 <tr>
-                  <td><%= custom_field.name %></td>
+                  <th><%= custom_field.name %></th>
                   <td><%= custom_field_value(custom_field) %></td>
                 </tr>
                 <% end %>
