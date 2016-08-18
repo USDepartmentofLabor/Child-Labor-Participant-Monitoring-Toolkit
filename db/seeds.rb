@@ -53,9 +53,10 @@ LocationType.create([
 ])
 
 ReportingStatus.create([
-  { name: 'New' },
-  { name: 'In Review' },
-  { name: 'Sent for Revision' },
+  { name: 'Draft' },
+  { name: 'Submitted' },
+  { name: 'Ready for Revision' },
+  { name: 'In Revision' },
   { name: 'Approved' }
 ])
 

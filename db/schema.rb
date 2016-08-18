@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818133333) do
+ActiveRecord::Schema.define(version: 20160818134034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -280,6 +280,28 @@ ActiveRecord::Schema.define(version: 20160818133333) do
 
   add_index "targets", ["indicator_id"], name: "index_targets_on_indicator_id", using: :btree
 
+  create_table "technical_progress_reports", force: :cascade do |t|
+    t.integer  "reporting_period_id",                 null: false
+    t.integer  "reporting_status_id",                 null: false
+    t.boolean  "tpr_included",        default: false, null: false
+    t.boolean  "annex_a_included",    default: false, null: false
+    t.boolean  "annex_b_included",    default: false, null: false
+    t.boolean  "annex_c_included",    default: false, null: false
+    t.boolean  "annex_d_included",    default: false, null: false
+    t.boolean  "annex_e_included",    default: false, null: false
+    t.boolean  "annex_f_included",    default: false, null: false
+    t.boolean  "annex_g_included",    default: false, null: false
+    t.boolean  "annex_h_included",    default: false, null: false
+    t.boolean  "annex_i_included",    default: false, null: false
+    t.string   "submitted_by"
+    t.date     "date_submitted"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "technical_progress_reports", ["reporting_period_id"], name: "index_technical_progress_reports_on_reporting_period_id", using: :btree
+  add_index "technical_progress_reports", ["reporting_status_id"], name: "index_technical_progress_reports_on_reporting_status_id", using: :btree
+
   create_table "unit_of_measures", force: :cascade do |t|
     t.string "name"
   end
@@ -322,4 +344,6 @@ ActiveRecord::Schema.define(version: 20160818133333) do
   add_foreign_key "service_instances", "services"
   add_foreign_key "services", "service_types"
   add_foreign_key "targets", "indicators"
+  add_foreign_key "technical_progress_reports", "reporting_periods"
+  add_foreign_key "technical_progress_reports", "reporting_statuses"
 end
