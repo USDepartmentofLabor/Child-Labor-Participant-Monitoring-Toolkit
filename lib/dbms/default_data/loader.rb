@@ -8,40 +8,6 @@ module DBMS
     module Loader
       class << self
 
-        def create_admin_user
-          puts 'creating admin user ...'
-
-          user = User.where(email: 'admin@impaqint.com').first_or_create do |user|
-            user.name = 'Admin'
-            user.password = 'password'
-          end
-          user
-        end
-
-        def create_dummy_project()
-          puts 'creating project ...'
-
-          project = Project.create(
-            name: 'ADVANCE Brazil',
-            title: 'Brazilian ADVANCE Project Eliminating Exploitive Child Labor through Education and Livelihoods',
-            cooperative_agreement_number: 'IL-23979-13-75-K',
-            start_date: Date.new(2015, 12, 28),
-            end_date: Date.new(2019, 12, 31),
-            organization: 'IMPAQ International',
-            funding_amount: 10_000_000,
-            region_id: 2
-          )
-
-          child_target_type = ProjectTargetType.find_by name: 'Child'
-          household_target_type = ProjectTargetType.find_by name: 'Household'
-
-          ProjectTarget.create(project: project, project_target_type: child_target_type, target: 1000)
-          ProjectTarget.create(project: project, project_target_type: household_target_type, target: 500)
-
-          puts "project created : #{project.id}"
-          project
-        end
-
         def load_children_from_file(project)
           puts 'loading children ...'
 
@@ -167,8 +133,7 @@ module DBMS
         def load_example_data
 
           User.transaction do
-            user = create_admin_user
-            project = create_dummy_project()
+            project = Project.first
             load_children_from_file(project)
             load_child_baselines()
             load_households_from_children(project)
