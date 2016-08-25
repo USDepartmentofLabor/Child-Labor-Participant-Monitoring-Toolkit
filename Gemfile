@@ -60,6 +60,8 @@ group :development, :test do
   gem 'launchy'
   # gem 'rb-inotify', '~> 0.9', require: RUBY_PLATFORM =~ /linux/i ? 'rb-inotify' : false
   gem "fuubar"
+
+  gem 'foreman'
 end
 
 gem 'rails-i18n', '~> 4.0.0'
@@ -109,3 +111,5 @@ gem 'ckeditor'
 gem 'paperclip'
 gem 'bootstrap-editable-rails'
 gem 'momentjs-rails'
+
+gem 'aws-ses'
