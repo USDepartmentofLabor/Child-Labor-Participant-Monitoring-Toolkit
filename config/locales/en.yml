@@ -62,6 +62,7 @@ en:
   projects:
     add_location: "Add Location"
     show:
+      title: "Project Details"
       dashboard: "Project Dashboard"
       children_covered: "Beneficiaries"
       edit: "Settings"
@@ -199,3 +200,6 @@ en:
     preview: "Preview Of Custom Fields"
     add: "Add New Custom Field"
     edit: "Edit Custom Field"
+  users:
+    index:
+      title: "List of Users"
