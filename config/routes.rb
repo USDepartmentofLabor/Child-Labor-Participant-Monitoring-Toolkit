@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :regions, defaults: {format: :json}
   resources :project_targets
   resources :technical_progress_reports
+  resources :roles
 
   # a trick to avoid generating children urls again
   resources :children, only: [] do

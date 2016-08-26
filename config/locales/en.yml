@@ -203,3 +203,9 @@ en:
   users:
     index:
       title: "List of Users"
+  roles:
+    index:
+      title: "List of Roles"
+      add: "Add Role"
+    edit:
+      title: "Edit Role"
