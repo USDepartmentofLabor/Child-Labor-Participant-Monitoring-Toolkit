@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826030226) do
+ActiveRecord::Schema.define(version: 20160826223754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abilities", force: :cascade do |t|
+    t.string "name"
+  end
+
+  add_index "abilities", ["name"], name: "index_abilities_on_name", unique: true, using: :btree
+
+  create_table "abilities_roles", force: :cascade do |t|
+    t.integer "ability_id"
+    t.integer "role_id"
+  end
+
+  add_index "abilities_roles", ["ability_id"], name: "index_abilities_roles_on_ability_id", using: :btree
+  add_index "abilities_roles", ["role_id"], name: "index_abilities_roles_on_role_id", using: :btree
 
   create_table "adults", force: :cascade do |t|
     t.string   "fname"
@@ -232,9 +246,8 @@ ActiveRecord::Schema.define(version: 20160826030226) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.text     "abilities",  default: [],              array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles_users", force: :cascade do |t|
@@ -339,6 +352,8 @@ ActiveRecord::Schema.define(version: 20160826030226) do
     t.string "work_type"
   end
 
+  add_foreign_key "abilities_roles", "abilities"
+  add_foreign_key "abilities_roles", "roles"
   add_foreign_key "adults", "households"
   add_foreign_key "child_statuses", "children"
   add_foreign_key "children_services", "children"
