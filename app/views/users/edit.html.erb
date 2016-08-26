@@ -37,11 +37,15 @@
                   <%= f.text_field :password_confirmation, class: "form-control" %>
                 </div>
                 <div class="form-group">
-                  <label>Roles</label><br>
+                  <%= f.label :roles %>
                   <%= hidden_field_tag "user[role_ids][]", nil %>
                   <% Role.all.each do |role| %>
-                    <%= check_box_tag "user[role_ids][]", role.id, @user.role_ids.include?(role.id), id: dom_id(role) %>
-                    <%= label_tag dom_id(role), role.name %><br>
+                    <div class="checkbox">
+                      <label>
+                        <%= check_box_tag "user[role_ids][]", role.id, @user.role_ids.include?(role.id), id: dom_id(role), class: "square-red" %>
+                        <%= role.name %>
+                      </label>
+                    </div>
                   <% end %>
                 </div>
               </div>

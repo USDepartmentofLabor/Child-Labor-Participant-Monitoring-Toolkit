@@ -125,13 +125,19 @@
           <li>
             <%= link_to project_path do -%>
               <i class="fa fa-angle-double-right"></i>
-              Project Details
+              <%= t("projects.show.title") %>
             <% end -%>
           </li>
           <li>
             <%= link_to service_types_path do -%>
               <i class="fa fa-angle-double-right"></i>
               <%= t("service_types.index.title") %>
+            <% end -%>
+          </li>
+          <li>
+            <%= link_to users_path do -%>
+              <i class="fa fa-angle-double-right"></i>
+              <%= t("users.index.title") %>
             <% end -%>
           </li>
         </ul>

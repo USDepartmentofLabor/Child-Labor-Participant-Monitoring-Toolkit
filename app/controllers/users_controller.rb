@@ -1,29 +1,19 @@
 class UsersController < ApplicationController
-  before_action :set_project
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:edit, :update]
 
   def index
-    if @project
-      @users = @project.users
-    else
-      @users = User.all
-    end
-  end
-
-  def show
-  end
-
-  def edit
+    @users = User.all
   end
 
   def update
-    if @user.update_attributes(user_params)
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
+    if @user.update user_params
       notice = t("action_messages.update", model: User.model_name.human)
-      if @project.nil?
-        redirect_to @user, notice: notice
-      else
-        redirect_to project_user_path(@project, @user), notice: notice
-      end
+      redirect_to edit_user_path(@user), notice: notice
     else
       render :edit
     end
@@ -32,15 +22,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :project_ids => [], :role_ids => [])
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role_ids => [])
   end
 
   def set_user
     @user = User.find(params[:id])
   end
-
-  def set_project
-    @project = Project.find(params[:project_id]) unless params[:project_id].nil?
-  end
-
 end
