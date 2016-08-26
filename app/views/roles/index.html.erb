@@ -1,8 +1,30 @@
-<section class="content-header">
-  <h1>Roles</h1>
-</section>
-<section class="content">
-  <div class="row">
-    
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box box-primary">
+      <div class="box-header">
+        <%= fa_icon "user" %>
+        <h1 class="box-title"><%= t "roles.index.title" %></h1>
+        <div class="box-tools">
+          <%= link_to new_role_path, class: "btn btn-primary" do %>
+            <%= fa_icon "plus" %>
+            <%= t "roles.index.add" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="box-body">
+        <table class="table table-bordered table-condensed table-striped" role="grid" id="role-data-table">
+          <thead>
+            <tr>
+              <th><%= Role.human_attribute_name(:name) %></th>
+              <th><%= Role.human_attribute_name(:abilities) %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render(partial: "role", collection: @roles) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</section>
+</div>
