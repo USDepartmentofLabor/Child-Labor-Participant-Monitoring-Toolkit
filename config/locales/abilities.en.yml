@@ -1,0 +1,54 @@
+en:
+  abilities:
+    child_index:
+      name: "List children"
+      desc: "Allow user to show list of child beneficiaries"
+    child_show:
+      name: "Show child details"
+      desc: "Allow user to show details of individual child beneficiaries"
+    child_create:
+      name: "Create child"
+      desc: "Allow user to create new child beneficiaries"
+    child_edit:
+      name: "Edit child"
+      desc: "Allow user to edit details of individual child beneficiaries"
+    child_destroy:
+      name: "Delete child"
+      desc: "Allow user to delete child beneficiaries"
+    household_index:
+    household_show:
+    household_create:
+    household_edit:
+    household_destroy:
+    service_index:
+    service_show:
+    service_create:
+    service_edit:
+    service_destroy:
+    service_type_index:
+    service_type_show:
+    service_type_create:
+    service_type_edit:
+    service_type_destroy:
+    indicator_index:
+    indicator_show:
+    indicator_create:
+    indicator_edit:
+    indicator_destroy:
+    custom_field_create:
+    custom_field_destroy:
+    project_edit:
+    role_index:
+    role_edit:
+    role_create:
+    role_destroy:
+    user_index:
+    user_create:
+    user_edit:
+    user_destroy:
+    technical_progress_report_index:
+    technical_progress_report_show:
+    technical_progress_report_create:
+    technical_progress_report_edit:
+    technical_progress_report_destroy:
+    technical_progress_report_submit:

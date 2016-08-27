@@ -13,16 +13,13 @@
           </div>
           <div class="field-group">
             <%= f.label :abilities %>
-            <%= hidden_field_tag "role[ability_ids][]", nil %>
-            <%= Ability.all.each do |ability| %>
+            <%= f.collection_check_boxes :ability_ids, Ability.all, :id, :display_strings  do |cb| %>
               <div class="checkbox">
-                <label>
-                  <%= check_box_tag "role[ability_ids][]", ability.id, @role.ability_ids.include?(ability.id), id: dom_id(ability), class: "square-red" %>
-                  <%= ability.name %>
-                  <small>
-                    <%= ability.description %>
-                  </small>
-                </label>
+                <%= cb.label do %>
+                  <%= cb.check_box(class: "square-red") %>
+                  <%= cb.text[:display_name] %>
+                  <small><%= cb.text[:description] %></small>
+                <% end %>
               </div>
             <% end %>
           </div>
