@@ -116,3 +116,8 @@ Ability.create([
   { name: 'technical_progress_report_destroy' },
   { name: 'technical_progress_report_submit' }
 ])
+
+Role.create(
+  name: 'Administrator',
+  ability_ids: (1..42).to_a
+)
