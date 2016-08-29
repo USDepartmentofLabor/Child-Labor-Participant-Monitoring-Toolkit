@@ -9,8 +9,9 @@ namespace :db do
   task populate_sample_project_data: :environment do
     User.create!(
       email:    'admin@impaqint.com',
-      name:     'password',
-      password: 'password'
+      name:     'Administrator',
+      password: 'password',
+      role_ids: [Role.find_by(name: 'Administrator').id]
     )
 
     project = Project.create!(
