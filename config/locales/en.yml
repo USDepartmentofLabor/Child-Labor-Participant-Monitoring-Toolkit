@@ -209,3 +209,5 @@ en:
       add: "Add Role"
     edit:
       title: "Edit Role"
+    new:
+      title: "Add Role"

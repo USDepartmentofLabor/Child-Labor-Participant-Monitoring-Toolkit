@@ -1,4 +1,4 @@
 <tr id='<%= "role-#{role.id}" %>'>
   <td><%= link_to role.name, edit_role_path(role) %></td>
-  <td><%= role.abilities %></td>
+  <td><%= role.abilities.map(&:display_name).join(', ') %></td>
 </tr>
