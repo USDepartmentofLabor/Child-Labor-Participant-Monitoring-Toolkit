@@ -5,9 +5,24 @@ class RolesController < ApplicationController
     @roles = Role.all
   end
 
+  def new
+    @role = Role.new
+  end
+
+  def create
+    @role = Role.new role_params
+
+    if @role.save
+      notice = t "action_messages.create", model: Role.model_name.human
+      redirect_to roles_path, notice: notice
+    else
+      render :new
+    end
+  end
+
   def update
     if @role.update role_params
-      notice = t("action_messages.update", model: Role.model_name.human)
+      notice = t "action_messages.update", model: Role.model_name.human
       redirect_to edit_role_path(@role), notice: notice
     else
       render :edit
