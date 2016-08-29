@@ -16,39 +16,113 @@ en:
       name: "Delete child"
       desc: "Allow user to delete child beneficiaries"
     household_index:
+      name: "List households"
+      desc: "Allow user to show list of households"
     household_show:
+      name: "Show household details"
+      desc: "Allow user to show details of individual households"
     household_create:
+      name: "Create household"
+      desc: "Allow user to create new households"
     household_edit:
+      name: "Edit household"
+      desc: "Allow user to edit details of individual households"
     household_destroy:
+      name: "Delete household"
+      desc: "Allow user to delete households"
     service_index:
+      name: "List services"
+      desc: "Allow user to show list of services"
     service_show:
+      name: "Show service details"
+      desc: "Allow user to show details of individual services"
     service_create:
+      name: "Create service"
+      desc: "Allow user to create new services"
     service_edit:
+      name: "Edit service"
+      desc: "Allow user to edit details of individual services"
     service_destroy:
+      name: "Delete service"
+      desc: "Allow user to delete services"
     service_type_index:
+      name: "List service types"
+      desc: "Allow user to show list of service types"
     service_type_show:
+      name: "Show service type details"
+      desc: "Allow user to show details of individual service types"
     service_type_create:
+      name: "Create service type"
+      desc: "Allow user to create new service types"
     service_type_edit:
+      name: "Edit service type"
+      desc: "Allow user to edit details of individual service types"
     service_type_destroy:
+      name: "Delete service type"
+      desc: "Allow user to delete service types"
     indicator_index:
+      name: "List indicators"
+      desc: "Allow user to show list of indicators"
     indicator_show:
+      name: "Show indicator details"
+      desc: "Allow user to show details of individual indicators"
     indicator_create:
+      name: "Create indicator"
+      desc: "Allow user to create new indicators"
     indicator_edit:
+      name: "Edit indicator"
+      desc: "Allow user to edit details of individual indicators"
     indicator_destroy:
+      name: "Delete indicator"
+      desc: "Allow user to delete indicators"
     custom_field_create:
+      name: "Create custom field"
+      desc: "Allow user to create new custom fields"
     custom_field_destroy:
+      name: "Delete custom field"
+      desc: "Allow user to delete custom fields"
     project_edit:
+      name: "Edit project"
+      desc: "Allow user to edit details of the project"
     role_index:
+      name: "List roles"
+      desc: "Allow user to show list of roles"
     role_edit:
+      name: "Edit role"
+      desc: "Allow user to edit details of individual roles"
     role_create:
+      name: "Create role"
+      desc: "Allow user to create new roles"
     role_destroy:
+      name: "Delete role"
+      desc: "Allow user to delete roles"
     user_index:
+      name: "List users"
+      desc: "Allow user to show list of users"
     user_create:
+      name: "Create user"
+      desc: "Allow user to create new users"
     user_edit:
+      name: "Edit user"
+      desc: "Allow user to edit details of individual users"
     user_destroy:
+      name: "Delete user"
+      desc: "Allow user to delete users"
     technical_progress_report_index:
+      name: "List technical progress reports"
+      desc: "Allow user to show list of technical progress reports"
     technical_progress_report_show:
+      name: "Show technical progress report details"
+      desc: "Allow user to show details of individual technical progress reports"
     technical_progress_report_create:
+      name: "Create technical progress report"
+      desc: "Allow user to create new technical progress reports"
     technical_progress_report_edit:
+      name: "Edit technical progress report"
+      desc: "Allow user to edit details of individual technical progress reports"
     technical_progress_report_destroy:
+      name: "Delete technical progress report"
+      desc: "Allow user to delete technical progress reports"
     technical_progress_report_submit:
+      name: "Submit technical progress report"
+      desc: "Allow user to submit technical progress reports"
