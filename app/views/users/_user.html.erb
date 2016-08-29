@@ -2,8 +2,7 @@
   <td><%= user.id %></td>
   <td><%= user.email %></td>
   <td>
-    <% if project.nil? then path = user_path(user) else path = project_user_path(project, user) end %>
-    <%= link_to t("general.show"), path %> |
+    <%= link_to t("general.show"), edit_user_path(user) %> |
     <%= link_to t("general.delete"), user_path(user), method: :delete, data: {config: 'Are you sure?'} %>
   </td>
 </tr>
