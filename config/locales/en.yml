@@ -34,6 +34,7 @@ en:
     copyright: "All Rights Reserved"
     logo_alt: "Department of Labor Seal"
     slogan: "The more we connect, the better it gets."
+    not_authorized: "Your account is not authorized to perform this function"
   action_messages:
     create: "%{model} was successfully added."
     create_multiple: "%{model} were successfully added."
@@ -133,6 +134,7 @@ en:
       children: "Children Of This Household"
       adults: "Adults Of This Household"
   reports:
+    technical_progress: "Technical Progress Reports"
     new:
       title: "New Report Generator"
     index:
