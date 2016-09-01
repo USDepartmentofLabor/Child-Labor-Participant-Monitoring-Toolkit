@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :roles
+  has_many :abilities, through: :roles
 
   validates :name, presence: true
+
+  def has_ability? ability
+    abilities.has(ability.to_s).count > 0
+  end
 end

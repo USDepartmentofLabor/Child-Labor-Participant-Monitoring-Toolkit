@@ -1,4 +1,5 @@
 class ChildrenController < ApplicationController
+  before_action :do_authorize
   before_action :set_project
   before_action :set_child, only: [:show, :edit, :update, :destroy]
   before_action :set_regions, only: [:new, :create, :show, :edit, :update]
@@ -62,6 +63,10 @@ class ChildrenController < ApplicationController
   end
 
   private
+    def do_authorize
+      authorize Child
+    end
+
     def set_project
       @project = Project.first
     end
