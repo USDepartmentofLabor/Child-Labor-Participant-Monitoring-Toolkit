@@ -13,7 +13,7 @@
           </div>
           <div class="field-group">
             <%= f.label :abilities %>
-            <%= f.collection_check_boxes :ability_ids, Ability.all, :id, :display_strings  do |cb| %>
+            <%= f.collection_check_boxes :ability_ids, Ability.all.order(:id), :id, :display_strings  do |cb| %>
               <div class="checkbox">
                 <%= cb.label do %>
                   <%= cb.check_box(class: "square-red") %>
