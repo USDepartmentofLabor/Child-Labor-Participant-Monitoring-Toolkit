@@ -4,36 +4,21 @@
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <ul class="sidebar-menu">
-      <%= content_tag :li, class: (controller_name == 'projects' ? "active" : "")  do -%>
-        <%= link_to dashboard_project_path do %>
-          <i class="fa fa-tachometer"></i>
-          <%= t("projects.show.dashboard") %>
-        <% end %>
-      <% end -%>
+      <%= sidebar_link t('projects.show.dashboard'), dashboard_project_path,
+        (controller_name == 'projects' ? 'active' : ''), 'fa-tachometer' %>
 
       <%= content_tag :li, class: (controller_name == 'children' ? "active" : "")  do -%>
         <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
           <i class="fa fa-child"></i><%= Child.model_name.human.pluralize %>
         <% end -%>
         <ul style="list-style:none">
-          <li>
-            <%= link_to children_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("children.index.title") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to new_child_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("children.index.add") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to new_custom_field_path(model_type: "Child") do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("custom_fields.index") %>
-            <% end -%>
-          </li>
+          <% if policy(:child).index? %>
+            <%= sidebar_link t("children.index.title"), children_path %>
+          <% end %>
+          <% if policy(:child).create? %>
+            <%= sidebar_link t("children.index.add"), new_child_path %>
+          <% end %>
+          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: 'Child') %>
         </ul>
       <% end -%>
 
@@ -42,24 +27,9 @@
           <i class="fa fa-home"></i><%= Household.model_name.human.pluralize %>
         <% end -%>
         <ul style="list-style:none">
-          <li>
-            <%= link_to households_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("households.index.title") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to new_household_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("households.index.add") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to new_custom_field_path(model_type: "Household") do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("custom_fields.index") %>
-            <% end -%>
-          </li>
+          <%= sidebar_link t("households.index.title"), households_path %>
+          <%= sidebar_link t("households.index.add"), new_household_path %>
+          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: 'Household') %>
         </ul>
       <% end -%>
 
@@ -68,18 +38,8 @@
           <i class="fa fa-cutlery"></i><%= Service.model_name.human.pluralize %>
         <% end -%>
         <ul style="list-style:none">
-          <li>
-            <%= link_to services_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("services.index.title") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to new_service_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("services.index.add") %>
-            <% end -%>
-          </li>
+          <%= sidebar_link t("services.index.title"), services_path %>
+          <%= sidebar_link t("services.index.add"), new_service_path %>
         </ul>
       <% end -%>
 
@@ -88,18 +48,8 @@
           <i class="fa fa-flag-o"></i><%= Indicator.model_name.human.pluralize %>
         <% end -%>
         <ul style="list-style:none">
-          <li>
-            <%= link_to indicators_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("indicators.index.title") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to new_indicator_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("indicators.index.add") %>
-            <% end -%>
-          </li>
+          <%= sidebar_link t("indicators.index.title"), indicators_path %>
+          <%= sidebar_link t("indicators.index.add"), new_indicator_path %>
         </ul>
       <% end -%>
 
@@ -108,12 +58,7 @@
           <i class="fa fa-file-text-o"></i>Reporting
         <% end -%>
         <ul style="list-style:none">
-          <li>
-            <%= link_to technical_progress_reports_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              Technical Progress Reports
-            <% end -%>
-          </li>
+          <%= sidebar_link t("reports.technical_progress"), technical_progress_reports_path %>
         </ul>
       <% end -%>
 
@@ -122,30 +67,10 @@
           <i class="fa fa-lock"></i>Admin
         <% end -%>
         <ul style="list-style:none">
-          <li>
-            <%= link_to project_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("projects.show.title") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to service_types_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("service_types.index.title") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to users_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("users.index.title") %>
-            <% end -%>
-          </li>
-          <li>
-            <%= link_to roles_path do -%>
-              <i class="fa fa-angle-double-right"></i>
-              <%= t("roles.index.title") %>
-            <% end -%>
-          </li>
+          <%= sidebar_link t("projects.show.title"), project_path %>
+          <%= sidebar_link t("service_types.index.title"), service_types_path %>
+          <%= sidebar_link t("users.index.title"), users_path %>
+          <%= sidebar_link t("roles.index.title"), roles_path %>
         </ul>
       <% end -%>
 

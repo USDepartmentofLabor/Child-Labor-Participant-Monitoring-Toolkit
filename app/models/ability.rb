@@ -1,4 +1,7 @@
 class Ability < ActiveRecord::Base
+
+  scope :has, -> (name) {where(:name => name)}
+
   def display_name
     I18n.t "abilities.#{self.name}.name", default: "Unknown"
   end
