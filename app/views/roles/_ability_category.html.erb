@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-2">
+    <div class="checkbox">
+      <% ab = ability_category.find{|x| x.action == 'edit'} %>
+      <% if ab.nil? %>
+        <div></div>
+      <% else %>
+        <%= label_tag "role[ability_ids][]", ab.id do %>
+          <%= ab.display_name %>
+          <%= check_box_tag "role[ability_ids][]", ab.id, html:{class: "square-red"} %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
