@@ -60,6 +60,30 @@ body {
   }
 }
 
+.table-abilities {
+  th {
+    min-width: 60px;
+  }
+  th:first-child {
+    min-width: 180px;
+  }
+  th:last-child {
+    width: 100%;
+  }
+
+  @media(min-width: $screen-lg-min) {
+    th {
+      min-width: 100px;
+    }
+  }
+
+  @media(min-width: $screen-lg-min + 100) {
+    th {
+      min-width: 150px;
+    }
+  }
+}
+
 .box .table {
   margin-bottom: 0;
 }
