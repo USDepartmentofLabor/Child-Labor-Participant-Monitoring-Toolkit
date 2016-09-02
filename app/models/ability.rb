@@ -16,4 +16,12 @@ class Ability < ActiveRecord::Base
       description: self.description
     }
   end
+
+  def self.actions
+    Ability.all.map(&:action).uniq
+  end
+
+  def self.categories
+    Ability.all.group_by(&:category)
+  end
 end
