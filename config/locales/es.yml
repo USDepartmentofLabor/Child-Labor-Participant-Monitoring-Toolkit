@@ -1,0 +1,215 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  general:
+    submit: "Presentar"
+    cancel: "Cancelar"
+    close: "Cerca"
+    show: "Vista"
+    edit: "Editar"
+    delete: "Borrar"
+    back: "Espalda"
+    copyright: "Reservados todos los derechos"
+    logo_alt: "Sello del Departamento de Trabajo"
+    slogan: "Cuanto más nos conectamos, mejor se pone."
+    not_authorized: "Su cuenta no está autorizada para realizar esta función"
+  action_messages:
+    create: "%{model} se ha añadido correctamente."
+    create_multiple: "%{model} se añadieron con éxito."
+    update: "%{model} se ha actualizado correctamente."
+    update_multiple: "%{model} se ha actualizado correctamente."
+    destroy: "%{model} se ha eliminado correctamente."
+    create_failed: "No se ha podido añadido %{model}. %{error}"
+    update_failed: "No se pudo actualizar %{model}. %{error}"
+    destroy_failed: "No se pudo eliminar %{model}. %{error}"
+  login:
+    banner: "Direct Beneficiary Monitoring System"
+    tagline: "Cuanto más nos conectamos, mejor se pone."
+    instruction: "Iniciar sesión con su dirección de correo electrónico y contraseña"
+    name: "Nombre completo"
+    sign_up: "Registrese"
+    email: "Dirección de correo electrónico"
+    password: "Contraseña"
+    password_confirmation: "Confirmación de contraseña"
+    login: "Iniciar sesión"
+    remember_me: "Recuérdame"
+    welcome_back: "Dar una buena acogida"
+    forgot_password: "¿Olvidaste tu contraseña?"
+  passwords:
+    forgot_password: "Se te olvidó tu contraseña"
+    enter_email: "Por favor, introduzca su dirección de correo electrónico"
+  projects:
+    add_location: "Agregar Direccion"
+    show:
+      title: "Detalles del proyecto"
+      dashboard: "Proyecto del tablero de instrumentos"
+      children_covered: "Los beneficiarios"
+      edit: "Ajustes"
+      targets: "Objetivos beneficiario directo"
+      details: "Detalles del proyecto"
+    new:
+      title: "Crear nuevo proyecto"
+    edit:
+      title: "Editar registro Proyecto"
+      details_title: "Detalles del proyecto"
+      targets_title: "Objetivos beneficiario directo"
+  children:
+    new:
+      form_title: "Formulario de Admisión beneficiario"
+      create_household: "Crear un nuevo hogar ..."
+      select_image: "Seleccionar Imagen del perfil"
+      change_image: "Cambio"
+      remove_image: "Retirar"
+      max_image_size: "Este archivo supera el tamaño máximo permitido (%{size})."
+      image_format: "Sólo archivo de imagen con extensión .png, .gif, .jpg, .jpeg está permitido."
+      household_title: "Elija una casa"
+      address_title: "Ingresa la direccion"
+      details_title: "Introduzca beneficiarios Detalles"
+      baseline_title: "Introduzca basales Statuses"
+    index:
+      add: "Añadir un Beneficiario"
+      title: "Lista de Beneficiarios"
+      filter: "filtros"
+    show:
+      title: "Beneficiario de registro"
+      personal_information: "Informacion personal"
+      statuses: "Historia de estado"
+      status_form_title: "Agregar nuevo Estado"
+      services: "Historia de servicio"
+      service_form_title: "Agregar nuevo servicio"
+    edit:
+      title: "Editar registro beneficiario"
+  services:
+    new:
+      form_title: "Añadir servicio"
+    edit:
+      form_title: "Editar Servicio"
+    index:
+      add: "Añadir un Servicio"
+      title: "Servicios"
+    show:
+      title: "Registro de servicio"
+      details: "Detalles de Servicio"
+      children: "Lista beneficiario"
+    form:
+      children_title: "Los beneficiarios"
+      add_child: "Añadir Beneficiario"
+  adults:
+    index:
+      add: "Añadir un adulto"
+  households:
+    index:
+      add: "Añadir un hogar"
+      title: "Lista de Hogares"
+    new:
+      title: "Añadir un hogar"
+      details_title: "Introducir detalles del hogar"
+    edit:
+      title: "Editar Registro de Hogares"
+    show:
+      title: "Registro de hogares"
+      family_information: "Información Familiar"
+      children: "Los niños de este hogar"
+      adults: "Los adultos de este hogar"
+  reports:
+    technical_progress: "Informes de progreso técnico"
+    new:
+      title: "Generador nuevo Informe"
+    index:
+      add: "Generar un nuevo informe"
+      title: "Lista de informes"
+    wizard:
+      step: "Paso"
+      next: "Siguiente"
+      back: "Espalda"
+      complete_status: "Completar"
+      basic_infomation: "Información básica"
+      select_indicator: "Elija Indicador"
+      select_subindicator: "Elija Subindicador"
+      select_work_status: "Seleccione Status Trabajo Infantil"
+      confirm: "Confirmación final"
+      finish: "Generar informe"
+      common_indicators: "Indicadores comunes"
+  indicators:
+    index:
+      add: "Agregar nuevo Indicador"
+      title: "Lista de indicadores"
+    edit:
+      title: "Indicador de edición"
+    show:
+      title: "Indicador"
+    new:
+      title: "Añadir Indicador"
+  targets:
+    index:
+      add: "Añadir nuevo objetivo"
+      title: "Lista de objetivos"
+    edit:
+      title: "Editar destino"
+    show:
+      title: "Objetivo"
+    new:
+      title: "Agregar destino"
+  service_types:
+    index:
+      add: "Añadir nuevos tipos de servicios"
+      title: "Lista de Tipos de Servicio"
+    edit:
+      title: "Editar tipo de servicio"
+    show:
+      title: "Tipo de servicio"
+    new:
+      title: "Añadir Tipo de Servicio"
+  layouts:
+    application:
+      sign_in: "Registrarse"
+      sign_up: "Regístrate"
+  select_options:
+    child:
+      male: "Chico"
+      female: "Niña"
+    adult:
+      male: "Masculino"
+      female: "Hembra"
+  regions:
+    title: "Añadir País y Estado (Provincia)"
+    add: "Añadir"
+  custom_fields:
+    index: "Personalización de los campos"
+    new: "Para personalizar los campos %{model} Formularios"
+    preview: "Vista previa de los campos personalizados"
+    add: "Agregar nuevo campo personalizado"
+    edit: "Editar campo personalizado"
+  users:
+    index:
+      title: "Lista de Usuarios"
+  roles:
+    index:
+      title: "Lista de Roles"
+      add: "Agregar rol"
+    edit:
+      title: "Modificar rol"
+    new:
+      title: "Agregar rol"

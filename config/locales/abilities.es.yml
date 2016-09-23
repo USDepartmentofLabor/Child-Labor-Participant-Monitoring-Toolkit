@@ -1,0 +1,128 @@
+en:
+  abilities:
+    child_index:
+      name: "Lista de los niños"
+      desc: "Permitir al usuario a la lista de beneficiarios niño mostrar"
+    child_show:
+      name: "Mostrar detalles infantil"
+      desc: "Permitir al usuario mostrar detalles de los beneficiarios individuales de los niños"
+    child_create:
+      name: "crear niño"
+      desc: "Permitir al usuario crear nuevos niños beneficiarios"
+    child_edit:
+      name: "Editar niño"
+      desc: "Permitir al usuario editar los detalles de los beneficiarios individuales de los niños"
+    child_destroy:
+      name: "eliminar niño"
+      desc: "Permite al usuario borrar los niños beneficiarios"
+    household_index:
+      name: "Lista de los hogares"
+      desc: "Permitir al usuario a la lista de los hogares muestran"
+    household_show:
+      name: "Show household details"
+      desc: "Mostrar detalles para el hogar"
+    household_create:
+      name: "crear hogar"
+      desc: "Permitir al usuario crear nuevos hogares"
+    household_edit:
+      name: "Editar hogar"
+      desc: "Permitir al usuario editar los detalles de los hogares"
+    household_destroy:
+      name: "eliminar hogar"
+      desc: "Permite al usuario borrar los hogares"
+    service_index:
+      name: "servicios de listas"
+      desc: "Permitir al usuario a la lista de los servicios muestran"
+    service_show:
+      name: "Show service details"
+      desc: "Mostrar información de servicios"
+    service_create:
+      name: "crear servicio"
+      desc: "Permitir al usuario crear nuevos servicios"
+    service_edit:
+      name: "servicio de edición"
+      desc: "Permitir al usuario editar los detalles de los distintos servicios"
+    service_destroy:
+      name: "eliminar el servicio"
+      desc: "Permite al usuario borrar los servicios"
+    service_type_index:
+      name: "Lista de los tipos de servicios"
+      desc: "Permitir al usuario a la lista de tipos de servicios muestran"
+    service_type_show:
+      name: "Mostrar los detalles del servicio de tipo"
+      desc: "Permitir al usuario mostrar detalles de los tipos de servicios individuales"
+    service_type_create:
+      name: "Crear tipo de servicio"
+      desc: "Permitir al usuario crear nuevos tipos de servicios"
+    service_type_edit:
+      name: "Editar tipo de servicio"
+      desc: "Permitir al usuario editar detalles de los tipos de servicios individuales"
+    service_type_destroy:
+      name: "Eliminar el tipo de servicio"
+      desc: "Permite al usuario borrar los tipos de servicios"
+    indicator_index:
+      name: "Los indicadores de lista"
+      desc: "Permitir al usuario a la lista de indicadores muestran"
+    indicator_show:
+      name: "Mostrar detalles del indicador"
+      desc: "Permitir al usuario mostrar detalles de los indicadores individuales"
+    indicator_create:
+      name: "crear indicador"
+      desc: "Permitir al usuario crear nuevos indicadores"
+    indicator_edit:
+      name: "indicador de edición"
+      desc: "Permitir al usuario editar los detalles de los indicadores individuales"
+    indicator_destroy:
+      name: "eliminar indicador"
+      desc: "Permite al usuario borrar los indicadores"
+    custom_field_create:
+      name: "Crear un campo personalizado"
+      desc: "Permitir al usuario crear nuevos campos personalizados"
+    custom_field_destroy:
+      name: "Eliminar campo personalizado"
+      desc: "Permite al usuario borrar los campos personalizados"
+    project_edit:
+      name: "Editar proyecto"
+      desc: "Permitir al usuario editar los detalles del proyecto"
+    role_index:
+      name: "Lista de funciones"
+      desc: "Permitir al usuario a la lista de los roles mostrar"
+    role_edit:
+      name: "Editar rollos"
+      desc: "Permitir al usuario editar los detalles de los roles individuales"
+    role_create:
+      name: "crear rol"
+      desc: "Permitir al usuario crear nuevos roles"
+    role_destroy:
+      name: "eliminar rollos"
+      desc: "Permite al usuario borrar los papeles"
+    user_index:
+      name: "Lista de los usuarios"
+      desc: "Permitir al usuario a la lista de usuarios mostrar"
+    user_create:
+      name: "crear usuario"
+      desc: "Permitir al usuario crear nuevos usuarios"
+    user_edit:
+      name: "Editar usuarios"
+      desc: "Permitir al usuario editar los detalles de los usuarios individuales"
+    user_destroy:
+      name: "borrar usuario"
+      desc: "Permite al usuario borrar los usuarios"
+    technical_progress_report_index:
+      name: "Informes de progreso técnico de lista"
+      desc: "Permitir al usuario a la lista de los informes técnicos de avance muestran"
+    technical_progress_report_show:
+      name: "Show technical progress report details"
+      desc: "Mostrar detalles técnicos Informe de situación"
+    technical_progress_report_create:
+      name: "Create technical progress report"
+      desc: "Crear informe de progreso técnico"
+    technical_progress_report_edit:
+      name: "Edit technical progress report"
+      desc: "Editar informe de progreso técnico"
+    technical_progress_report_destroy:
+      name: "Delete technical progress report"
+      desc: "Eliminar informe de progreso técnico"
+    technical_progress_report_submit:
+      name: "Submit technical progress report"
+      desc: "Presentar informe de progreso técnico"

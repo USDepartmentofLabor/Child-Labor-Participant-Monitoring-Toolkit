@@ -22,7 +22,7 @@
 en:
   date:
     formats:
-      default: "%d/%m/%Y"
+      default: "%m/%d/%Y"
   general:
     submit: "Submit"
     cancel: "Cancel"
