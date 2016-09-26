@@ -5,7 +5,7 @@
 $script = <<SCRIPT
 apt-get upgrade -y
 apt-get install -y git build-essential postgresql libpq-dev ruby libruby ruby-dev nodejs vim tmux
-gem install bundle
+gem install bundler
 sudo -u postgres -- createuser -sU postgres vagrant
 SCRIPT
 
