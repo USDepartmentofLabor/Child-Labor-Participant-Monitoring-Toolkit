@@ -28,6 +28,11 @@ Vagrant.configure(2) do |config|
     v.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 
+  config.vm.synced_folder ".", "/home/vagrant/dbms", id: "vagrant-root",
+    owner: "vagrant",
+    group: "vagrant",
+    mount_options: ["dmode=775,fmode=664"]
+
   config.vm.provision "shell", inline: $script
 
 end
