@@ -175,7 +175,7 @@ en:
   service_types:
     index:
       add: "Add New Service Types"
-      title: "List of Service Types"
+      title: "Service Types"
     edit:
       title: "Edit Service Type"
     show:
@@ -204,10 +204,10 @@ en:
     edit: "Edit Custom Field"
   users:
     index:
-      title: "List of Users"
+      title: "Users"
   roles:
     index:
-      title: "List of Roles"
+      title: "Roles"
       add: "Add Role"
     edit:
       title: "Edit Role"
