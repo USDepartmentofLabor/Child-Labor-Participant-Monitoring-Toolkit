@@ -433,4 +433,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.13.0.rc.2
+   1.13.1
