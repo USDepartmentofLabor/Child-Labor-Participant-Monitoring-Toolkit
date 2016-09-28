@@ -22,7 +22,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @targets.each_with_index do |target, index| %>
+            <% @targets.each do |target| %>
             <tr>
               <td><%= target.reporting_period.name %></td>
               <td>
