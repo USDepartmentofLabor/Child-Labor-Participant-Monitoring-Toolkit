@@ -24,9 +24,11 @@
           <tbody>
             <% @targets.each_with_index do |target, index| %>
             <tr>
-              <td>Period
-                <%= index + 1 %></td>
-              <td><%= text_field_tag "targets[]", target.target_value %></td>
+              <td><%= target.reporting_period.name %></td>
+              <td>
+                <%= text_field_tag "targets[].target_value", target.target_value %>
+                <%= hidden_field_tag "targets[].reporting_period_id", target.reporting_period_id %>
+              </td>
             </tr>
             <% end %>
           </tbody>

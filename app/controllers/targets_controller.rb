@@ -6,7 +6,17 @@ class TargetsController < ApplicationController
   end
 
   def new
-    @targets = [Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new]
+    @targets = Array.new
+
+    ReportingPeriod.all.each do |reporting_period|
+      new_target = Target.new do |t|
+        t.reporting_period = reporting_period
+        t.indicator = @indicator
+      end
+
+      @targets.push new_target
+    end
+    #@targets = [Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new, Target.new]
   end
 
   def edit_mulitple
@@ -14,10 +24,15 @@ class TargetsController < ApplicationController
 
   def create_multiple
 
-    @target_values = params[:targets]
+    target_values = params[:targets]
 
-    @target_values.each_with_index do |target_value, index|
-      Target.create(period: index, target_value: target_value, indicator_id: @indicator.id)
+    logger.debug "target_values = #{target_values}"
+
+    target_values.each do |target_value|
+      logger.debug "target_value = #{target_value}"
+      logger.debug "target_value.target_value = #{target_value[".target_value"]}"
+      logger.debug "target_value.reporting_period_id = #{target_value[".reporting_period_id"]}"
+      @indicator.targets.create(reporting_period_id: target_value[".reporting_period_id"].to_i, target_value: target_value[".target_value"].delete(",").to_i)
     end
 
     redirect_to indicators_path(@indicator), notice: t("action_messages.create_multiple", model: "Targets")
