@@ -1,4 +1,5 @@
 class RolesController < ApplicationController
+  before_action :do_authorize
   before_action :set_role, only: [:edit, :update]
 
   def index
@@ -30,6 +31,9 @@ class RolesController < ApplicationController
   end
 
   private
+  def do_authorize
+    authorize Role
+  end
 
   def role_params
     params.require(:role).permit(:name, :ability_ids => [])

@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
+  before_action :do_authorize
   before_action :set_user, only: [:edit, :update]
 
   def index
     @users = User.all
+  end
+
+  def new
+    @user = User.new
   end
 
   def update
@@ -20,6 +25,9 @@ class UsersController < ApplicationController
   end
 
   private
+  def do_authorize
+    authorize User
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :role_ids => [])

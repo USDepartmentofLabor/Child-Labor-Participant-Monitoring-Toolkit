@@ -69,8 +69,12 @@
         <ul style="list-style:none">
           <%= sidebar_link t("projects.show.title"), project_path %>
           <%= sidebar_link t("service_types.index.title"), service_types_path %>
-          <%= sidebar_link t("users.index.title"), users_path %>
-          <%= sidebar_link t("roles.index.title"), roles_path %>
+          <% if policy(:user).index? %>
+            <%= sidebar_link t("users.index.title"), users_path %>
+          <% end %>
+          <% if policy(:role).index? %>
+            <%= sidebar_link t("roles.index.title"), roles_path %>
+          <% end %>
         </ul>
       <% end -%>
 
