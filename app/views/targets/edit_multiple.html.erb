@@ -22,7 +22,10 @@
               <% @indicator.targets.each do |target| %>
                 <tr>
                   <td><%= target.reporting_period.name %></td>
-                  <td><%= text_field_tag "targets[]", target.target_value %></td>
+                  <td>
+                    <%= text_field_tag "targets[].target_value", target.target_value %>
+                    <%= hidden_field_tag "targets[].id", target.id %>
+                  </td>
                 </tr>
               <% end %>
           </tbody>

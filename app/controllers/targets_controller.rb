@@ -26,12 +26,7 @@ class TargetsController < ApplicationController
 
     target_values = params[:targets]
 
-    logger.debug "target_values = #{target_values}"
-
     target_values.each do |target_value|
-      logger.debug "target_value = #{target_value}"
-      logger.debug "target_value.target_value = #{target_value[".target_value"]}"
-      logger.debug "target_value.reporting_period_id = #{target_value[".reporting_period_id"]}"
       @indicator.targets.create(reporting_period_id: target_value[".reporting_period_id"].to_i, target_value: target_value[".target_value"].delete(",").to_i)
     end
 
@@ -42,10 +37,10 @@ class TargetsController < ApplicationController
   def update_multiple
     @target_values = params[:targets]
 
-    @target_values.each_with_index do |target_value, index|
-      target = Target.find_by(period: index, indicator_id: @indicator.id)
+    @target_values.each do |target_value|
+      target = Target.find_by(id: target_value[".id"])
       if target
-        target.target_value = target_value
+        target.target_value = target_value[".target_value"]
         target.save
       end
     end
