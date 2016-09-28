@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830221647) do
+ActiveRecord::Schema.define(version: 20160928185731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -293,13 +293,13 @@ ActiveRecord::Schema.define(version: 20160830221647) do
   add_index "services", ["service_type_id"], name: "index_services_on_service_type_id", using: :btree
 
   create_table "targets", force: :cascade do |t|
-    t.integer  "period"
+    t.integer  "reporting_period_id",           null: false
     t.integer  "work_status_id"
-    t.integer  "gender",         limit: 2
+    t.integer  "gender",              limit: 2
     t.decimal  "target_value"
     t.integer  "indicator_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "targets", ["indicator_id"], name: "index_targets_on_indicator_id", using: :btree
@@ -372,6 +372,7 @@ ActiveRecord::Schema.define(version: 20160830221647) do
   add_foreign_key "service_instances", "services"
   add_foreign_key "services", "service_types"
   add_foreign_key "targets", "indicators"
+  add_foreign_key "targets", "reporting_periods"
   add_foreign_key "technical_progress_reports", "reporting_periods"
   add_foreign_key "technical_progress_reports", "reporting_statuses"
 end
