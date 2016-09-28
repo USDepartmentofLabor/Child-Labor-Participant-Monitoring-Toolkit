@@ -3,12 +3,10 @@
     <%= fa_icon "caret-left" %>
     <%= t("general.back") %>
   <% end %>
-  <% if @indicator.indicator_type == "Custom" %>
     <%= link_to edit_indicator_path(@indicator), class: 'btn btn-primary' do %>
       <%= fa_icon "pencil" %>
       <%= t("general.edit") %>
     <% end %>
-  <% end %>
   <h1><%= t("indicators.show.title") %></h1>
 </div>
 
