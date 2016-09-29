@@ -49,3 +49,5 @@ vendor/bundle/*
 .env
 
 *.orig
+
+public/assets
