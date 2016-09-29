@@ -97,9 +97,6 @@ gem 'ransack'
 
 gem 'faker', require: false
 
-# for heroku deployment
-gem 'rails_12factor', group: :production
-
 # Role Based Authorization
 gem 'pundit'
 
