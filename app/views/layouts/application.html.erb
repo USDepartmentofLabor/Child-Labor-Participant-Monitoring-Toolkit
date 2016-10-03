@@ -16,7 +16,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="skin-blue sidebar-mini fixed <%= params[:controller].parameterize %> <%= action_name %>">
+  <body class="skin-blue sidebar-mini <%= params[:controller].parameterize %> <%= action_name %>">
     <div class="wrapper">
       <%= render partial: 'layouts/header' %>
       <%= render partial: 'layouts/sidebar' %>

@@ -4,69 +4,87 @@
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <ul class="sidebar-menu">
-      <%= sidebar_link t('projects.show.dashboard'), dashboard_project_path,
-        (controller_name == 'projects' ? 'active' : ''), 'fa-tachometer' %>
 
-      <%= content_tag :li, class: (controller_name == 'children' ? "active" : "")  do -%>
-        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
-          <i class="fa fa-child"></i><%= Child.model_name.human.pluralize %>
-        <% end -%>
-        <ul style="list-style:none">
+      <li>
+        <%= link_to dashboard_project_path do %>
+          <%= fa_icon "tachometer" %>
+          <span><%= t("projects.show.dashboard") %></span>
+        <% end %>
+      </li>
+
+      <%= content_tag :li, class: (controller_name == "children" ? " treeview active" : "treeview") do %>
+        <a href="#">
+          <%= fa_icon "child" %>
+          <span><%= Child.model_name.human.pluralize %></span>
+          <%= fa_icon "angle-left", class: "pull-right" %>
+        </a>
+        <ul class="treeview-menu">
           <% if policy(:child).index? %>
             <%= sidebar_link t("children.index.title"), children_path %>
           <% end %>
           <% if policy(:child).create? %>
             <%= sidebar_link t("children.index.add"), new_child_path %>
           <% end %>
-          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: 'Child') %>
+          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: "Child") %>
         </ul>
       <% end -%>
 
-      <%= content_tag :li, class: (controller_name == 'households' ? "active" : "")  do -%>
-        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
-          <i class="fa fa-home"></i><%= Household.model_name.human.pluralize %>
-        <% end -%>
-        <ul style="list-style:none">
+      <%= content_tag :li, class: (controller_name == "households" ? " treeview active" : "treeview") do %>
+        <a href="#">
+          <%= fa_icon "home" %>
+          <span><%= Household.model_name.human.pluralize %></span>
+          <%= fa_icon "angle-left", class: "pull-right" %>
+        </a>
+        <ul class="treeview-menu">
           <%= sidebar_link t("households.index.title"), households_path %>
           <%= sidebar_link t("households.index.add"), new_household_path %>
-          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: 'Household') %>
+          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: "Household") %>
         </ul>
       <% end -%>
 
-      <%= content_tag :li, class: (controller_name == "services" ? "active" : "")  do -%>
-        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
-          <i class="fa fa-cutlery"></i><%= Service.model_name.human.pluralize %>
-        <% end -%>
-        <ul style="list-style:none">
+      <%= content_tag :li, class: (controller_name == "services" ? " treeview active" : "treeview") do %>
+        <a href="#">
+          <%= fa_icon "cutlery" %>
+          <span><%= Service.model_name.human.pluralize %></span>
+          <%= fa_icon "angle-left", class: "pull-right" %>
+        </a>
+        <ul class="treeview-menu">
           <%= sidebar_link t("services.index.title"), services_path %>
           <%= sidebar_link t("services.index.add"), new_service_path %>
         </ul>
       <% end -%>
 
-      <%= content_tag :li, class: (controller_name == 'indicators' ? "active" : "")  do -%>
-        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
-          <i class="fa fa-flag-o"></i><%= Indicator.model_name.human.pluralize %>
-        <% end -%>
-        <ul style="list-style:none">
+      <%= content_tag :li, class: (controller_name == "indicators" ? " treeview active" : "treeview") do %>
+        <a href="#">
+          <%= fa_icon "flag-o" %>
+          <span><%= Indicator.model_name.human.pluralize %></span>
+          <%= fa_icon "angle-left", class: "pull-right" %>
+        </a>
+        <ul class="treeview-menu">
           <%= sidebar_link t("indicators.index.title"), indicators_path %>
           <%= sidebar_link t("indicators.index.add"), new_indicator_path %>
         </ul>
       <% end -%>
 
-      <%= content_tag :li, class: (controller_name == 'reports' ? "active" : "")  do -%>
-        <%= link_to reports_path do -%>
-          <i class="fa fa-file-text-o"></i>Reporting
-        <% end -%>
-        <ul style="list-style:none">
+      <%= content_tag :li, class: (controller_name == "reports" ? " treeview active" : "treeview") do %>
+        <a href="#">
+          <%= fa_icon "file-text-o" %>
+          <span>Reports</span>
+          <%= fa_icon "angle-left", class: "pull-right" %>
+        </a>
+        <ul class="treeview-menu">
+          <%= sidebar_link t("reports.index.title"), reports_path %>
           <%= sidebar_link t("reports.technical_progress"), technical_progress_reports_path %>
         </ul>
       <% end -%>
 
-      <%= content_tag :li  do -%>
-        <%= link_to "javascript:void(0);", class: 'is-dropdown-menu' do -%>
-          <i class="fa fa-lock"></i>Admin
-        <% end -%>
-        <ul style="list-style:none">
+      <li class="treeview">
+        <a href="#">
+          <%= fa_icon "lock" %>
+          <span>Admin</span>
+          <%= fa_icon "angle-left", class: "pull-right" %>
+        </a>
+        <ul class="treeview-menu">
           <%= sidebar_link t("projects.show.title"), project_path %>
           <%= sidebar_link t("service_types.index.title"), service_types_path %>
           <% if policy(:user).index? %>
@@ -76,7 +94,7 @@
             <%= sidebar_link t("roles.index.title"), roles_path %>
           <% end %>
         </ul>
-      <% end -%>
+      </li>
 
     </ul>
   </section>

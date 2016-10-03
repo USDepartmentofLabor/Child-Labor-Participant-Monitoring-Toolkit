@@ -1,27 +1,20 @@
 <!-- Main Header -->
 <header class="main-header">
 
-<% if controller_name != 'home' -%>
   <!-- Logo -->
   <%= link_to root_path, class: "logo" do %>
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><%= image_tag "logo.png" %></span>
+    <span class="logo-mini">DBMS</span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg"><%= image_tag "logo.png", alt: "logo" %></span>
   <% end %>
-<% end -%>
 
   <!-- Header Navbar -->
   <nav class="navbar navbar-static-top" role="navigation">
-    <% if controller_name == 'home' -%>
-      <!-- Logo -->
-      <%= link_to dashboard_path, class: "logo", style: "background: none" do %>
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><%= image_tag "logo.png" %></span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><%= image_tag "logo.png" %></span>
-      <% end %>
-    <% end -%>
+    <!-- Sidebar toggle button -->
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
@@ -42,14 +35,14 @@
             </li>
             <!-- Menu Footer-->
             <li class="user-footer">
-              <span class="pull-left">
+              <div class="pull-left">
                 <%= link_to "Profile", edit_user_path(current_user), class: "btn btn-default btn-flat" %>
-              </span>
-              <span class="pull-right">
+              </div>
+              <div class="pull-right">
                 <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-default btn-flat" do %>
                   <%= t "navbar.sign_out" %>
                 <% end %>
-              </span>
+              </div>
             </li>
           </ul>
         </li>
