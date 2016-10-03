@@ -11,16 +11,12 @@
 @import "jGrowl";
 @import "home";
 
-.skin-blue .sidebar-menu > li.active > a,
-.skin-blue .sidebar-menu > li:hover > a {
-  border-left-color: transparent;
-  i {
-    color: #3C8DBC;
-  }
-}
-
 .main-header .logo {
   overflow: visible;
+}
+
+.sidebar-mini.sidebar-collapse .main-header .logo > .logo-mini {
+  font-size: 13px;
 }
 
 .main-sidebar,
