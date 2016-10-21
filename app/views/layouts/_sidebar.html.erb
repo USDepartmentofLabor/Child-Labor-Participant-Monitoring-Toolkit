@@ -42,6 +42,13 @@
         </ul>
       <% end -%>
 
+      <%= content_tag :li, class: (controller_name == "surveyor" ? " treeview active" : "treeview") do %>
+        <a href="/surveys">
+          <%= fa_icon "table" %>
+          <span>Surveys</span>
+        </a>
+      <% end -%>
+
       <%= content_tag :li, class: (controller_name == "services" ? " treeview active" : "treeview") do %>
         <a href="#">
           <%= fa_icon "cutlery" %>

@@ -110,3 +110,5 @@ gem 'bootstrap-editable-rails'
 gem 'momentjs-rails'
 
 gem 'aws-ses'
+
+gem 'surveyor', github: 'HeHStudy/surveyor'
