@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :dashboard, :gender_count, :edit, :update]
+  before_action :set_project, only: [:dashboard, :show, :gender_count]
 
   def dashboard
     redirect_to 'new' if @project.nil?
@@ -27,7 +27,8 @@ class ProjectsController < ApplicationController
 
     @total_services = Service.count
 
-    @project_complete_percentage = (Date.today.mjd - @project.start_date.mjd) / (@project.end_date.mjd - @project.start_date.mjd).to_f * 100.0
+    @project_complete_percentage = (Date.today.mjd - @project.start_date.mjd) /
+      (@project.end_date.mjd - @project.start_date.mjd).to_f * 100.0
 
     @new_children = Child.order('RANDOM()').limit(8) # TODO: Get non-random children
 
@@ -40,23 +41,6 @@ class ProjectsController < ApplicationController
 
   def show
     @location = Location.new
-  end
-
-  def edit
-  end
-
-  def update
-    respond_to do |format|
-      if @project.update_attributes(project_params)
-        format.html {
-          redirect_to(@project, notice: t('action_messages.update', model: Project.model_name.human))
-        }
-        format.json { head :no_content }
-      else
-        format.html { render :edit }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def gender_count
@@ -73,7 +57,7 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = Project.first#Project.joins(:locations, :project_targets, :region).first
+    @project = Project.first
   end
 
   def project_params

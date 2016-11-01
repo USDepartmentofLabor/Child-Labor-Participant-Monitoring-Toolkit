@@ -70,6 +70,10 @@ en:
         funding_amount: "Funding Amount"
         office_address: "Project Headquarters Location"
         total_target_children: "Total Number of Children Targeted by Project"
+      location:
+        location_type_id: "Location Type"
+        address_line1: "Address Line 1"
+        address_line2: "Address Line 2"
       custom_field:
         name: "Field Name"
         field_type: "Field Type"
@@ -90,4 +94,4 @@ en:
         created_at: "Created at"
       project_target:
         project_target_type_id: "Target Type"
-        target: "Target Value"
+        target_value: "Target Value"

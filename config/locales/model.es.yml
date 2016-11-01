@@ -70,6 +70,10 @@ es:
         funding_amount: "Financiación importe"
         office_address: "Sede del Proyecto Localización"
         total_target_children: "Número total de niños seleccionados por el Proyecto"
+      location:
+        location_type_id: "Tipo de Ubicación"
+        address_line1: "Dirección Línea 1"
+        address_line2: "Dirección Línea 2"
       custom_field:
         name: "Nombre de campo"
         field_type: "Tipo de campo"
@@ -89,5 +93,5 @@ es:
         service_type: "Indicador Nombre"
         created_at: "Creado en"
       project_target:
-        project_target_type_id: "Tipo de destino"
-        target: "Valor objetivo"
+        project_target_type_id: "Tipo de Destino"
+        target: "Valor Objetivo"
