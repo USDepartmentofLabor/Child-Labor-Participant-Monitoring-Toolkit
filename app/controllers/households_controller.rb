@@ -84,8 +84,10 @@ class HouseholdsController < ApplicationController
     def household_params
       params.require(:household).permit(
         :name, :address, :city, :state, :country, :phone, :code, :intake_date,
-        children_attributes: [:fname, :lname, :mname, :sex, :dob, :intake_date, :_destroy, :id],
-        adults_attributes: [:fname, :lname, :mname, :sex, :dob, :_destroy, :id]
+        children_attributes: [:fname, :lname, :mname, :sex, :dob, :intake_date,
+          :_destroy, :id],
+        adults_attributes: [:fname, :lname, :mname, :sex, :dob,
+          :is_head_of_household, :_destroy, :id]
       )
     end
 
