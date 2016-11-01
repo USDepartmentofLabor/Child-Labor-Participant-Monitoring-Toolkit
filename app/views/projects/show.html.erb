@@ -14,72 +14,35 @@
             <tbody>
               <tr>
                 <th><%= Project.human_attribute_name(:name) %></th>
-                <td>
-                  <a href="#" id="name" data-type="text"
-                    data-name="name"><%= @project.name %></a>
-                </td>
+                <td><%= @project.name %></td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:title) %></th>
-                <td>
-                  <a href="#" id="title" data-type="text" data-name="title">
-                    <%= @project.title %>
-                  </a>
-                </td>
+                <td><%= @project.title %></td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:cooperative_agreement_number) %></th>
-                <td>
-                  <a href="#" id="cooperative_agreement_number" data-type="text"
-                    data-name="cooperative_agreement_number">
-                    <%= @project.cooperative_agreement_number %>
-                  </a>
-                </td>
+                <td><%= @project.cooperative_agreement_number %></td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:start_date) %></th>
-                <td>
-                  <a href="#" id="start_date" data-type="combodate"
-                    data-name="start_date">
-                    <%= @project.start_date %>
-                  </a>
-                </td>
+                <td><%= @project.start_date %></td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:end_date) %></th>
-                <td>
-                  <a href="#" id="end_date" data-type="combodate"
-                    data-name="end_date">
-                    <%= @project.end_date %>
-                  </a>
-                </td>
+                <td><%= @project.end_date %></td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:organization) %></th>
-                <td>
-                  <a href="#" id="organization" data-type="text"
-                    data-name="organization">
-                    <%= @project.organization %>
-                  </a>
-                </td>
+                <td><%= @project.organization %></td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:funding_amount) %></th>
-                <td>
-                  <a href="#" id="funding_amount" data-type="text"
-                    data-name="funding_amount">
-                    <%= number_with_precision(@project.funding_amount, precision: 0, delimiter: ',') %>
-                  </a>
-                </td>
+                <td><%= number_with_precision(@project.funding_amount, precision: 0, delimiter: ',') %></td>
               </tr>
               <tr>
                 <th><%= Project.human_attribute_name(:region) %></th>
-                <td>
-                  <a href="#" id="region_id" data-type="select"
-                    data-value="<%= @project.region.id %>"
-                    data-source="/regions">
-                    <%= @project.region.name %>
-                </td>
+                <td><%= @project.region.name %></td>
               </tr>
             </tbody>
           </table>
@@ -129,16 +92,9 @@
       <div class="box-header with-border">
         <%= fa_icon "bullseye" %>
         <h3 class="box-title"><%= t("projects.show.targets") %></h3>
-        <div class="box-tools pull-right">
-          <%= link_to '#add-target', 'data-show' => 'project-target-fields' do %>
-            <%= fa_icon "plus", text: t("general.add") %>
-          <% end %>
-        </div>
       </div>
       <div class="box-body">
         <div class="table-responsive">
-          <%= form_for(ProjectTarget.new, html: { role: "form" }) do |f| %>
-          <%= f.hidden_field :project_id, value: @project.id %>
           <table class="table table-hover table-condensed">
             <thead>
               <tr>
@@ -150,10 +106,8 @@
             <tbody>
               <%= render partial: "project_target_show",
                 collection: @project.project_targets, as: 'project_target' %>
-              <%= render partial: 'project_target_fields', locals: {f: f} %>
             </tbody>
           </table>
-          <% end %>
         </div>
       </div>
     </div>
