@@ -30,9 +30,16 @@
       </span>
     </div>
   </div>
+  <div class="form-group">
+    <%= f.label :is_head_of_household do %>
+      <%= f.check_box :is_head_of_household, class: "square-red" %>
+      <%= Adult.human_attribute_name :is_head_of_household %>
+    <% end %>
+  </div>
 
   <%= f.hidden_field :_destroy %>
   <%= link_to '#', class: "remove_fields pull-right" do %>
     <i class="fa fa-trash-o"></i><%= t("general.delete") %>
   <% end %>
 </fieldset>
+<hr>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021153631) do
+ActiveRecord::Schema.define(version: 20161101215316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +36,12 @@ ActiveRecord::Schema.define(version: 20161021153631) do
     t.string   "fname"
     t.string   "lname"
     t.string   "mname"
-    t.integer  "sex",          limit: 2
+    t.integer  "sex",                  limit: 2
     t.date     "dob"
     t.integer  "household_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "is_head_of_household"
   end
 
   add_index "adults", ["household_id"], name: "index_adults_on_household_id", using: :btree
@@ -131,6 +132,14 @@ ActiveRecord::Schema.define(version: 20161021153631) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "columns", force: :cascade do |t|
+    t.integer  "question_group_id"
+    t.text     "text"
+    t.text     "answers_textbox"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "custom_fields", force: :cascade do |t|
     t.string   "name"
@@ -388,6 +397,13 @@ ActiveRecord::Schema.define(version: 20161021153631) do
 
   add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
   add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
+
+  create_table "rows", force: :cascade do |t|
+    t.integer  "question_group_id"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "service_instances", force: :cascade do |t|
     t.integer  "child_id"
