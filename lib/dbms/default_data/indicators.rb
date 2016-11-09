@@ -32,9 +32,10 @@ module DBMS
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: percentage_unit_of_measure.id
+            unit_of_measure_id: percentage_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -60,9 +61,10 @@ module DBMS
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: percentage_unit_of_measure.id
+            unit_of_measure_id: percentage_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -88,9 +90,10 @@ module DBMS
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: percentage_unit_of_measure.id
+            unit_of_measure_id: percentage_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -115,9 +118,10 @@ module DBMS
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: percentage_unit_of_measure.id
+            unit_of_measure_id: percentage_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -141,9 +145,10 @@ module DBMS
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: percentage_unit_of_measure.id
+            unit_of_measure_id: percentage_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -160,16 +165,17 @@ module DBMS
             Reference period for engagement in hazardous child labor: In the past 6 months, AND in the past week. If the answer is "yes" to either of these, the child is in hazardous child labor.
           eos
           freq = <<-eos
-            Data collection and reporting frequency is every 6 months.
+            Data collection and reporting frequency_definitions is every 6 months.
           eos
           Indicator.create!(
             code: "POC2",
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: percentage_unit_of_measure.id
+            unit_of_measure_id: percentage_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -193,9 +199,10 @@ module DBMS
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: percentage_unit_of_measure.id
+            unit_of_measure_id: percentage_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -218,9 +225,10 @@ module DBMS
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: percentage_unit_of_measure.id
+            unit_of_measure_id: percentage_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -241,9 +249,10 @@ module DBMS
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: numeric_unit_of_measure.id
+            unit_of_measure_id: numeric_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -264,9 +273,10 @@ module DBMS
             indicator: indicator.strip,
             use: use.strip,
             definitions: definitions.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: numeric_unit_of_measure.id
+            unit_of_measure_id: numeric_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
 
           indicator = <<-eos
@@ -283,9 +293,10 @@ module DBMS
             code: "C1",
             indicator: indicator.strip,
             use: use.strip,
-            frequency: freq.strip,
+            frequency_definitions: freq.strip,
             indicator_type: "Common",
-            unit_of_measure_id: numeric_unit_of_measure.id
+            unit_of_measure_id: numeric_unit_of_measure.id,
+            reporting_frequency_id: 2
           )
         end
       end

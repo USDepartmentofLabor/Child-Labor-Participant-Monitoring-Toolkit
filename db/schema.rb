@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109193939) do
+ActiveRecord::Schema.define(version: 20161109203224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,19 +201,21 @@ ActiveRecord::Schema.define(version: 20161109193939) do
   add_index "households", ["code"], name: "index_households_on_code", unique: true, using: :btree
 
   create_table "indicators", force: :cascade do |t|
-    t.string   "code",                                        null: false
-    t.text     "indicator",                                   null: false
+    t.string   "code",                                            null: false
+    t.text     "indicator",                                       null: false
     t.string   "indicator_type"
     t.text     "use"
     t.text     "definitions"
-    t.text     "frequency"
     t.integer  "user_id"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.decimal  "baseline",           precision: 15, scale: 4
-    t.integer  "unit_of_measure_id",                          null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.decimal  "baseline",               precision: 15, scale: 4
+    t.integer  "unit_of_measure_id",                              null: false
+    t.integer  "reporting_frequency_id"
+    t.string   "frequency_definitions"
   end
 
+  add_index "indicators", ["reporting_frequency_id"], name: "index_indicators_on_reporting_frequency_id", using: :btree
   add_index "indicators", ["unit_of_measure_id"], name: "index_indicators_on_unit_of_measure_id", using: :btree
 
   create_table "location_types", force: :cascade do |t|
@@ -575,6 +577,7 @@ ActiveRecord::Schema.define(version: 20161109193939) do
   add_foreign_key "child_statuses", "children"
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
+  add_foreign_key "indicators", "frequencies", column: "reporting_frequency_id"
   add_foreign_key "indicators", "unit_of_measures"
   add_foreign_key "locations", "location_types"
   add_foreign_key "locations", "projects"
