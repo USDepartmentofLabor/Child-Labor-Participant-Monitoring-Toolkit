@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   resources :project_targets
   resources :technical_progress_reports
   resources :roles
+  resources :service_type_categories
 
   # a trick to avoid generating children urls again
   resources :children, only: [] do

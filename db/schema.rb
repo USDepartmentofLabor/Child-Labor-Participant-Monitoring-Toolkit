@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021153631) do
+ActiveRecord::Schema.define(version: 20161028142515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -403,11 +403,20 @@ ActiveRecord::Schema.define(version: 20161021153631) do
   add_index "service_instances", ["child_id"], name: "index_service_instances_on_child_id", using: :btree
   add_index "service_instances", ["service_id"], name: "index_service_instances_on_service_id", using: :btree
 
+  create_table "service_type_categories", force: :cascade do |t|
+    t.string "name",       default: "NOT SET", null: false
+    t.string "definition"
+  end
+
   create_table "service_types", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "definition"
+    t.integer  "service_type_category_id"
   end
+
+  add_index "service_types", ["service_type_category_id"], name: "index_service_types_on_service_type_category_id", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.string   "name"
@@ -570,6 +579,7 @@ ActiveRecord::Schema.define(version: 20161021153631) do
   add_foreign_key "roles_users", "users"
   add_foreign_key "service_instances", "children"
   add_foreign_key "service_instances", "services"
+  add_foreign_key "service_types", "service_type_categories"
   add_foreign_key "services", "service_types"
   add_foreign_key "targets", "indicators"
   add_foreign_key "targets", "reporting_periods"

@@ -35,7 +35,7 @@ class ServiceTypesController < ApplicationController
   private
 
   def service_type_params
-    params.require(:service_type).permit(:name)
+    params.require(:service_type).permit(:name, :definition, :service_type_category_id)
   end
 
 end

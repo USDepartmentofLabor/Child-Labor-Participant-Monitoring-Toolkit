@@ -182,6 +182,16 @@ es:
       title: "Tipo de servicio"
     new:
       title: "Añadir Tipo de Servicio"
+  service_type_categories:
+    index:
+      add: "Agregar nuevo servicio Tipo Categoría"
+      title: "Tipo de servicio Categorías"
+    edit:
+      title: "Editar tipo de servicios Categoría"
+    show:
+      title: "Tipo de servicios Categoría"
+    new:
+      title: "Añadir Tipo de Servicio Categoría"
   layouts:
     application:
       sign_in: "Registrarse"

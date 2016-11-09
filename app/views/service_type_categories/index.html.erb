@@ -1,0 +1,25 @@
+<div class="page-header">
+  <%= link_to new_service_type_category_path, class: 'btn btn-primary pull-right' do %>
+    <%= fa_icon "plus" %>
+    <%= t("service_type_categories.index.add") %>
+  <% end %>
+  <h1><%= t("service_type_categories.index.title") %></h1>
+</div>
+
+<div class="box">
+  <div class="box-body">
+    <table id='serviceTypeCategoryTable' class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= ServiceTypeCategory.human_attribute_name(:name) %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= content_tag_for(:tr, @service_type_categories) do |service_type_category| %>
+          <td><%= link_to service_type_category.name, edit_service_type_category_path(service_type_category) %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
