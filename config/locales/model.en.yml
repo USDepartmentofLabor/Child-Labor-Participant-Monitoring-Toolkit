@@ -85,9 +85,10 @@ en:
         code: "Indicator Code"
         indicator: "Indicator Name"
         indicator_type: "Type"
-        frequency: "Collection and Reporting Frequency"
+        frequency_definitions: "Collection and Reporting Frequency"
         unit_of_measure: "Unit of Measure"
         baseline: "Baseline"
+        reporting_frequency: "Reporting Frequency"
         created_at: "Created at"
       service_type:
         service_type: "Indicator Name"

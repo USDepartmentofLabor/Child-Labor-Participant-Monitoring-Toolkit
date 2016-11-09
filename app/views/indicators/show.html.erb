@@ -1,12 +1,12 @@
 <div class="page-header">
   <%= link_to indicators_path, class: 'btn btn-default' do %>
-    <%= fa_icon "caret-left" %>
-    <%= t("general.back") %>
+  <%= fa_icon "caret-left" %>
+  <%= t("general.back") %>
   <% end %>
-    <%= link_to edit_indicator_path(@indicator), class: 'btn btn-primary' do %>
-      <%= fa_icon "pencil" %>
-      <%= t("general.edit") %>
-    <% end %>
+  <%= link_to edit_indicator_path(@indicator), class: 'btn btn-primary' do %>
+  <%= fa_icon "pencil" %>
+  <%= t("general.edit") %>
+  <% end %>
   <h1><%= t("indicators.show.title") %></h1>
 </div>
 
@@ -15,13 +15,15 @@
 
     <div class="row">
       <div class="col-md-12">
-        <h2><%= @indicator.code || @indicator.id %> <%= @indicator.indicator %></h2>
+        <h2><%= @indicator.code || @indicator.id %>
+          <%= @indicator.indicator %></h2>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <strong><%= Indicator.human_attribute_name(:indicator_type) %></strong> <%= @indicator.indicator_type %>
+        <strong><%= Indicator.human_attribute_name(:indicator_type) %></strong>
+        <%= @indicator.indicator_type %>
       </div>
     </div>
 
@@ -31,7 +33,9 @@
       <div class="col-md-12">
         <div class="box box-info">
           <div class="box-header with-border">
-            <h3 class="box-title"><strong><%= Indicator.human_attribute_name(:use) %></strong></h3>
+            <h3 class="box-title">
+              <strong><%= Indicator.human_attribute_name(:use) %></strong>
+            </h3>
           </div>
           <div class="box-body">
             <%= raw(@indicator.use) %>
@@ -44,7 +48,9 @@
       <div class="col-md-12">
         <div class="box box-info">
           <div class="box-header with-border">
-            <h3 class="box-title"><strong><%= Indicator.human_attribute_name(:definitions) %></strong></h3>
+            <h3 class="box-title">
+              <strong><%= Indicator.human_attribute_name(:definitions) %></strong>
+            </h3>
           </div>
           <div class="box-body">
             <%= raw(@indicator.definitions) %>
@@ -57,12 +63,29 @@
       <div class="col-md-12">
         <div class="box box-info">
           <div class="box-header with-border">
-            <h3 class="box-title"><strong><%= Indicator.human_attribute_name(:frequency) %></strong></h3>
+            <h3 class="box-title">
+              <strong><%= Indicator.human_attribute_name(:frequency_definitions) %></strong>
+            </h3>
           </div>
           <div class="box-body">
-            <%= raw(@indicator.frequency) %>
+            <%= raw(@indicator.frequency_definitions) %>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <strong><%= Indicator.human_attribute_name(:unit_of_measure) %></strong>
+        <%= @indicator.unit_of_measure.name %>
+      </div>
+      <div class="col-md-4">
+        <strong><%= Indicator.human_attribute_name(:reporting_frequency) %></strong>
+        <%= @indicator.reporting_frequency.name %>
+      </div>
+      <div class="col-md-4">
+        <strong><%= Indicator.human_attribute_name(:baseline) %></strong>
+        <%= @indicator.baseline %>
       </div>
     </div>
 
@@ -70,17 +93,19 @@
 
   <div class="box-footer">
     <% if @indicator.targets.count > 0 %>
-      <%= link_to edit_multiple_indicator_targets_path(@indicator),
+    <%= link_to edit_multiple_indicator_targets_path(@indicator),
         class: "btn btn-primary pull-right",
         style: "margin-right: 1rem" do %>
-        <i class="fa fa-dot-circle-o"> </i> Update Targets
-      <% end %>
-    <% else %>
-      <%= link_to new_indicator_target_path(@indicator),
+    <i class="fa fa-dot-circle-o"></i>
+    Update Targets
+    <% end %>
+  <% else %>
+    <%= link_to new_indicator_target_path(@indicator),
         class: "btn btn-primary pull-right",
         style: "margin-right: 1rem" do %>
-        <i class="fa fa-dot-circle-o"> </i> Enter Targets
-      <% end %>
+    <i class="fa fa-dot-circle-o"></i>
+    Enter Targets
+    <% end %>
     <% end %>
   </div>
 </div>

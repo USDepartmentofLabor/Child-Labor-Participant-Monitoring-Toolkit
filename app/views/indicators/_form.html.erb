@@ -22,18 +22,24 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :frequency %>
-    <%= f.cktext_area :frequency, class: "form-control" %>
+    <%= f.label :frequency_definitions %>
+    <%= f.cktext_area :frequency_definitions, class: "form-control" %>
   </div>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <%= f.label :unit_of_measure %>
-        <%= f.collection_select :unit_of_measure_id, UnitOfMeasure.all, :id, :name, {prompt: "-- Select Unit of Measure --"}, class: "form-control" %>
+        <%= f.collection_select :unit_of_measure_id, UnitOfMeasure.all, :id, :name, {prompt: t("indicators.edit.select_unit_of_measure_prompt")}, class: "form-control" %>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :reporting_frequency %>
+        <%= f.collection_select :reporting_frequency_id, Frequency.all, :id, :name, {prompt: t("indicators.edit.select_reporting_frequency_prompt")}, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-4">
       <div class="form-group">
         <%= f.label :baseline %>
         <%= f.text_field :baseline, class: "form-control" %>
