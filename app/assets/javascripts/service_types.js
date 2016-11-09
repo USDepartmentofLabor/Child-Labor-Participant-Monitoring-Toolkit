@@ -1,3 +1,8 @@
+(function() {
+	$(document).tooltop();
+});
+
+
 $(document).ready(function () {
 
 	$('#serviceTypeTable').DataTable({
