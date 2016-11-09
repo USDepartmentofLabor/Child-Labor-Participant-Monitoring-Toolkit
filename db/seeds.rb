@@ -7,16 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 ServiceTypeCategory.create([
   { name: 'Educational Services', definition: 'Education services refer to all formal and non-formal education services, including vocational education.' },
-  { name: 'Livelihood Services', definition: 'Livelihood services may include, but are not limited to, the provision or linkage to education and training, employment services, economic strengthening services, consumption smoothing services, and social capital services.'}
+  { name: 'Livelihood Services',  definition: 'Livelihood services may include, but are not limited to, the provision or linkage to education and training, employment services, economic strengthening services, consumption smoothing services, and social capital services.'}
 ])
 
 ServiceType.create([
-  { name: 'Education: Formal', definition: 'Formal education is provided and/or recognized by the government. Formal education may include government schools, private schools, religious schools, etc. Formal education services may involve the provision of goods and/or services including direct costs such as school fees and teaching and learning materials and indirect costs such as school uniforms, transportation costs, etc. These goods and/or services are intended to ensure that the child will attend and stay in school.', service_type_category_id: 1 },
-  { name: 'Education: Non-Formal', definition: 'Non-formal education is provided by any organization or body outside of the formal school system. This education may include literacy, mainstreaming education, accelerated learning, community-based education, bridge courses, remedial education, life skills, etc. Non-formal education services may lead to mainstreaming into formal education or equivalent school certificates.', service_type_category_id: 1 },
-  { name: 'Education: Vocational', definition: 'Education, apprenticeships, and/or training related to a specific vocation, trade or occupation. Vocational education is differentiated from formal or non-formal education and should not be counted under formal and non-formal education services. Vocational services provided by a project should reflect a market assessment to determine appropriate skills needed for securing decent work in a given geographic area.', service_type_category_id: 1 },
-  { name: 'Livelihood: Economic Strengthening', definition: 'Economic strengthening services aim to increase the economic well-being of participants. Economic strengthening services may include the provision or linkage to micro-credit/loan programs, productivity transfers, cooperatives, and consumption smoothing services.', service_type_category_id: 2 },
-  { name: 'Livelihood: Adult Employment', 'Employment services for adults aim to increase employment, job retention, earnings, and occupational skills of participants. Employment services may include the provision or linkage to employment assistance programs, occupational safety and health training, micro-franchise programs, job placement, apprenticeships and public works programs.', service_type_category_id: 2 },
-  { name: 'Livelihood: Other', definition: 'Livelihood services other than employment and economic strengthening include any project-specific interventions that do not fit under the other sub-indicators. Social capital services, for example, aim to connect a participant with networks or groups for purposes including promoting sustainable livelihoods and reducing vulnerability to child labor. Social capital services facilitate the coordination resources for the mutual benefit of the participants. Social capital services may include the provision or linkage to support groups, farmer organizations and labor sharing arrangements.', service_type_category_id: 2 }
+  { name: 'Education: Formal',                  definition: 'Formal education is provided and/or recognized by the government. Formal education may include government schools, private schools, religious schools, etc. Formal education services may involve the provision of goods and/or services including direct costs such as school fees and teaching and learning materials and indirect costs such as school uniforms, transportation costs, etc. These goods and/or services are intended to ensure that the child will attend and stay in school.',                                                                                                               service_type_category_id: 1 },
+  { name: 'Education: Non-Formal',              definition: 'Non-formal education is provided by any organization or body outside of the formal school system. This education may include literacy, mainstreaming education, accelerated learning, community-based education, bridge courses, remedial education, life skills, etc. Non-formal education services may lead to mainstreaming into formal education or equivalent school certificates.',                                                                                                                                                                                                                        service_type_category_id: 1 },
+  { name: 'Education: Vocational',              definition: 'Education, apprenticeships, and/or training related to a specific vocation, trade or occupation. Vocational education is differentiated from formal or non-formal education and should not be counted under formal and non-formal education services. Vocational services provided by a project should reflect a market assessment to determine appropriate skills needed for securing decent work in a given geographic area.',                                                                                                                                                                                 service_type_category_id: 1 },
+  { name: 'Livelihood: Economic Strengthening', definition: 'Economic strengthening services aim to increase the economic well-being of participants. Economic strengthening services may include the provision or linkage to micro-credit/loan programs, productivity transfers, cooperatives, and consumption smoothing services.',                                                                                                                                                                                                                                                                                                                                         service_type_category_id: 2 },
+  { name: 'Livelihood: Adult Employment',       definition: 'Employment services for adults aim to increase employment, job retention, earnings, and occupational skills of participants. Employment services may include the provision or linkage to employment assistance programs, occupational safety and health training, micro-franchise programs, job placement, apprenticeships and public works programs.',                                                                                                                                                                                                                                                          service_type_category_id: 2 },
+  { name: 'Livelihood: Other',                  definition: 'Livelihood services other than employment and economic strengthening include any project-specific interventions that do not fit under the other sub-indicators. Social capital services, for example, aim to connect a participant with networks or groups for purposes including promoting sustainable livelihoods and reducing vulnerability to child labor. Social capital services facilitate the coordination resources for the mutual benefit of the participants. Social capital services may include the provision or linkage to support groups, farmer organizations and labor sharing arrangements.',  service_type_category_id: 2 }
 ])
 
 UnitOfMeasure.create([
@@ -31,10 +31,10 @@ EducationStatus.create([
 ])
 
 WorkStatus.create([
-  { name: 'Engaged in Child Labor', work_type: 'CL' },
-  { name: 'Hazardous Child Labor', work_type: 'CL' },
-  { name: 'Worst Form of Child Labor (WFCL)', work_type: 'CL' },
-  { name: 'High Risk of Entering Child Labor', work_type: 'CACHR' }
+  { name: 'Engaged in Child Labor',             work_type: 'CL' },
+  { name: 'Hazardous Child Labor',              work_type: 'CL' },
+  { name: 'Worst Form of Child Labor (WFCL)',   work_type: 'CL' },
+  { name: 'High Risk of Entering Child Labor',  work_type: 'CACHR' }
 ])
 
 ProjectTargetType.create([
@@ -126,7 +126,7 @@ Role.create(
   ability_ids: (1..42).to_a
 )
 
-Frequency.create ([]
+Frequency.create ([
   { code: 'Q',  name: 'Quarterly' },
   { code: 'SQ', name: 'Semiannual' },
   { code: 'A',  name: 'Annual' },

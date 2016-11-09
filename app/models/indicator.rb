@@ -1,5 +1,6 @@
 class Indicator < ActiveRecord::Base
-  has_one :unit_of_measure
+  belongs_to :unit_of_measure
+  belongs_to :reporting_frequency, class_name: 'Frequency'
   has_many :targets
 
   validates :code, presence: true
