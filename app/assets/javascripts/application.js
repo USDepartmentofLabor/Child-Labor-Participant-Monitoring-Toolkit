@@ -22,6 +22,7 @@
 //= require Chart.min
 //= require bootstrap-datepicker
 //= require jquery.geocomplete.min
+//= require jquery-ui
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require ckeditor/init

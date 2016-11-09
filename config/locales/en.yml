@@ -174,7 +174,7 @@ en:
       title: "Add Target"
   service_types:
     index:
-      add: "Add New Service Types"
+      add: "Add New Service Type"
       title: "Service Types"
     edit:
       title: "Edit Service Type"
@@ -182,6 +182,16 @@ en:
       title: "Service Type"
     new:
       title: "Add Service Type"
+  service_type_categories:
+    index:
+      add: "Add New Service Type Category"
+      title: "Service Type Categories"
+    edit:
+      title: "Edit Service Type Category"
+    show:
+      title: "Service Type Category"
+    new:
+      title: "Add Service Type Category"
   layouts:
     application:
       sign_in: "Sign in"

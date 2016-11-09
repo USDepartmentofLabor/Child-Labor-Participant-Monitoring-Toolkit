@@ -112,3 +112,5 @@ gem 'momentjs-rails'
 gem 'aws-ses'
 
 gem 'surveyor', github: 'HeHStudy/surveyor'
+
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
