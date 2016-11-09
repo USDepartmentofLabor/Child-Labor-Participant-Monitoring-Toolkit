@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  mount Surveyor::Engine => "/surveys", :as => "surveyor"
   mount Ckeditor::Engine => '/ckeditor'
 
   get 'targets/index'
