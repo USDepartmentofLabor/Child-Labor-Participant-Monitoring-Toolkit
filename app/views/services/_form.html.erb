@@ -10,7 +10,7 @@
         <div class="form-group">
           <%= f.label :service_type_id %>
           <%= f.select :service_type_id,
-            ServiceType.all.collect{|s| [s.name, s.id]}.sort,
+            ServiceType.all.collect{|s| [s.name, s.id, { 'title' => s.definition }]}.sort,
             {include_blank: true},
             class: "form-control" %>
         </div>
@@ -18,23 +18,15 @@
       <div class="col-md-4">
         <div class="form-group">
           <%= f.label :start_date %>
-          <div class="input-group date">
-            <%= f.text_field :start_date, class: "form-control" %>
-            <span class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </span>
+          <div>
+            <%= f.date_select :start_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <%= f.label :end_date %>
-          <div class="input-group date">
-            <%= f.text_field :end_date, class: "form-control" %>
-            <span class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </span>
-          </div>
+          <%= f.label :end_date %><br/>
+          <%= f.date_select :end_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
         </div>
       </div>
     </div>

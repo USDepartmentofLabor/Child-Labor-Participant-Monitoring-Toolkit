@@ -1,5 +1,5 @@
-<%= form_for(@service_type, html: { role: "form" }) do |f| %>
-  <%= error_messages(@service_type) %>
+<%= form_for(@service_type_category, html: { role: "form" }) do |f| %>
+  <%= error_messages(@service_type_category) %>
 
   <div class="form-group">
     <%= f.label :name %>
@@ -11,16 +11,11 @@
     <%= f.text_field :definition, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :service_type_category %>
-    <%= f.collection_select :service_type_category_id, ServiceTypeCategory.all, :id, :name, {prompt: "-- Select Category --"}, class: "form-control" %>
-  </div>
-
   <hr>
 
   <div class="form-group">
     <div class="col-sm-offset-8 col-sm-2">
-      <%= link_to service_types_path, class: "btn btn-danger btn-block" do %>
+      <%= link_to service_type_categories_path, class: "btn btn-danger btn-block" do %>
         <%= fa_icon :times %>
         <%= t("general.cancel") %>
       <% end %>

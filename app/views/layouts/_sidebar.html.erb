@@ -93,6 +93,7 @@
         </a>
         <ul class="treeview-menu">
           <%= sidebar_link t("projects.show.title"), project_path %>
+          <%= sidebar_link t("service_type_categories.index.title"), service_type_categories_path %>
           <%= sidebar_link t("service_types.index.title"), service_types_path %>
           <% if policy(:user).index? %>
             <%= sidebar_link t("users.index.title"), users_path %>

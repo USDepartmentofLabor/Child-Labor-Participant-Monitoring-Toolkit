@@ -1,0 +1,17 @@
+<div class="page-header">
+  <%= link_to service_type_categories_path, class: 'btn btn-default' do %>
+    <%= fa_icon "caret-left" %>
+    <%= t("general.back") %>
+  <% end %>
+  <h1><%= t("service_type_categories.edit.title") %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-primary">
+      <div class="box-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>

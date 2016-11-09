@@ -133,14 +133,6 @@ ActiveRecord::Schema.define(version: 20161101215316) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
-  create_table "columns", force: :cascade do |t|
-    t.integer  "question_group_id"
-    t.text     "text"
-    t.text     "answers_textbox"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "custom_fields", force: :cascade do |t|
     t.string   "name"
     t.string   "field_type"
@@ -398,13 +390,6 @@ ActiveRecord::Schema.define(version: 20161101215316) do
   add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
   add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
 
-  create_table "rows", force: :cascade do |t|
-    t.integer  "question_group_id"
-    t.string   "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "service_instances", force: :cascade do |t|
     t.integer  "child_id"
     t.integer  "service_id"
@@ -419,11 +404,20 @@ ActiveRecord::Schema.define(version: 20161101215316) do
   add_index "service_instances", ["child_id"], name: "index_service_instances_on_child_id", using: :btree
   add_index "service_instances", ["service_id"], name: "index_service_instances_on_service_id", using: :btree
 
+  create_table "service_type_categories", force: :cascade do |t|
+    t.string "name",       default: "NOT SET", null: false
+    t.string "definition"
+  end
+
   create_table "service_types", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "definition"
+    t.integer  "service_type_category_id"
   end
+
+  add_index "service_types", ["service_type_category_id"], name: "index_service_types_on_service_type_category_id", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.string   "name"
@@ -586,6 +580,7 @@ ActiveRecord::Schema.define(version: 20161101215316) do
   add_foreign_key "roles_users", "users"
   add_foreign_key "service_instances", "children"
   add_foreign_key "service_instances", "services"
+  add_foreign_key "service_types", "service_type_categories"
   add_foreign_key "services", "service_types"
   add_foreign_key "targets", "indicators"
   add_foreign_key "targets", "reporting_periods"

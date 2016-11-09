@@ -9,6 +9,7 @@
 @import "datepicker3";
 @import "dataTables/bootstrap/3/jquery.dataTables.bootstrap";
 @import "jGrowl";
+@import "jquery-ui";
 @import "home";
 
 .main-header .logo {
@@ -106,4 +107,9 @@ div.dataTables_info {
   width: 100px;
   padding: 3px;
   border: 3px solid #d2d6de;
+}
+
+.date-select {
+  display: inline-block;
+  width: 30%;
 }
