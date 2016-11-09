@@ -85,9 +85,10 @@ es:
         code: "Código indicador"
         indicator: "Indicador Nombre"
         indicator_type: "Tipo"
-        frequency: "Recopilación y presentación de frecuencia"
+        frequency_definitions: "Recopilación y presentación de frecuencia"
         unit_of_measure: "Unidad de medida"
         baseline: "Base"
+        reporting_frequency: "Frecuencia de la información"
         created_at: "Creado en"
       service_type:
         service_type: "Indicador Nombre"

@@ -158,10 +158,14 @@ en:
       title: "List of Indicators"
     edit:
       title: "Edit Indicator"
+      select_unit_of_measure_prompt: "-- Select Unit of Measure --"
+      select_reporting_frequency_prompt: "-- Select Reporting Frequency --"
     show:
       title: "Indicator"
     new:
       title: "Add Indicator"
+      select_unit_of_measure_prompt: "-- Select Unit of Measure --"
+      select_reporting_frequency_prompt: "-- Select Reporting Frequency --"
   targets:
     index:
       add: "Add New Target"

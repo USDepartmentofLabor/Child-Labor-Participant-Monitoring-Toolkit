@@ -158,10 +158,14 @@ es:
       title: "Lista de indicadores"
     edit:
       title: "Indicador de edición"
+      select_unit_of_measure_prompt: "-- Seleccione la unidad de medida --"
+      select_reporting_frequency_prompt: "-- Seleccione una frecuencia de una --"
     show:
       title: "Indicador"
     new:
       title: "Añadir Indicador"
+      select_unit_of_measure_prompt: "-- Seleccione la unidad de medida --"
+      select_reporting_frequency_prompt: "-- Seleccione una frecuencia de una --"
   targets:
     index:
       add: "Añadir nuevo objetivo"

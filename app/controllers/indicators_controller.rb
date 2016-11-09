@@ -56,6 +56,6 @@ class IndicatorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def indicator_params
-      params.require(:indicator).permit(:code, :indicator, :use, :definitions, :frequency, :unit_of_measure_id, :baseline)
+      params.require(:indicator).permit(:code, :indicator, :use, :definitions, :frequency_definitions, :unit_of_measure_id, :baseline, :reporting_frequency_id)
     end
 end
