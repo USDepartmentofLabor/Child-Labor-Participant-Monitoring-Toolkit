@@ -125,3 +125,10 @@ Role.create(
   name: 'Administrator',
   ability_ids: (1..42).to_a
 )
+
+Frequency.create ([]
+  { code: 'Q',  name: 'Quarterly' },
+  { code: 'SQ', name: 'Semiannual' },
+  { code: 'A',  name: 'Annual' },
+  { code: 'B',  name: 'Biennial' }
+])
