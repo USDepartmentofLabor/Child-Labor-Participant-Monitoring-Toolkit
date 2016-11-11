@@ -8,7 +8,7 @@ module CustomFieldsHelper
 
   def custom_input(field_object, name, options={})
     field_type = field_object.field_type
-    
+
     if options[:fill].nil? || options[:fill]
       # content = field_object.custom_value.present? ? field_object.custom_value.value_text : nil
       content = custom_field_value(field_object)
@@ -44,7 +44,7 @@ module CustomFieldsHelper
     when "radio_button"
       options_for_select = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
       radio_dom = options_for_select.map.with_index do |opt, i|
-        checked = content.blank? ? (i == 0) : (opt == content)
+        checked = (opt == content) # content.blank? ? (i == 0) : (opt == content)
         content_tag(:div, class: "radio") do
           content_tag(:label, class: "radio-inline") do
             concat radio_button_tag(name, opt, checked, {class: "square-red"}.merge(options))
@@ -58,6 +58,6 @@ module CustomFieldsHelper
       number_field_tag(name, content, {class: "form-control"}.merge(options))
     else
       nil
-    end 
+    end
   end
 end

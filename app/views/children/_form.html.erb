@@ -12,46 +12,39 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <%= f.label :fname %>
-          <%= f.text_field :fname, class: "form-control has-tooltip", data_toggle: "tooltip",
-              data_placement: "top", title: "Please enter the beneficiary’s first name or the given name." %>
-        </div>
-        <div class="form-group">
-          <%= f.label :lname %>
-          <%= f.text_field :lname, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :mname %>
-          <%= f.text_field :mname, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :sex %>
-          <div class="checkbox">
-            <% Child::SEX_OPTIONS.each do |sex_option| %>
-            <label class="radio-inline">
-              <%= f.radio_button :sex, sex_option[1], class: "square-red" %>
-              <%= t(sex_option[0]) %>
-            </label>
-            <% end %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :dob %>
-          <div>
-            <%= f.date_select :dob, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :code %>
-          <%= f.text_field :code, class: "form-control" %>
-        </div>
-        <div class="form-group">
           <%= f.label :intake_date %>
           <div>
             <%= f.date_select :intake_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
           </div>
+          <div class="form-group">
+            <%= f.label :fname %>
+            <%= f.text_field :fname, class: "form-control", title: "Please enter the beneficiary’s first name or the given name." %>
+          </div>
+          <div class="form-group">
+            <%= f.label :lname %>
+            <%= f.text_field :lname, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :mname %>
+            <%= f.text_field :mname, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :sex %>
+            <div class="checkbox">
+              <% Child::SEX_OPTIONS.each do |sex_option| %>
+              <label class="radio-inline">
+                <%= f.radio_button :sex, sex_option[1], class: "square-red" %>
+                <%= t(sex_option[0]) %>
+              </label>
+              <% end %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :age %>
+            <%= f.text_field :age, class: "form-control" %>
+          </div>
         </div>
-        <%= render partial: 'custom_fields/custom_field', collection: @custom_fields %>
+        <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 1 } %>
       </div>
       <div class="col-md-offset-2 col-md-4">
         <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -76,63 +69,42 @@
   </div>
 </div>
 
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "money" %>
+    <h3 class="box-title">
+      <%= t "children.new.section_two" %>
+    </h3>
+  </div>
+  <div class="box-body">
+    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 2 } %>
+  </div>
+</div>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "medkit" %>
+    <h3 class="box-title">
+      <%= t "children.new.section_three" %>
+    </h3>
+  </div>
+  <div class="box-body">
+    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 3 } %>
+  </div>
+</div>
+
 <div class="box box-primary">
   <div class="box-header with-border">
     <%= fa_icon "home" %>
     <h3 class="box-title">
-      <%= t "children.new.household_title" %>
+      <%= t "children.new.section_four" %>
     </h3>
   </div>
   <div class="box-body">
-    <div class="form-group">
-      <%= f.label :household_id %>
-      <%= f.select :household_id, household_options, { include_blank: true }, {class: "form-control", id: "household-selection"} %>
-    </div>
+    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 4 } %>
   </div>
 </div>
-
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <%= fa_icon "map-marker" %>
-    <h3 class="box-title">
-      <%= t "children.new.address_title" %>
-    </h3>
-  </div>
-  <div class="box-body">
-    <div class="form-group">
-      <%= f.label :address %>
-      <%= f.text_field :address, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :city %>
-      <%= f.text_field :city, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :state %>
-      <%= f.text_field :state, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :country %>
-      <%= f.country_select :country, {}, class: "form-control" %>
-    </div>
-  </div>
-</div>
-
-<% if params[:action] == "new" %>
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <%= fa_icon "map-marker" %>
-    <h3 class="box-title">
-      <%= t "children.new.baseline_title" %>
-    </h3>
-  </div>
-  <div class="box-body">
-    <%= f.fields_for :statuses do |ff| %>
-    <%= render partial: 'status_form', locals: {f: ff} %>
-    <% end %>
-  </div>
-</div>
-<% end %>
 
 <div class="form-group">
   <div class="col-sm-4 col-sm-offset-4">

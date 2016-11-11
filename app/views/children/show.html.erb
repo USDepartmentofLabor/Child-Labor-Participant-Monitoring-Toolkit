@@ -36,62 +36,37 @@
                   <td><%= @child.id %></td>
                 </tr>
                 <tr>
-                  <th><%= Child.human_attribute_name(:fname) %></th>
-                  <td><%= @child.fname %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:lname) %></th>
-                  <td><%= @child.lname %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:mname) %></th>
-                  <td><%= @child.mname %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:sex) %></th>
-                  <td><%= @child.gender_name %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:dob) %></th>
-                  <td><%= @child.dob %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:code) %></th>
-                  <td><%= @child.code %></td>
-                </tr>
-                <tr>
                   <th><%= Child.human_attribute_name(:intake_date) %></th>
                   <td><%= @child.intake_date %></td>
                 </tr>
                 <tr>
-                  <td colspan="2"></td>
+                  <th>1. <%= Child.human_attribute_name(:fname) %></th>
+                  <td><%= @child.fname %></td>
                 </tr>
                 <tr>
-                  <th><%= Child.human_attribute_name(:address) %></th>
-                  <td><%= @child.address %></td>
+                  <th>2. <%= Child.human_attribute_name(:lname) %></th>
+                  <td><%= @child.lname %></td>
                 </tr>
                 <tr>
-                  <th><%= Child.human_attribute_name(:city) %></th>
-                  <td><%= @child.city %></td>
+                  <th>3. <%= Child.human_attribute_name(:mname) %></th>
+                  <td><%= @child.mname %></td>
                 </tr>
                 <tr>
-                  <th><%= Child.human_attribute_name(:state) %></th>
-                  <td><%= @child.state %></td>
+                  <th>4. <%= Child.human_attribute_name(:sex) %></th>
+                  <td><%= @child.gender_name %></td>
                 </tr>
                 <tr>
-                  <th><%= Child.human_attribute_name(:country) %></th>
-                  <td><%= @child.country_name %></td>
+                  <th>5. <%= Child.human_attribute_name(:age) %></th>
+                  <td><%= @child.age %></td>
                 </tr>
-                <% @custom_fields.each do |custom_field| %>
-                <tr>
-                  <th><%= custom_field.name %></th>
-                  <td><%= custom_field_value(custom_field) %></td>
-                </tr>
-                <% end %>
               </tbody>
             </table>
           </div>
         </div>
+        <% @custom_fields.each do |custom_field| %>
+        <p><%= markdown(custom_field.name) %></p>
+        <p><%= custom_field_value(custom_field) %></p>
+        <% end %>
       </div>
     </div>
 
