@@ -17,19 +17,19 @@
             <%= f.date_select :intake_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
           </div>
           <div class="form-group">
-            <%= f.label :fname %>
+            <%= f.label :fname, "1. " + Child.human_attribute_name(:fname) %>
             <%= f.text_field :fname, class: "form-control", title: "Please enter the beneficiary’s first name or the given name." %>
           </div>
           <div class="form-group">
-            <%= f.label :lname %>
+            <%= f.label :lname, "2. " + Child.human_attribute_name(:lname) %>
             <%= f.text_field :lname, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :mname %>
+            <%= f.label :mname, "3. " + Child.human_attribute_name(:mname) %>
             <%= f.text_field :mname, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :sex %>
+            <%= f.label :sex, "4. " + Child.human_attribute_name(:sex) %>
             <div class="checkbox">
               <% Child::SEX_OPTIONS.each do |sex_option| %>
               <label class="radio-inline">
@@ -40,11 +40,11 @@
             </div>
           </div>
           <div class="form-group">
-            <%= f.label :age %>
+            <%= f.label :age, "5. " + Child.human_attribute_name(:age) %>
             <%= f.text_field :age, class: "form-control" %>
           </div>
         </div>
-        <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 1 } %>
+        <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 1 }.sort_by { |f| f.sort_order } %>
       </div>
       <div class="col-md-offset-2 col-md-4">
         <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -78,7 +78,7 @@
     </h3>
   </div>
   <div class="box-body">
-    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 2 } %>
+    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 2 }.sort_by { |f| f.sort_order } %>
   </div>
 </div>
 
@@ -90,7 +90,7 @@
     </h3>
   </div>
   <div class="box-body">
-    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 3 } %>
+    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 3 }.sort_by { |f| f.sort_order } %>
   </div>
 </div>
 
@@ -102,7 +102,7 @@
     </h3>
   </div>
   <div class="box-body">
-    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 4 } %>
+    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 4 }.sort_by { |f| f.sort_order } %>
   </div>
 </div>
 
