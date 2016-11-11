@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109215729) do
+ActiveRecord::Schema.define(version: 20161111183157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20161109215729) do
     t.string   "avatar"
     t.string   "code"
     t.date     "intake_date"
+    t.integer  "age"
   end
 
   add_index "children", ["code"], name: "index_children_on_code", unique: true, using: :btree
@@ -114,6 +115,8 @@ ActiveRecord::Schema.define(version: 20161109215729) do
     t.string   "model_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "section_id"
+    t.string   "help_text"
   end
 
   create_table "custom_values", force: :cascade do |t|
