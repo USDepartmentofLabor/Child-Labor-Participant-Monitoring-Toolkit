@@ -88,6 +88,9 @@ en:
       address_title: "Enter Address"
       details_title: "Enter Beneficiary Details"
       baseline_title: "Enter Baseline Statuses"
+      section_two: "Economic Activity"
+      section_three: "Health and Safety Issues of Working Children"
+      section_four: "Household Tasks of Children"
     index:
       add: "Add A Beneficiary"
       title: "List of Beneficiaries"

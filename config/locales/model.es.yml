@@ -34,7 +34,8 @@ es:
         country: "País"
         created_at: "Creado en"
         updated_at: "Actualizada a las"
-        household_id: "Casa"
+        household_id: "Años"
+        age: "Age"
       child_status:
         start_date: "Fecha de Cambio de Estado"
         work_status_id: "Estado Nuevo Trabajo Infantil"
@@ -78,6 +79,8 @@ es:
         name: "Nombre de campo"
         field_type: "Tipo de campo"
         selections: "Seleccionar las opciones para"
+        section_id: "Sección"
+        help_text: "texto de ayuda"
       region:
         country: "País"
         state: "Estado (Provincia)"
