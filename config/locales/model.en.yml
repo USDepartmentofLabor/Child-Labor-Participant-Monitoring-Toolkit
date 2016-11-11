@@ -35,6 +35,7 @@ en:
         created_at: "Created at"
         updated_at: "Updated at"
         household_id: "Household"
+        age: "Age"
       child_status:
         start_date: "Status Change Date"
         work_status_id: "New Child Labor Status"
@@ -78,6 +79,8 @@ en:
         name: "Field Name"
         field_type: "Field Type"
         selections: "Options For Select"
+        section_id: "Section"
+        help_text: "Help Text"
       region:
         country: "Country"
         state: "State (Province)"
