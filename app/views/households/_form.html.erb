@@ -21,12 +21,8 @@
 
     <div class="form-group">
       <%= f.label :intake_date %>
-      (YYYY-MM-DD)
-      <div class="input-group date">
-        <%= f.text_field :intake_date, class: "form-control" %>
-        <span class="input-group-addon">
-          <i class="fa fa-calendar"></i>
-        </span>
+      <div>
+        <%= f.date_select :intake_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
       </div>
     </div>
 
