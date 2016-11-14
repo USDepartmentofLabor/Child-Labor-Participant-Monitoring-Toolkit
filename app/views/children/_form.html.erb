@@ -20,7 +20,7 @@
           <div>
             <%= f.date_select :intake_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
           </div>
-          
+
           <div class="form-group">
             <%= f.label :fname, "1. " + Child.human_attribute_name(:fname) %>
             <%= f.text_field :fname, class: "form-control", title: "Please enter the beneficiary’s first name or the given name." %>
@@ -109,6 +109,22 @@
     <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 4 }.sort_by { |f| f.sort_order } %>
   </div>
 </div>
+
+<% if params[:action] == "new" %>
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <%= fa_icon "map-marker" %>
+      <h3 class="box-title">
+        <%= t "children.new.baseline_title" %>
+      </h3>
+    </div>
+    <div class="box-body">
+      <%= f.fields_for :statuses do |ff| %>
+        <%= render partial: 'status_form', locals: {f: ff} %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <div class="form-group">
   <div class="col-sm-4 col-sm-offset-4">
