@@ -6,6 +6,6 @@
 <td><%= child.age %></td>
 <td><%= child.intake_date %></td>
 <td><%= child.code %></td>
-<td><%= child.current_education_status %></td>
-<td><%= child.current_work_status %></td>
+<td><%= child.current_education_status.present? ? child.current_education_status.name : "" %></td>
+<td><%= child.current_work_status.present? ? child.current_work_status.name : "" %></td>
 </tr>
