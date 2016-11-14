@@ -99,7 +99,19 @@
         <%= t("children.show.services") %>
       </div>
       <div class="box-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Date Received</th>
+              <th>Hours</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
         <%= render partial: "service", collection: @service_instances.order(:start_date) %>
+      </tbody>
+      </table>
       </div>
     </div>
     <% end %>

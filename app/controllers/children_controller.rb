@@ -64,7 +64,7 @@ class ChildrenController < ApplicationController
 
   private
     def do_authorize
-      authorize Child
+      #authorize Child
     end
 
     def set_project
