@@ -1,27 +1,17 @@
-<div class="child-status">
-	<b>Date:</b> <%= format_date_range(status) %>
-	<% if status.note.present? %>
-		<%= content_tag(:a, 
-			{ role:"button", class: "status-note", title: ChildStatus.human_attribute_name(:note),
-				data: { toggle:"popover", content: status.note}
-			}) do %>
-			<%= fa_icon "file-o" %>
+<% if status.work_status.present? && status.education_status.present? %>
+<tr>
+	<td><%= status.work_status.present? ? status.work_status.name : "" %></td>
+	<td><%= status.education_status.present? ? status.education_status.name : "" %></td>
+	<td><%= format_date_range(status) %></td>
+	<td>
+		<% if status.note.present? %>
+			<%= content_tag(:a,
+				{ role:"button", class: "status-note", title: ChildStatus.human_attribute_name(:note),
+					data: { toggle:"popover", content: status.note}
+				}) do %>
+				<%= fa_icon "file-o" %>
+			<% end %>
 		<% end %>
-	<% end %>
-	
-	<% if status.work_status.present? %>
-		<div class="status-info">
-			<b><%= ChildStatus.human_attribute_name(:work_status_id) %>:</b> <%= status.work_status.name %>
-		</div>
-	<% end %>
-
-	<% if status.education_status.present? %>
-		<div class="status-info">
-			<b><%= ChildStatus.human_attribute_name(:education_status_id) %>:</b> <%= status.education_status.name %>
-		</div>
-	<% end %>
-
-	<div class="reporter">
-		<%= fa_icon "user "%> Created by user #<%= status.user_id %> at <%= format_time status.created_at %>
-	</div>
-</div>
+	</td>
+</tr>
+<% end %>
