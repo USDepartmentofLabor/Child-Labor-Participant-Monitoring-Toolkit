@@ -1,19 +1,21 @@
 class EducationIndicator
 	# Education Indicator (E1) Generator
-	# 
+	#
 	# Use #generate method to get the results
 	# The results follows the latest Annex A - Common Indicators_Final.xlsx Excel file
-	def initialize(education_status_ids, start_date, end_date, project_id)
+	def initialize(education_status_ids, start_date, end_date)
 	  @start_date = start_date
 	  @end_date = end_date
-	  @project_id = project_id
+	  #@project_id = project_id
 	  @education_status_ids = education_status_ids
 	  @educated_children_ids = children_provided_education
 	end
 
 	def generate
 		cl_ids = children_with_work("CL")
-		# if a child has both CL and CAHR status in record, 
+
+		total_target = Target.where(:indicator_id => 9).sum(:target_value).to_i
+		# if a child has both CL and CAHR status in record,
 		# then only CL is counted. (count once requiremnt)
 		cahr_ids = children_with_work("CAHR") - cl_ids
 
@@ -29,9 +31,9 @@ class EducationIndicator
 
 		results = {
 			target: {
-				cl: cl_ids.length,
-				cahr: cahr_ids.length,
-				total: cl_ids.length + cahr_ids.length
+				cl: 0,
+				cahr: 0,
+				total: total_target
 			},
 			educated: {
 				cl: {
@@ -62,7 +64,6 @@ class EducationIndicator
 	def children_with_work(work_type)
 		work_status_id = WorkStatus.where(work_type: work_type).pluck(:id)
 		child_ids = ChildStatus.where(
-			project_id: @project_id,
 			work_status_id: work_status_id,
 			start_date: (@start_date..@end_date)
 		).pluck("DISTINCT child_id")
@@ -73,8 +74,7 @@ class EducationIndicator
 	# Return unique IDs of children, to whom education services are provided, within given period of time.
 	def children_provided_education
 		child_ids = ChildStatus.where(
-			project_id: @project_id,
-			education_status_id: @education_status_ids, 
+			education_status_id: @education_status_ids,
 			start_date: (@start_date..@end_date)
 		).pluck("DISTINCT child_id")
 
