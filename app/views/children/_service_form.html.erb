@@ -9,21 +9,15 @@
 
   <div class="col-md-3 form-group">
     <%= f.label :start_date %> (yyy/mm/dd)
-    <div class="input-group date">
-      <%= f.text_field :start_date, class: "form-control" %>
-      <span class="input-group-addon">
-        <i class="fa fa-calendar"></i>
-      </span>
+    <div>
+      <%= f.date_select :start_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
     </div>
   </div>
 
   <div class="col-md-3 form-group">
     <%= f.label :end_date %> (yyy/mm/dd)
-    <div class="input-group date">
-      <%= f.text_field :end_date, class: "form-control" %>
-      <span class="input-group-addon">
-        <i class="fa fa-calendar"></i>
-      </span>
+    <div>
+      <%= f.date_select :end_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
     </div>
   </div>
 
