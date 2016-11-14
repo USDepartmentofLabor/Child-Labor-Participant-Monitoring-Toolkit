@@ -36,6 +36,10 @@
                   <td><%= @child.id %></td>
                 </tr>
                 <tr>
+                  <th><%= Household.human_attribute_name(:name) %></th>
+                  <td><%= @child.household.present? ? @child.household.name : "" %></td>
+                </tr>
+                <tr>
                   <th><%= Child.human_attribute_name(:intake_date) %></th>
                   <td><%= @child.intake_date %></td>
                 </tr>

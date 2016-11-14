@@ -12,10 +12,15 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
+          <%= f.label :household_id %>
+          <%= f.select :household_id, household_options, { include_blank: true }, {class: "form-control", id: "household-selection"} %>
+        </div>
+        <div class="form-group">
           <%= f.label :intake_date %>
           <div>
             <%= f.date_select :intake_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
           </div>
+          
           <div class="form-group">
             <%= f.label :fname, "1. " + Child.human_attribute_name(:fname) %>
             <%= f.text_field :fname, class: "form-control", title: "Please enter the beneficiary’s first name or the given name." %>
@@ -68,7 +73,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="box box-primary">
   <div class="box-header with-border">
