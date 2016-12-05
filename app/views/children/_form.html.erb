@@ -20,10 +20,11 @@
           <div>
             <%= f.date_select :intake_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
           </div>
-
+          <br/>
+          <p>To be administered to mother/caretaker of each child in the household, aged 5 – 17 years. For household members below age 5 or above age 17, leave rows blank.</p>
           <div class="form-group">
             <%= f.label :fname, "1. " + Child.human_attribute_name(:fname) %>
-            <%= f.text_field :fname, class: "form-control", title: "Please enter the beneficiary’s first name or the given name." %>
+            <%= f.text_field :fname, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.label :lname, "2. " + Child.human_attribute_name(:lname) %>
