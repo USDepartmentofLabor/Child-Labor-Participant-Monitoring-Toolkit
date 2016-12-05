@@ -128,7 +128,7 @@ Role.create(
 
 Frequency.create ([
   { code: 'Q',  name: 'Quarterly' },
-  { code: 'SQ', name: 'Semiannual' },
+  { code: 'SA', name: 'Semiannual' },
   { code: 'A',  name: 'Annual' },
   { code: 'B',  name: 'Biennial' }
 ])
