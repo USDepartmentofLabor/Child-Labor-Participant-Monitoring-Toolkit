@@ -132,3 +132,8 @@ Frequency.create ([
   { code: 'A',  name: 'Annual' },
   { code: 'B',  name: 'Biennial' }
 ])
+
+IntakeActorType.create([
+  { name: 'Reviewer' },
+  { name: 'Supervisor' }
+])
