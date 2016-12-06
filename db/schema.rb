@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206211542) do
+ActiveRecord::Schema.define(version: 20161206220432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -213,6 +213,20 @@ ActiveRecord::Schema.define(version: 20161206211542) do
   add_index "locations", ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
   add_index "locations", ["project_id"], name: "index_locations_on_project_id", using: :btree
 
+  create_table "people", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.integer  "sex",                  limit: 2
+    t.date     "dob"
+    t.integer  "age"
+    t.integer  "household_id"
+    t.date     "intake_date"
+    t.boolean  "is_head_of_household"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "project_target_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -407,6 +421,7 @@ ActiveRecord::Schema.define(version: 20161206211542) do
   add_foreign_key "intake_actors", "intake_actor_types"
   add_foreign_key "locations", "location_types"
   add_foreign_key "locations", "projects"
+  add_foreign_key "people", "households"
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"
   add_foreign_key "projects", "regions"
