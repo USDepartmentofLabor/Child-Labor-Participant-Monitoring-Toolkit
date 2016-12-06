@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206191318) do
+ActiveRecord::Schema.define(version: 20161206211542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,6 +175,20 @@ ActiveRecord::Schema.define(version: 20161206191318) do
 
   add_index "indicators", ["reporting_frequency_id"], name: "index_indicators_on_reporting_frequency_id", using: :btree
   add_index "indicators", ["unit_of_measure_id"], name: "index_indicators_on_unit_of_measure_id", using: :btree
+
+  create_table "intake_actor_types", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "intake_actors", force: :cascade do |t|
+    t.integer  "household_id",         null: false
+    t.integer  "intake_actor_type_id", null: false
+    t.date     "action_date"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "location_types", force: :cascade do |t|
     t.string   "name"
@@ -389,6 +403,8 @@ ActiveRecord::Schema.define(version: 20161206191318) do
   add_foreign_key "children_services", "services"
   add_foreign_key "indicators", "frequencies", column: "reporting_frequency_id"
   add_foreign_key "indicators", "unit_of_measures"
+  add_foreign_key "intake_actors", "households"
+  add_foreign_key "intake_actors", "intake_actor_types"
   add_foreign_key "locations", "location_types"
   add_foreign_key "locations", "projects"
   add_foreign_key "project_targets", "project_target_types"
