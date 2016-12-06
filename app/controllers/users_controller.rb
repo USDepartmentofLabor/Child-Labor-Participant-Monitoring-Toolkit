@@ -10,6 +10,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to new_user_path, notice: t("action_messages.create", model: User.model_name.human)
+    else
+      render :new
+    end
+  end
+
   def update
     if params[:user][:password].blank?
       params[:user].delete(:password)
