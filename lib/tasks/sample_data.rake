@@ -11,7 +11,7 @@ namespace :db do
       email:    'ilabtoolkit@gmail.com',
       name:     'Administrator',
       password: 'password',
-      confirmed_at: Date.parse(Time.now.to_s)
+      confirmed_at: Date.parse(Time.now.to_s),
       role_ids: [Role.find_by(name: 'Administrator').id]
     )
   end
