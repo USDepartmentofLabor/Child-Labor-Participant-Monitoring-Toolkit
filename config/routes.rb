@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, skip: [:sessions, :registrations]
+  devise_for :users, skip: [:sessions, :registrations, :confirmations]
 
   as :user do
     get 'sign_in' => 'devise/sessions#new', as: :new_user_session
@@ -60,6 +60,8 @@ Rails.application.routes.draw do
 
     put 'sign_up' => 'devise/registrations#update', as: nil
     patch 'sign_up' => 'devise/registrations#update', as: nil
+
+    get 'confirm_account' => 'devise/confirmations#show', as: :user_confirmation
   end
 
   root to: "home#index"
