@@ -1,19 +1,6 @@
 # lib/tasks/sample_data.rake
 namespace :db do
-  desc 'Drop, create, migrate, seed and add the admin user'
-  task prepare: [:drop, :create, :migrate, :seed, :add_admin_user] do
-    puts 'Database is ready to go'
-  end
 
-  desc 'Adds admin user to the system'
-  task add_admin_user: :environment do
-    User.create!(
-      email:    'ilabtoolkit@gmail.com',
-      name:     'Administrator',
-      password: 'password',
-      role_ids: [Role.find_by(name: 'Administrator').id]
-    )
-  end
 
   desc 'Populates the database with sample project data'
   task populate_sample_project_data: :environment do
