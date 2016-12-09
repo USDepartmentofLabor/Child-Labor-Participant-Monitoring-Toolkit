@@ -1,7 +1,8 @@
-<p>Welcome to the <%= Project.first.name %>.</p>
+<p>Welcome to the <%= Project.first.name %> DBMS.</p>
 
-<p>Your administrator has created an account for you.</p>
+<p>Your administrator has created an account for you and should have provided
+you with a password.</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Click the link below to confirm your account.</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
