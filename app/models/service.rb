@@ -5,9 +5,9 @@ class Service < ActiveRecord::Base
 
   validates :name, :service_type_id, :start_date, presence: true
 
-  validate :start_date_and_end_date_must_exist_in_project_time
+  validate :start_date_and_end_date_must_exist_in_project_time, :if => "start_date && end_date"
 
-  validate :start_date_before_end_date
+  validate :start_date_before_end_date, :if => "start_date && end_date"
 
   def start_date_and_end_date_must_exist_in_project_time
     project = Project.first
