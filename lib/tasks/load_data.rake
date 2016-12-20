@@ -1,16 +1,9 @@
 namespace :DBMS do
 
-  desc "Load same example data"
+  desc "Populate database with example data"
   task :load_example_data => :environment do
     begin
-      # if Rails.env  == 'production'
-      #   print "Are you sure to load dummy data into a production system? Type y for yes, n for no."
-      #   input = gets.strip
-      #   if input != 'y'
-      #     puts "Exit the process ..."
-      #     return
-      #   end
-      # end
+
       puts "Loading example data into the system ..."
       DBMS::DefaultData::Loader.load_example_data
     rescue => error
@@ -57,6 +50,23 @@ namespace :db do
 
     ProjectTarget.create!(project: project, project_target_type: child_target_type, target: 900)
     ProjectTarget.create!(project: project, project_target_type: household_target_type, target: 450)
+  end
+
+  task load_tprs: :environment do
+    TechnicalProgressReport.create!(
+      reporting_period_id:  1,
+      reporting_status_id:  1,
+      tpr_included:         true,
+      annex_a_included:     false,
+      annex_b_included:     true,
+      annex_c_included:     false,
+      annex_d_included:     true,
+      annex_e_included:     false,
+      annex_f_included:     false,
+      annex_g_included:     false,
+      annex_h_included:     false,
+      annex_i_included:     false
+    )
   end
 
 end
