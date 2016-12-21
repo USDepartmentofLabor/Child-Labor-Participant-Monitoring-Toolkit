@@ -31,7 +31,7 @@ module CustomFieldsHelper
     when "check_box"
       options_for_select = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
       checkbox_dom = options_for_select.map.with_index do |opt, i|
-        checked = content.blank? ? (i == 0) : (opt == content)
+        checked = (opt == content)
         content_tag(:div, class: "checkbox") do
           content_tag(:label, class: "radio-inline") do
             concat check_box_tag(name, opt, checked, {class: "square-red"}.merge(options))
