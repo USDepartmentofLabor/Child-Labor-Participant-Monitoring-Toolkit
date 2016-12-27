@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206220432) do
+ActiveRecord::Schema.define(version: 20161221223846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,10 @@ ActiveRecord::Schema.define(version: 20161206220432) do
   end
 
   add_index "adults", ["household_id"], name: "index_adults_on_household_id", using: :btree
+
+  create_table "business_types", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
 
   create_table "child_statuses", force: :cascade do |t|
     t.date     "start_date"
@@ -91,6 +95,10 @@ ActiveRecord::Schema.define(version: 20161206220432) do
   add_index "children_services", ["child_id"], name: "index_children_services_on_child_id", using: :btree
   add_index "children_services", ["service_id"], name: "index_children_services_on_service_id", using: :btree
 
+  create_table "civil_statuses", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -106,6 +114,10 @@ ActiveRecord::Schema.define(version: 20161206220432) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "crop_sellers", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
 
   create_table "custom_fields", force: :cascade do |t|
     t.string   "name"
@@ -128,12 +140,36 @@ ActiveRecord::Schema.define(version: 20161206220432) do
     t.integer  "model_id"
   end
 
+  create_table "disability_types", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "education_grades", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "education_levels", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
   create_table "education_statuses", force: :cascade do |t|
     t.string "name"
   end
 
+  create_table "extracurricular_answers", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "extracurricular_classes", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
   create_table "frequencies", force: :cascade do |t|
     t.string "code", default: "NOT SET", null: false
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "head_of_household_relationships", force: :cascade do |t|
     t.string "name", default: "NOT SET", null: false
   end
 
@@ -190,6 +226,29 @@ ActiveRecord::Schema.define(version: 20161206220432) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "job_categories", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "job_locations", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "job_tasks", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "land_statuses", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "locales", force: :cascade do |t|
+    t.string   "code",       null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "location_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -213,18 +272,123 @@ ActiveRecord::Schema.define(version: 20161206220432) do
   add_index "locations", ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
   add_index "locations", ["project_id"], name: "index_locations_on_project_id", using: :btree
 
+  create_table "missed_class_reasons", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "not_attending_school_reasons", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "other_income_sources", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "pay_frequencies", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "middle_name"
-    t.integer  "sex",                  limit: 2
+    t.integer  "sex",                                    limit: 2
     t.date     "dob"
     t.integer  "age"
     t.integer  "household_id"
     t.date     "intake_date"
     t.boolean  "is_head_of_household"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.integer  "civil_status_id"
+    t.integer  "disability_type_id"
+    t.integer  "head_of_household_relationship_id"
+    t.integer  "registration_reason_id"
+    t.integer  "spoken_language_id"
+    t.integer  "education_level_id"
+    t.integer  "education_grade_id"
+    t.boolean  "can_read_and_write"
+    t.boolean  "is_school_important"
+    t.boolean  "are_enrolled_in_school"
+    t.integer  "not_attending_school_reason_id"
+    t.string   "not_attending_school_other_reason"
+    t.string   "school_name"
+    t.integer  "school_shift_id"
+    t.boolean  "have_missed_class_last_30_days"
+    t.integer  "number_class_days_missed_last_30_days"
+    t.integer  "missed_class_reason_id"
+    t.string   "missed_class_other_reason"
+    t.integer  "extracurricular_answer_id"
+    t.integer  "extracurricular_class_id"
+    t.string   "extracurricular_agricultural_technique"
+    t.string   "extracurricular_other"
+    t.string   "extracurricular_school_name"
+    t.boolean  "did_work_last_week"
+    t.boolean  "did_work_last_6_months"
+    t.integer  "job_task_id"
+    t.string   "job_task_other"
+    t.string   "job_title"
+    t.string   "workplace_name"
+    t.integer  "job_category_id"
+    t.integer  "job_location_id"
+    t.string   "job_location_other"
+    t.integer  "pay_frequency_id"
+    t.string   "pay_frequency_other"
+    t.boolean  "are_you_paid"
+    t.float    "amount_paid"
+    t.boolean  "is_enrolled_wtr"
+    t.string   "other_work_related_problem"
+    t.boolean  "did_handle_dangerous_equipment"
+    t.string   "dangerous_equipment_used"
+    t.boolean  "does_household_member_have_business"
+    t.integer  "business_type_id"
+    t.string   "other_business_type"
+    t.boolean  "do_you_grow"
+    t.integer  "land_status_id"
+    t.boolean  "has_farm_yielded"
+    t.string   "agricultural_products_grown"
+    t.boolean  "was_crop_sold"
+    t.float    "amount_crop_earned"
+    t.integer  "sales_period_id"
+    t.integer  "crop_seller_id"
+    t.string   "other_crop_seller"
+    t.integer  "other_income_source_id"
+    t.string   "other_other_income_source"
+    t.boolean  "is_child_important_to_family_income"
+    t.boolean  "have_savings"
+    t.integer  "savings_location_id"
+    t.string   "other_savings_location"
+    t.string   "second_last_name"
+    t.string   "second_first_name"
+    t.string   "grade_level"
+  end
+
+  create_table "person_statuses", force: :cascade do |t|
+    t.integer  "person_id",           null: false
+    t.integer  "work_status_id"
+    t.integer  "education_status_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "note"
+    t.string   "reason"
+    t.integer  "created_user_id",     null: false
+    t.integer  "updated_user_id",     null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "person_work_related_problems", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "work_related_problem_id"
+  end
+
+  create_table "persons_poor_work_conditions", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "poor_work_condition_id"
+  end
+
+  create_table "poor_work_conditions", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
   end
 
   create_table "project_target_types", force: :cascade do |t|
@@ -261,6 +425,10 @@ ActiveRecord::Schema.define(version: 20161206220432) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "registration_reasons", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
   end
 
   create_table "reporting_periods", force: :cascade do |t|
@@ -306,6 +474,18 @@ ActiveRecord::Schema.define(version: 20161206220432) do
   add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
   add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
 
+  create_table "sales_periods", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "savings_locations", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "school_shifts", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
   create_table "service_instances", force: :cascade do |t|
     t.integer  "child_id"
     t.integer  "service_id"
@@ -347,6 +527,10 @@ ActiveRecord::Schema.define(version: 20161206220432) do
 
   add_index "services", ["service_type_id"], name: "index_services_on_service_type_id", using: :btree
 
+  create_table "spoken_languages", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
   create_table "targets", force: :cascade do |t|
     t.integer  "reporting_period_id",           null: false
     t.integer  "work_status_id"
@@ -381,6 +565,27 @@ ActiveRecord::Schema.define(version: 20161206220432) do
   add_index "technical_progress_reports", ["reporting_period_id"], name: "index_technical_progress_reports_on_reporting_period_id", using: :btree
   add_index "technical_progress_reports", ["reporting_status_id"], name: "index_technical_progress_reports_on_reporting_status_id", using: :btree
 
+  create_table "timesheet_entries", force: :cascade do |t|
+    t.integer  "person_id",         null: false
+    t.integer  "hour_code",         null: false
+    t.string   "hours_label",       null: false
+    t.string   "weekday_activity"
+    t.string   "saturday_activity"
+    t.string   "sunday_activity"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "translations", force: :cascade do |t|
+    t.string   "locale"
+    t.string   "key"
+    t.text     "value"
+    t.text     "interpolations"
+    t.boolean  "is_proc",        default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "unit_of_measures", force: :cascade do |t|
     t.string "name"
   end
@@ -409,6 +614,10 @@ ActiveRecord::Schema.define(version: 20161206220432) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "work_related_problems", force: :cascade do |t|
+    t.string "name", default: "NOT SET", null: false
+  end
+
   create_table "work_statuses", force: :cascade do |t|
     t.string "name"
     t.string "work_type"
@@ -426,7 +635,38 @@ ActiveRecord::Schema.define(version: 20161206220432) do
   add_foreign_key "intake_actors", "intake_actor_types"
   add_foreign_key "locations", "location_types"
   add_foreign_key "locations", "projects"
+  add_foreign_key "people", "business_types"
+  add_foreign_key "people", "civil_statuses"
+  add_foreign_key "people", "crop_sellers"
+  add_foreign_key "people", "disability_types"
+  add_foreign_key "people", "education_grades"
+  add_foreign_key "people", "education_levels"
+  add_foreign_key "people", "extracurricular_answers"
+  add_foreign_key "people", "extracurricular_classes"
+  add_foreign_key "people", "head_of_household_relationships"
   add_foreign_key "people", "households"
+  add_foreign_key "people", "job_categories"
+  add_foreign_key "people", "job_locations"
+  add_foreign_key "people", "job_tasks"
+  add_foreign_key "people", "land_statuses"
+  add_foreign_key "people", "missed_class_reasons"
+  add_foreign_key "people", "not_attending_school_reasons"
+  add_foreign_key "people", "other_income_sources"
+  add_foreign_key "people", "pay_frequencies"
+  add_foreign_key "people", "registration_reasons"
+  add_foreign_key "people", "sales_periods"
+  add_foreign_key "people", "savings_locations"
+  add_foreign_key "people", "school_shifts"
+  add_foreign_key "people", "spoken_languages"
+  add_foreign_key "person_statuses", "education_statuses"
+  add_foreign_key "person_statuses", "people"
+  add_foreign_key "person_statuses", "users", column: "created_user_id"
+  add_foreign_key "person_statuses", "users", column: "updated_user_id"
+  add_foreign_key "person_statuses", "work_statuses"
+  add_foreign_key "person_work_related_problems", "people"
+  add_foreign_key "person_work_related_problems", "work_related_problems"
+  add_foreign_key "persons_poor_work_conditions", "people"
+  add_foreign_key "persons_poor_work_conditions", "poor_work_conditions"
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"
   add_foreign_key "projects", "regions"

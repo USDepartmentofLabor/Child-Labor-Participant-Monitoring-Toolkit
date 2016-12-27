@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  #get 'locales/index'
+
+  resources :locales do
+    resources :translations, constraints: { :id => /[^\/]+/ }
+  end
+
   mount Ckeditor::Engine => '/ckeditor'
 
   get 'targets/index'

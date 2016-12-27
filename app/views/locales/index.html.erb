@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box box-primary">
+      <div class="box-header">
+        <%= fa_icon "language" %>
+        <h1 class="box-title"><%= t("locales.index.title") %></h1>
+        </div>
+      </div>
+
+      <div class="box-body">
+        <table class="table table-condensed table-striped table-bordered" role="grid" id="translations-dt">
+          <thead>
+            <tr>
+              <th><%= Locale.human_attribute_name(:name) %></th>
+              <th><%= Locale.human_attribute_name(:code) %></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @locales.each do |l| %>
+              <tr>
+                <td><%= link_to l.name, locale_translations_path(locale_id: l.code) %></td>
+                <td><%= l.code %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

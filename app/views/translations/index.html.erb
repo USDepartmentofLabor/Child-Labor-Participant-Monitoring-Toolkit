@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box box-primary">
+      <div class="box-header">
+        <%= fa_icon "language" %>
+        <h1 class="box-title"><%= t("translations.index.title") %>
+          for
+          <%= @locale %></h1>
+        <div class="box-tools">
+          <%= link_to new_locale_translation_url(@locale), class: "btn btn-primary" do %>
+          <%= fa_icon "plus" %>
+          <%= t("translation.index.add") %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="box-body">
+        <table class="table table-condensed table-striped table-bordered" role="grid" id="translations-dt">
+          <thead>
+            <tr>
+              <th>Translation Key</th>
+              <th>Translation Value</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @translations.each do |translation| %>
+              <tr id="<%= translation.key %>">
+                <td><%= translation.key %></td>
+                <td><%= translation.value %></td>
+                <td>
+                  <%= link_to "Edit", edit_locale_translation_url(@locale, translation) %>
+                  <%= link_to "Reset", locale_translation_url(@locale, translation), method: :delete, data: { confirm: "Are you sure?" } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

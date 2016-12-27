@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-10 col-xs-12">
+
+    <%= form_for @translation, url: locale_translation_path, html: { role: "form" } do |f| %>
+
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <%= fa_icon "language" %>
+        <h3 class="box-title">
+          <%= t "translations.edit.form_title" %>
+        </h3>
+      </div>
+      <div class="box-body">
+
+          <div class="form-group">
+            <%= f.label :locale %>
+            <%= f.text_field :locale, readonly: true, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :key %>
+            <%= f.text_field :key, readonly: true, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :value %>
+            <%= f.text_area :value, :value => f.object.value, class: "form-control" %>
+          </div>
+
+      </div>
+
+      <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right">
+          <%= t "general.submit" %>
+        </button>
+        <%= link_to locale_translations_url(@locale),
+          class: "btn btn-danger pull-right",
+          style: "margin-right: 1rem" do %>
+          <i class="fa fa-times"> </i> <%= t "general.cancel" %>
+        <% end %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>

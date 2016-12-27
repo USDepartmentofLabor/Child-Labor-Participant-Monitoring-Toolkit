@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-10 col-xs-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <%= fa_icon "language" %>
+        <h3 class="box-title">
+          <%= t "translations.new.form_title" %>
+        </h3>
+      </div>
+      <div class="box-body">
+
+        <%= form_for @translation, url: locale_translations_path do |f| %>
+          <%= f.label :locale %> <%= f.text_field :locale, readonly: true %>
+          <%= f.label :key %> <%= f.text_field :key %>
+          <%= f.label :value %> <%= f.text_area :value, value: I18n.t(@translation.key, locale: @locale) %>
+
+          <%= f.submit 'Save Translation' %> <%= link_to "Cancel", locale_translations_url(@locale) %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

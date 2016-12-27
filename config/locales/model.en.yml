@@ -99,3 +99,6 @@ en:
       project_target:
         project_target_type_id: "Target Type"
         target_value: "Target Value"
+      locale:
+        code: 'Code'
+        name: 'Name'
