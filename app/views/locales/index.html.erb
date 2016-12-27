@@ -4,11 +4,10 @@
       <div class="box-header">
         <%= fa_icon "language" %>
         <h1 class="box-title"><%= t("locales.index.title") %></h1>
-        </div>
       </div>
 
       <div class="box-body">
-        <table class="table table-condensed table-striped table-bordered" role="grid" id="translations-dt">
+        <table class="table table-condensed table-striped table-bordered" role="grid">
           <thead>
             <tr>
               <th><%= Locale.human_attribute_name(:name) %></th>
@@ -17,11 +16,11 @@
           </thead>
 
           <tbody>
-            <% @locales.each do |l| %>
-              <tr>
-                <td><%= link_to l.name, locale_translations_path(locale_id: l.code) %></td>
-                <td><%= l.code %></td>
-              </tr>
+            <% @locales.order(:name).each do |l| %>
+            <tr>
+              <td><%= link_to l.name, locale_translations_path(locale_id: l.code) %></td>
+              <td><%= l.code %></td>
+            </tr>
             <% end %>
           </tbody>
         </table>
