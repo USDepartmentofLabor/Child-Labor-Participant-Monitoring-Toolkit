@@ -52,6 +52,15 @@ namespace :db do
     ProjectTarget.create!(project: project, project_target_type: household_target_type, target: 450)
   end
 
+  desc 'Populates English and Spanish locales'
+  task load_locales: :environment do
+    Locate.create!([
+      { code: 'en', name: 'English' },
+      { code: 'es', name: 'Spanish' }
+      ])
+  end
+
+  desc 'Populates some beginning translations'
   task load_translations: :environment do
 
     Translation.create!([
