@@ -13,18 +13,13 @@ class TranslationsController < ApplicationController
 
   def create
     @translation = Translation.new(translation_params)
-    #if @translation.value == default_translation_value
-    #  flash[:alert] = "Your new translation is the same as the default. #{@translation.value} / #{default_translation_value} / #{@locale} / #{@translation.key}"
-    #  render :new
-    #else
-      if @translation.save
-        flash[:success] = "Translation for #{@key} updated."
-        I18n.backend.reload!
-        redirect_to locale_translations_url(@locale)
-      else
-        render :new
-      end
-    #end
+    if @translation.save
+      flash[:success] = "Translation for #{@key} updated."
+      I18n.backend.reload!
+      redirect_to locale_translations_url(@locale)
+    else
+      render :new
+    end
   end
 
   def edit
