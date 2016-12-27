@@ -37,6 +37,7 @@
 //= require indicators
 //= require services
 //= require service_types
+//= require translations
 
 function icheck(){
   if($(".icheck").length > 0){
