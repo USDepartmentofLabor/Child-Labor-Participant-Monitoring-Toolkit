@@ -33,6 +33,7 @@ es:
     copyright: "Reservados todos los derechos"
     slogan: "Cuanto más nos conectamos, mejor se pone."
     not_authorized: "Su cuenta no está autorizada para realizar esta función"
+    confirm: "¿Estás seguro?"
   action_messages:
     create: "%{model} se ha añadido correctamente."
     create_multiple: "%{model} se añadieron con éxito."

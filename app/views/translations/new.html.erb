@@ -7,17 +7,41 @@
           <%= t "translations.new.form_title" %>
         </h3>
       </div>
+
+      <%= form_for @translation, url: locale_translations_path do |f| %>
+      <%= error_messages(@translation) %>
+
       <div class="box-body">
 
-        <%= form_for @translation, url: locale_translations_path do |f| %>
-          <%= f.label :locale %> <%= f.text_field :locale, readonly: true %>
-          <%= f.label :key %> <%= f.text_field :key %>
-          <%= f.label :value %> <%= f.text_area :value, value: I18n.t(@translation.key, locale: @locale) %>
-
-          <%= f.submit 'Save Translation' %> <%= link_to "Cancel", locale_translations_url(@locale) %>
-        <% end %>
+        <div class="form-group">
+          <%= f.label :locale %>
+          <%= f.text_field :locale, readonly: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :key %>
+          <%= f.text_field :key, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :value %>
+          <%= f.text_area :value, :value => f.object.value, class: "form-control" %>
+        </div>
 
       </div>
+
+      <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right">
+          <%= t "general.submit" %>
+        </button>
+        <%= link_to locale_translations_url(@locale),
+            class: "btn btn-danger pull-right",
+            style: "margin-right: 1rem" do %>
+        <i class="fa fa-times"></i>
+        <%= t "general.cancel" %>
+        <% end %>
+      </div>
+
+      <% end %>
+
     </div>
   </div>
 </div>

@@ -33,6 +33,7 @@ en:
     copyright: "All Rights Reserved"
     slogan: "The more we connect, the better it gets."
     not_authorized: "Your account is not authorized to perform this function"
+    confirm: "Are you sure?"
   action_messages:
     create: "%{model} was successfully added."
     create_multiple: "%{model} were successfully added."
