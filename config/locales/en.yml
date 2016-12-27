@@ -24,7 +24,6 @@ en:
     formats:
       default: "%m/%d/%Y"
   general:
-    submit: "Submit"
     cancel: "Cancel"
     close: "Close"
     show: "View"
@@ -32,7 +31,6 @@ en:
     delete: "Delete"
     back: "Back"
     copyright: "All Rights Reserved"
-    logo_alt: "Department of Labor Seal"
     slogan: "The more we connect, the better it gets."
     not_authorized: "Your account is not authorized to perform this function"
   action_messages:
@@ -45,18 +43,11 @@ en:
     update_failed: "Failed to update %{model}. %{error}"
     destroy_failed: "Failed to delete %{model}. %{error}"
   login:
-    banner: "Direct Beneficiary Monitoring System"
-    tagline: "The more we connect, the better it gets."
-    instruction: "Login with your email address and password"
     name: "Full Name"
     sign_up: "Sign Up"
-    email: "Email Address"
-    password: "Password"
     password_confirmation: "Password Confirmation"
     login: "Login"
-    remember_me: "Remember me"
     welcome_back: "Welcome Back"
-    forgot_password: "Forgot your password?"
   passwords:
     forgot_password: "Forgot password"
     enter_email: "Please enter your email address"
@@ -230,3 +221,17 @@ en:
       title: "Edit Role"
     new:
       title: "Add Role"
+  translations:
+    index:
+      add: 'Add Translation'
+    menu:
+      title: 'Translations'
+    new:
+      form_title: 'Add Translation'
+    edit:
+      form_title: 'Edit Translation'
+  locales:
+    menu:
+      title: 'Translations'
+    index:
+      title: 'Locales'

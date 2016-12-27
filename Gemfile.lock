@@ -167,6 +167,8 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     i18n (0.7.0)
+    i18n-active_record (0.1.2)
+      i18n (>= 0.5.0)
     i18n_data (0.7.0)
     icheck-rails (1.0.2.2)
       jquery-rails
@@ -392,6 +394,7 @@ DEPENDENCIES
   foreman
   fuubar
   guard-rspec
+  i18n-active_record
   icheck-rails
   jquery-datatables-rails
   jquery-rails

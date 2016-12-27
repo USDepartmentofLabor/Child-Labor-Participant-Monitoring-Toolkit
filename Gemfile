@@ -61,6 +61,7 @@ group :development, :test do
 end
 
 gem 'rails-i18n'
+gem 'i18n-active_record', :require => 'i18n/active_record'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass'

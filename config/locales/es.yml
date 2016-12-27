@@ -24,7 +24,6 @@ es:
     formats:
       default: "%d/%m/%Y"
   general:
-    submit: "Presentar"
     cancel: "Cancelar"
     close: "Cerca"
     show: "Vista"
@@ -32,7 +31,6 @@ es:
     delete: "Borrar"
     back: "Espalda"
     copyright: "Reservados todos los derechos"
-    logo_alt: "Sello del Departamento de Trabajo"
     slogan: "Cuanto más nos conectamos, mejor se pone."
     not_authorized: "Su cuenta no está autorizada para realizar esta función"
   action_messages:
@@ -45,18 +43,11 @@ es:
     update_failed: "No se pudo actualizar %{model}. %{error}"
     destroy_failed: "No se pudo eliminar %{model}. %{error}"
   login:
-    banner: "Direct Beneficiary Monitoring System"
-    tagline: "Cuanto más nos conectamos, mejor se pone."
-    instruction: "Iniciar sesión con su dirección de correo electrónico y contraseña"
     name: "Nombre completo"
     sign_up: "Registrese"
-    email: "Dirección de correo electrónico"
-    password: "Contraseña"
     password_confirmation: "Confirmación de contraseña"
     login: "Iniciar sesión"
-    remember_me: "Recuérdame"
     welcome_back: "Dar una buena acogida"
-    forgot_password: "¿Olvidaste tu contraseña?"
   passwords:
     forgot_password: "Se te olvidó tu contraseña"
     enter_email: "Por favor, introduzca su dirección de correo electrónico"
