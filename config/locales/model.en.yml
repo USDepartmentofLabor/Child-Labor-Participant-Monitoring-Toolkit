@@ -51,7 +51,7 @@ en:
         created_at: "Created at"
       household:
         name: "Household Name"
-        code: "Project ID"
+        code: "Household Code"
         intake_date: "Intake Date"
         address: "Address"
         city: "City"
