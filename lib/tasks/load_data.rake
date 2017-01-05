@@ -54,7 +54,7 @@ namespace :db do
 
   desc 'Populates English and Spanish locales'
   task load_locales: :environment do
-    Locate.create!([
+    Locale.create!([
       { code: 'en', name: 'English' },
       { code: 'es', name: 'Spanish' }
       ])
