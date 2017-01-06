@@ -41,7 +41,7 @@ body {
   color: #3C8DBC;
 }
 
-.table-listing tr:first-child {
+.table-listing > tr:first-child {
   td, th {
     border: none;
   }
