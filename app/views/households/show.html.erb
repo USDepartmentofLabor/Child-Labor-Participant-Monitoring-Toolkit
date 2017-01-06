@@ -36,22 +36,6 @@
               <th><%= Household.human_attribute_name(:intake_date) %></th>
               <td><%= @household.intake_date %></td>
             </tr>
-            <tr>
-              <th><%= Household.human_attribute_name(:address) %></th>
-              <td><%= @household.address %></td>
-            </tr>
-            <tr>
-              <th><%= Household.human_attribute_name(:city) %></th>
-              <td><%= @household.city %></td>
-            </tr>
-            <tr>
-              <th><%= Household.human_attribute_name(:state) %></th>
-              <td><%= @household.state %></td>
-            </tr>
-            <tr>
-              <th><%= Household.human_attribute_name(:country) %></th>
-              <td><%= @household.country_name %></td>
-            </tr>
             <% @custom_fields.each do |custom_field| %>
             <tr>
               <th><%= custom_field.name %></th>
