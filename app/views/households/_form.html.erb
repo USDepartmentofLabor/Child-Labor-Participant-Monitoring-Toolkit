@@ -22,34 +22,8 @@
     <div class="form-group">
       <%= f.label :intake_date %>
       <div>
-        <%= f.date_select :intake_date, { order: [:month, :day, :year]}, {
-class: "form-control", style: "display: inline-block; width: 33.2%;" } %>
+        <%= f.date_select :intake_date, {order: [:month, :day, :year]}, {class: "form-control", style: "display:inline-block;width: 33.2%;"} %>
       </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :address %>
-      <%= f.text_field :address, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :city %>
-      <%= f.text_field :city, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :state %>
-      <%= f.text_field :state, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :country %>
-      <%= f.country_select :country, {}, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :phone %>
-      <%= f.text_field :phone, class: "form-control" %>
     </div>
 
     <%= render partial: 'custom_fields/custom_field', collection: @custom_fields %>
