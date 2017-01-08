@@ -114,6 +114,9 @@ en:
   adults:
     index:
       add: "Add An Adult"
+  people:
+    index:
+      add: "Add a Household Member"
   households:
     index:
       add: "Add A Household"
@@ -125,7 +128,6 @@ en:
       title: "Edit Household Record"
     show:
       title: "Household Record"
-      family_information: "Family Information"
       children: "Children Of This Household"
       adults: "Adults Of This Household"
   reports:

@@ -26,7 +26,8 @@
       </div>
     </div>
 
-    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields %>
+    <%= render partial: 'custom_fields/custom_field', collection: @section_1_custom_fields %>
+
   </div>
 </div>
 
@@ -34,30 +35,15 @@
   <div class="box-header with-border">
     <%= fa_icon "user" %>
     <h3 class="box-title">
-      <%= Adult.model_name.human.pluralize %>
+      <%= Person.model_name.human.pluralize %>
   </div>
   <div class="box-body">
-    <%= f.fields_for :adults do |builder| %>
-    <%= render 'adult_fields', f: builder %>
+    <%= f.fields_for :people do |builder| %>
+      <%= render 'person_fields', f: builder %>
     <% end %>
-    <%= link_to_add_fields t("adults.index.add"), f, :adults, class: "add_fields btn btn-primary" %>
+    <%= link_to_add_fields t("people.index.add"), f, :people, class: "add_fields btn btn-primary" %>
   </div>
 </div>
-
-<div class="box box-primary">
-  <div class="box-header with border">
-    <%= fa_icon "child" %>
-    <h3 class="box-title"><%= Child.model_name.human.pluralize %></h3>
-  </div>
-  <div class="box-body">
-    <%= f.fields_for :children do |builder| %>
-    <%= render 'child_fields', f: builder %>
-    <% end %>
-    <%= link_to_add_fields t("children.index.add"), f, :children, class: "add_fields btn btn-primary" %>
-  </div>
-</div>
-
-<hr>
 
 <div class="form-group">
   <div class="col-sm-4 col-sm-offset-4">

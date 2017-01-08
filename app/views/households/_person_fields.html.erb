@@ -1,15 +1,15 @@
 <fieldset class="associated-fields">
   <div class="form-group">
-    <%= f.label :fname %>
-    <%= f.text_field :fname, class: "form-control" %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :lname %>
-    <%= f.text_field :lname, class: "form-control" %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :mname %>
-    <%= f.text_field :mname, class: "form-control" %>
+    <%= f.label :middle_name %>
+    <%= f.text_field :middle_name, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :sex %>
@@ -22,12 +22,21 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :dob %> (yyy/mm/dd)
-    <div class="input-group date">
-      <%= f.text_field :dob, class: "form-control" %>
-      <span class="input-group-addon">
-        <i class="fa fa-calendar"></i>
-      </span>
+    <%= f.label :dob %>
+    <div>
+      <%= f.date_select :dob, {order: [:month, :day, :year], start_year: 1920,
+        prompt: true}, {class: "form-control", style: "display: inline-block;
+        width: 33.2%;"} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :age %>
+    <%= f.text_field :age, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :intake_date %>
+    <div>
+      <%= f.date_select :intake_date, {order: [:month, :day, :year]}, {class: "form-control", style: "display:inline-block;width: 33.2%;"} %>
     </div>
   </div>
   <div class="form-group">

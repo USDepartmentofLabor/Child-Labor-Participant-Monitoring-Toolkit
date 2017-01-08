@@ -12,6 +12,9 @@ class HouseholdsController < ApplicationController
   def show
     @children = @household.children
     @adults = @household.adults
+    @section_1_custom_fields =
+      CustomSection.where(model_type: "Household", sort_order: 1)
+        .custom_fields.with_values(@household.id)
     @custom_fields = CustomField.where(model_type: "Household").with_values(@household.id)
   end
 
@@ -84,10 +87,8 @@ class HouseholdsController < ApplicationController
     def household_params
       params.require(:household).permit(
         :name, :code, :intake_date,
-        children_attributes: [:fname, :lname, :mname, :sex, :dob, :intake_date,
-          :_destroy, :id],
-        adults_attributes: [:fname, :lname, :mname, :sex, :dob,
-          :is_head_of_household, :_destroy, :id]
+        people_attributes: [:first_name, :last_name, :middle_name, :sex, :dob,
+          :age, :intake_date, :is_head_of_household, :_destroy, :id]
       )
     end
 

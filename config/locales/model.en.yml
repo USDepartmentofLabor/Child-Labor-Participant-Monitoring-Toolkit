@@ -10,6 +10,7 @@ en:
       custom_field: "Customized Field"
       indicator: "Indicator"
       project_target: "Project Target"
+      person: "Household Member"
     attributes:
       adult:
         fname: "First Name (Given Name)"
