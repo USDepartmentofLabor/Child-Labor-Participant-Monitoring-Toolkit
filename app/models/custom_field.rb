@@ -1,4 +1,5 @@
 class CustomField < ActiveRecord::Base
+  belongs_to :custom_section
   has_many :custom_values
 
   def self.with_values(model_id)
