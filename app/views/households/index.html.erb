@@ -1,15 +1,14 @@
-<div class="row" style="padding-bottom:20px">
-  <div class="col-xs-12">
-    <%= link_to new_household_path(), class: 'btn btn-primary pull-right' do %>
-      <%= fa_icon "plus" %>
-      <%= t("households.index.add") %>
-    <% end %>
-  </div>
-</div>
-
 <div class="row">
   <div class="col-xs-12">
-    <div class="box">
+
+    <div class="page-header">
+      <%= link_to new_household_path(), class: 'btn btn-primary' do %>
+        <%= fa_icon "plus" %>
+        <%= t("households.index.add") %>
+      <% end %>
+    </div>
+
+    <div class="box box-primary">
       <div class="box-header">
         <h3 class="box-title">
           <%= t "households.index.title" %>
@@ -17,26 +16,29 @@
       </div>
 
       <div class="box-body">
-        <table id="households-data-table" class="table table-condensed table-striped">
+        <table id="households-data-table" class="table table-hover table-bordered">
           <thead>
             <tr>
-              <th><%= Household.human_attribute_name(:id) %></th>
               <th><%= Household.human_attribute_name(:name) %></th>
-              <th><%= Household.human_attribute_name(:intake_date) %></th>
               <th><%= Household.human_attribute_name(:code) %></th>
+              <th><%= Household.human_attribute_name(:children) %></th>
+              <th><%= Household.human_attribute_name(:adults) %></th>
+              <th><%= Household.human_attribute_name(:intake_date) %></th>
             </tr>
           </thead>
 
           <tbody>
             <%= content_tag_for(:tr, @households) do |household| %>
-              <td><%= link_to household.id, household_path(household) %></td>
-              <td><%= household.name %></td>
-              <td><%= household.intake_date %></td>
+              <td><%= link_to household.name, household_path(household) %></td>
               <td><%= household.code %></td>
+              <td><%= household.children.count %></td>
+              <td><%= household.adults.count %></td>
+              <td><%= household.intake_date %></td>
             <% end %>
           </tbody>
         </table>
       </div>
     </div>
+
   </div>
 </div>
