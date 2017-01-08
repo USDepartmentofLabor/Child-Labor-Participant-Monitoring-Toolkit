@@ -1,17 +1,7 @@
-class Child < ActiveRecord::Base
+class Child < Person
   # sex/gender i18n string with integer value pair
   # Integer value follows ISO standards: http://en.wikipedia.org/wiki/ISO/IEC_5218
   SEX_OPTIONS = [ ["select_options.child.male", 1], ["select_options.child.female", 2] ]
-
-  scope :male, -> { where(sex: 1) }
-  scope :female, -> { where(sex: 2) }
-  scope :by_last_name, -> { order(:lname, :fname, :mname) }
-  scope :by_first_name, -> { order(:fname, :mname, :lname) }
-
-  validates :fname, presence: true
-  validates :lname, presence: true
-  validates :country, length: {maximum: 2}
-  validates :sex, presence: true, inclusion: { in: [1,2] }
 
   has_many :statuses, class_name: "ChildStatus", dependent: :destroy
 
@@ -51,10 +41,6 @@ class Child < ActiveRecord::Base
 
   def gender_name
     Child.gender_name(self.sex)
-  end
-
-  def full_name
-    mname ? "#{fname} #{mname} #{lname}" : "#{fname} #{lname}"
   end
 
   def current_education_status
