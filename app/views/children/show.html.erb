@@ -44,28 +44,23 @@
                   <td><%= @child.intake_date %></td>
                 </tr>
                 <tr>
-                  <th>1.
-                    <%= Child.human_attribute_name(:fname) %></th>
-                  <td><%= @child.fname %></td>
+                  <th><%= Child.human_attribute_name(:first_name) %></th>
+                  <td><%= @child.first_name %></td>
                 </tr>
                 <tr>
-                  <th>2.
-                    <%= Child.human_attribute_name(:lname) %></th>
-                  <td><%= @child.lname %></td>
+                  <th><%= Child.human_attribute_name(:last_name) %></th>
+                  <td><%= @child.last_name %></td>
                 </tr>
                 <tr>
-                  <th>3.
-                    <%= Child.human_attribute_name(:mname) %></th>
-                  <td><%= @child.mname %></td>
+                  <th><%= Child.human_attribute_name(:middle_name) %></th>
+                  <td><%= @child.middle_name %></td>
                 </tr>
                 <tr>
-                  <th>4.
-                    <%= Child.human_attribute_name(:sex) %></th>
+                  <th><%= Child.human_attribute_name(:sex) %></th>
                   <td><%= @child.gender_name %></td>
                 </tr>
                 <tr>
-                  <th>5.
-                    <%= Child.human_attribute_name(:age) %></th>
+                  <th><%= Child.human_attribute_name(:age) %></th>
                   <td><%= @child.age %></td>
                 </tr>
               </tbody>
