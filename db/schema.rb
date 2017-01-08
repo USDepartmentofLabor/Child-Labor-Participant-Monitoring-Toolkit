@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106000027) do
+ActiveRecord::Schema.define(version: 20170106001625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,12 +112,20 @@ ActiveRecord::Schema.define(version: 20170106000027) do
     t.string   "field_type"
     t.text     "selections"
     t.text     "validation_rules"
-    t.string   "model_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "section_id"
     t.string   "help_text"
     t.integer  "sort_order"
+    t.string   "model_type"
+  end
+
+  create_table "custom_sections", force: :cascade do |t|
+    t.string   "title"
+    t.string   "model_type"
+    t.integer  "sort_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "custom_values", force: :cascade do |t|
