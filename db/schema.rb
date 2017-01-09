@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109015100) do
+ActiveRecord::Schema.define(version: 20170109063057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,18 @@ ActiveRecord::Schema.define(version: 20170109015100) do
   end
 
   add_index "households", ["code"], name: "index_households_on_code", unique: true, using: :btree
+
+  create_table "income_sources", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "estimated_volume_produced"
+    t.integer  "estimated_volume_sold"
+    t.decimal  "estimated_income"
+    t.integer  "household_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "income_sources", ["household_id"], name: "index_income_sources_on_household_id", using: :btree
 
   create_table "indicators", force: :cascade do |t|
     t.string   "code",                                            null: false
@@ -440,6 +452,7 @@ ActiveRecord::Schema.define(version: 20170109015100) do
   add_foreign_key "child_statuses", "children"
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
+  add_foreign_key "income_sources", "households"
   add_foreign_key "indicators", "frequencies", column: "reporting_frequency_id"
   add_foreign_key "indicators", "unit_of_measures"
   add_foreign_key "intake_actors", "households"

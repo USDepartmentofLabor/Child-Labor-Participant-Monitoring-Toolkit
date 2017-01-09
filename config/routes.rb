@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :income_sources
+
   #get 'locales/index'
 
   resources :locales do

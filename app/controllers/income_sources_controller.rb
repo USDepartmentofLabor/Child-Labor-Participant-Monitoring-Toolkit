@@ -1,0 +1,2 @@
+class IncomeSourcesController < ApplicationController
+end
