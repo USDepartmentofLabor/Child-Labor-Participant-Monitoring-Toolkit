@@ -10,6 +10,7 @@ class CustomFieldsController < ApplicationController
 
     @custom_fields = CustomField.where(model_type: @model_type)
     @custom_field = CustomField.new(model_type: @model_type)
+    @sections = CustomSection.where(model_type: @model_type)
     @project = 1
   end
 
@@ -23,6 +24,7 @@ class CustomFieldsController < ApplicationController
     end
 
     @custom_field = CustomField.new(custom_field_params)
+    @sections = CustomSection.all.where(model_type: params[:custom_field][:model_type])
 
     if @custom_field.save
       redirect_to :back, notice: t("action_messages.create", model: CustomField.model_name.human)
