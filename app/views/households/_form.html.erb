@@ -35,6 +35,20 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
+    <%= fa_icon "money" %>
+    <h3 class="box-title">
+      <%= IncomeSource.model_name.human.pluralize %>
+  </div>
+  <div class="box-body">
+    <%= f.fields_for :income_sources do |builder| %>
+      <%= render 'income_source_fields', f: builder %>
+    <% end %>
+    <%= link_to_add_fields t("income_source.index.add"), f, :income_sources, class: "add_fields btn btn-primary" %>
+  </div>
+</div>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
     <%= fa_icon "user" %>
     <h3 class="box-title">
       <%= Person.model_name.human.pluralize %>

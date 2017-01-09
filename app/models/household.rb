@@ -5,6 +5,7 @@ class Household < ActiveRecord::Base
   has_many :income_sources
 
   accepts_nested_attributes_for :people, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :income_sources, allow_destroy: true, reject_if: :all_blank
 
   def children
     self.people.who_are_children
