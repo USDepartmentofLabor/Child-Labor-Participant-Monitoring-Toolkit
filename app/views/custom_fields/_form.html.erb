@@ -8,8 +8,8 @@
     <%= f.text_area :help_text, rows: 3, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :section_id %>
-    <%= f.text_field :section_id, class: "form-control" %>
+    <%= f.label :custom_section_id %>
+    <%= f.collection_select :custom_section_id, @sections, :id, :title, {prompt: true, include_blank: true}, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :sort_order %>
@@ -17,10 +17,10 @@
   </div>
   <div class="form-group">
     <%= f.label :field_type %>
-    <%= f.select :field_type, CustomFieldGroup::FIELD_TYPES_OPTIONS, {}, id: "child_field_type", class: "form-control" %>
+    <%= f.select :field_type, CustomFieldGroup::FIELD_TYPES_OPTIONS, {prompt: true, include_blank: true}, id: "child_field_type", class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :selections %> <i>(One line per option.)</i>
+    <%= f.label :selections %> <i>(One line per option)</i>
     <%= f.text_area :selections, rows: 5, class: "form-control" %>
   </div>
 

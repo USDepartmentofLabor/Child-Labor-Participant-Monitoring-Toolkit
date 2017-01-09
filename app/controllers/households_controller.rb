@@ -5,28 +5,27 @@ class HouseholdsController < ApplicationController
 
   # GET /households
   def index
-		@households = Household.all
+    @households = Household.all
   end
 
   # GET /households/1
   def show
     @children = @household.children
     @adults = @household.adults
-    @section_1_custom_fields =
-      CustomSection.where(model_type: "Household", sort_order: 1)
-        .custom_fields.with_values(@household.id)
     @custom_fields = CustomField.where(model_type: "Household").with_values(@household.id)
+    @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields
   end
 
   # GET /households/new
   def new
     @household = Household.new
-    @custom_fields = CustomField.where(model_type: "Household")
+    @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields
+    @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'Household', 1)
   end
 
   # GET /households/1/edit
   def edit
-    @custom_fields = CustomField.where(model_type: "Household").with_values(@household.id)
+    @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields.with_values(@household.id)
   end
 
   # POST /households
@@ -35,7 +34,6 @@ class HouseholdsController < ApplicationController
     @custom_fields = CustomField.where(model_type: "Household")
 
     if @household.save
-
       if params[:custom_fields].present? && @custom_fields.length > 0
         CustomFieldGroup.create_or_update(@household, @custom_fields, params_for_custom_field)
       end
@@ -52,6 +50,7 @@ class HouseholdsController < ApplicationController
   # PATCH/PUT /households/1
   def update
     @custom_fields = CustomField.where(model_type: "Household")
+
     if @household.update_attributes(household_params)
       if params[:custom_fields].present? && @custom_fields.length > 0
         CustomFieldGroup.create_or_update(@household, @custom_fields, params_for_custom_field)

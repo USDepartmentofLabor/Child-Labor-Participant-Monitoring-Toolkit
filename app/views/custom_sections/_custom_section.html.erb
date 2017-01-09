@@ -1,0 +1,11 @@
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "info" %>
+    <h3 class="box-title">
+      <%= custom_section.title %>
+    </h3>
+  </div>
+  <div class="box-body">
+    <%= render partial: 'custom_fields/custom_field', collection: custom_section.custom_fields %>
+  </div>
+</div>
