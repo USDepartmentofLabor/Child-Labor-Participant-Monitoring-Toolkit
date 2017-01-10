@@ -5,7 +5,7 @@ RSpec.describe ChildrenController, type: :controller do
   let(:user) { create(:user) }
 
   let(:invalid_attributes) {{
-    :lname => "!"
+    :last_name => "!"
   }}
 
   before(:each) do
@@ -13,9 +13,9 @@ RSpec.describe ChildrenController, type: :controller do
   end
 
   describe "GET #index" do
-    it "assigns all children within the same project as @children" do
-      project1 = create(:project_with_children, num_child: 3, user_id: user.id)
-      get :index, {"project_id" => project1.id}
+    it "assigns all children as @children" do
+      children = create_list(:child, 3)
+      get :index
       expect(assigns(:children).length).to eq(3)
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe ChildrenController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new child as @child" do
-      project = create(:project, user_id: user.id)
+      project = create(:project)
       get :new, {project_id: project.id}
       expect(assigns(:child)).to be_a_new(Child)
     end
@@ -47,7 +47,7 @@ RSpec.describe ChildrenController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested child as @child" do
-      project = create(:project_with_children, num_child: 3, user_id: user.id)
+      project = create(:project_with_children, num_child: 3)
       custom_fields = create_list(:custom_field, 3, project_id: project.id, model_type: "Child")
       child = project.children.first
 

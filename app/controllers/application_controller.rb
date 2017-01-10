@@ -22,12 +22,15 @@ private
   end
 
   def set_locale
-    logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-    I18n.locale = extract_locale_from_accept_language_header
+    accept_language = request.env['HTTP_ACCEPT_LANGUAGE']
+
+    logger.debug "* Accept-Language: #{accept_language}"
+    I18n.locale = extract_locale_from accept_language
     logger.debug "* Locale set to '#{I18n.locale}'"
   end
 
-  def extract_locale_from_accept_language_header
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  def extract_locale_from str
+    return if str.nil?
+    str.scan(/^[a-z]{2}/).first
   end
 end

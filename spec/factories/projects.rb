@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :project do
     sequence(:name){|n| "Project #{n}"}
-    user_id 1
+    sequence(:title){|n| "Project #{n}"}
+    region_id 1
 
     factory :project_with_children do
       transient do
