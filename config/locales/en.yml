@@ -49,6 +49,7 @@ en:
     password_confirmation: "Password Confirmation"
     login: "Login"
     welcome_back: "Welcome Back"
+    tagline: "The more we connect, the better it gets."
   passwords:
     forgot_password: "Forgot password"
     enter_email: "Please enter your email address"
