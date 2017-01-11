@@ -2,6 +2,8 @@ class CustomField < ActiveRecord::Base
   belongs_to :custom_section
   has_many :custom_values
 
+  default_scope { order(:sort_order) }
+
   def self.with_values(model_id)
     # includes not work when the custom_values does not exists...
     # includes(:custom_values).where("custom_values.model_id = ?", model_id).references(:custom_values)
