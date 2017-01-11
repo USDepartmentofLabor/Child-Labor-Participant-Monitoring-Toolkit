@@ -23,19 +23,19 @@
           <br/>
           <p>To be administered to mother/caretaker of each child in the household, aged 5 – 17 years. For household members below age 5 or above age 17, leave rows blank.</p>
           <div class="form-group">
-            <%= f.label :fname, "1. " + Child.human_attribute_name(:fname) %>
-            <%= f.text_field :fname, class: "form-control" %>
+            <%= f.label :first_name, Child.human_attribute_name(:first_name) %>
+            <%= f.text_field :first_name, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :lname, "2. " + Child.human_attribute_name(:lname) %>
-            <%= f.text_field :lname, class: "form-control" %>
+            <%= f.label :last_name, Child.human_attribute_name(:last_name) %>
+            <%= f.text_field :last_name, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :mname, "3. " + Child.human_attribute_name(:mname) %>
-            <%= f.text_field :mname, class: "form-control" %>
+            <%= f.label :middle_name, Child.human_attribute_name(:middle_name) %>
+            <%= f.text_field :middle_name, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :sex, "4. " + Child.human_attribute_name(:sex) %>
+            <%= f.label :sex, Child.human_attribute_name(:sex) %>
             <div class="checkbox">
               <% Child::SEX_OPTIONS.each do |sex_option| %>
               <label class="radio-inline">
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="form-group">
-            <%= f.label :age, "5. " + Child.human_attribute_name(:age) %>
+            <%= f.label :age, Child.human_attribute_name(:age) %>
             <%= f.text_field :age, class: "form-control" %>
           </div>
         </div>

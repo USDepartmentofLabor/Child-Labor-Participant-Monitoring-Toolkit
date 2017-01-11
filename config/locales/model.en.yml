@@ -12,31 +12,20 @@ en:
       project_target: "Project Target"
       person: "Household Member"
     attributes:
-      adult:
-        fname: "First Name (Given Name)"
-        lname: "Last Name (Family Name)"
-        mname: "Middle Name"
+      person:
+        id: "Person Code"
+        first_name: "First Name (Given Name)"
+        last_name: "Last Name (Family Name)"
+        middle_name: "Middle Name"
         sex: "Gender"
         dob: "Date of Birth"
-        created_at: "Created at"
-        updated_at: "Updated at"
-        household_id: "Household"
-      child:
-        fname: "First Name (Given Name)"
-        lname: "Last Name (Family Name)"
-        mname: "Middle Name"
-        sex: "Gender"
-        dob: "Date of Birth"
-        code: "Project ID"
-        intake_date: "Intake Date"
-        address: "Address"
-        city: "City"
-        state: "State (Province)"
-        country: "Country"
-        created_at: "Created at"
-        updated_at: "Updated at"
-        household_id: "Household"
         age: "Age"
+        intake_date: "Intake Date"
+        household_id: "Household"
+      adult:
+        id: "Adult Code"
+      child:
+        id: "Beneficiary Code"
       child_status:
         start_date: "Status Change Date"
         work_status_id: "New Child Labor Status"

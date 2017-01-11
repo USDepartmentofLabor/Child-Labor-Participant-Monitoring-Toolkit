@@ -16,13 +16,12 @@
         <table class="table table-bordered table-striped" id="child-data-table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th><%= Child.human_attribute_name(:fname) %></th>
-              <th><%= Child.human_attribute_name(:lname) %></th>
+              <th><%= Child.human_attribute_name(:id) %></th>
+              <th><%= Child.human_attribute_name(:first_name) %></th>
+              <th><%= Child.human_attribute_name(:last_name) %></th>
               <th><%= Child.human_attribute_name(:sex) %></th>
               <th><%= Child.human_attribute_name(:age) %></th>
               <th><%= Child.human_attribute_name(:intake_date) %></th>
-              <th><%= Child.human_attribute_name(:code) %></th>
               <th><%= Child.human_attribute_name(:current_education_status) %></th>
               <th><%= Child.human_attribute_name(:current_work_status) %></th>
             </tr>

@@ -17,6 +17,8 @@ class Child < Person
     :allow_destroy => true,
     :reject_if     => :all_blank
 
+  default_scope { where('age <= 17 or dob >= ?', Date.today - 17.years) }
+
   # Input: the integer of sex field
   # Return: the human readable text of the sex name
   def self.gender_name(i)
