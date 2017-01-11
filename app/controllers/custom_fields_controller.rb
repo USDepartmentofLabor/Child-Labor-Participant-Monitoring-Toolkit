@@ -15,6 +15,7 @@ class CustomFieldsController < ApplicationController
   end
 
   def edit
+    @sections = CustomSection.where(model_type: @model_type)
   end
 
   def create
