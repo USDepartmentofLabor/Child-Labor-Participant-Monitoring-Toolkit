@@ -45,7 +45,7 @@ module CustomFieldsHelper
       options_for_select = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
       radio_dom = options_for_select.map.with_index do |opt, i|
         checked = (opt == content) # content.blank? ? (i == 0) : (opt == content)
-        content_tag(:div, class: "radio") do
+        content_tag(:div, class: "radio-inline") do
           content_tag(:label, class: "radio-inline") do
             concat radio_button_tag(name, opt, checked, {class: "square-red"}.merge(options))
             concat " #{opt}"
