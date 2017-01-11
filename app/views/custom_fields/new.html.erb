@@ -1,5 +1,8 @@
 <div class="page-header">
-  <h1><%= t("custom_fields.new", model: @model_type.constantize.model_name.human) %></h1>
+  <h1>
+    <%= t("custom_fields.new",
+      model: @model_type.constantize.model_name.human) %>
+  </h1>
 </div>
 
 <div class="row">
@@ -37,14 +40,18 @@
   </div>
 </div>
 
-<div class="modal fade" id="editFieldModal" tabindex="-1" role="dialog" aria-labelledby="editFieldModalLabel" aria-hidden="true">
+<div class="modal fade" id="editFieldModal" tabindex="-1" role="dialog"
+  aria-labelledby="editFieldModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="editFieldModalLabel"><%= t("custom_fields.edit") %></h4>
+        <h4 class="modal-title" id="editFieldModalLabel">
+          <%= t("custom_fields.edit") %>
+        </h4>
       </div>
       <div class="modal-body"></div>
     </div>
