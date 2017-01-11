@@ -1,0 +1,28 @@
+<% field_group_name = "custom_fields[#{custom_field.id}]" %>
+<div class="form-group">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= label_tag "custom_fields_#{custom_field.id}_value_text",
+        custom_field.name %>
+      <%= markdown(custom_field.help_text) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= custom_input custom_field, "#{field_group_name}[value_text]",
+        (local_assigns[:options].nil? ? {} : options) %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to edit_custom_field_path(id: custom_field.id, type: model_type),
+        remote: true, class: "btn btn-primary" do %>
+        <%= fa_icon "pencil" %> <%= t("general.edit") %>
+      <% end %>
+
+      <%= link_to custom_field_path(id: custom_field.id, type: model_type),
+        method: :delete, data: { confirm: 'Are you sure?' },
+        class: "btn btn-danger delete-custom-field" do %>
+        <%= fa_icon "times" %> <%= t("general.delete") %>
+      <% end %>
+    </div>
+  </div>
+</div>
