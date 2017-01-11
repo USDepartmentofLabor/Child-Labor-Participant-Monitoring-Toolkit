@@ -22,10 +22,7 @@
           <% if policy(:child).index? %>
             <%= sidebar_link t("children.index.title"), children_path %>
           <% end %>
-          <% if policy(:child).create? %>
-            <%= sidebar_link t("children.index.add"), new_child_path %>
-          <% end %>
-          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: "Child") %>
+          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: "Person") %>
         </ul>
       <% end -%>
 
