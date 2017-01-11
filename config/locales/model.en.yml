@@ -67,10 +67,11 @@ en:
         address_line2: "Address Line 2"
       custom_field:
         name: "Field Name"
-        field_type: "Field Type"
-        selections: "Options For Select"
-        section_id: "Section"
         help_text: "Help Text"
+        custom_section_id: "Form Section"
+        sort_order: "Sort Order"
+        field_type: "Field Type"
+        selections_html: "Options For Select <em>(One line per option)</em>"
       region:
         country: "Country"
         state: "State (Province)"

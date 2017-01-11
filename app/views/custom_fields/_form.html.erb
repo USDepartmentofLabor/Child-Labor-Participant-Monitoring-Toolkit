@@ -7,26 +7,34 @@
     <%= f.label :help_text %>
     <%= f.text_area :help_text, rows: 3, class: "form-control" %>
   </div>
+  <% if @sections.length > 0 %>
   <div class="form-group">
     <%= f.label :custom_section_id %>
-    <%= f.collection_select :custom_section_id, @sections, :id, :title, {prompt: true, include_blank: true}, class: "form-control" %>
+    <%= f.collection_select :custom_section_id, @sections, :id, :title,
+      {prompt: true, include_blank: true}, class: "form-control" %>
   </div>
+  <% end %>
   <div class="form-group">
     <%= f.label :sort_order %>
     <%= f.number_field :sort_order, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :field_type %>
-    <%= f.select :field_type, CustomFieldGroup::FIELD_TYPES_OPTIONS, {prompt: true, include_blank: true}, id: "child_field_type", class: "form-control" %>
+    <%= f.select :field_type, CustomFieldGroup::FIELD_TYPES_OPTIONS,
+      {prompt: true, include_blank: true}, id: "child_field_type",
+      class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :selections %> <i>(One line per option)</i>
+  <div class="form-group" id="selections" style="display:none">
+    <%= f.label :selections,
+      t('activerecord.attributes.custom_field.selections_html') %>
     <%= f.text_area :selections, rows: 5, class: "form-control" %>
   </div>
 
   <%= f.hidden_field :model_type %>
 
   <div class="form-group">
-    <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
+    <button type="submit" class="btn btn-primary">
+      <%= t("general.submit") %>
+    </button>
   </div>
 <% end %>

@@ -38,6 +38,7 @@
 //= require services
 //= require service_types
 //= require translations
+//= require custom_fields
 
 function icheck(){
   if($(".icheck").length > 0){
