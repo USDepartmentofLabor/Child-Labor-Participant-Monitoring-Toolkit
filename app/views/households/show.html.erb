@@ -21,16 +21,12 @@
         <table class="table table-bordered table-hover table-listing">
           <tbody>
             <tr>
-              <th>ID</th>
+              <th><%= Household.human_attribute_name(:id) %></th>
               <td><%= @household.id %></td>
             </tr>
             <tr>
               <th><%= Household.human_attribute_name(:name) %></th>
               <td><%= @household.name %></td>
-            </tr>
-            <tr>
-              <th><%= Household.human_attribute_name(:code) %></th>
-              <td><%= @household.code %></td>
             </tr>
             <tr>
               <th><%= Household.human_attribute_name(:intake_date) %></th>

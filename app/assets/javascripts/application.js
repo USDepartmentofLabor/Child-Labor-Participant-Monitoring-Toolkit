@@ -57,9 +57,7 @@ $(document).ready(function() {
   $('.has-tooltip').tooltip();
   icheck();
 
-  $('.input-group.date').datepicker({
-    format: 'yyyy-mm-dd'
-  });
+  $('.date-select select').wrap('<div class="col-md-4">');
 
   $(function() {
     $('.alert-success').fadeIn('normal', function() {

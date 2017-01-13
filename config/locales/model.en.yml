@@ -40,8 +40,8 @@ en:
         end_date: "End Date"
         created_at: "Created at"
       household:
+        id: "Household Code"
         name: "Household Name"
-        code: "Household Code"
         intake_date: "Intake Date"
         address: "Address"
         city: "City"

@@ -239,3 +239,6 @@ en:
       title: 'Translations'
     index:
       title: 'Locales'
+  income_source:
+    index:
+      add: 'Add Income Source'
