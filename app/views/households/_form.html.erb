@@ -15,18 +15,15 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :code %>
-      <%= f.text_field :code, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
       <%= f.label :intake_date %>
-      <div>
-        <%= f.date_select :intake_date, {order: [:month, :day, :year]}, {class: "form-control", style: "display:inline-block;width: 33.1%;"} %>
+      <div class="row date-select">
+        <%= f.date_select :intake_date, {order: [:month, :day, :year]},
+          {class: "form-control"} %>
       </div>
     </div>
 
-    <%= render partial: 'custom_fields/custom_field', collection: @section_1_custom_fields %>
+    <%= render partial: 'custom_fields/custom_field',
+      collection: @section_1_custom_fields %>
 
   </div>
 </div>
@@ -38,12 +35,14 @@
     <%= fa_icon "money" %>
     <h3 class="box-title">
       <%= IncomeSource.model_name.human.pluralize %>
+    </h3>
   </div>
   <div class="box-body">
     <%= f.fields_for :income_sources do |builder| %>
       <%= render 'income_source_fields', f: builder %>
     <% end %>
-    <%= link_to_add_fields t("income_source.index.add"), f, :income_sources, class: "add_fields btn btn-primary" %>
+    <%= link_to_add_fields t("income_source.index.add"), f, :income_sources,
+      class: "add_fields btn btn-primary" %>
   </div>
 </div>
 
@@ -52,12 +51,14 @@
     <%= fa_icon "user" %>
     <h3 class="box-title">
       <%= Person.model_name.human.pluralize %>
+    </h3>
   </div>
   <div class="box-body">
     <%= f.fields_for :people do |builder| %>
       <%= render 'person_fields', f: builder %>
     <% end %>
-    <%= link_to_add_fields t("people.index.add"), f, :people, class: "add_fields btn btn-primary" %>
+    <%= link_to_add_fields t("people.index.add"), f, :people,
+      class: "add_fields btn btn-primary" %>
   </div>
 </div>
 
@@ -69,7 +70,9 @@
     <% end %>
   </div>
   <div class="col-sm-4">
-    <button type="submit" class="btn btn-primary btn-block"><%= t("general.submit") %></button>
+    <button type="submit" class="btn btn-primary btn-block">
+      <%= t("general.submit") %>
+    </button>
   </div>
 </div>
 <% end %>

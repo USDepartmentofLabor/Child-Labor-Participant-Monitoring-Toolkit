@@ -19,8 +19,8 @@
         <table id="households-data-table" class="table table-hover table-bordered">
           <thead>
             <tr>
+              <th><%= Household.human_attribute_name(:id) %></th>
               <th><%= Household.human_attribute_name(:name) %></th>
-              <th><%= Household.human_attribute_name(:code) %></th>
               <th><%= Household.human_attribute_name(:children) %></th>
               <th><%= Household.human_attribute_name(:adults) %></th>
               <th><%= Household.human_attribute_name(:intake_date) %></th>
@@ -29,8 +29,8 @@
 
           <tbody>
             <%= content_tag_for(:tr, @households) do |household| %>
+              <td><%= link_to household.id, household_path(household) %></td>
               <td><%= link_to household.name, household_path(household) %></td>
-              <td><%= household.code %></td>
               <td><%= household.children.count %></td>
               <td><%= household.adults.count %></td>
               <td><%= household.intake_date %></td>

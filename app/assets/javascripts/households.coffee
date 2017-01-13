@@ -21,9 +21,10 @@ jQuery ->
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
+
+    $('.date-select > select').wrap('<div class="col-md-4">')
     
-    $('input[type="checkbox"].square-red, input[type="radio"].square-red').iCheck
-      checkboxClass: "icheckbox_square-red",
-      radioClass: 'iradio_square-red',
-      increaseArea: "10%" # optional
-			
+    $('input[type="checkbox"].square-red, input[type="radio"].square-red')
+      .iCheck
+        checkboxClass: "icheckbox_square-red",
+        radioClass: 'iradio_square-red'
