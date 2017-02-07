@@ -21,7 +21,9 @@ class ChildrenController < ApplicationController
   def new
     @child = Child.new
     @child.statuses << ChildStatus.new(user_id: current_user.id)
-    @custom_fields = CustomField.where(model_type: "Child")
+    @section_1_custom_fields = CustomSection
+      .where('model_type = ? AND sort_order = ?', 'Child', 1).first.custom_fields
+    @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'Child', 1)
   end
 
   # GET /children/1/edit

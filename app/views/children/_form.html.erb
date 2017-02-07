@@ -50,7 +50,7 @@
             <%= f.text_field :age, class: "form-control" %>
           </div>
         </div>
-        <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 1 }.sort_by { |f| f.sort_order } %>
+        <%= render partial: 'custom_fields/custom_field', collection: @section_1_custom_fields %>
       </div>
       <div class="col-md-offset-2 col-md-4">
         <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -75,41 +75,7 @@
   </div>
 </div>
 
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <%= fa_icon "money" %>
-    <h3 class="box-title">
-      <%= t "children.new.section_two" %>
-    </h3>
-  </div>
-  <div class="box-body">
-    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 2 }.sort_by { |f| f.sort_order } %>
-  </div>
-</div>
-
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <%= fa_icon "medkit" %>
-    <h3 class="box-title">
-      <%= t "children.new.section_three" %>
-    </h3>
-  </div>
-  <div class="box-body">
-    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 3 }.sort_by { |f| f.sort_order } %>
-  </div>
-</div>
-
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <%= fa_icon "home" %>
-    <h3 class="box-title">
-      <%= t "children.new.section_four" %>
-    </h3>
-  </div>
-  <div class="box-body">
-    <%= render partial: 'custom_fields/custom_field', collection: @custom_fields.select { |f| f.section_id == 4 }.sort_by { |f| f.sort_order } %>
-  </div>
-</div>
+<%= render partial: 'custom_sections/custom_section', collection: @sections %>
 
 <% if params[:action] == "new" %>
   <div class="box box-primary">
