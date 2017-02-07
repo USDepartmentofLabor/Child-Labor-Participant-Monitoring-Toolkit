@@ -2,7 +2,7 @@ class CustomField < ActiveRecord::Base
   belongs_to :custom_section
   has_many :custom_values
 
-  default_scope { order(:sort_order) }
+  default_scope { order(:custom_section_id, :sort_order) }
 
   def self.with_values(model_id)
     # includes not work when the custom_values does not exists...
