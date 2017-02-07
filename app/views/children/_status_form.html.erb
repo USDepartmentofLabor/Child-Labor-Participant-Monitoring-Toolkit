@@ -1,9 +1,9 @@
 <div class='row'>
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="form-group">
       <%= f.label :start_date %>
-      <div>
-        <%= f.date_select :start_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
+      <div class="row date-select">
+        <%= f.date_select :start_date, {order: [:month, :day, :year], prompt: true}, {class: "form-control"} %>
       </div>
     </div>
 
@@ -22,12 +22,14 @@
           {include_blank: true}, {class: "form-control"}
         %>
     </div>
+
+    <div class="form-group">
+      <%= f.label :note %>
+      <%= f.text_area :note, class: "form-control", rows: "5" %>
+    </div>
+
+    <%= render partial: 'custom_fields/custom_field', collection: @custom_status_fields %>
+
+    <%= f.hidden_field :user_id %>
   </div>
 </div>
-
-<div class="form-group">
-  <%= f.label :note %>
-  <%= f.text_area :note, class: "form-control", rows: "5" %>
-</div>
-
-<%= f.hidden_field :user_id %>

@@ -14,6 +14,7 @@ class ChildrenController < ApplicationController
     @child_statuses = @child.statuses.includes(:work_status, :education_status)
     @service_instances = @child.service_instances.includes(:service)
     @custom_fields = CustomField.where(model_type: "Child").with_values(@child.id)
+    @custom_status_fields = CustomField.where(model_type: "ChildFollowup").with_values(@child.id)
   end
 
   # GET /children/new
