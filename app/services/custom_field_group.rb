@@ -5,7 +5,9 @@ class CustomFieldGroup
     "Check Box" => "check_box",
     "Radio Button" => "radio_button",
     "Selection Field" => "select",
-    "Numeric Field" => "number"
+    "Numeric Field" => "number",
+    "Date Field" => "date",
+    "Rank List" => "rank_list"
   }
 
   def self.option_delimiter
