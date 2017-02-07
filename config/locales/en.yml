@@ -92,9 +92,9 @@ en:
       title: "Beneficiary Record"
       personal_information: "Personal Information"
       statuses: "Status History"
-      status_form_title: "Add New Status"
+      status_form_title: "Update Status"
       services: "Service History"
-      service_form_title: "Add New Service"
+      service_form_title: "Add New Service Record"
     edit:
       title: "Edit Beneficiary Record"
   services:
