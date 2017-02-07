@@ -56,8 +56,39 @@ module CustomFieldsHelper
 
     when "number"
       number_field_tag(name, content, {class: "form-control"}.merge(options))
+
+    when "date"
+      date_field_tag(name, content, {class: "form-control"}.merge(options))
+
+    when "rank_list"
+      options_for_list = field_object.selections.split(CustomFieldGroup.option_delimiter)
+      grid_dom = options_for_list.map.with_index do |o, i|
+#        byebug
+        checked = (o == content)
+        content_tag(:div, class: "form-group grid-option") do
+          content_tag(:span, class: "grid-rank") do
+            s = content_tag(:span, class: "checkbox-inline grid-value", data: {option: i}) do
+              "#"
+            end
+            q = content_tag(:label, class: "checkbox-inline grid-question") do
+              concat check_box_tag(name, o, checked,
+                {class: "square-red grid-check", data: {option: i}}.merge(options))
+              concat " #{o}"
+            end
+
+            [s, q].join.html_safe
+
+          end
+        end
+      end
+      grid_dom.join.html_safe
+
+    when "hidden"
+      hidden_field_tag(name, content)
+
     else
       nil
+
     end
   end
 end

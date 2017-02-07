@@ -28,3 +28,11 @@ jQuery ->
       .iCheck
         checkboxClass: "icheckbox_square-red",
         radioClass: 'iradio_square-red'
+      .on 'ifChecked ifUnchecked', (event) ->
+        tgt = $(event.target)
+        data = {
+          option: tgt.data('option'),
+          action: event.type,
+          name: tgt[0].name
+        }
+        updateRank(data)
