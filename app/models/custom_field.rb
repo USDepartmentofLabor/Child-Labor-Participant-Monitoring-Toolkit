@@ -14,4 +14,8 @@ class CustomField < ActiveRecord::Base
   def custom_value
     custom_values.first
   end
+
+  def custom_value_text
+    custom_value.value_text if custom_value.present?
+  end
 end

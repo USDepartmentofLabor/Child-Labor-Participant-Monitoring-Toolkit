@@ -1,6 +1,7 @@
-<% field_group_name = "custom_fields[#{custom_field.id}]" %>
+<% field_name = "custom_fields[#{custom_field.id}][value_text]" %>
+<% field_id = "custom_fields_#{custom_field.id}_value_text" %>
 <div class="form-group">
-  <%= label_tag "custom_fields_#{custom_field.id}_value_text", custom_field.name %>
+  <%= label_tag field_id, custom_field.name %>
   <%= markdown(custom_field.help_text) %>
-  <%= custom_input custom_field, "#{field_group_name}[value_text]", (local_assigns[:options].nil? ? {} : options) %>
+  <%= custom_input custom_field, field_name, (local_assigns[:options].nil? ? {} : options) %>
 </div>
