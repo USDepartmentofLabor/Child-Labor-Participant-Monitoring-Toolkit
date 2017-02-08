@@ -13,44 +13,42 @@
       <div class="col-md-6">
         <div class="form-group">
           <%= f.label :household_id %>
-          <%= f.select :household_id, household_options, { include_blank: true }, {class: "form-control", id: "household-selection"} %>
+          <%= f.collection_select :household_id, Household.all, :id, :name,
+            {include_blank: true}, class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :intake_date %>
-          <div>
-            <%= f.date_select :intake_date, { order: [:month, :day, :year]}, { class: "form-control", style: "display: inline-block; width: 30%;" } %>
-          </div>
-          <br/>
-          <p>To be administered to mother/caretaker of each child in the household, aged 5 – 17 years. For household members below age 5 or above age 17, leave rows blank.</p>
-          <div class="form-group">
-            <%= f.label :first_name, Child.human_attribute_name(:first_name) %>
-            <%= f.text_field :first_name, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :last_name, Child.human_attribute_name(:last_name) %>
-            <%= f.text_field :last_name, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :middle_name, Child.human_attribute_name(:middle_name) %>
-            <%= f.text_field :middle_name, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :sex, Child.human_attribute_name(:sex) %>
-            <div class="checkbox">
-              <% Child::SEX_OPTIONS.each do |sex_option| %>
-              <label class="radio-inline">
-                <%= f.radio_button :sex, sex_option[1], class: "square-red" %>
-                <%= t(sex_option[0]) %>
-              </label>
-              <% end %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :age, Child.human_attribute_name(:age) %>
-            <%= f.text_field :age, class: "form-control" %>
+          <div class="row date-select">
+            <%= f.date_select :intake_date, { order: [:month, :day, :year]}, {class: "form-control"} %>
           </div>
         </div>
-        <%= render partial: 'custom_fields/custom_field', collection: @section_1_custom_fields %>
+        <div class="form-group">
+          <%= f.label :first_name, Child.human_attribute_name(:first_name) %>
+          <%= f.text_field :first_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :last_name, Child.human_attribute_name(:last_name) %>
+          <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :middle_name, Child.human_attribute_name(:middle_name) %>
+          <%= f.text_field :middle_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :sex, Child.human_attribute_name(:sex) %>
+          <div class="checkbox">
+            <% Child::SEX_OPTIONS.each do |sex_option| %>
+            <label class="radio-inline">
+              <%= f.radio_button :sex, sex_option[1], class: "square-red" %>
+              <%= t(sex_option[0]) %>
+            </label>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :age, Child.human_attribute_name(:age) %>
+          <%= f.text_field :age, class: "form-control" %>
+        </div>
       </div>
       <div class="col-md-offset-2 col-md-4">
         <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -72,6 +70,7 @@
         </div>
       </div>
     </div>
+    <%= render partial: 'custom_fields/custom_field', collection: @section_1_custom_fields %>
   </div>
 </div>
 
