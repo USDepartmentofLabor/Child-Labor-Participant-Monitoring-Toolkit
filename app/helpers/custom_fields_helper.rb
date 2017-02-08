@@ -34,7 +34,7 @@ module CustomFieldsHelper
         checked = (opt == content)
         content_tag(:div, class: "checkbox") do
           content_tag(:label, class: "radio-inline") do
-            concat check_box_tag(name, opt, checked, {class: "square-red"}.merge(options))
+            concat check_box_tag("#{name}[]", opt, checked, {id: "#{name.gsub(/\[|\]/, '_')}_#{i}", class: "square-red"}.merge(options))
             concat " #{opt}"
           end
         end
@@ -63,7 +63,6 @@ module CustomFieldsHelper
     when "rank_list"
       options_for_list = field_object.selections.split(CustomFieldGroup.option_delimiter)
       grid_dom = options_for_list.map.with_index do |o, i|
-#        byebug
         checked = (o == content)
         content_tag(:div, class: "form-group grid-option") do
           content_tag(:span, class: "grid-rank") do

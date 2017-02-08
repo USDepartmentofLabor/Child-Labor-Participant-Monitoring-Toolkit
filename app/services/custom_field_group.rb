@@ -30,25 +30,33 @@ class CustomFieldGroup
       next if values[field.id.to_s].nil? || values[field.id.to_s]["value_text"].nil?
 
       custom_value = CustomValue.where(model_id: target.id, custom_field_id: field.id).first_or_initialize
-      custom_value.value_text = values[field.id.to_s]["value_text"].strip
+
+      if values[field.id.to_s]["value_text"].is_a? Array
+        custom_value.value_text = values[field.id.to_s]["value_text"].join(option_delimiter)
+      else
+        custom_value.value_text = values[field.id.to_s]["value_text"].strip
+      end
       custom_value.save
     end
   end
 
   def self.update(target, fields, values)
-    # ids = values.keys
     field_ids = fields.map(&:id)
-    # CustomValue.where(id: ids, custom_field_id: field_ids).each do |custom_value|
 
     CustomValue.where(model_id: target.id, custom_field_id: field_ids).each do |custom_value|
+      value = value[custom_value.custom_field_id.to_s]
 
-      next if values[custom_value.custom_field_id.to_s].blank?
+      next if value.blank?
 
-      input_value = values[custom_value.custom_field_id.to_s]["value_text"].to_s
+      if value["value_text"].is_a? Array
+        input_value = value["value_text"].join(option_delimiter)
+      else
+        input_value = value["value_text"].strip
+      end
 
-      next if custom_value.value_text.to_s == input_value
+      next if custom_value.value_text.strip == input_value
 
-      custom_value.update(value_text: input_value.strip)
+      custom_value.update(value_text: input_value)
     end
   end
 end
