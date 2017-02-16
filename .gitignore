@@ -6,9 +6,9 @@
 
 # Ignore bundler config.
 /.bundle
-
 /.vagrant
 /.vagrantfile
+/.byebug_history
 
 # Ignore all logfiles and tempfiles.
 /log/*
