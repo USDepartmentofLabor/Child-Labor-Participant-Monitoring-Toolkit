@@ -115,6 +115,11 @@ en:
   adults:
     index:
       add: "Add An Adult"
+    show:
+      title: "Adult Beneficiary Record"
+      personal_information: "Personal Information"
+      services: "Household Follow-up"
+      service_form_title: "Add Household Follow-up"
   people:
     index:
       add: "Add a Household Member"
