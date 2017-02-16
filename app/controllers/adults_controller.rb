@@ -4,8 +4,17 @@ class AdultsController < ApplicationController
     @adult = Adult.find(params[:id])
     @project = Project.first
     @regions = Region.all
-    @custom_fields = CustomField.where(model_type: "Adult").with_values(@adult.id)
-    @custom_status_fields = CustomField.where(model_type: "AdultFollowup").with_values(@adult.id)
+    @custom_fields = CustomField.where(model_type: "HouseholdFollowup").with_values(@adult.household_id)
+  end
+
+  def update
+    @custom_fields = CustomField.where(model_type: "HouseholdFollowup")
+    @household = Household.find params[:adult][:household_id]
+
+    if params[:custom_fields].present? && @custom_fields.length > 0
+      CustomFieldGroup.create_or_update(@household, @custom_fields, custom_field_params)
+      redirect_to household_path(@household), notice: t("action_messages.update", model: Household.model_name.human)
+    end
   end
 
   private
