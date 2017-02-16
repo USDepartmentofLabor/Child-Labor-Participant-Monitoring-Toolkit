@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :children do
     resources :timelines
   end
+  resources :adults
   resources :locations
   resources :households
   resources :custom_fields
