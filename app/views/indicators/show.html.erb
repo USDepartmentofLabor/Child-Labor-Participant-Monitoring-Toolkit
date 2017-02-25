@@ -1,111 +1,100 @@
 <div class="page-header">
-  <%= link_to indicators_path, class: 'btn btn-default' do %>
-  <%= fa_icon "caret-left" %>
-  <%= t("general.back") %>
+  <%= link_to indicators_path, class: "btn btn-default" do %>
+    <%= fa_icon "caret-left" %>
+    <%= t("general.back") %>
   <% end %>
-  <%= link_to edit_indicator_path(@indicator), class: 'btn btn-primary' do %>
-  <%= fa_icon "pencil" %>
-  <%= t("general.edit") %>
+  <%= link_to edit_indicator_path(@indicator), class: "btn btn-primary" do %>
+    <%= fa_icon "pencil" %>
+    <%= t("general.edit") %>
   <% end %>
-  <h1><%= t("indicators.show.title") %></h1>
 </div>
 
 <div class="box box-primary">
-  <div class="box-body">
-
-    <div class="row">
-      <div class="col-md-12">
-        <h2><%= @indicator.code || @indicator.id %>
-          <%= @indicator.indicator %></h2>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <strong><%= Indicator.human_attribute_name(:indicator_type) %></strong>
-        <%= @indicator.indicator_type %>
-      </div>
-    </div>
-
-    <br/>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="box box-info">
-          <div class="box-header with-border">
-            <h3 class="box-title">
-              <strong><%= Indicator.human_attribute_name(:use) %></strong>
-            </h3>
-          </div>
-          <div class="box-body">
-            <%= raw(@indicator.use) %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="box box-info">
-          <div class="box-header with-border">
-            <h3 class="box-title">
-              <strong><%= Indicator.human_attribute_name(:definitions) %></strong>
-            </h3>
-          </div>
-          <div class="box-body">
-            <%= raw(@indicator.definitions) %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="box box-info">
-          <div class="box-header with-border">
-            <h3 class="box-title">
-              <strong><%= Indicator.human_attribute_name(:frequency_definitions) %></strong>
-            </h3>
-          </div>
-          <div class="box-body">
-            <%= raw(@indicator.frequency_definitions) %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-4">
-        <strong><%= Indicator.human_attribute_name(:unit_of_measure) %></strong>
-        <%= @indicator.unit_of_measure.name %>
-      </div>
-      <div class="col-md-4">
-        <strong><%= Indicator.human_attribute_name(:reporting_frequency) %></strong>
-        <%= @indicator.reporting_frequency.name %>
-      </div>
-      <div class="col-md-4">
-        <strong><%= Indicator.human_attribute_name(:baseline) %></strong>
-        <%= @indicator.baseline %>
-      </div>
-    </div>
-
+  <div class="box-header">
+    <h3 class="box-title">
+      <%= "#{@indicator.code}: #{@indicator.indicator}" %>
+    </h3>
   </div>
 
-  <div class="box-footer">
-    <% if @indicator.targets.count > 0 %>
-    <%= link_to edit_multiple_indicator_targets_path(@indicator),
-        class: "btn btn-primary pull-right",
-        style: "margin-right: 1rem" do %>
-    <i class="fa fa-dot-circle-o"></i>
-    Update Targets
-    <% end %>
-  <% else %>
-    <%= link_to new_indicator_target_path(@indicator),
-        class: "btn btn-primary pull-right",
-        style: "margin-right: 1rem" do %>
-    <i class="fa fa-dot-circle-o"></i>
-    Enter Targets
-    <% end %>
-    <% end %>
+  <div class="box-body no-padding">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th><%= Indicator.human_attribute_name(:indicator_type) %></th>
+          <td><%= @indicator.indicator_type %></td>
+        </tr>
+        <tr>
+          <th><%= Indicator.human_attribute_name(:unit_of_measure) %></th>
+          <td><%= @indicator.unit_of_measure.name %></td>
+        </tr>
+        <tr>
+          <th><%= Indicator.human_attribute_name(:reporting_frequency) %></th>
+          <td><%= @indicator.reporting_frequency.name %></td>
+        </tr>
+        <tr>
+          <th><%= Indicator.human_attribute_name(:baseline) %></th>
+          <td><%= @indicator.baseline %></td>
+        </tr>
+        <tr>
+          <th><%= Indicator.human_attribute_name(:use) %></th>
+          <td><%= @indicator.use %></td>
+        </tr>
+        <tr>
+          <th><%= Indicator.human_attribute_name(:definitions) %></th>
+          <td><%= @indicator.definitions %></td>
+        </tr>
+        <tr>
+          <th>
+            <%= Indicator.human_attribute_name(:frequency_definitions) %>
+          </th>
+          <td><%= @indicator.frequency_definitions %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">
+      <%= t("indicators.show.summary_data_title") %>
+    </h3>
+  </div>
+
+  <div class="box-body no-padding">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= ReportingPeriod.model_name.human %></th>
+          <th><%= IndicatorDetail.human_attribute_name(:target) %></th>
+          <th><%= IndicatorDetail.human_attribute_name(:actual) %></th>
+          <th><%= IndicatorDetail.human_attribute_name(:delta) %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "detail",
+          collection: @indicator.indicator_detail_rows,
+          locals: {indicator: @indicator} %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="detailModal" tabindex="-1" role="dialog"
+  aria-labelledby="detailModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="detailModalLabel">
+          <%= t("indicator_detail.edit") %>
+        </h4>
+      </div>
+      <div class="modal-body"></div>
+    </div>
   </div>
 </div>
