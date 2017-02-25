@@ -62,6 +62,7 @@ module CustomFieldsHelper
 
     when "rank_list"
       options_for_list = field_object.selections.split(CustomFieldGroup.option_delimiter)
+      name.insert(-13, '[]')
       grid_dom = options_for_list.map.with_index do |o, i|
         checked = (o == content)
         content_tag(:div, class: "form-group grid-option") do
@@ -70,8 +71,7 @@ module CustomFieldsHelper
               "#"
             end
             q = content_tag(:label, class: "checkbox-inline grid-question") do
-              concat check_box_tag(name, o, checked,
-                {class: "square-red grid-check", data: {option: i}}.merge(options))
+              concat check_box_tag(name, o, checked, {class: "square-red grid-check", data: {option: i}}.merge(options))
               concat " #{o}"
             end
 
