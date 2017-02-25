@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109063057) do
+ActiveRecord::Schema.define(version: 20170224222153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,6 +172,18 @@ ActiveRecord::Schema.define(version: 20170109063057) do
   end
 
   add_index "income_sources", ["household_id"], name: "index_income_sources_on_household_id", using: :btree
+
+  create_table "indicator_details", force: :cascade do |t|
+    t.integer  "indicator_id"
+    t.integer  "reporting_period_id"
+    t.decimal  "target"
+    t.decimal  "actual"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "indicator_details", ["indicator_id"], name: "index_indicator_details_on_indicator_id", using: :btree
+  add_index "indicator_details", ["reporting_period_id"], name: "index_indicator_details_on_reporting_period_id", using: :btree
 
   create_table "indicators", force: :cascade do |t|
     t.string   "code",                                            null: false
@@ -449,10 +461,11 @@ ActiveRecord::Schema.define(version: 20170109063057) do
   add_foreign_key "abilities_roles", "abilities"
   add_foreign_key "abilities_roles", "roles"
   add_foreign_key "adults", "households"
-  add_foreign_key "child_statuses", "children"
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
   add_foreign_key "income_sources", "households"
+  add_foreign_key "indicator_details", "indicators"
+  add_foreign_key "indicator_details", "reporting_periods"
   add_foreign_key "indicators", "frequencies", column: "reporting_frequency_id"
   add_foreign_key "indicators", "unit_of_measures"
   add_foreign_key "intake_actors", "households"

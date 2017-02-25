@@ -1,0 +1,15 @@
+<%= form_for([indicator, indicator_detail], remote: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :target %>
+    <%= f.text_field :target, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :actual %>
+    <%= f.text_field :actual, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-success">
+      <%= t("general.submit") %>
+    </button>
+  </div>
+<% end %>
