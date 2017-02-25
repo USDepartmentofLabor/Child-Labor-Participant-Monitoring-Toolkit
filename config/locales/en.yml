@@ -30,6 +30,7 @@ en:
     edit: "Edit"
     delete: "Delete"
     back: "Back"
+    update_button: "Update"
     copyright: "All Rights Reserved"
     slogan: "The more we connect, the better it gets."
     not_authorized: "Your account is not authorized to perform this function"
@@ -165,10 +166,16 @@ en:
       select_reporting_frequency_prompt: "-- Select Reporting Frequency --"
     show:
       title: "Indicator"
+      summary_data_title: "Summary Data"
     new:
       title: "Add Indicator"
       select_unit_of_measure_prompt: "-- Select Unit of Measure --"
       select_reporting_frequency_prompt: "-- Select Reporting Frequency --"
+  reporting_periods:
+    title: "Reporting Period"
+    target: "Target"
+    Actual: "Actual"
+    Delta: "Delta"
   targets:
     index:
       add: "Add New Target"

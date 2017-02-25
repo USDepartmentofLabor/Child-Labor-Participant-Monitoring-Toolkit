@@ -1,61 +1,53 @@
 Rails.application.routes.draw do
 
-  resources :income_sources
-
-  #get 'locales/index'
-
-  resources :locales do
-    resources :translations, constraints: { :id => /[^\/]+/ }
-  end
-
   mount Ckeditor::Engine => '/ckeditor'
 
   get 'targets/index'
 
   get 'gender_count/:id' => 'projects#gender_count'
 
+  resource :home
+
   resource :project do
     get :dashboard
   end
 
-  resource :home
+  resources :children do
+    resources :child_statuses
+    resources :service_instances
+    resources :timelines, only: [:index]
+  end
 
   resources :indicators do
+    resources :indicator_details
     resources :targets do
       collection do
-        post :create_multiple
         get :edit_multiple
+        post :create_multiple
         put :update_multiple
       end
     end
   end
 
-  resources :reports, except: [:edit, :update]
-  resources :children do
-    resources :timelines
+  resources :locales do
+    resources :translations, constraints: { :id => /[^\/]+/ }
   end
+
   resources :adults
-  resources :locations
-  resources :households
   resources :custom_fields
-  resources :users
-  resources :services
-  resources :users
-  resources :service_types
-  resources :regions, defaults: {format: :json}
+  resources :households
+  resources :income_sources
+  resources :locations
   resources :project_targets
-  resources :technical_progress_reports
+  resources :regions, defaults: {format: :json}
+  resources :reports, except: [:edit, :update]
   resources :roles
   resources :service_type_categories
-
-  # a trick to avoid generating children urls again
-  resources :children, only: [] do
-    resources :child_statuses
-    resources :service_instances
-    collection do
-      match 'search' => 'children#search', via: [:get, :post], as: :search
-    end
-  end
+  resources :service_types
+  resources :services
+  resources :technical_progress_reports
+  resources :users
+  resources :users
 
   devise_for :users, skip: [:sessions, :registrations, :confirmations]
 
