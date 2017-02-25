@@ -13,16 +13,13 @@
         <tr>
           <th><%= Indicator.human_attribute_name(:code) %></th>
           <th><%= Indicator.human_attribute_name(:indicator) %></th>
+          <th><%= Indicator.human_attribute_name(:reporting_frequency) %></th>
+          <th><%= Indicator.human_attribute_name(:baseline) %></th>
           <th><%= Indicator.human_attribute_name(:indicator_type) %></th>
         </tr>
       </thead>
 
       <tbody>
-        <%= content_tag_for(:tr, @indicators) do |indicator| %>
-          <td><%= indicator.code || indicator.id %></td>
-          <td><%= link_to indicator.indicator, indicator_path(indicator) %></td>
-          <td><%= indicator.indicator_type %></td>
-        <% end %>
       </tbody>
     </table>
   </div>
