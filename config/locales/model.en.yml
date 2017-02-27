@@ -9,6 +9,7 @@ en:
       project: "Project"
       custom_field: "Customized Field"
       indicator: "Indicator"
+      indicator_detail: "Indicator Detail"
       project_target: "Project Target"
       person: "Household Member"
     attributes:

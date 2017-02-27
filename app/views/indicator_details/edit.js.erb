@@ -1,6 +1,6 @@
-$("#detailModal .modal-body").html(
+$("#detailModal .modal-content").html(
   '<%= j render(partial: "form",
-    locals: {indicator_detail: @indicator_detail}) %>'
+    locals: {indicator: @indicator, indicator_detail: @indicator_detail}) %>'
 );
 
 $("#detailModal").modal('show');
