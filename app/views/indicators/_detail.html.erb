@@ -6,10 +6,12 @@
   <td>
     <% if detail.id.nil? %>
       <%= link_to t("general.update_button"),
-        new_indicator_indicator_detail_path(@indicator), remote: true %>
+        new_indicator_indicator_detail_path(@indicator,
+          :reporting_period_id => detail.reporting_period_id), remote: true %>
     <% else %>
       <%= link_to t("general.update_button"),
-        edit_indicator_indicator_detail_path(@indicator, detail), remote: true %>
+        edit_indicator_indicator_detail_path(@indicator, detail),
+          remote: true %>
     <% end %>
   </td>
 </tr>

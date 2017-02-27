@@ -7,7 +7,7 @@ class IndicatorDetail < ActiveRecord::Base
       return nil
     end
 
-    d = target - actual
+    d = actual - target
 
     if d < 0
       d = "(#{d})"

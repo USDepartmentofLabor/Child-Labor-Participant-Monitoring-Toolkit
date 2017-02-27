@@ -57,6 +57,12 @@ body {
   }
 }
 
+.table-th-right {
+  th {
+    text-align: right;
+  }
+}
+
 .table-abilities {
   th {
     min-width: 60px;
@@ -122,4 +128,9 @@ fieldset.associated-fields {
 
 .grid-rank .checkbox-inline {
   padding-left: 0;
+}
+
+.modal-info .modal-body {
+  background-color: #fff !important;
+  color: #000 !important;
 }
