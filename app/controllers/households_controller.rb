@@ -12,8 +12,8 @@ class HouseholdsController < ApplicationController
   def show
     @children = @household.children
     @adults = @household.adults
-    @custom_fields = CustomField.where(model_type: "Household").with_values(@household.id)
     @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields
+    @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'Household', 1)
   end
 
   # GET /households/new

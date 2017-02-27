@@ -17,31 +17,24 @@
         <%= fa_icon "info" %>
         <h3 class="box-title"><%= t("households.show.title") %></h3>
       </div>
-      <div class="box-body">
-        <table class="table table-bordered table-hover table-listing">
-          <tbody>
-            <tr>
-              <th><%= Household.human_attribute_name(:id) %></th>
-              <td><%= @household.id %></td>
-            </tr>
-            <tr>
-              <th><%= Household.human_attribute_name(:name) %></th>
-              <td><%= @household.name %></td>
-            </tr>
-            <tr>
-              <th><%= Household.human_attribute_name(:intake_date) %></th>
-              <td><%= @household.intake_date %></td>
-            </tr>
-            <% @custom_fields.each do |custom_field| %>
-            <tr>
-              <th><%= custom_field.name %></th>
-              <td><%= custom_field_value(custom_field) %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+      <div class="box-body no-padding">
+        <dl>
+          <dt><%= Household.human_attribute_name(:id) %></dt>
+          <dd><%= @household.id %></dd>
+          <dt><%= Household.human_attribute_name(:name) %></dt>
+          <dd><%= @household.name %></dd>
+          <dt><%= Household.human_attribute_name(:intake_date) %></dt>
+          <dd><%= @household.intake_date %></dd>
+          <% @section_1_custom_fields.each do |custom_field| %>
+            <dt><%= custom_field.name %></dt>
+            <dd><%= custom_field_value(custom_field) %></dd>
+          <% end %>
+        </dl>
       </div>
     </div>
+
+    <%= render partial: 'custom_sections/custom_section_show',
+          collection: @sections %>
 
     <div class="box box-primary">
       <div class="box-header with-border">

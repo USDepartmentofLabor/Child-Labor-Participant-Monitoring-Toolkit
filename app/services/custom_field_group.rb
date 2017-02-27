@@ -27,7 +27,7 @@ class CustomFieldGroup
 
   def self.create_or_update(target, fields, values)
     fields.each do |field|
-      next if values[field.id.to_s].nil? || (!values[field.id.to_s].is_a? Array && values[field.id.to_s]["value_text"].nil?)
+      next if (values[field.id.to_s].nil? || (!values[field.id.to_s].is_a?(Array) && values[field.id.to_s]["value_text"].nil?))
 
       custom_value = CustomValue.where(model_id: target.id, custom_field_id: field.id).first_or_initialize
 
