@@ -27,7 +27,8 @@ jQuery ->
     $('input[type="checkbox"].square-red, input[type="radio"].square-red')
       .iCheck
         checkboxClass: "icheckbox_square-red",
-        radioClass: 'iradio_square-red'
+        radioClass: 'iradio_square-red',
+        increaseArea: '10%'
       .on 'ifChecked ifUnchecked', (event) ->
         tgt = $(event.target)
         data = {

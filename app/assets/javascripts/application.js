@@ -14,48 +14,34 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require icheck.min
-//= require jquery.slimscroll
 //= require app
 //= require jquery.smartWizard
-//= require jquery.jgrowl.min
 //= require jquery.validate.min
 //= require Chart.min
-//= require bootstrap-datepicker
-//= require jquery.geocomplete.min
-//= require jquery-ui
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require ckeditor/init
-//= require moment
 //= require bootstrap-editable
 //= require bootstrap-editable-rails
-//= require home
+
 //= require children
-//= require projects
-//= require report_wizard
+//= require custom_fields
 //= require households
 //= require indicators
+//= require projects
+//= require report_wizard
 //= require services
 //= require service_types
 //= require translations
-//= require custom_fields
-
-function icheck(){
-  if($(".icheck").length > 0){
-    $(".icheck").each(function(){
-      var $el = $(this);
-      var opt = {
-        checkboxClass: 'icheckbox_square-red',
-        radioClass: 'iradio_square-red',
-      }
-      $el.iCheck(opt);
-    });
-  }
-}
 
 $(document).ready(function() {
   $('.has-tooltip').tooltip();
-  icheck();
+
+  $('.icheck, input.square-red').iCheck({
+    checkboxClass: 'icheckbox_square-red',
+    radioClass: 'iradio_square-red',
+    increaseArea: '10%'
+  });
 
   $('.date-select select').wrap('<div class="col-md-4">');
 

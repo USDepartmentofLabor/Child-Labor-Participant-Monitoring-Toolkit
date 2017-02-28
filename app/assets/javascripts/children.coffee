@@ -33,18 +33,6 @@ jQuery ->
     if @value == "0"
       $("#household-form-modal").modal("show")
 
-  # $(".delete-custom-field").click (event) ->
-  #   url = $(this).data("url")
-  #   $.ajax
-  #     url: url
-  #     type: "post"
-  #     dataType: "json"
-  #     data: {"_method": "delete"}
-  #     success: (result) ->
-  #       divID = "#pre-field-" + result.id
-  #       $(divID).hide()
-  #       $("#jgrowl").jGrowl(result.message, {theme: 'success'})
-
   $.fn.dataTableExt.oStdClasses.sWrapper = "dataTables_wrapper dt-bootstrap";
 
   $('#child-data-table').DataTable
