@@ -12,7 +12,6 @@ var ReportWizard = function() {
     });
     animateBar(1);
     initValidator();
-    // runDatePicker();
 
     $(wizardForm).show();
 
@@ -39,14 +38,6 @@ var ReportWizard = function() {
     var valueNow = Math.floor(100 / numberOfSteps * val);
     $('.step-bar').css('width', valueNow + '%');
   };
-
-  // var runDatePicker = function () {
-  //   $('.date-picker').datepicker({
-  //     autoclose: true,
-  //     format: 'yyyy-mm-dd',
-  //     orientation: 'top'
-  //   });
-  // };
 
   var initValidator = function() {
     $.validator.addMethod("greaterThan", function(value, element, params) {
@@ -173,3 +164,7 @@ var ReportWizard = function() {
     }
   };
 }();
+
+$(document).ready(function() {
+  ReportWizard.init();
+});
