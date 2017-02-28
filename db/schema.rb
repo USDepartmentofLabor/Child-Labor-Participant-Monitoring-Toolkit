@@ -112,12 +112,12 @@ ActiveRecord::Schema.define(version: 20170224222153) do
     t.string   "field_type"
     t.text     "selections"
     t.text     "validation_rules"
+    t.string   "model_type"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "custom_section_id"
     t.string   "help_text"
     t.integer  "sort_order"
-    t.string   "model_type"
   end
 
   create_table "custom_sections", force: :cascade do |t|
@@ -461,6 +461,7 @@ ActiveRecord::Schema.define(version: 20170224222153) do
   add_foreign_key "abilities_roles", "abilities"
   add_foreign_key "abilities_roles", "roles"
   add_foreign_key "adults", "households"
+  add_foreign_key "child_statuses", "children"
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
   add_foreign_key "income_sources", "households"

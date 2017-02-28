@@ -137,3 +137,29 @@ IntakeActorType.create([
   { name: 'Reviewer' },
   { name: 'Supervisor' }
 ])
+
+Locale.create([
+  { code: 'en', name: 'English' },
+  { code: 'es', name: 'Spanish' }
+])
+
+Translation.create([
+  { locale: 'en', key: 'login.banner', value: 'Direct Beneficiary Monitoring System' },
+  { locale: 'en', key: 'general.logo_alt', value: 'Department of Labor Seal' },
+  { locale: 'en', key: 'login.instruction', value: 'Login with your email address and password' },
+  { locale: 'en', key: 'login.email', value: 'Email Address' },
+  { locale: 'en', key: 'login.password', value: 'Password' },
+  { locale: 'en', key: 'login.remember_me', value: 'Remember me' },
+  { locale: 'en', key: 'general.submit', value: 'Submit' },
+  { locale: 'en', key: 'login.forgot_password', value: 'Forgot your password?' },
+
+  { locale: 'es', key: 'login.banner', value: 'Direct Beneficiary Monitoring System' },
+  { locale: 'es', key: 'login.tagline', value: 'Cuanto más nos conectamos, mejor se pone.' },
+  { locale: 'es', key: 'general.logo_alt', value: 'Sello del Departamento de Trabajo' },
+  { locale: 'es', key: 'login.instruction', value: 'Iniciar sesión con su dirección de correo electrónico y contraseña' },
+  { locale: 'es', key: 'login.email', value: 'Dirección de correo electrónico' },
+  { locale: 'es', key: 'login.password', value: 'Contraseña' },
+  { locale: 'es', key: 'login.remember_me', value: 'Recuérdame' },
+  { locale: 'es', key: 'general.submit', value: 'Presentar' },
+  { locale: 'es', key: 'login.forgot_password', value: '¿Olvidaste tu contraseña?' }
+])
