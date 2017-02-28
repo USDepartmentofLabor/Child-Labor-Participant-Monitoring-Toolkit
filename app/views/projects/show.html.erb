@@ -1,115 +1,121 @@
 <% content_for :title, @project.title %>
 <% content_for :description, @project.cooperative_agreement_number %>
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <%= fa_icon "fort-awesome" %>
-        <h3 class="box-title"><%= t("projects.show.details") %></h3>
-      </div>
-      <div class="box-body">
-        <div class="table-responsive">
-          <table class="table table-hover table-listing table-condensed" id="project-info">
-            <tbody>
-              <tr>
-                <th><%= Project.human_attribute_name(:name) %></th>
-                <td><%= @project.name %></td>
-              </tr>
-              <tr>
-                <th><%= Project.human_attribute_name(:title) %></th>
-                <td><%= @project.title %></td>
-              </tr>
-              <tr>
-                <th><%= Project.human_attribute_name(:cooperative_agreement_number) %></th>
-                <td><%= @project.cooperative_agreement_number %></td>
-              </tr>
-              <tr>
-                <th><%= Project.human_attribute_name(:start_date) %></th>
-                <td><%= @project.start_date %></td>
-              </tr>
-              <tr>
-                <th><%= Project.human_attribute_name(:end_date) %></th>
-                <td><%= @project.end_date %></td>
-              </tr>
-              <tr>
-                <th><%= Project.human_attribute_name(:organization) %></th>
-                <td><%= @project.organization %></td>
-              </tr>
-              <tr>
-                <th><%= Project.human_attribute_name(:funding_amount) %></th>
-                <td><%= number_with_precision(@project.funding_amount, precision: 0, delimiter: ',') %></td>
-              </tr>
-              <tr>
-                <th><%= Project.human_attribute_name(:region) %></th>
-                <td><%= @project.region.name %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+<div class="box box-primary">
+  <div class="box-header">
+    <%= fa_icon "fort-awesome" %>
+    <h3 class="box-title"><%= t("projects.show.details") %></h3>
+  </div>
+  <div class="box-body no-padding">
+    <div class="table-responsive">
+      <table class="table table-hover table-listing table-condensed">
+        <tbody>
+          <tr>
+            <th><%= Project.human_attribute_name(:name) %></th>
+            <td><%= @project.name %></td>
+          </tr>
+          <tr>
+            <th><%= Project.human_attribute_name(:title) %></th>
+            <td><%= @project.title %></td>
+          </tr>
+          <tr>
+            <th><%=
+              Project.human_attribute_name(:cooperative_agreement_number)
+            %></th>
+            <td><%= @project.cooperative_agreement_number %></td>
+          </tr>
+          <tr>
+            <th><%= Project.human_attribute_name(:start_date) %></th>
+            <td><%= @project.start_date %></td>
+          </tr>
+          <tr>
+            <th><%= Project.human_attribute_name(:end_date) %></th>
+            <td><%= @project.end_date %></td>
+          </tr>
+          <tr>
+            <th><%= Project.human_attribute_name(:organization) %></th>
+            <td><%= @project.organization %></td>
+          </tr>
+          <tr>
+            <th><%= Project.human_attribute_name(:funding_amount) %></th>
+            <td>
+              <%= number_with_precision(@project.funding_amount,
+                precision: 0, delimiter: ',') %>
+            </td>
+          </tr>
+          <tr>
+            <th><%= Project.human_attribute_name(:region) %></th>
+            <td><%= @project.region.name %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
 
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <%= fa_icon "map-marker" %>
-        <h3 class="box-title"><%= t("projects.show.locations") %></h3>
-        <div class="box-tools pull-right">
-          <%= link_to '#add-location', 'data-show' => 'location-fields' do %>
-            <%= fa_icon "plus", text: t("general.add") %>
-          <% end %>
-        </div>
-      </div>
-      <div class="box-body">
-        <div class="tabled-responsive">
-          <%= form_for(Location.new, html: { role: "form" }) do |f| %>
-          <%= f.hidden_field :project_id, value: @project.id %>
-          <table class="table table-hover table-condensed">
-            <thead>
-              <tr>
-                <th><%= Location.human_attribute_name(:location_type_id) %></th>
-                <th><%= Location.human_attribute_name(:name) %></th>
-                <th><%= Location.human_attribute_name(:address_line1) %></th>
-                <th><%= Location.human_attribute_name(:address_line2) %></th>
-                <th><%= Location.human_attribute_name(:city) %></th>
-                <th><%= Location.human_attribute_name(:state) %></th>
-                <th><%= Location.human_attribute_name(:zip) %></th>
-                <th><%= Location.human_attribute_name(:country) %></th>
-                <th>&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              <%= render partial: "location_show",
-                collection: @project.locations, as: 'location' %>
-              <%= render partial: 'location_fields', locals: {f: f} %>
-            </tbody>
-          </table>
-          <% end %>
-        </div>
-      </div>
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "map-marker" %>
+    <h3 class="box-title"><%= t("projects.show.locations") %></h3>
+    <div class="box-tools pull-right">
+      <%= link_to '#add-location', 'data-show' => 'location-fields' do %>
+        <%= fa_icon "plus", text: t("general.add") %>
+      <% end %>
     </div>
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <%= fa_icon "bullseye" %>
-        <h3 class="box-title"><%= t("projects.show.targets") %></h3>
-      </div>
-      <div class="box-body">
-        <div class="table-responsive">
-          <table class="table table-hover table-condensed">
-            <thead>
-              <tr>
-                <th><%= ProjectTarget.human_attribute_name(:project_target_type_id) %></th>
-                <th><%= ProjectTarget.human_attribute_name(:target_value) %></th>
-                <th>&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              <%= render partial: "project_target_show",
-                collection: @project.project_targets, as: 'project_target' %>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  </div>
+  <div class="box-body no-padding">
+    <div class="tabled-responsive">
+      <%= form_for(Location.new, html: { role: "form" }) do |f| %>
+      <%= f.hidden_field :project_id, value: @project.id %>
+      <% if @project.locations.count > 0 %>
+        <table class="table table-hover table-condensed">
+          <thead>
+            <tr>
+              <th><%= Location.human_attribute_name(:location_type_id) %></th>
+              <th><%= Location.human_attribute_name(:name) %></th>
+              <th><%= Location.human_attribute_name(:address_line1) %></th>
+              <th><%= Location.human_attribute_name(:address_line2) %></th>
+              <th><%= Location.human_attribute_name(:city) %></th>
+              <th><%= Location.human_attribute_name(:state) %></th>
+              <th><%= Location.human_attribute_name(:zip) %></th>
+              <th><%= Location.human_attribute_name(:country) %></th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "location_show",
+              collection: @project.locations, as: 'location' %>
+            <%= render partial: 'location_fields', locals: {f: f} %>
+          </tbody>
+        </table>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "bullseye" %>
+    <h3 class="box-title"><%= t("projects.show.targets") %></h3>
+  </div>
+  <div class="box-body no-padding">
+    <div class="table-responsive">
+      <table class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th><%=
+              ProjectTarget.human_attribute_name(:project_target_type_id)
+            %></th>
+            <th>
+              <%= ProjectTarget.human_attribute_name(:target_value) %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "project_target_show",
+            collection: @project.project_targets, as: 'project_target' %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
