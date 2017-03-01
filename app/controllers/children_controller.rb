@@ -22,7 +22,8 @@ class ChildrenController < ApplicationController
     @child = Child.new
     @child.statuses << ChildStatus.new(user_id: current_user.id)
     @section_1_custom_fields = CustomSection
-      .where('model_type = ? AND sort_order = ?', 'Child', 1).first.custom_fields
+      .where('model_type = ? AND sort_order = ?', 'Child', 1).first.custom_fields unless CustomSection
+        .where('model_type = ? AND sort_order = ?', 'Child', 1).empty?
     @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'Child', 1)
   end
 
