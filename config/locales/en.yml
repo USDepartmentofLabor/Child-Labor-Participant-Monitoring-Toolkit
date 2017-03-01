@@ -24,18 +24,18 @@ en:
     formats:
       default: "%m/%d/%Y"
   general:
+    add: "Add"
+    back: "Back"
     cancel: "Cancel"
     close: "Close"
-    show: "View"
-    edit: "Edit"
-    delete: "Delete"
-    back: "Back"
-    add: "Add"
-    update_button: "Update"
-    copyright: "All Rights Reserved"
-    slogan: "The more we connect, the better it gets."
-    not_authorized: "Your account is not authorized to perform this function"
     confirm: "Are you sure?"
+    copyright: "All Rights Reserved"
+    delete: "Delete"
+    edit: "Edit"
+    save_changes: "Save Changes"
+    not_authorized: "Your account is not authorized to perform this function"
+    show: "View"
+    update: "Update"
   action_messages:
     create: "%{model} was successfully added."
     create_multiple: "%{model} were successfully added."
@@ -45,31 +45,15 @@ en:
     create_failed: "Failed to added %{model}. %{error}"
     update_failed: "Failed to update %{model}. %{error}"
     destroy_failed: "Failed to delete %{model}. %{error}"
-  login:
-    name: "Full Name"
-    sign_up: "Sign Up"
-    password_confirmation: "Password Confirmation"
-    login: "Login"
-    welcome_back: "Welcome Back"
-    tagline: "The more we connect, the better it gets."
   passwords:
     forgot_password: "Forgot password"
     enter_email: "Please enter your email address"
   projects:
-    add_location: "Add Location"
     show:
       title: "Project Details"
       dashboard: "Project Dashboard"
-      children_covered: "Beneficiaries"
-      edit: "Settings"
       targets: "Direct Beneficiary Targets"
       details: "Project Details"
-    new:
-      title: "Create New Project"
-    edit:
-      title: "Edit Project Record"
-      details_title: "Project Details"
-      targets_title: "Direct Beneficiary Targets"
   children:
     new:
       form_title: "Beneficiary Intake Form"
@@ -79,15 +63,10 @@ en:
       remove_image: "Remove"
       max_image_size: "This file exceeds the maximum allowed file size (%{size})."
       image_format: "Only image file with extension .png, .gif, .jpg, .jpeg is allowed."
-      household_title: "Choose a Household"
-      address_title: "Enter Address"
       details_title: "Enter Beneficiary Details"
       baseline_title: "Enter Baseline Statuses"
-      section_two: "Economic Activity"
-      section_three: "Health and Safety Issues of Working Children"
-      section_four: "Household Tasks of Children"
     index:
-      add: "Add A Beneficiary"
+      add: "Add New Beneficiary"
       title: "List of Beneficiaries"
       filter: "Filters"
     show:
@@ -105,7 +84,7 @@ en:
     edit:
       form_title: "Edit Service"
     index:
-      add: "Add a Service"
+      add: "Add New Service"
       title: "Services"
     show:
       title: "Service Record"
@@ -116,7 +95,7 @@ en:
       add_child: "Add Beneficiary"
   adults:
     index:
-      add: "Add An Adult"
+      add: "Add New Adult"
     show:
       title: "Adult Beneficiary Record"
       personal_information: "Personal Information"
@@ -124,13 +103,13 @@ en:
       service_form_title: "Add Household Follow-up"
   people:
     index:
-      add: "Add a Household Member"
+      add: "Add New Household Member"
   households:
     index:
-      add: "Add A Household"
+      add: "Add New Household"
       title: "List of Households"
     new:
-      title: "Add A Household"
+      title: "Add New Household"
       details_title: "Enter Household Details"
     edit:
       title: "Edit Household Record"
