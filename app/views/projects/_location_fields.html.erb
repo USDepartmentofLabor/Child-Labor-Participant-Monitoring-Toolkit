@@ -1,4 +1,4 @@
-<tr id="location-fields" style="display:none">
+<tr>
   <td>
     <%= f.collection_select :location_type_id, LocationType.all, :id, :name,
              { include_blank: true, prompt: true }, class: "form-control" %>
@@ -24,7 +24,10 @@
   <td>
     <%= f.text_field :country, class: "form-control" %>
   </td>
-  <td>
-    <button type="submit" class="btn btn-primary"><%= fa_icon :plus %></button>
+  <td class="options-controls">
+    <button type="submit" class="btn btn-primary options-control"><%= fa_icon :plus %></button>
+    <a href="#" data-hide="location-fields" class="options-control">
+      <%= fa_icon :times, class: 'text-danger' %>
+    </a>
   </td>
 <tr>

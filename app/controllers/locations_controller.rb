@@ -1,32 +1,41 @@
 class LocationsController < ApplicationController
   before_action :set_project
+  before_action :set_location, only: [:update, :destroy]
 
   def create
     @location = Location.new(location_params)
     @location.project_id = @project.id
 
-    respond_to do |format|
-      if @location.save
-        format.html {
-          redirect_to :back, notice: t("action_messages.create",
-                                       model: Location.model_name.human)
-        }
-        format.js
-      else
-        format.html {
-          redirect_to :back, alert: t("action_messages.create_failed",
-                                      model: Location.model_name.human,
-                                      error: alert)
-        }
-        format.js
-      end
+    if @location.save
+      redirect_to root_path, notice: t("action_messages.create",
+        model: Location.model_name.human)
+    else
+      render json: @location.errors, status: :bad_request
     end
+  end
+
+  def update
+    if @location.update_attributes(location_params)
+      head :no_content
+    else
+      render json: @location.errors, status: :bad_request
+    end
+  end
+
+  def destroy
+    @location.destroy
+    redirect_to :back, notice: t("action_messages.destroy",
+                                model: Location.model_name.human)
   end
 
   private
 
   def set_project
     @project = Project.first
+  end
+
+  def set_location
+    @location = Location.find(params[:id])
   end
 
   def location_params

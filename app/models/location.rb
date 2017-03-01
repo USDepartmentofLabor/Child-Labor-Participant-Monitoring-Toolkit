@@ -3,4 +3,6 @@ class Location < ActiveRecord::Base
   belongs_to :location_type
 
   validates_presence_of :location_type_id, :name
+
+  default_scope { order(:id) }
 end

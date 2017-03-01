@@ -1,11 +1,57 @@
 <tr>
-  <td><%= location.location_type.name %></td>
-  <td><%= location.name %></td>
-  <td><%= location.address_line1 %></td>
-  <td><%= location.address_line2 %></td>
-  <td><%= location.city %></td>
-  <td><%= location.state %></td>
-  <td><%= location.zip %></td>
-  <td><%= location.country %></td>
-  <td><%= fa_icon 'trash' %>
+  <td>
+    <%= content_tag :span, data: { type: "select", resource: "location",
+      name: "location_type_id", source: LocationType.for_select.to_json,
+      url: location_path(location), value: location.location_type_id } do %>
+      <%= location.location_type.name %>
+    <% end %>
+  </td>
+  <td>
+    <%= content_tag :span, data: { type: "text", resource: "location",
+      name: "name", url: location_path(location) } do %>
+      <%= location.name %>
+    <% end %>
+  </td>
+  <td>
+    <%= content_tag :span, data: { type: "text", resource: "location",
+      name: "address_line1", url: location_path(location) } do %>
+      <%= location.address_line1 %>
+    <% end %>
+  </td>
+  <td>
+    <%= content_tag :span, data: { type: "text", resource: "location",
+      name: "address_line2", url: location_path(location) } do %>
+      <%= location.address_line2 %>
+    <% end %>
+  </td>
+  <td>
+    <%= content_tag :span, data: { type: "text", resource: "location",
+      name: "city", url: location_path(location) } do %>
+      <%= location.city %>
+    <% end %>
+  </td>
+  <td>
+    <%= content_tag :span, data: { type: "text", resource: "location",
+      name: "state", url: location_path(location) } do %>
+      <%= location.state %>
+    <% end %>
+  </td>
+  <td>
+    <%= content_tag :span, data: { type: "text", resource: "location",
+      name: "zip", url: location_path(location) } do %>
+      <%= location.zip %>
+    <% end %>
+  </td>
+  <td>
+    <%= content_tag :span, data: { type: "text", resource: "location",
+      name: "country", url: location_path(location) } do %>
+      <%= location.country %>
+    <% end %>
+  </td>
+  <td class="options-controls">
+    <%= link_to location_path(location), method: :delete,
+      class: 'options-control', data: { confirm: t("general.confirm") } do %>
+      <%= fa_icon 'times', class: 'text-danger' %>
+    <% end %>
+  </td>
 </tr>
