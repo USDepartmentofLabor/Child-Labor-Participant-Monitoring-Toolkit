@@ -1,16 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-	
-	$('#households-data-table').DataTable
-		"paging": true
-		"lengthChange": false
-		"searching": true
-		"ordering": true
-		"info": true
-		"autoWidth": false
-	
+  $('#households-data-table').DataTable()
+
   $('form').on 'click', '.remove_fields', (event) ->
     event.preventDefault()
     $(this).prev('input[type=hidden]').val('1')

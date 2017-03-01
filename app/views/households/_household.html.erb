@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to household.id, household_path(household) %></td>
+  <td><%= link_to household.name, household_path(household) %></td>
+  <td><%= household.children.count %></td>
+  <td><%= household.adults.count %></td>
+  <td><%= household.intake_date %></td>
+</tr>

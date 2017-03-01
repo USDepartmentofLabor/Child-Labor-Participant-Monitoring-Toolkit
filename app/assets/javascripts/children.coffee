@@ -1,6 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 @validateFiles = (inputEl) ->
   maxFileSize = $(inputEl).data("max-file-size")
   maxFileSizeExceeded = $(inputEl).data("max-file-size-message")
@@ -10,9 +7,10 @@
   sizeExceeded = false
   extensionFalse = false
   $.each inputEl.files, ->
-    sizeExceeded = true  if @size and maxFileSize and @size > parseInt(maxFileSize)
+    sizeExceeded = @size and maxFileSize and @size > parseInt(maxFileSize)
     extName = @name.split(".").pop()
-    extensionFalse = true  if $.inArray(extName.toLowerCase(), allowedExtension) is -1
+    extensionFalse = $.inArray(extName.toLowerCase(), allowedExtension) is -1
+    null
 
   if extensionFalse
     window.alert formatWrong
@@ -33,15 +31,7 @@ jQuery ->
     if @value == "0"
       $("#household-form-modal").modal("show")
 
-  $.fn.dataTableExt.oStdClasses.sWrapper = "dataTables_wrapper dt-bootstrap";
-
-  $('#child-data-table').DataTable
-    "paging": true
-    "lengthChange": false
-    "searching": true
-    "ordering": true
-    "info": true
-    "autoWidth": false
+  $('#children-data-table').DataTable()
 
   $('#status-modal').on 'show.bs.modal', (event) ->
     button = $(event.relatedTarget)
@@ -59,3 +49,5 @@ jQuery ->
       else
         $('#education-status').removeClass 'hidden'
         $('#work-status').addClass 'hidden'
+
+    false
