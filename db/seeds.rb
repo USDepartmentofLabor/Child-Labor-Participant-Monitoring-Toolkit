@@ -191,3 +191,10 @@ Translation.create([
   { locale: 'es', key: 'login.remember_me', value: 'Recuérdame' },
   { locale: 'es', key: 'login.tagline', value: 'Cuanto más nos conectamos, mejor se pone.' }
 ])
+
+CustomSection.create([
+    { title: 'Section 1', model_type: 'Child', sort_order: 1},
+    { title: 'Economic Activity', model_type: 'Child', sort_order: 2},
+    { title: 'Health and Safety of Working Children', model_type: 'Child', sort_order: 3},
+    { title: 'Hosehold Tasks of Children', model_type: 'Child', sort_order: 4}
+])
