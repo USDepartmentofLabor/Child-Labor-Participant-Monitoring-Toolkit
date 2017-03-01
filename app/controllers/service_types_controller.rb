@@ -16,7 +16,8 @@ class ServiceTypesController < ApplicationController
     @service_type = ServiceType.new(service_type_params)
 
     if @service_type.save
-      redirect_to service_types_path, notice: t("action_messages.create", model: "Service Type")
+      redirect_to service_types_path, notice: t("action_messages.create",
+                                        model: ServiceType.model_name.human)
     else
       render :new
     end
@@ -26,7 +27,8 @@ class ServiceTypesController < ApplicationController
     @service_type = ServiceType.find(params[:id])
 
     if @service_type.update(service_type_params)
-      redirect_to service_types_path, notice: t("action_messages.update", model: "Service Type")
+      redirect_to service_types_path, notice: t("action_messages.update",
+                                        model: ServiceType.model_name.human)
     else
       render :edit
     end
@@ -35,7 +37,9 @@ class ServiceTypesController < ApplicationController
   private
 
   def service_type_params
-    params.require(:service_type).permit(:name, :definition, :service_type_category_id)
+    params.require(:service_type).permit(
+      :name, :definition, :service_type_category_id
+    )
   end
 
 end
