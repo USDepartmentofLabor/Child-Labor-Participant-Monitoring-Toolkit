@@ -12,21 +12,25 @@ class HouseholdsController < ApplicationController
   def show
     @children = @household.children
     @adults = @household.adults
-    @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields
+    if ! CustomSection.where(model_type: 'Household', sort_order: 1).empty?
+      @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields
+    else
+      @section_1_custom_fields = Array.new
+    end
     @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'Household', 1)
   end
 
   # GET /households/new
   def new
     @household = Household.new
-    @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields
+    @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields unless CustomSection.where(model_type: 'Household', sort_order: 1).empty?
     @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'Household', 1)
     @person_custom_fields = CustomField.where(model_type: 'Person')
   end
 
   # GET /households/1/edit
   def edit
-    @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields.with_values(@household.id)
+    @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields.with_values(@household.id) unless CustomSection.where(model_type: 'Household', sort_order: 1).empty?
     @person_custom_fields = CustomField.where(model_type: 'Person')
   end
 
