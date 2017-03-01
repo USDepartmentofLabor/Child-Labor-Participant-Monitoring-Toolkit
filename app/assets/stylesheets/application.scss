@@ -170,3 +170,16 @@ dl {
     color: lighten(#000, 20%);
   }
 }
+
+.options-control {
+  padding-right: 10px;
+  opacity: 0.2;
+}
+
+button.options-control {
+  margin-right: 10px;
+}
+
+.options-controls:hover .options-control {
+  opacity: 1;
+}

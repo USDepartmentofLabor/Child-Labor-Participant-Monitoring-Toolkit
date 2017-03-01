@@ -39,10 +39,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def show
-    @location = Location.new
-  end
-
   def gender_count
     count_in_sex = @project.children.group(:sex).count
     res = {}

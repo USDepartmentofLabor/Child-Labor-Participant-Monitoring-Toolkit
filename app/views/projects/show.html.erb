@@ -58,16 +58,15 @@
     <%= fa_icon "map-marker" %>
     <h3 class="box-title"><%= t("projects.show.locations") %></h3>
     <div class="box-tools pull-right">
-      <%= link_to '#add-location', 'data-show' => 'location-fields' do %>
+      <%= link_to '#', 'data-show' => 'location-fields' do %>
         <%= fa_icon "plus", text: t("general.add") %>
       <% end %>
     </div>
   </div>
   <div class="box-body no-padding">
     <div class="tabled-responsive">
-      <%= form_for(Location.new, html: { role: "form" }) do |f| %>
+      <%= form_for(Location.new, remote: :true, html: {role: "form"}) do |f| %>
       <%= f.hidden_field :project_id, value: @project.id %>
-      <% if @project.locations.count > 0 %>
         <table class="table table-hover table-condensed">
           <thead>
             <tr>
@@ -82,13 +81,14 @@
               <th>&nbsp;</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="locations">
             <%= render partial: "location_show",
               collection: @project.locations, as: 'location' %>
+          </tbody>
+          <tbody id="location-fields" style="display: none">
             <%= render partial: 'location_fields', locals: {f: f} %>
           </tbody>
         </table>
-      <% end %>
       <% end %>
     </div>
   </div>

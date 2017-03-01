@@ -1,0 +1,18 @@
+$('.content-header').html(
+    '<div class="alert alert-success alert-dismissable">' +
+    '  <i class="fa fa-check"></i>' +
+    '  <button type="button" class="close" data-dismiss="alert" ' +
+    '    aria-hidden="true">×</button><b><%= j notice %></b>' +
+    '</div>').fadeIn().delay(3000).fadeOut();
+
+$('#locations').html(
+  '<%= j render(partial: "location_show", collection: @project.locations,
+    as: "location") %>'
+);
+
+$('#locations td span').editable({
+  mode: 'inline'
+});
+
+$('#new_location')[0].reset();
+$('#location-fields').hide();
