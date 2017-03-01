@@ -43,12 +43,6 @@ es:
     create_failed: "No se ha podido añadido %{model}. %{error}"
     update_failed: "No se pudo actualizar %{model}. %{error}"
     destroy_failed: "No se pudo eliminar %{model}. %{error}"
-  login:
-    name: "Nombre completo"
-    sign_up: "Registrese"
-    password_confirmation: "Confirmación de contraseña"
-    login: "Iniciar sesión"
-    welcome_back: "Dar una buena acogida"
   passwords:
     forgot_password: "Se te olvidó tu contraseña"
     enter_email: "Por favor, introduzca su dirección de correo electrónico"
