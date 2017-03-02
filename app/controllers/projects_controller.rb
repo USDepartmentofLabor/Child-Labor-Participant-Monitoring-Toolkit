@@ -2,8 +2,6 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:dashboard, :show, :gender_count]
 
   def dashboard
-    redirect_to 'new' if @project.nil?
-
     @total_children = Child.count
     @total_households = Household.count
 
@@ -30,13 +28,9 @@ class ProjectsController < ApplicationController
     @project_complete_percentage = (Date.today.mjd - @project.start_date.mjd) /
       (@project.end_date.mjd - @project.start_date.mjd).to_f * 100.0
 
-    @new_children = Child.order('RANDOM()').limit(8) # TODO: Get non-random children
+    @new_children = Child.order('created_at desc').limit(8)
 
-    if @total_children == 0 && @total_households == 0
-      redirect_to @project
-    else
-      render 'dashboard'
-    end
+    render 'dashboard'
   end
 
   def gender_count
