@@ -98,6 +98,8 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
+    chartjs-ror (3.3.1)
+      rails (>= 3.1)
     ckeditor (4.2.2)
       cocaine
       orm_adapter (~> 0.5.0)
@@ -383,6 +385,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara
   carrierwave
+  chartjs-ror
   ckeditor
   coffee-rails
   country_select!
