@@ -27,6 +27,32 @@ class Child < Person
     return I18n.t(option[0])
   end
 
+  def self.gender_names
+    [I18n.t(SEX_OPTIONS[0][0]), I18n.t(SEX_OPTIONS[1][0])]
+  end
+
+  def self.group_by_age
+    date_range_e = (Date.today - 17.years)..(Date.today - 14.years) # 0..4
+    date_range_d = (Date.today - 14.years)..(Date.today - 10.years) # 5..8
+    date_range_c = (Date.today - 10.years)..(Date.today - 7.years) # 9..11
+    date_range_b = (Date.today - 7.years)..(Date.today - 4.years) # 12..14
+    date_range_a = (Date.today - 4.years)..(Date.today - 0.years) # 15..17
+    c = Person.arel_table
+
+    group_a = Person.where(c[:age].between(0..4)
+                .or(c[:dob].between(date_range_a))).count
+    group_b = Person.where(c[:age].between(5..8)
+                .or(c[:dob].between(date_range_b))).count
+    group_c = Person.where(c[:age].between(9..11)
+                .or(c[:dob].between(date_range_c))).count
+    group_d = Person.where(c[:age].between(12..14)
+                .or(c[:dob].between(date_range_d))).count
+    group_e = Person.where(c[:age].between(15..17)
+                .or(c[:dob].between(date_range_e))).count
+
+    [group_a, group_b, group_c, group_d, group_e]   
+  end
+
   def male?
     self.sex == 1
   end
