@@ -1,3 +1,5 @@
 $("#editFieldModal .modal-body").html('<%= j render(partial: "form", locals: {custom_field: @custom_field}) %>');
 
 $("#editFieldModal").modal('show');
+
+registerToggleSelectionsCallback('#editFieldModal', '[name="custom_field[field_type]"]');

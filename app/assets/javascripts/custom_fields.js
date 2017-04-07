@@ -1,22 +1,24 @@
 $(document).ready(function() {
+  var target = '[name="custom_field[field_type]"]';
 
-  var fieldType = $('[name="custom_field[field_type]"]');
-
-  toggleSelections(fieldType.val());
-
-  fieldType.on('change', function(e) {
-    toggleSelections(e.target.value);
-  });
-
+  registerToggleSelectionsCallback('', target);
 });
 
-function toggleSelections(value) {
+function registerToggleSelectionsCallback(owner, target) {
+  var fieldType = $(owner + ' ' + target);
+  toggleSelections(owner + ' #selections', fieldType.val());
+  fieldType.on('change', function(e) {
+    toggleSelections(owner + ' #selections', e.target.value);
+  });
+}
+
+function toggleSelections(target, value) {
   if(value === 'check_box' || value === 'radio_button' ||
     value === 'select' || value === 'rank_list' ) {
-    $('#selections').show();
+    $(target).show();
   } else {
-    $('#selections').hide();
-    $('#selections textarea').val('');
+    $(target).hide();
+    $(target + ' textarea').val('');
   }
 }
 
