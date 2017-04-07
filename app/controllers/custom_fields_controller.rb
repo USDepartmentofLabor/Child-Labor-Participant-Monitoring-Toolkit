@@ -57,6 +57,6 @@ class CustomFieldsController < ApplicationController
   end
 
   def custom_field_params
-    params.require(:custom_field).permit(:name, :field_type, :selections, :model_type, :section_id, :help_text, :sort_order)
+    params.require(:custom_field).permit(:name, :field_type, :selections, :model_type, :custom_section_id, :help_text, :sort_order)
   end
 end
