@@ -11,11 +11,27 @@ class CustomField < ActiveRecord::Base
       .joins("LEFT OUTER JOIN custom_values ON custom_values.custom_field_id = custom_fields.id AND custom_values.model_id = #{model_id.to_i}")
   end
 
-  def custom_value
-    custom_values.first
+  def custom_value(model_id)
+    custom_values.where(model_id: model_id).first
   end
 
-  def custom_value_text
-    custom_value.value_text if custom_value.present?
+  def custom_value_text(model_id)
+    if custom_value(model_id).present?
+      v = JSON.parse custom_value(model_id).value_text
+      if v.is_a? Array
+        return v
+      else
+        return v["value_text"]
+      end
+    end
+    nil
+  end
+
+  def custom_value_other(model_id)
+    if custom_value(model_id).present?
+      v = JSON.parse custom_value(model_id).value_text
+      return v["other"]
+    end
+    nil
   end
 end

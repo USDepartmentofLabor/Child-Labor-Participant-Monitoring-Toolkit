@@ -31,6 +31,11 @@ class HouseholdsController < ApplicationController
   # GET /households/1/edit
   def edit
     @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields.with_values(@household.id) unless CustomSection.where(model_type: 'Household', sort_order: 1).empty?
+    @sections = []
+    CustomSection.where('model_type = ? AND sort_order > ?', 'Household', 1).each do |s|
+      s.custom_fields = s.custom_fields.with_values(@household.id)
+      @sections.push s
+    end
     @person_custom_fields = CustomField.where(model_type: 'Person')
   end
 

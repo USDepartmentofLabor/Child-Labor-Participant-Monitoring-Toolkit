@@ -1,19 +1,27 @@
 module CustomFieldsHelper
-  def custom_field_value(custom_field)
-    if custom_field.respond_to?(:custom_value_text) && custom_field.custom_value_text.present?
-      return custom_field.custom_value_text
+  def custom_field_value(custom_field, model_id)
+    if custom_field.respond_to?(:custom_value_text) && custom_field.custom_value_text(model_id).present?
+      return custom_field.custom_value_text(model_id)
     end
     return nil
   end
 
-  def custom_input(field_object, name, options={})
+  def custom_field_other(custom_field, model_id)
+    if custom_field.respond_to?(:custom_value_other) && custom_field.custom_value_other(model_id).present?
+      return custom_field.custom_value_other(model_id)
+    end
+    return nil
+  end
+
+  def custom_input(field_object, name, model_id, options={})
     field_type = field_object.field_type
 
     if options[:fill].nil? || options[:fill]
-      # content = field_object.custom_value.present? ? field_object.custom_value.value_text : nil
-      content = custom_field_value(field_object)
+      content = custom_field_value(field_object, model_id)
+      other = custom_field_other(field_object, model_id)
     else
       content = nil
+      other = nil
     end
 
     case field_type
@@ -31,12 +39,16 @@ module CustomFieldsHelper
     when "check_box"
       options_for_select = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
       checkbox_dom = options_for_select.map.with_index do |opt, i|
-        checked = (opt == content)
+        checked = content && content.include?(opt)
         content_tag(:div, class: "checkbox") do
-          content_tag(:label, class: "radio-inline") do
+          checks = content_tag(:label, class: "radio-inline") do
             concat check_box_tag("#{name}[]", opt, checked, {id: "#{name.gsub(/\[|\]/, '_')}_#{i}", class: "square-red"}.merge(options))
             concat " #{opt}"
           end
+          if opt.include? "(specify)"
+            checks += text_field_tag(name.sub('value_text', 'other'), other, {class: "form-control", style: "display:inline-block;width:auto;margin-left:10px"}.merge(options))
+          end
+          checks
         end
       end
       checkbox_dom.join.html_safe

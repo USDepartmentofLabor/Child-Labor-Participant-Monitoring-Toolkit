@@ -28,7 +28,8 @@
       <%= f.text_area :note, class: "form-control", rows: "5" %>
     </div>
 
-    <%= render partial: 'custom_fields/custom_field', collection: @custom_status_fields %>
+    <%= render partial: 'custom_fields/custom_field',
+      collection: @custom_status_fields, locals: {model_id: @child.id} %>
 
     <%= f.hidden_field :user_id %>
   </div>

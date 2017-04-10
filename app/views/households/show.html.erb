@@ -27,14 +27,21 @@
           <dd><%= @household.intake_date %></dd>
           <% @section_1_custom_fields.each do |custom_field| %>
             <dt><%= custom_field.name %></dt>
-            <dd><%= custom_field_value(custom_field) %></dd>
+            <dd>
+              <% if custom_field_value(custom_field, @household.id).is_a? Array %>
+                <%= custom_field_value(custom_field, @household.id).join(', ') %>
+              <% else %>
+                <%= custom_field_value(custom_field, @household.id) %>
+              <% end %>
+              <%= custom_field_other(custom_field, @household.id) %>
+            </dd>
           <% end %>
         </dl>
       </div>
     </div>
 
     <%= render partial: 'custom_sections/custom_section_show',
-          collection: @sections %>
+      collection: @sections, locals: {model_id: @household.id} %>
 
     <div class="box box-primary">
       <div class="box-header with-border">

@@ -9,7 +9,14 @@
     <dl>
       <% custom_section_show.custom_fields.each do |custom_field| %>
         <dt><%= custom_field.name %></dt>
-        <dd><%= custom_field_value(custom_field) %></dd>
+        <dd>
+        <% if custom_field_value(custom_field, model_id).is_a? Array %>
+          <%= custom_field_value(custom_field, model_id).join(', ') %>
+        <% else %>
+          <%= custom_field_value(custom_field, model_id) %>
+        <% end %>
+        <%= custom_field_other(custom_field, model_id) %>
+        </dd>
       <% end %>
     </dl>
   </div>

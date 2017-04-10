@@ -69,7 +69,7 @@
         </div>
         <% @custom_fields.sort_by { |f| f.sort_order }.each do |custom_field| %>
         <p><%= markdown(custom_field.name) %></p>
-        <p><%= custom_field_value(custom_field) %></p>
+        <p><%= custom_field_value(custom_field, @child.id) %></p>
         <% end %>
       </div>
     </div>
