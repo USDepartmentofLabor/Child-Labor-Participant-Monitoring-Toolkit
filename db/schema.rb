@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301232657) do
+ActiveRecord::Schema.define(version: 20170410043948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -243,8 +243,9 @@ ActiveRecord::Schema.define(version: 20170301232657) do
     t.integer  "household_id"
     t.date     "intake_date"
     t.boolean  "is_head_of_household"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.boolean  "is_beneficiary",                 default: false
   end
 
   create_table "project_target_types", force: :cascade do |t|
