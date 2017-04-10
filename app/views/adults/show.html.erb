@@ -70,7 +70,7 @@
       <div class="box-body">
         <%= form_for(@adult, html: { role: "form" }) do |f| %>
           <%= f.hidden_field :household_id %>
-          <%= render partial: 'custom_fields/custom_field', collection: @custom_fields %>
+          <%= render partial: 'custom_fields/custom_field', collection: @custom_fields, locals: {model_id: @adult.id} %>
           <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
         <% end %>
       </div>
