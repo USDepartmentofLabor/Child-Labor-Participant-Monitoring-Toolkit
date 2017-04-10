@@ -23,6 +23,10 @@
           </div>
         </div>
         <div class="form-group">
+          <%= f.check_box :is_beneficiary, class: 'square-red' %>
+          <%= f.label :is_beneficiary %>
+        </div>
+        <div class="form-group">
           <%= f.label :first_name, Child.human_attribute_name(:first_name) %>
           <%= f.text_field :first_name, class: "form-control" %>
         </div>
@@ -48,25 +52,6 @@
         <div class="form-group">
           <%= f.label :age, Child.human_attribute_name(:age) %>
           <%= f.text_field :age, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-md-offset-2 col-md-4">
-        <div class="fileinput fileinput-new" data-provides="fileinput">
-          <div class="fileinput-new thumbnail" style="width: 200px">
-            <%=  preview_avatar(@child) %>
-          </div>
-          <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px"></div>
-          <div>
-            <span class="btn btn-default btn-file">
-              <span class="fileinput-new"><%= t("children.new.select_image") %></span>
-              <span class="fileinput-exists"><%= t("children.new.change") %></span>
-              <%= f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg,image/jpg', onchange: "validateFiles(this);", data: { max_file_size: 5.megabytes, max_file_size_message: t("children.new.select_image", size: 5.megabytes), file_format_message:
-              t("children.new.image_format") } %>
-            </span>
-            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">
-              <%= t("children.new.remove_image") %>
-            </a>
-          </div>
         </div>
       </div>
     </div>
