@@ -45,7 +45,6 @@ Rails.application.routes.draw do
   resources :services
   resources :technical_progress_reports
   resources :users
-  resources :users
 
   devise_for :users, skip: [:sessions, :registrations, :confirmations]
 

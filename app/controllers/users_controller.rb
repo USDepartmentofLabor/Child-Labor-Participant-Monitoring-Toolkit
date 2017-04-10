@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :do_authorize
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -32,6 +32,11 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to users_path, notice: t("action_messages.destroy", model: User.model_name.human)
   end
 
   private
