@@ -48,7 +48,7 @@
   </div>
 
   <%= render partial: 'custom_fields/custom_field',
-    collection: @person_custom_fields %>
+    collection: @person_custom_fields, locals:{model_id: @household.id} %>
 
   <%= f.hidden_field :_destroy %>
   <%= link_to '#', class: "remove_fields pull-right" do %>

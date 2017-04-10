@@ -6,6 +6,7 @@
     </h3>
   </div>
   <div class="box-body">
-    <%= render partial: 'custom_fields/custom_field', collection: custom_section.custom_fields %>
+    <%= render partial: 'custom_fields/custom_field',
+      collection: custom_section.custom_fields, locals: {model_id: model_id} %>
   </div>
 </div>
