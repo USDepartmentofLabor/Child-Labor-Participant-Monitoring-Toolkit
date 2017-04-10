@@ -25,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render(partial: "child", collection: @children) %>
+        <%= render(partial: "child", collection: @children.where(:is_beneficiary => true)) %>
       </tbody>
     </table>
   </div>
