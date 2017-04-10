@@ -22,9 +22,7 @@ class CustomFieldGroup
       custom_value.value_text = values[field_id].to_json
 
       if !(custom_value.value_text.blank? || values[field_id].nil?)
-        if values[field_id].is_a? Array || !values[field_id]['value_text'].blank?
-          custom_value.save
-        end
+        custom_value.save
       end
     end
   end
