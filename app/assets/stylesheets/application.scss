@@ -175,3 +175,9 @@ button.options-control {
 .options-controls:hover .options-control {
   opacity: 1;
 }
+
+.with-check, .with-radio {
+  display: inline-block;
+  width: auto;
+  margin-left: 10px;
+}
