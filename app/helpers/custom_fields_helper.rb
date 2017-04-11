@@ -1,13 +1,15 @@
 module CustomFieldsHelper
   def custom_field_value(custom_field, model_id)
-    if custom_field.respond_to?(:custom_value_text) && custom_field.custom_value_text(model_id).present?
+    if custom_field.respond_to?(:custom_value_text) &&
+      custom_field.custom_value_text(model_id).present?
       return custom_field.custom_value_text(model_id)
     end
     return nil
   end
 
   def custom_field_other(custom_field, model_id)
-    if custom_field.respond_to?(:custom_value_other) && custom_field.custom_value_other(model_id).present?
+    if custom_field.respond_to?(:custom_value_other) &&
+      custom_field.custom_value_other(model_id).present?
       return custom_field.custom_value_other(model_id)
     end
     return nil
@@ -29,24 +31,34 @@ module CustomFieldsHelper
       text_field_tag(name, content, {class: "form-control"}.merge(options))
 
     when "textarea"
-      text_area_tag(name, content, {class: "form-control", rows: 5}.merge(options))
+      text_area_tag(name, content,
+                    {class: "form-control", rows: 5}.merge(options))
 
     when "select"
-      options_dom = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
+      options_dom =
+        field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
       # content should be the options for select in this case
-      select_tag(name, options_for_select(options_dom, content), {class: "form-control", include_blank: true}.merge(options))
+      select_tag(name, options_for_select(options_dom, content),
+                 {class: "form-control", include_blank: true}.merge(options))
 
     when "check_box"
-      options_for_select = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
-      checkbox_dom = options_for_select.map.with_index do |opt, i|
+      options_dom =
+        field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
+      checkbox_dom = options_dom.map.with_index do |opt, i|
         checked = content && content.include?(opt)
         content_tag(:div, class: "checkbox") do
-          checks = content_tag(:label, class: "radio-inline") do
-            concat check_box_tag("#{name}[]", opt, checked, {id: "#{name.gsub(/\[|\]/, '_')}_#{i}", class: "square-red"}.merge(options))
+          checks = content_tag(:label, class: "checkbox-inline") do
+            concat check_box_tag("#{name}[]", opt, checked,
+                                 {id: "#{name.gsub(/\[|\]/, '_')}_#{i}",
+                                  class: "square-red"}.merge(options))
             concat " #{opt}"
           end
+
           if opt.include? "(specify)"
-            checks += text_field_tag(name.sub('value_text', 'other'), other, {class: "form-control", style: "display:inline-block;width:auto;margin-left:10px"}.merge(options))
+            checks +=
+              text_field_tag(name.sub('value_text', 'other'), other,
+                             {class: "form-control with-check"}.merge(options)
+                            )
           end
           checks
         end
@@ -54,14 +66,24 @@ module CustomFieldsHelper
       checkbox_dom.join.html_safe
 
     when "radio_button"
-      options_for_select = field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
-      radio_dom = options_for_select.map.with_index do |opt, i|
-        checked = (opt == content) # content.blank? ? (i == 0) : (opt == content)
-        content_tag(:div, class: "radio-inline") do
-          content_tag(:label, class: "radio-inline") do
-            concat radio_button_tag(name, opt, checked, {class: "square-red"}.merge(options))
+      options_dom =
+        field_object.selections.to_s.split(CustomFieldGroup.option_delimiter)
+      radio_dom = options_dom.map.with_index do |opt, i|
+        checked = (opt == content)
+        content_tag(:div, class: "radio") do
+          radios = content_tag(:label, class: "radio-inline") do
+            concat radio_button_tag(name, opt, checked,
+                                    {class: "square-red"}.merge(options))
             concat " #{opt}"
           end
+
+          if opt.include? "(specify)"
+            radios +=
+              text_field_tag(name.sub('value_text', 'other'), other,
+                             {class: "form-control with-radio"}.merge(options)
+                            )
+          end
+          radios
         end
       end
       radio_dom.join.html_safe
@@ -70,25 +92,44 @@ module CustomFieldsHelper
       number_field_tag(name, content, {class: "form-control"}.merge(options))
 
     when "date"
-      date_field_tag(name, content, {class: "form-control"}.merge(options))
+      content_tag(:div, class: "row date-select") do
+        date_select(name, content,
+                    {start_year: 1901, end_year: 2099, include_blank: true},
+                    {class: "form-control"}.merge(options))
+      end
 
     when "rank_list"
-      options_for_list = field_object.selections.split(CustomFieldGroup.option_delimiter)
-      name.insert(-13, '[]')
-      grid_dom = options_for_list.map.with_index do |o, i|
-        checked = (o == content)
-        content_tag(:div, class: "form-group grid-option") do
-          content_tag(:span, class: "grid-rank") do
-            s = content_tag(:span, class: "checkbox-inline grid-value", data: {option: i}) do
+      options_dom =
+        field_object.selections.split(CustomFieldGroup.option_delimiter)
+      grid_dom = options_dom.map.with_index do |opt, i|
+        checked = (opt == content)
+        content_tag(:div, class: "grid-rank checkbox") do
+          content_tag(:span, class: "grid-option") do
+            s = content_tag(:span, class: "checkbox-inline grid-value",
+                            data: {option: i}) do
               "#"
             end
+
             q = content_tag(:label, class: "checkbox-inline grid-question") do
-              concat check_box_tag(name, o, checked, {class: "square-red grid-check", data: {option: i}}.merge(options))
-              concat " #{o}"
+              concat check_box_tag(name, opt, checked,
+                                   {class: "square-red grid-check",
+                                    name: name + '[]',
+                                    id: "#{name.gsub(/\[|\]/, '_')}_#{i}",
+                                    data: {option: i}}.merge(options)
+                                  )
+              concat " #{opt}"
             end
 
-            [s, q].join.html_safe
+            o = nil
 
+            if opt.include? "(specify)"
+              o = 
+                text_field_tag(name.sub('value_text', 'other'), other,
+                             {class: "form-control with-check"}.merge(options)
+                              )
+            end
+
+            [s, q, o].join.html_safe
           end
         end
       end
