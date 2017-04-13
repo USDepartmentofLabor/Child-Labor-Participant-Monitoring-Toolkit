@@ -2,38 +2,24 @@ require 'rails_helper'
 
 RSpec.describe "children/new", type: :view do
   before(:each) do
-    assign(:child, Child.new(
-      :fname => "MyString",
-      :lname => "MyString",
-      :mname => "MyString",
-      :sex => 1,
-      :address => "MyString",
-      :city => "MyString",
-      :state => "MyString",
-      :country => "MyString"
-    ))
+    assign(:child, Child.new)
+
+    @sections = create_list(:custom_section, 2)
   end
 
-  it "renders new child form" do
+  it "renders the new child form" do
     render
 
     assert_select "form[action=?][method=?]", children_path, "post" do
+      assert_select "select[name=?]", "child[household_id]"
+      assert_select "select[name=?]", "child[intake_date(1i)]"
+      assert_select "input[name=?]", "child[is_beneficiary]"
+      assert_select "input[name=?]", "child[first_name]"
+      assert_select "input[name=?]", "child[last_name]"
+      assert_select "input[name=?]", "child[middle_name]"
+      assert_select "input[name=?]", "child[sex]"
 
-      assert_select "input#child_fname[name=?]", "child[fname]"
-
-      assert_select "input#child_lname[name=?]", "child[lname]"
-
-      assert_select "input#child_mname[name=?]", "child[mname]"
-
-      assert_select "input#child_sex[name=?]", "child[sex]"
-
-      assert_select "input#child_address[name=?]", "child[address]"
-
-      assert_select "input#child_city[name=?]", "child[city]"
-
-      assert_select "input#child_state[name=?]", "child[state]"
-
-      assert_select "input#child_country[name=?]", "child[country]"
+      assert_select "h3.box-title", :count => 3
     end
   end
 end

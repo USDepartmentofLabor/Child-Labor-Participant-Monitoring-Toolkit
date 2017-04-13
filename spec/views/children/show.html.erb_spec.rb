@@ -1,28 +1,16 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe "children/show", type: :view do
+describe "children/show" do
   before(:each) do
-    @child = assign(:child, Child.create!(
-      :fname => "Fname",
-      :lname => "Lname",
-      :mname => "Mname",
-      :sex => 1,
-      :address => "Address",
-      :city => "City",
-      :state => "State",
-      :country => "Country"
-    ))
+    @child = create(:child)
   end
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(/Fname/)
-    expect(rendered).to match(/Lname/)
-    expect(rendered).to match(/Mname/)
+    expect(rendered).to match(/FN 1/)
+    expect(rendered).to match(/LN 1/)
+    expect(rendered).to match(/Middle Name/)
     expect(rendered).to match(/1/)
-    expect(rendered).to match(/Address/)
-    expect(rendered).to match(/City/)
-    expect(rendered).to match(/State/)
-    expect(rendered).to match(/Country/)
   end
 end

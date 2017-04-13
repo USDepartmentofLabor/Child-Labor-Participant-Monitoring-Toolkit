@@ -1,6 +1,5 @@
 require 'rails_helper'
 require 'spec_helper'
-require 'pp'
 
 describe "children/edit" do
   before(:each) do
