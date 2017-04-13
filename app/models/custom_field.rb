@@ -1,37 +1,36 @@
 class CustomField < ActiveRecord::Base
+  validates :name, presence: true
+  validates :field_type, presence: true
+  validates :model_type, presence: true
+  validates :sort_order, presence: true
+
   belongs_to :custom_section
+  belongs_to :customizable, polymorphic: true
   has_many :custom_values
 
   default_scope { order(:custom_section_id, :sort_order) }
 
-  def self.with_values(model_id)
-    # includes not work when the custom_values does not exists...
-    # includes(:custom_values).where("custom_values.model_id = ?", model_id).references(:custom_values)
-    select("custom_fields.*, custom_values.value_text as custom_value_text")
-      .joins("LEFT OUTER JOIN custom_values ON custom_values.custom_field_id = custom_fields.id AND custom_values.model_id = #{model_id.to_i}")
+  attr_accessor :model_id
+
+  def value
+    return nil if model_id.nil? || model_type.nil? || custom_value.nil?
+
+    JSON.parse custom_value.value_text
   end
 
-  def custom_value(model_id)
+  def value= v
+    return if model_id.nil? || model_type.nil?
+
+    if custom_value.nil?
+      cv = CustomValue.new(custom_field_id: id, model_id: model_id, value_text: v.to_json)
+      custom_values.push cv
+    else
+      custom_value.update(value_text: v.to_json)
+    end
+  end
+
+private
+  def custom_value
     custom_values.where(model_id: model_id).first
-  end
-
-  def custom_value_text(model_id)
-    if custom_value(model_id).present?
-      v = JSON.parse custom_value(model_id).value_text
-      if v.is_a? Array
-        return v
-      else
-        return v["value_text"]
-      end
-    end
-    nil
-  end
-
-  def custom_value_other(model_id)
-    if custom_value(model_id).present?
-      v = JSON.parse custom_value(model_id).value_text
-      return v["other"]
-    end
-    nil
   end
 end
