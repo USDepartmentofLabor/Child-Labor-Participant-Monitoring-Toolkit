@@ -1,39 +1,32 @@
 require 'rails_helper'
+require 'spec_helper'
+require 'pp'
 
-RSpec.describe "children/edit", type: :view do
+describe "children/edit" do
   before(:each) do
-    @child = assign(:child, Child.create!(
-      :fname => "MyString",
-      :lname => "MyString",
-      :mname => "MyString",
-      :sex => 1,
-      :address => "MyString",
-      :city => "MyString",
-      :state => "MyString",
-      :country => "MyString"
-    ))
+    @child = create(:child,
+      :first_name => "MyString",
+      :last_name => "MyString",
+      :middle_name => "MyString",
+      :sex => 1
+    )
+
+    @sections = create_list(:custom_section, 2)
   end
 
   it "renders the edit child form" do
     render
 
     assert_select "form[action=?][method=?]", child_path(@child), "post" do
+      assert_select "select[name=?]", "child[household_id]"
+      assert_select "select[name=?]", "child[intake_date(1i)]"
+      assert_select "input[name=?]", "child[is_beneficiary]"
+      assert_select "input[name=?]", "child[first_name]"
+      assert_select "input[name=?]", "child[last_name]"
+      assert_select "input[name=?]", "child[middle_name]"
+      assert_select "input[name=?]", "child[sex]"
 
-      assert_select "input#child_fname[name=?]", "child[fname]"
-
-      assert_select "input#child_lname[name=?]", "child[lname]"
-
-      assert_select "input#child_mname[name=?]", "child[mname]"
-
-      assert_select "input#child_sex[name=?]", "child[sex]"
-
-      assert_select "input#child_address[name=?]", "child[address]"
-
-      assert_select "input#child_city[name=?]", "child[city]"
-
-      assert_select "input#child_state[name=?]", "child[state]"
-
-      assert_select "input#child_country[name=?]", "child[country]"
+      assert_select "h3.box-title", :count => 3
     end
   end
 end
