@@ -102,7 +102,7 @@ describe ChildrenController do
         child = create(:child)
         put :update, {:id => child.to_param, :child => new_attributes}
         child.reload
-        skip("Add assertions for updated state")
+        expect(assigns(:child)).to eq(child)
       end
 
       it "assigns the requested child as @child" do
