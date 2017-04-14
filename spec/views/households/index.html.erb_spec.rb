@@ -4,20 +4,10 @@ RSpec.describe "households/index", type: :view do
   before(:each) do
     assign(:households, [
       Household.create!(
-        :name => "Name",
-        :address => "Address",
-        :city => "City",
-        :state => "State",
-        :country => "US",
-        :phone => "Phone"
+        :name => "Name"
       ),
       Household.create!(
-        :name => "Name",
-        :address => "Address",
-        :city => "City",
-        :state => "State",
-        :country => "US",
-        :phone => "Phone"
+        :name => "Name"
       )
     ])
   end

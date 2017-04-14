@@ -14,4 +14,8 @@ class Household < ActiveRecord::Base
   def adults
     self.people.who_are_adults
   end
+
+  def custom_sections
+    CustomSection.where(model_type: 'Household')
+  end
 end

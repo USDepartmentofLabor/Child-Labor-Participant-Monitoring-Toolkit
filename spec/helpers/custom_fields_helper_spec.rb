@@ -1,8 +1,19 @@
 require "rails_helper"
 require "spec_helper"
-require "pp"
 
 describe CustomFieldsHelper do
+  describe "#custom_field_value" do
+    it "returns the value object for a custom field" do
+      cf = create :custom_field, id: 1
+      cv = create :custom_value, model_id: 1, custom_field_id: 1
+
+      v = custom_field_value cf, 1
+
+      expect(v).to be
+      expect(v).to eq("Text")
+    end
+  end
+
   describe "#custom_input" do
     it "creates a textbox" do
       hh = build :household
@@ -13,6 +24,16 @@ describe CustomFieldsHelper do
       expect(ci).to include("name=\"custom_field[#{cf.id}]\"")
       expect(ci).to include("id=\"custom_field_#{cf.id}\"")
       expect(ci).to include('class="form-control"')
+    end
+
+    it "creates a textbox with a value" do
+      hh = create :household
+      cf = create :custom_field, field_type: 'text'
+      cv = create :custom_value, custom_field_id: cf.id, model_id: hh.id
+      ci = custom_input cf, "custom_field[#{cf.id}]", hh.id
+
+      expect(ci).to be
+      expect(ci).to include('value="Text"')
     end
 
     it "creates a number field" do
@@ -37,6 +58,19 @@ describe CustomFieldsHelper do
       expect(ci).to include("select id=\"custom_field_#{cf.id}__3i\"")
       expect(ci).to include('class="form-control"')
       expect(ci).to include('<option value=""></option>')
+    end
+
+    it "creates a date with a value" do
+      hh = create :household
+      cf = create :custom_field, field_type: 'date'
+      cv = create :custom_value, custom_field_id: cf.id, model_id: hh.id,
+        value_text: {"value_text": {"(1i)": "2001", "(2i)": "10", "(3i)": "1"}}.to_json
+      ci = custom_input cf, "custom_field[#{cf.id}]", hh.id
+
+      expect(ci).to be
+      expect(ci).to include('<option value="1" selected="selected">')
+      expect(ci).to include('<option value="10" selected="selected">')
+      expect(ci).to include('<option value="2001" selected="selected">')
     end
 
     it "creates a textarea" do

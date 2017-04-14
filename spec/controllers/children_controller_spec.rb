@@ -1,57 +1,56 @@
 require 'rails_helper'
+require 'spec_helper'
+require 'pp'
 
-RSpec.describe ChildrenController, type: :controller do
+describe ChildrenController do
+  login_user
 
-  let(:user) { create(:user) }
+  before do
+    @child = create(:child)
+  end
 
   let(:invalid_attributes) {{
-    :last_name => "!"
+    :last_name => nil
   }}
-
-  before(:each) do
-    sign_in user
-  end
 
   describe "GET #index" do
     it "assigns all children as @children" do
-      children = create_list(:child, 3)
       get :index
-      expect(assigns(:children).length).to eq(3)
+      expect(assigns(:children)).to eq([@child])
+    end
+
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template("index")
     end
   end
 
   describe "GET #show" do
     it "assigns the requested child as @child" do
-      children = create_list(:child, 3)
-      child = children.first
-      get :show, {:id => child.to_param}
-      expect(assigns(:child)).to eq(child)
+      get :show, {:id => @child.to_param}
+      expect(assigns(:child)).to eq(@child)
     end
 
-    it "shows child with custom fields" do
-      custom_fields = create_list(:custom_field, 3, model_type: "Child")
-      child = create(:child)
+    it "includes custom fields" do
+      custom_fields = create_list(:custom_field, 3, model_type: "Child", custom_section_id: 1)
 
-      get :show, {:id => child.to_param}
+      get :show, {:id => @child.to_param}
       expect(assigns(:custom_fields).map { |e| e.id }).to eq(custom_fields.map { |e| e.id })
     end
   end
 
   describe "GET #new" do
     it "assigns a new child as @child" do
-      project = create(:project)
-      get :new, {project_id: project.id}
+      get :new
       expect(assigns(:child)).to be_a_new(Child)
     end
   end
 
   describe "GET #edit" do
     it "assigns the requested child as @child" do
-      project = create(:project_with_children, num_child: 3)
-      custom_fields = create_list(:custom_field, 3, project_id: project.id, model_type: "Child")
-      child = project.children.first
+      custom_fields = create_list(:custom_field, 3, model_type: "Child")
 
-      get :edit, {:id => child.to_param, project_id: project.id}
+      get :edit, {:id => @child.to_param}
       expect(assigns(:custom_fields).map { |e| e.id }).to eq(custom_fields.map { |e| e.id })
     end
   end

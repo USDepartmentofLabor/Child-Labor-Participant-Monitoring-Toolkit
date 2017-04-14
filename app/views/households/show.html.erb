@@ -35,7 +35,7 @@
               <% end %>
               <%= custom_field_other(custom_field, @household.id) %>
             </dd>
-          <% end %>
+          <% end unless @section_1_custom_fields.nil? %>
         </dl>
       </div>
     </div>

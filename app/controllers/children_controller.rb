@@ -6,15 +6,15 @@ class ChildrenController < ApplicationController
 
   # GET /children
   def index
-    @children = Child.all
+    @children = Child.all.who_are_beneficiaries
   end
 
   # GET /children/1
   def show
     @child_statuses = @child.statuses.includes(:work_status, :education_status)
     @service_instances = @child.service_instances.includes(:service)
-    @custom_fields = CustomField.where(model_type: "Child").with_values(@child.id)
-    @custom_status_fields = CustomField.where(model_type: "ChildFollowup").with_values(@child.id)
+    @custom_fields = CustomField.where(model_type: "Child")
+    @custom_status_fields = CustomField.where(model_type: "ChildFollowup")
   end
 
   # GET /children/new
@@ -29,7 +29,10 @@ class ChildrenController < ApplicationController
 
   # GET /children/1/edit
   def edit
-    @custom_fields = CustomField.where(model_type: "Child").with_values(@child.id)
+    @section_1_custom_fields = CustomSection
+      .where('model_type = ? AND sort_order = ?', 'Child', 1).first.custom_fields unless CustomSection
+        .where('model_type = ? AND sort_order = ?', 'Child', 1).empty?
+    @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'Child', 1)
   end
 
   # POST /children
