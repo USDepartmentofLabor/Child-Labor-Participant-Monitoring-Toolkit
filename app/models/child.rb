@@ -18,6 +18,7 @@ class Child < Person
     :reject_if     => :all_blank
 
   default_scope { where('(age <= 17 or dob >= ?)', Date.today - 17.years) }
+  scope :who_are_beneficiaries, -> { where('is_beneficiary', true) }
 
   # Input: the integer of sex field
   # Return: the human readable text of the sex name

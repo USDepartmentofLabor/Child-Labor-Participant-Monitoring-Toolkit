@@ -1,6 +1,5 @@
 require "spec_helper"
 require "rails_helper"
-require "pp"
 
 describe CustomField do
   before :each do
@@ -46,5 +45,4 @@ describe CustomField do
       expect(v).to eq 'New Text'
     end
   end
-
 end

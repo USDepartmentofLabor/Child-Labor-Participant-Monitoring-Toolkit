@@ -1,18 +1,18 @@
 module CustomFieldsHelper
   def custom_field_value(custom_field, model_id)
-    if custom_field.respond_to?(:custom_value_text) &&
-      custom_field.custom_value_text(model_id).present?
-      return custom_field.custom_value_text(model_id)
+    custom_field.model_id = model_id
+    if custom_field.value.present?
+      return custom_field.value['value'] || custom_field.value['value_text']
     end
-    return nil
+    nil
   end
 
   def custom_field_other(custom_field, model_id)
-    if custom_field.respond_to?(:custom_value_other) &&
-      custom_field.custom_value_other(model_id).present?
-      return custom_field.custom_value_other(model_id)
+    custom_field.model_id = model_id
+    if custom_field.value.present?
+      return custom_field.value['other']
     end
-    return nil
+    nil
   end
 
   def custom_input(field_object, name, model_id, options={})
@@ -92,10 +92,25 @@ module CustomFieldsHelper
       number_field_tag(name, content, {class: "form-control"}.merge(options))
 
     when "date"
+      date_options = {start_year: 1901, end_year: 2099, include_blank: true}
       content_tag(:div, class: "row date-select") do
-        date_select(name, content,
-                    {start_year: 1901, end_year: 2099, include_blank: true},
-                    {class: "form-control"}.merge(options))
+        
+        if(content)
+          y = content["(1i)"].to_i
+          m = content["(2i)"].to_i
+          d = content["(3i)"].to_i
+
+          if m == 0 || d == 0
+            date_select(name, nil, date_options,
+                        {class: "form-control"}.merge(options))
+          else
+            select_date(Date.new(y, m, d), date_options,
+                        {class: "form-control"}.merge(options))
+          end
+        else
+          date_select(name, nil, date_options,
+                      {class: "form-control"}.merge(options))
+        end
       end
 
     when "rank_list"

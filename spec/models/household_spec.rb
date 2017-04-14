@@ -1,9 +1,10 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Household, type: :model do
+describe Household do
 
   before(:each) do
-    @household = FactoryGirl.build(:household)
+    @household = build(:household)
   end
 
   it 'should be valid' do

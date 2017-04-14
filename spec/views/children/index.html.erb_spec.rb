@@ -1,6 +1,5 @@
 require 'rails_helper'
 require 'spec_helper'
-require 'pp'
 
 describe "children/index" do
   before(:each) do

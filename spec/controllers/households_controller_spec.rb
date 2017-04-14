@@ -1,26 +1,35 @@
 require 'rails_helper'
+require 'spec_helper'
+require 'pp'
 
-RSpec.describe HouseholdsController, type: :controller do
+describe HouseholdsController do
+  login_user
 
-  let(:user) { create(:user) }
-
-  before(:each) do
-    sign_in user
+  before do
+    @household = create(:household)
   end
 
   describe "GET #index" do
     it "assigns all households as @households" do
-      household = FactoryGirl.create(:household)
-      get :index, {}
-      expect(assigns(:households)).to eq([household])
+      get :index
+      expect(assigns(:households)).to eq([@household])
+    end
+
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template("index")
     end
   end
 
   describe "GET #show" do
     it "assigns the requested household as @household" do
-      household = FactoryGirl.create(:household)
-      get :show, {:id => household.to_param}
-      expect(assigns(:household)).to eq(household)
+      get :show, {:id => @household.to_param}
+      expect(assigns(:household)).to eq(@household)
+    end
+
+    it "renders the show template" do
+      get :show, {:id => @household.to_param}
+      expect(response).to render_template("show")
     end
   end
 
@@ -29,13 +38,22 @@ RSpec.describe HouseholdsController, type: :controller do
       get :new, {}
       expect(assigns(:household)).to be_a_new(Household)
     end
+
+    it "renders the new template" do
+      get :new
+      expect(response).to render_template("new")
+    end
   end
 
   describe "GET #edit" do
     it "assigns the requested household as @household" do
-      household = FactoryGirl.create(:household)
-      get :edit, {:id => household.to_param}
-      expect(assigns(:household)).to eq(household)
+      get :edit, {:id => @household.to_param}
+      expect(assigns(:household)).to eq(@household)
+    end
+
+    it "renders the edit template" do
+      get :edit, {:id => @household.to_param}
+      expect(response).to render_template("edit")
     end
   end
 
@@ -73,23 +91,22 @@ RSpec.describe HouseholdsController, type: :controller do
   end
 
   describe "PUT #update" do
-
     context "with valid params" do
       it "updates the requested household" do
-        household = FactoryGirl.create(:household)
+        household = create(:household)
         put :update, {:id => household.to_param, household: attributes_for(:household, name: "new household name" )}
         household.reload
         expect(Household.find(household.id).name).to eq("new household name")
       end
 
       it "assigns the requested household as @household" do
-        household = FactoryGirl.create(:household)
+        household = create(:household)
         put :update, {:id => household.to_param, household: attributes_for(:household)}
         expect(assigns(:household)).to eq(household)
       end
 
       it "redirects to the household" do
-        household = FactoryGirl.create(:household)
+        household = create(:household)
         put :update, {:id => household.to_param, household: attributes_for(:household)}
         expect(response).to redirect_to(household)
       end
@@ -97,13 +114,13 @@ RSpec.describe HouseholdsController, type: :controller do
 
     context "with invalid params" do
       it "assigns the household as @household" do
-        household = FactoryGirl.create(:household)
+        household = create(:household)
         put :update, {:id => household.to_param, household: attributes_for(:household, name: nil)}
         expect(assigns(:household)).to eq(household)
       end
 
       it "re-renders the 'edit' template" do
-        household = FactoryGirl.create(:household)
+        household = create(:household)
         put :update, {:id => household.to_param, household: attributes_for(:household, name: nil)}
         expect(response).to render_template("edit")
       end
@@ -112,15 +129,13 @@ RSpec.describe HouseholdsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested household" do
-      household = FactoryGirl.create(:household)
       expect {
-        delete :destroy, {:id => household.to_param}
+        delete :destroy, {:id => @household.to_param}
       }.to change(Household, :count).by(-1)
     end
 
     it "redirects to the households list" do
-      household = FactoryGirl.create(:household)
-      delete :destroy, {:id => household.to_param}
+      delete :destroy, {:id => @household.to_param}
       expect(response).to redirect_to(households_url)
     end
 
