@@ -1,38 +1,44 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe TranslationsController, type: :controller do
+describe TranslationsController do
+  login_user
+
+  before do
+    @locale = create(:locale)
+  end
 
   describe "GET #index" do
     it "returns http success" do
-      get :index
+      get :index, :locale_id => @locale.id
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #new" do
     it "returns http success" do
-      get :new
+      get :new, :locale_id => @locale.id
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #create" do
+  describe "POST #create" do
     it "returns http success" do
-      get :create
+      post :create, :locale_id => @locale.id
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, :locale_id => @locale.id
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #update" do
+  describe "PUT #update" do
     it "returns http success" do
-      get :update
+      put :update, :locale_id => @locale.id
       expect(response).to have_http_status(:success)
     end
   end

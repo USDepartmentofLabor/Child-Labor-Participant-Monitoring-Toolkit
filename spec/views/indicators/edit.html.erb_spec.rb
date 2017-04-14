@@ -2,32 +2,21 @@ require 'rails_helper'
 
 RSpec.describe "indicators/edit", type: :view do
   before(:each) do
-    @indicator = assign(:indicator, Indicator.create!(
-      :code => "MyString",
-      :desc => "MyText",
-      :indicator_type => "MyString",
-      :string => "MyString",
-      :user_id => 1,
-      :project => nil
-    ))
+    @indicator = create :indicator
   end
 
-  it "renders the edit indicator form" do
+  it "renders edit indicator form" do
     render
 
     assert_select "form[action=?][method=?]", indicator_path(@indicator), "post" do
-
-      assert_select "input#indicator_code[name=?]", "indicator[code]"
-
-      assert_select "textarea#indicator_desc[name=?]", "indicator[desc]"
-
-      assert_select "input#indicator_indicator_type[name=?]", "indicator[indicator_type]"
-
-      assert_select "input#indicator_string[name=?]", "indicator[string]"
-
-      assert_select "input#indicator_user_id[name=?]", "indicator[user_id]"
-
-      assert_select "input#indicator_project_id[name=?]", "indicator[project_id]"
+      assert_select "input[name=?]", "indicator[code]"
+      assert_select "textarea[name=?]", "indicator[indicator]"
+      assert_select "textarea[name=?]", "indicator[use]"
+      assert_select "textarea[name=?]", "indicator[definitions]"
+      assert_select "textarea[name=?]", "indicator[frequency_definitions]"
+      assert_select "input[name=?]", "indicator[baseline]"
+      assert_select "select[name=?]", "indicator[unit_of_measure_id]"
+      assert_select "select[name=?]", "indicator[reporting_frequency_id]"
     end
   end
 end
