@@ -2,23 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "indicators/show", type: :view do
   before(:each) do
-    @indicator = assign(:indicator, Indicator.create!(
-      :code => "Code",
-      :desc => "MyText",
-      :indicator_type => "Indicator Type",
-      :string => "String",
-      :user_id => 1,
-      :project => nil
-    ))
+    @indicator = create :indicator
   end
 
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/Code/)
-    expect(rendered).to match(/MyText/)
+    expect(rendered).to match(/Indicator/)
     expect(rendered).to match(/Indicator Type/)
-    expect(rendered).to match(/String/)
-    expect(rendered).to match(/1/)
-    expect(rendered).to match(//)
+    expect(rendered).to match(/Use/)
+    expect(rendered).to match(/Definitions/)
+    expect(rendered).to match(/100/)
   end
 end
