@@ -8,9 +8,8 @@ describe "children/show" do
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(/FN 1/)
-    expect(rendered).to match(/LN 1/)
-    expect(rendered).to match(/Middle Name/)
-    expect(rendered).to match(/1/)
+    expect(rendered).to match(@child.first_name)
+    expect(rendered).to match(@child.last_name)
+    expect(rendered).to match(@child.middle_name)
   end
 end
