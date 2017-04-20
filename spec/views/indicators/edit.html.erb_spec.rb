@@ -1,6 +1,7 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe "indicators/edit", type: :view do
+describe "indicators/edit" do
   before(:each) do
     @indicator = create :indicator
   end
