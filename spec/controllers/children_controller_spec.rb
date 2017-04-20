@@ -1,12 +1,11 @@
 require 'rails_helper'
 require 'spec_helper'
-require 'pp'
 
 describe ChildrenController do
   login_user
 
   before do
-    @child = create(:child)
+    @child = create(:child, :is_beneficiary => true)
   end
 
   let(:invalid_attributes) {{
@@ -14,7 +13,7 @@ describe ChildrenController do
   }}
 
   describe "GET #index" do
-    it "assigns all children as @children" do
+    it "assigns all children who are beneficiaries as @children" do
       get :index
       expect(assigns(:children)).to eq([@child])
     end
@@ -48,10 +47,8 @@ describe ChildrenController do
 
   describe "GET #edit" do
     it "assigns the requested child as @child" do
-      custom_fields = create_list(:custom_field, 3, model_type: "Child")
-
       get :edit, {:id => @child.to_param}
-      expect(assigns(:custom_fields).map { |e| e.id }).to eq(custom_fields.map { |e| e.id })
+      expect(assigns(:child)).to eq(@child)
     end
   end
 
