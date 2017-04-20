@@ -3,7 +3,7 @@
     <%= fa_icon "caret-left" %>
     <%= t("general.back") %>
   <% end %>
-  <%= link_to edit_adult_path(@adult), class: 'btn btn-primary' do %>
+  <%= link_to edit_household_adult_path(@adult.household, @adult), class: 'btn btn-primary' do %>
     <%= fa_icon "pencil" %>
     <%= t("general.edit") %>
   <% end %>
@@ -68,7 +68,7 @@
         <%= t("adults.show.service_form_title") %>
       </div>
       <div class="box-body">
-        <%= form_for(@adult, html: { role: "form" }) do |f| %>
+        <%= form_for([@adult.household, @adult], html: { role: "form" }) do |f| %>
           <%= f.hidden_field :household_id %>
           <%= render partial: 'custom_fields/custom_field', collection: @custom_fields, locals: {model_id: @adult.id} %>
           <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>

@@ -1,4 +1,5 @@
 <li>
-  <%= link_to adult.full_name, adult_path(adult) %>
+  #<%= adult.id %>
+  <%= link_to adult.full_name, household_adult_path(@household, adult) %>
   <%= head_of_household adult %>
 </li>
