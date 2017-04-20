@@ -1,6 +1,8 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe LocalesController, type: :controller do
+describe LocalesController do
+  login_user
 
   describe "GET #index" do
     it "returns http success" do
