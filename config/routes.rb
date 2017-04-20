@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     resources :timelines, only: [:index]
   end
 
+  resources :households do
+    resources :adults, except: [:index]
+    resources :income_sources
+  end
+
   resources :indicators do
     resources :indicator_details
     resources :targets do
@@ -31,10 +36,7 @@ Rails.application.routes.draw do
     resources :translations, constraints: { :id => /[^\/]+/ }
   end
 
-  resources :adults
   resources :custom_fields
-  resources :households
-  resources :income_sources
   resources :locations
   resources :project_targets
   resources :regions, defaults: {format: :json}

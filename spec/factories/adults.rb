@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :adult do
-    fname "MyString"
-lname "MyString"
-mname "MyString"
-sex 1
-dob "2015-06-18"
+    first_name "MyString"
+    last_name "MyString"
+    middle_name "MyString"
+    sex 1
+    dob "2015-06-18"
+    household
   end
-
 end
