@@ -1,15 +1,16 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe TargetsController, type: :controller do
-  let(:user) { create(:user) }
+describe TargetsController do
+  login_user
 
-  before(:each) do
-    sign_in user
+  before do
+    @indicator = create(:indicator)
   end
 
   describe "GET #index" do
     it "returns http success" do
-      get :index
+      get :index, :indicator_id => @indicator.id
       expect(response).to have_http_status(:success)
     end
   end
