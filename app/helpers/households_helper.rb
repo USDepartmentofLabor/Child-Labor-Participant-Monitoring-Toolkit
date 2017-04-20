@@ -13,4 +13,12 @@ module HouseholdsHelper
       raw parts.join
     end
   end
+
+  def household_or_households_path household
+    if household.id
+      household_path household
+    else
+      households_path
+    end
+  end
 end
