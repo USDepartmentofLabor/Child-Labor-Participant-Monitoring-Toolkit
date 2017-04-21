@@ -53,3 +53,5 @@ vendor/bundle/*
 *.orig
 
 public/assets
+
+coverage
