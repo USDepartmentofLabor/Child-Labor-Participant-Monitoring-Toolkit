@@ -4,7 +4,7 @@ FactoryGirl.define do
     last_name "MyString"
     middle_name "MyString"
     sex 1
-    dob "2015-06-18"
+    dob "1990-06-18"
     household
   end
 end
