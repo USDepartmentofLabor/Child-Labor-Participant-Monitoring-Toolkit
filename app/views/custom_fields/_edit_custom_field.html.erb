@@ -2,14 +2,14 @@
 <div class="form-group">
   <div class="row">
     <div class="col-xs-12">
-      <%= label_tag "custom_fields_#{custom_field.id}_value_text",
+      <%= label_tag "custom_fields_#{custom_field.id}",
         custom_field.name %>
       <%= markdown(custom_field.help_text) %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-8">
-      <%= custom_input custom_field, "#{field_group_name}[value_text]",
+      <%= custom_input custom_field, field_group_name, nil,
         (local_assigns[:options].nil? ? {} : options) %>
     </div>
     <div class="col-md-4">
