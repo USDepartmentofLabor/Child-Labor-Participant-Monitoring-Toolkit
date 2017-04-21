@@ -61,6 +61,7 @@ group :development, :test do
   gem 'launchy'
   gem 'fuubar'
   gem 'foreman'
+  gem 'simplecov', require: false
 end
 
 gem 'rails-i18n'

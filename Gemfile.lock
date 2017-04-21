@@ -130,6 +130,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (2.1.1)
     dotenv-rails (2.1.1)
       dotenv (= 2.1.1)
@@ -328,6 +329,11 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
+    simplecov (0.14.1)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     sixarm_ruby_unaccent (1.1.1)
     slop (3.6.0)
     sort_alphabetical (1.1.0)
@@ -419,6 +425,7 @@ DEPENDENCIES
   sass-rails
   sdoc
   sidekiq
+  simplecov
   spring
   spring-commands-rspec
   uglifier
