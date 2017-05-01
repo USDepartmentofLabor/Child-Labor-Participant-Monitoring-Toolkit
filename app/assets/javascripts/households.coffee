@@ -4,13 +4,18 @@ jQuery ->
   $('form').on 'click', '.remove_fields', (event) ->
     event.preventDefault()
     $(this).prev('input[type=hidden]').val('1')
-    $(this).closest('fieldset').hide()
+    $(this).closest('.associated-fields').hide()
 
   $('form').on 'click', '.add_fields', (event) ->
     event.preventDefault()
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
-    $(this).before($(this).data('fields').replace(regexp, time))
+    has_table = $(this).parents('table').length > 0
+    append = $(this).data('fields').replace(regexp, time)
+    if(has_table)
+      $(this).parents('table').find('tbody').append(append)
+    else
+      $(this).before(append)
 
     $('.date-select > select').wrap('<div class="col-md-4">')
     
