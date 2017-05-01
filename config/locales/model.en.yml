@@ -94,3 +94,9 @@ en:
       locale:
         code: 'Code'
         name: 'Name'
+      income_source:
+        name: 'Name of Product or Service'
+        estimated_volume_produced: 'Estimated Volume Produced'
+        estimated_volume_sold: 'Estimated Volume Sold'
+        unit_of_measure: 'Unit of Measure'
+        estimated_income: 'Estimated Income'
