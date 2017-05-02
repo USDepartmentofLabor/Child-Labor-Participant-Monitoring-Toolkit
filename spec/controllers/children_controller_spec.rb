@@ -62,6 +62,14 @@ describe ChildrenController do
         expect(response).to redirect_to(new_child_path)
       end
 
+      it "creates custom field values" do
+        create(:custom_field, model_type: 'Child', id: 1)
+        expect {
+          post :create, {child: attributes_for(:child),
+                         custom_fields: {"1": {value_text: 'foo'}}}
+        }.to change(CustomValue, :count).by(1)
+      end
+
       it "assigns a newly created child as @child" do
         post :create, {child: attributes_for(:child)}
         expect(assigns(:child)).to be_a(Child)
