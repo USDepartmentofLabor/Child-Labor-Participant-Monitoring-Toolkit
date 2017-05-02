@@ -15,7 +15,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-sm-12">
     <div class="box box-primary">
       <div class="box-header with-border">
         <%= fa_icon "info" %>
@@ -23,51 +23,49 @@
           <%= t("children.show.personal_information") %>
         </h3>
       </div>
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-9">
-            <table class="table table-bordered table-hover table-listing">
-              <tbody>
-                <tr>
-                  <th><%= Child.human_attribute_name(:id) %></th>
-                  <td><%= @child.id %></td>
-                </tr>
-                <tr>
-                  <th><%= Household.human_attribute_name(:name) %></th>
-                  <td><%= @child.household.present? ? @child.household.name : "" %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:intake_date) %></th>
-                  <td><%= @child.intake_date %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:first_name) %></th>
-                  <td><%= @child.first_name %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:last_name) %></th>
-                  <td><%= @child.last_name %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:middle_name) %></th>
-                  <td><%= @child.middle_name %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:sex) %></th>
-                  <td><%= @child.gender_name %></td>
-                </tr>
-                <tr>
-                  <th><%= Child.human_attribute_name(:age) %></th>
-                  <td><%= @child.age %></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <% @custom_fields.sort_by { |f| f.sort_order }.each do |custom_field| %>
-        <p><%= markdown(custom_field.name) %></p>
-        <p><%= custom_field_value(custom_field, @child.id) %></p>
-        <% end unless @custom_fields.nil? %>
+      <div class="box-body no-padding">
+        <table class="table table-bordered table-condensed table-striped table-listing">
+          <tbody>
+            <tr>
+              <th><%= Child.human_attribute_name(:id) %></th>
+              <td><%= @child.id %></td>
+            </tr>
+            <tr>
+              <th><%= Household.human_attribute_name(:name) %></th>
+              <td><%= @child.household.present? ? @child.household.name : "" %></td>
+            </tr>
+            <tr>
+              <th><%= Child.human_attribute_name(:intake_date) %></th>
+              <td><%= @child.intake_date %></td>
+            </tr>
+            <tr>
+              <th><%= Child.human_attribute_name(:first_name) %></th>
+              <td><%= @child.first_name %></td>
+            </tr>
+            <tr>
+              <th><%= Child.human_attribute_name(:last_name) %></th>
+              <td><%= @child.last_name %></td>
+            </tr>
+            <tr>
+              <th><%= Child.human_attribute_name(:middle_name) %></th>
+              <td><%= @child.middle_name %></td>
+            </tr>
+            <tr>
+              <th><%= Child.human_attribute_name(:sex) %></th>
+              <td><%= @child.gender_name %></td>
+            </tr>
+            <tr>
+              <th><%= Child.human_attribute_name(:age) %></th>
+              <td><%= @child.age %></td>
+            </tr>
+            <% @custom_fields.sort_by { |f| f.sort_order }.each do |custom_field| %>
+              <tr>
+                <th><%= custom_field.name %></th>
+                <td><%= custom_field_value(custom_field, @child.id) %></td>
+              </tr>
+            <% end unless @custom_fields.nil? %>
+          </tbody>
+        </table>
       </div>
     </div>
 
