@@ -61,7 +61,13 @@
             <% @custom_fields.sort_by { |f| f.sort_order }.each do |custom_field| %>
               <tr>
                 <th><%= custom_field.name %></th>
-                <td><%= custom_field_value(custom_field, @child.id) %></td>
+                <td>
+                  <% if custom_field.field_type == 'rank_list' %>
+                    <%= rank_list_display(custom_field, @child.id) %>
+                  <% else %>
+                    <%= custom_field_value(custom_field, @child.id) %>
+                  <% end %>
+                </td>
               </tr>
             <% end unless @custom_fields.nil? %>
           </tbody>
