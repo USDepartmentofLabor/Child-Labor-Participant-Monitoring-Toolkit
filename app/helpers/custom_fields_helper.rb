@@ -15,15 +15,24 @@ module CustomFieldsHelper
     nil
   end
 
+  def custom_field_order(custom_field, model_id)
+    custom_field.model_id = model_id
+    if custom_field.value.present?
+      return custom_field.value['order']
+    end
+  end
+
   def custom_input(field_object, name, model_id, options={})
     field_type = field_object.field_type
 
     if options[:fill].nil? || options[:fill]
       content = custom_field_value(field_object, model_id)
       other = custom_field_other(field_object, model_id)
+      order = custom_field_order(field_object, model_id)
     else
       content = nil
       other = nil
+      order = nil
     end
 
     case field_type
@@ -117,7 +126,7 @@ module CustomFieldsHelper
       options_dom =
         field_object.selections.split(CustomFieldGroup.option_delimiter)
       grid_dom = options_dom.map.with_index do |opt, i|
-        checked = (opt == content)
+        checked = content && content.include?(opt)
         content_tag(:div, class: "grid-rank checkbox") do
           content_tag(:span, class: "grid-option") do
             s = content_tag(:span, class: "checkbox-inline grid-value",
@@ -148,7 +157,11 @@ module CustomFieldsHelper
           end
         end
       end
-      grid_dom.join.html_safe
+
+      r = hidden_field_tag(name.sub('value_text', 'order'), order,
+                           {class: "grid-order"}.merge(options))
+
+      [grid_dom, r].join.html_safe
 
     when "hidden"
       hidden_field_tag(name, content)
@@ -156,6 +169,24 @@ module CustomFieldsHelper
     else
       nil
 
+    end
+  end
+
+  def rank_list_display(field_object, model_id)
+    content = custom_field_value(field_object, model_id)
+    other = custom_field_other(field_object, model_id)
+    order = JSON.parse(custom_field_order(field_object, model_id))
+
+    i = content.find_index{|s| s.include? '(specify)'}
+
+    if !i.nil?
+      content[i].gsub!(/ \(specify\)/, ": #{other}")
+    end
+
+    content_tag(:ol) do
+      order.each do |x|
+        concat content_tag(:li, content[x])
+      end
     end
   end
 end
