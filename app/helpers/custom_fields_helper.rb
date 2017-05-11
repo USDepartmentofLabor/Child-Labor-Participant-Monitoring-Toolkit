@@ -175,9 +175,9 @@ module CustomFieldsHelper
   def rank_list_display(field_object, model_id)
     content = custom_field_value(field_object, model_id)
     other = custom_field_other(field_object, model_id)
-    order = JSON.parse(custom_field_order(field_object, model_id))
+    order = JSON.parse(custom_field_order(field_object, model_id) || '[]')
 
-    i = content.find_index{|s| s.include? '(specify)'}
+    i = content.find_index{|s| s.include? '(specify)'} unless content.nil?
 
     if !i.nil?
       content[i].gsub!(/ \(specify\)/, ": #{other}")
