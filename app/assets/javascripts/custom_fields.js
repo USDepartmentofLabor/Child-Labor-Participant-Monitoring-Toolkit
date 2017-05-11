@@ -5,7 +5,16 @@ $(document).ready(function() {
 
   // This doesn't really work if there is more than one rank-order set
   // on the page
-  var order = JSON.parse($('.grid-order').first().val());
+  var order = $('.grid-order').first().val();
+
+  console.log(order);
+
+  if(typeof order !== 'string' || order === '') {
+    order = [];
+  } else {
+    order = JSON.parse(order);
+  }
+
   renumber($('.grid-value'), order);
   $('.grid-check').on('ifChecked ifUnchecked', function(e) {
     var tgt = $(e.target);
