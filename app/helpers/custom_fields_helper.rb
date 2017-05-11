@@ -17,9 +17,11 @@ module CustomFieldsHelper
 
   def custom_field_order(custom_field, model_id)
     custom_field.model_id = model_id
-    if custom_field.value.present?
+    if custom_field.value.present? && custom_field.value['order'] && custom_field.value['order'] != ''
       return custom_field.value['order']
     end
+
+    return nil
   end
 
   def custom_input(field_object, name, model_id, options={})
@@ -175,17 +177,27 @@ module CustomFieldsHelper
   def rank_list_display(field_object, model_id)
     content = custom_field_value(field_object, model_id)
     other = custom_field_other(field_object, model_id)
-    order = JSON.parse(custom_field_order(field_object, model_id) || '[]')
+    order = custom_field_order(field_object, model_id)
 
-    i = content.find_index{|s| s.include? '(specify)'} unless content.nil?
+    if content.nil? || content == ''
+      content = []
+    end
+
+    if order.nil? || order == ''
+      order = []
+    else
+      order = JSON.parse(order)
+    end
+
+    i = content.find_index{|s| s.include? '(specify)'}
 
     if !i.nil?
       content[i].gsub!(/ \(specify\)/, ": #{other}")
     end
 
     content_tag(:ol) do
-      order.each do |x|
-        concat content_tag(:li, content[x])
+      content.each do |x|
+        concat content_tag(:li, x)
       end
     end
   end
