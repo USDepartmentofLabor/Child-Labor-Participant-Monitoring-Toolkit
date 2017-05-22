@@ -96,6 +96,9 @@ en:
   adults:
     index:
       add: "Add New Adult"
+    edit:
+      title: "Edit Adult"
+      details_title: "Enter Adult Details"
     show:
       title: "Adult Beneficiary Record"
       personal_information: "Personal Information"
@@ -117,6 +120,7 @@ en:
       title: "Household Record"
       children: "Children Of This Household"
       adults: "Adults Of This Household"
+      income_sources: "Income Sources"
   reports:
     technical_progress: "Technical Progress Reports"
     new:
