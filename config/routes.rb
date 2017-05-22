@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :households do
-    resources :adults, except: [:index]
+    resources :adults, except: [:index, :new]
     resources :income_sources
   end
 
