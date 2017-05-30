@@ -40,6 +40,8 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
     @custom_fields = CustomField.where(model_type: "Child")
 
+    set_relationship_status
+
     if @child.save
       if params[:custom_fields].present? && @custom_fields.length > 0
         CustomFieldGroup.create_or_update(@child, @custom_fields, params_for_custom_field)
@@ -54,6 +56,9 @@ class ChildrenController < ApplicationController
   # PATCH/PUT /children/1
   def update
     @custom_fields = CustomField.where(model_type: "Child")
+
+    set_relationship_status
+
     if @child.update(child_params)
       if params[:custom_fields].present? && @custom_fields.length > 0
         CustomFieldGroup.create_or_update(@child, @custom_fields, params_for_custom_field)
@@ -87,11 +92,24 @@ class ChildrenController < ApplicationController
       @child = Child.find(params[:id])
     end
 
+    def set_relationship_status
+      if @child.relationship_id
+        r = Relationship.find(@child.relationship_id)
+        if r
+          @child.is_head_of_household = (r.canonical_name == 'HEAD')
+          @child.relationship_other = nil unless r.canonical_name == 'OTHER'
+        end
+      else
+        @child.is_head_of_household = false
+        @child.relationship_other = nil
+      end
+    end
+
     # Only allow a trusted parameter "white list" through.
     def child_params
       params.require(:child).permit(
         :first_name, :last_name, :middle_name, :sex, :dob, :age, :household_id,
-        :intake_date, :is_beneficiary,
+        :intake_date, :relationship_id, :relationship_other, :is_beneficiary,
         statuses_attributes: [
           :start_date, :end_date, :work_status_id, :education_status_id,
           :note, :user_id, :_destroy, :id

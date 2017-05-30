@@ -7,11 +7,11 @@
     <%= fa_icon "pencil" %>
     <%= t("general.edit") %>
   <% end %>
-  <h1><%= t("adults.show.title") %></h1>
+  <h1><%= @adult.full_name %></h1>
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div class="box box-primary">
       <div class="box-header with-border">
         <%= fa_icon "info" %>
@@ -20,59 +20,46 @@
         </h3>
       </div>
       <div class="box-body no-padding">
-        <div class="row">
-          <div class="col-md-12">
-            <table class="table table-bordered table-hover table-listing">
-              <tbody>
-                <tr>
-                  <th><%= Adult.human_attribute_name(:id) %></th>
-                  <td><%= @adult.id %></td>
-                </tr>
-                <tr>
-                  <th><%= Household.human_attribute_name(:name) %></th>
-                  <td><%= @adult.household.present? ? @adult.household.name : "" %></td>
-                </tr>
-                <tr>
-                  <th><%= Adult.human_attribute_name(:intake_date) %></th>
-                  <td><%= @adult.intake_date %></td>
-                </tr>
-                <tr>
-                  <th><%= Adult.human_attribute_name(:first_name) %></th>
-                  <td><%= @adult.first_name %></td>
-                </tr>
-                <tr>
-                  <th><%= Adult.human_attribute_name(:last_name) %></th>
-                  <td><%= @adult.last_name %></td>
-                </tr>
-                <tr>
-                  <th><%= Adult.human_attribute_name(:middle_name) %></th>
-                  <td><%= @adult.middle_name %></td>
-                </tr>
-                <tr>
-                  <th><%= Adult.human_attribute_name(:sex) %></th>
-                  <td><%= @adult.gender_name %></td>
-                </tr>
-                <tr>
-                  <th><%= Adult.human_attribute_name(:age) %></th>
-                  <td><%= @adult.age %></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <%= t("adults.show.service_form_title") %>
-      </div>
-      <div class="box-body">
-        <%= form_for([@adult.household, @adult], html: { role: "form" }) do |f| %>
-          <%= f.hidden_field :household_id %>
-          <%= render partial: 'custom_fields/custom_field', collection: @custom_fields, locals: {model_id: @adult.id} %>
-          <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
-        <% end %>
+        <table class="table table-bordered table-condensed table-striped table-listing">
+          <tbody>
+            <tr>
+              <th><%= Adult.human_attribute_name(:id) %></th>
+              <td><%= @adult.id %></td>
+            </tr>
+            <tr>
+              <th><%= Household.human_attribute_name(:name) %></th>
+              <td><%= @adult.household.present? ? @adult.household.name : "" %></td>
+            </tr>
+            <tr>
+              <th><%= Adult.human_attribute_name(:intake_date) %></th>
+              <td><%= @adult.intake_date %></td>
+            </tr>
+            <tr>
+              <th><%= Adult.human_attribute_name(:first_name) %></th>
+              <td><%= @adult.first_name %></td>
+            </tr>
+            <tr>
+              <th><%= Adult.human_attribute_name(:last_name) %></th>
+              <td><%= @adult.last_name %></td>
+            </tr>
+            <tr>
+              <th><%= Adult.human_attribute_name(:middle_name) %></th>
+              <td><%= @adult.middle_name %></td>
+            </tr>
+            <tr>
+              <th><%= Adult.human_attribute_name(:sex) %></th>
+              <td><%= @adult.gender_name %></td>
+            </tr>
+            <tr>
+              <th><%= Adult.human_attribute_name(:dob) %></th>
+              <td><%= @adult.dob %></td>
+            </tr>
+            <tr>
+              <th><%= Adult.human_attribute_name(:relationship) %></th>
+              <td><%= @adult.relationship_name %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

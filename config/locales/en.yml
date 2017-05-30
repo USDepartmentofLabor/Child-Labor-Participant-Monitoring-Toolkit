@@ -71,6 +71,7 @@ en:
       filter: "Filters"
     show:
       title: "Beneficiary Record"
+      timeline: "Timeline"
       personal_information: "Personal Information"
       statuses: "Status History"
       status_form_title: "Update Status"

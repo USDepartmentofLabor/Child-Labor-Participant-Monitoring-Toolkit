@@ -56,6 +56,17 @@
             </div>
           </div>
           <div class="form-group">
+            <%= f.label :relationship_id %>
+            <%= f.collection_select :relationship_id, Relationship.all, :id, :display_name,
+              {include_blank: true, prompt: true},
+              {class: "form-control", data: {toggle: 'other'}} %>
+          </div>
+          <div class="form-group"
+            <%= @child.relationship.nil? || @child.relationship.canonical_name != 'OTHER' ? 'hidden' : '' %>>
+            <%= f.label :relationship_other %>
+            <%= f.text_field :relationship_other, class: "form-control" %>
+          </div>
+          <div class="form-group">
             <%= f.check_box :is_beneficiary, class: 'square-red' %>
             <%= f.label :is_beneficiary %>
           </div>

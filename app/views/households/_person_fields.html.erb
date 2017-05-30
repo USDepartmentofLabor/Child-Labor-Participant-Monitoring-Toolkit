@@ -43,10 +43,15 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :is_head_of_household do %>
-      <%= f.check_box :is_head_of_household, class: "square-red" %>
-      <%= Person.human_attribute_name :is_head_of_household %>
-    <% end %>
+    <%= f.label :relationship_id %>
+    <%= f.collection_select :relationship_id, Relationship.all, :id,
+      :display_name, {include_blank: true, prompt: true},
+      {class: "form-control", data: {toggle: 'other'}} %>
+  </div>
+
+  <div class="form-group" hidden>
+    <%= f.label :relationship_other %>
+    <%= f.text_field :relationship_other, class: "form-control" %>
   </div>
 
   <div class="form-group">

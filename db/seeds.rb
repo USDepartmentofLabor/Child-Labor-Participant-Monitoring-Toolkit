@@ -198,3 +198,24 @@ CustomSection.create([
     { title: 'Health and Safety of Working Children', model_type: 'Child', sort_order: 3},
     { title: 'Hosehold Tasks of Children', model_type: 'Child', sort_order: 4}
 ])
+
+Relationship.create([
+  { code: '01', canonical_name: 'HEAD', display_name: 'Head of household' },
+  { code: '02', canonical_name: 'SPOUSE', display_name: 'Spouse/partner' },
+  { code: '03', canonical_name: 'CHILD', display_name: 'Son/daughter' },
+  { code: '04', canonical_name: 'STEP_CHILD', display_name: 'Step child' },
+  { code: '05', canonical_name: 'ADOPTED_FOSTERED_CHILD', display_name: 'Adopted/fostered child' },
+  { code: '06', canonical_name: 'CHILD_IN_LAW', display_name: 'Son-in-law/daughter-in-law' },
+  { code: '07', canonical_name: 'GRANDCHILD', display_name: 'Grandchild' },
+  { code: '08', canonical_name: 'PARENT', display_name: 'Parent' },
+  { code: '09', canonical_name: 'PARENT_IN_LAW', display_name: 'Parent-in-law' },
+  { code: '10', canonical_name: 'GRANDPARENT', display_name: 'Grandparent' },
+  { code: '11', canonical_name: 'SIBLING', display_name: 'Brother/sister' },
+  { code: '12', canonical_name: 'SIBLING_IN_LAW', display_name: 'Brother-in-law/sister-in-law' },
+  { code: '13', canonical_name: 'AUNT_UNCLE', display_name: 'Aunt/uncle' },
+  { code: '14', canonical_name: 'NIECE_NEPHEW', display_name: 'Niece/nephew' },
+  { code: '15', canonical_name: 'COUSIN', display_name: 'Cousin' },
+  { code: '16', canonical_name: 'SERVANT', display_name: 'Servant' },
+  { code: '17', canonical_name: 'NON_RELATIVE', display_name: 'Non-relative' },
+  { code: '18', canonical_name: 'OTHER', display_name: 'Other (specify)' }
+])

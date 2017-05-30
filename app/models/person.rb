@@ -2,6 +2,7 @@ class Person < ActiveRecord::Base
   SEX_OPTIONS = [ ["select_options.adult.male", 1], ["select_options.adult.female", 2] ]
 
   belongs_to :household
+  belongs_to :relationship
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -28,5 +29,15 @@ class Person < ActiveRecord::Base
     return nil if i.nil? || i <= 0
     option = SEX_OPTIONS[i - 1]
     return I18n.t(option[0])
+  end
+
+  def relationship_name
+    if relationship
+      if relationship.canonical_name == 'OTHER'
+        return relationship_other
+      end
+
+      return relationship.display_name
+    end
   end
 end

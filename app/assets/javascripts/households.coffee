@@ -1,3 +1,16 @@
+@toggleRelationshipOther = (e) ->
+  e.preventDefault()
+  console.log($(e.target))
+  id = e.target.id
+  selectedText = $(e.target).children(':selected').text()
+  otherId = id.replace(/id$/, 'other')
+  if(selectedText.includes('specify'))
+    $('#' + otherId).parent().show()
+  else
+    $('#' + otherId).parent().hide()
+
+$('select[data-toggle="other"]').change(toggleRelationshipOther)
+
 jQuery ->
   $('#households-data-table').DataTable()
 
@@ -18,6 +31,8 @@ jQuery ->
       $(this).before(append)
 
     $('.date-select > select').wrap('<div class="col-md-4">')
+
+    $('select[data-toggle="other"]').change(toggleRelationshipOther)
     
     $('input[type="checkbox"].square-red, input[type="radio"].square-red')
       .iCheck

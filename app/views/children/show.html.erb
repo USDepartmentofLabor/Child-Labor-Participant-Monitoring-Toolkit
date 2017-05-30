@@ -1,17 +1,17 @@
 <div class="page-header">
   <%= link_to children_path, class: 'btn btn-default' do %>
-  <%= fa_icon "caret-left" %>
-  <%= t("general.back") %>
+    <%= fa_icon "caret-left" %>
+    <%= t("general.back") %>
   <% end %>
   <%= link_to edit_child_path(@child), class: 'btn btn-primary' do %>
-  <%= fa_icon "pencil" %>
-  <%= t("general.edit") %>
+    <%= fa_icon "pencil" %>
+    <%= t("general.edit") %>
   <% end %>
   <%= link_to child_timelines_path(@child), class: 'btn btn-primary' do %>
-  <%= fa_icon "calendar" %>
-  Timeline
+    <%= fa_icon "calendar" %>
+    <%= t("children.show.timeline") %>
   <% end %>
-  <h1><%= t("children.show.title") %></h1>
+  <h1><%= @child.full_name %></h1>
 </div>
 
 <div class="row">
@@ -55,8 +55,12 @@
               <td><%= @child.gender_name %></td>
             </tr>
             <tr>
-              <th><%= Child.human_attribute_name(:age) %></th>
-              <td><%= @child.age %></td>
+              <th><%= Child.human_attribute_name(:dob) %></th>
+              <td><%= @child.dob %></td>
+            </tr>
+            <tr>
+              <th><%= Child.human_attribute_name(:relationship) %></th>
+              <td><%= @child.relationship_name %></td>
             </tr>
             <% @custom_fields.sort_by { |f| f.sort_order }.each do |custom_field| %>
               <tr>
