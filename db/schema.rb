@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502181303) do
+ActiveRecord::Schema.define(version: 20170522224632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -247,7 +247,11 @@ ActiveRecord::Schema.define(version: 20170502181303) do
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.boolean  "is_beneficiary",                 default: false
+    t.integer  "relationship_id"
+    t.string   "relationship_other"
   end
+
+  add_index "people", ["relationship_id"], name: "index_people_on_relationship_id", using: :btree
 
   create_table "project_target_types", force: :cascade do |t|
     t.string   "name"
@@ -283,6 +287,14 @@ ActiveRecord::Schema.define(version: 20170502181303) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.string   "code",           null: false
+    t.string   "canonical_name", null: false
+    t.string   "display_name",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "reporting_periods", force: :cascade do |t|
@@ -460,6 +472,7 @@ ActiveRecord::Schema.define(version: 20170502181303) do
   add_foreign_key "locations", "location_types"
   add_foreign_key "locations", "projects"
   add_foreign_key "people", "households"
+  add_foreign_key "people", "relationships"
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"
   add_foreign_key "projects", "regions"

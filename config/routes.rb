@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :project_targets
   resources :regions, defaults: {format: :json}
+  resources :relationships, except: [:show]
   resources :reports, except: [:edit, :update]
   resources :roles
   resources :service_type_categories

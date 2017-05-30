@@ -82,6 +82,7 @@
   </div>
 </div>
 
+<% if @household.id.nil? %>
 <div class="box box-primary">
   <div class="box-header with-border">
     <%= fa_icon "user" %>
@@ -97,6 +98,7 @@
       class: "add_fields btn btn-primary" %>
   </div>
 </div>
+<% end %>
 
 <div class="form-group">
   <div class="col-sm-4 col-sm-offset-4">

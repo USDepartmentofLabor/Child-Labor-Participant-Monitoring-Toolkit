@@ -45,14 +45,21 @@
             <%= f.label :dob %>
             <div class="row date-select">
               <%= f.date_select :dob, {order: [:month, :day, :year],
-                start_year: Date.today.year - 21, end_year: Date.today.year,
+                start_year: Date.today.year - 99, end_year: Date.today.year,
                 prompt: true},
                 {class: "form-control"} %>
             </div>
           </div>
           <div class="form-group">
-            <%= f.check_box :is_head_of_household, class: 'square-red' %>
-            <%= f.label :is_head_of_household %>
+            <%= f.label :relationship_id %>
+            <%= f.collection_select :relationship_id, Relationship.all, :id, :display_name,
+              {include_blank: true, prompt: true},
+              {class: "form-control", data: {toggle: 'other'}} %>
+          </div>
+          <div class="form-group"
+            <%= @adult.relationship.nil? || @adult.relationship.canonical_name != 'OTHER' ? 'hidden' : '' %>>
+            <%= f.label :relationship_other %>
+            <%= f.text_field :relationship_other, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.check_box :is_beneficiary, class: 'square-red' %>
