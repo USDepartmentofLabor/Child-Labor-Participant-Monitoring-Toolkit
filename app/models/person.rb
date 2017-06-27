@@ -3,6 +3,8 @@ class Person < ActiveRecord::Base
 
   belongs_to :household
   belongs_to :relationship
+  has_many :follow_ups
+  has_many :statuses, class_name: "ChildStatus", dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -31,6 +33,10 @@ class Person < ActiveRecord::Base
     return I18n.t(option[0])
   end
 
+  def gender_name
+    Person.gender_name(self.sex)
+  end
+
   def relationship_name
     if relationship
       if relationship.canonical_name == 'OTHER'
@@ -39,5 +45,14 @@ class Person < ActiveRecord::Base
 
       return relationship.display_name
     end
+  end
+
+  def intake_status
+    #statuses = ChildStatus.find_by(child_id: id)
+    #if !statuses.nil?
+    #  return statuses.order(:created_at).first
+    #end
+    #child_statuses.order(:created_at).first
+    ChildStatus.where("child_id = #{id}").order(:created_at).first
   end
 end

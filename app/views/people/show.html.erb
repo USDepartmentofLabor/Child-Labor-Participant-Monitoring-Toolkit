@@ -1,0 +1,90 @@
+<div class="page-header">
+  <%= link_to household_path(@household), class: 'btn btn-default' do %>
+  <%= fa_icon "caret-left" %>
+  <%= t("general.back") %>
+  <% end %>
+  <%= link_to edit_household_person_path(@household, @person), class: 'btn btn-primary' do %>
+  <%= fa_icon "pencil" %>
+  <%= t("general.edit") %>
+  <% end %>
+  <%= link_to new_household_person_follow_up_path(@household, @person), class: 'btn btn-primary' do %>
+  Follow Up
+  <% end %>
+  <h1><%= t("people.show.title") %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title"><%= t("people.show.details_title") %></h3>
+      </div>
+      <div class="box-body">
+        <table class="table table-bordered table-hover table-listing">
+          <tbody>
+            <tr>
+              <th><%= Person.human_attribute_name(:id) %></th>
+              <td><%= @person.id %></td>
+            </tr>
+            <tr>
+              <th><%= Person.human_attribute_name(:intake_date) %></th>
+              <td><%= l @person.intake_date %></td>
+            </tr>
+            <tr>
+              <th><%= Person.human_attribute_name(:last_name) %></th>
+              <td><%= @person.last_name %></td>
+            </tr>
+            <tr>
+              <th><%= Person.human_attribute_name(:first_name) %></th>
+              <td><%= @person.first_name %></td>
+            </tr>
+            <tr>
+              <th><%= Person.human_attribute_name(:dob) %></th>
+              <td><%= l @person.dob unless @person.dob.nil? %></td>
+            </tr>
+            <tr>
+              <th><%= Person.human_attribute_name(:age) %></th>
+              <td><%= @person.age %></td>
+            </tr>
+            <tr>
+              <th><%= Person.human_attribute_name(:sex) %></th>
+              <td><%= @person.gender_name %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        Status History
+      </div>
+      <div class="box-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Status Type</th>
+              <th>Work Status</th>
+              <th>Education Status</th>
+              <th>Date Recorded</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @person_statuses.each do |status| %>
+              <tr>
+                <td><%= status[:status_type] %></td>
+                <td><%= status[:work_status] %></td>
+                <td><%= status[:education_status] %></td>
+                <td><%= l status[:status_date] %></td>
+                <td><%= status[:note] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

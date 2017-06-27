@@ -12,9 +12,10 @@ en:
       indicator_detail: "Indicator Detail"
       project_target: "Project Target"
       person: "Household Member"
+      follow_up: "Follow Up"
     attributes:
       person:
-        id: "Person Code"
+        id: "Household Member ID"
         first_name: "First Name (Given Name)"
         last_name: "Last Name (Family Name)"
         middle_name: "Middle Name"
