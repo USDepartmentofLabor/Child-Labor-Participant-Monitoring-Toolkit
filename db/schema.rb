@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170522224632) do
+ActiveRecord::Schema.define(version: 20170619193846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,25 @@ ActiveRecord::Schema.define(version: 20170522224632) do
     t.string "name"
   end
 
+  create_table "follow_ups", force: :cascade do |t|
+    t.integer  "person_id",                      null: false
+    t.integer  "work_status_id"
+    t.integer  "education_status_id"
+    t.date     "follow_date",                    null: false
+    t.boolean  "did_work"
+    t.boolean  "have_job_returning_to"
+    t.integer  "hours_worked"
+    t.integer  "occupation_id"
+    t.integer  "industry_id"
+    t.boolean  "exposed_to_hazardous_condition"
+    t.boolean  "subject_to_abuses"
+    t.boolean  "performed_housework"
+    t.integer  "hours_worked_on_housework"
+    t.boolean  "enrolled_in_school"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "frequencies", force: :cascade do |t|
     t.string "code", default: "NOT SET", null: false
     t.string "name", default: "NOT SET", null: false
@@ -204,6 +223,14 @@ ActiveRecord::Schema.define(version: 20170522224632) do
   add_index "indicators", ["reporting_frequency_id"], name: "index_indicators_on_reporting_frequency_id", using: :btree
   add_index "indicators", ["unit_of_measure_id"], name: "index_indicators_on_unit_of_measure_id", using: :btree
 
+  create_table "industries", force: :cascade do |t|
+    t.string   "code",           null: false
+    t.string   "canonical_name", null: false
+    t.string   "display_name",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "locales", force: :cascade do |t|
     t.string   "code",       null: false
     t.string   "name",       null: false
@@ -234,21 +261,39 @@ ActiveRecord::Schema.define(version: 20170522224632) do
   add_index "locations", ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
   add_index "locations", ["project_id"], name: "index_locations_on_project_id", using: :btree
 
+  create_table "occupations", force: :cascade do |t|
+    t.string   "code",           null: false
+    t.string   "canonical_name", null: false
+    t.string   "display_name",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "middle_name"
-    t.integer  "sex",                  limit: 2
+    t.integer  "sex",                            limit: 2
     t.date     "dob"
     t.integer  "age"
     t.integer  "household_id"
     t.date     "intake_date"
     t.boolean  "is_head_of_household"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.boolean  "is_beneficiary",                 default: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.boolean  "is_beneficiary",                           default: false
     t.integer  "relationship_id"
     t.string   "relationship_other"
+    t.boolean  "did_work"
+    t.boolean  "have_job_returning_to"
+    t.integer  "hours_worked"
+    t.integer  "occupation_id"
+    t.integer  "industry_id"
+    t.boolean  "exposed_to_hazardous_condition"
+    t.boolean  "subject_to_abuses"
+    t.boolean  "performed_housework"
+    t.integer  "hours_worked_on_housework"
+    t.boolean  "enrolled_in_school"
   end
 
   add_index "people", ["relationship_id"], name: "index_people_on_relationship_id", using: :btree
@@ -453,6 +498,14 @@ ActiveRecord::Schema.define(version: 20170522224632) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "work_activities", force: :cascade do |t|
+    t.string   "code",           null: false
+    t.string   "canonical_name", null: false
+    t.string   "display_name",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "work_statuses", force: :cascade do |t|
     t.string "name"
     t.string "work_type"
@@ -464,6 +517,11 @@ ActiveRecord::Schema.define(version: 20170522224632) do
   add_foreign_key "child_statuses", "people", column: "child_id"
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
+  add_foreign_key "follow_ups", "education_statuses"
+  add_foreign_key "follow_ups", "industries"
+  add_foreign_key "follow_ups", "occupations"
+  add_foreign_key "follow_ups", "people"
+  add_foreign_key "follow_ups", "work_statuses"
   add_foreign_key "income_sources", "households"
   add_foreign_key "indicator_details", "indicators"
   add_foreign_key "indicator_details", "reporting_periods"
@@ -472,6 +530,8 @@ ActiveRecord::Schema.define(version: 20170522224632) do
   add_foreign_key "locations", "location_types"
   add_foreign_key "locations", "projects"
   add_foreign_key "people", "households"
+  add_foreign_key "people", "industries"
+  add_foreign_key "people", "occupations"
   add_foreign_key "people", "relationships"
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"

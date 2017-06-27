@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :households do
     resources :adults, except: [:index, :new]
     resources :income_sources
+    resources :people do
+      resources :follow_ups
+    end
+    post :finalize, on: :member
   end
 
   resources :indicators do

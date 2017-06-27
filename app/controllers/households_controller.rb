@@ -12,6 +12,7 @@ class HouseholdsController < ApplicationController
   def show
     @children = @household.children
     @adults = @household.adults
+    @people = @household.people
     if ! CustomSection.where(model_type: 'Household', sort_order: 1).empty?
       @section_1_custom_fields = CustomSection.where(model_type: 'Household', sort_order: 1).first.custom_fields
     else

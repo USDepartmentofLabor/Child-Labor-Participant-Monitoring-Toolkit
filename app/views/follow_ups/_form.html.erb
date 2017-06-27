@@ -1,0 +1,223 @@
+<%= form_for([@household, @person, @follow_up], html: { role: "form" }) do |f| %>
+  <%= error_messages(@follow_up) %>
+
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <%= fa_icon "info" %>
+      <h3 class="box-title">
+        <%= t "follow_up.new.details_title" %>
+      </h3>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label><%= Person.human_attribute_name(:id) %>:</label>
+          <%= @person.id %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label><%= Person.human_attribute_name(:intake_date) %>:</label>
+          <%= l @person.intake_date %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label><%= Person.human_attribute_name(:first_name) %>:</label>
+          <%= @person.first_name %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label><%= Person.human_attribute_name(:middle_name) %>:</label>
+          <%= @person.middle_name %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label><%= Person.human_attribute_name(:last_name) %>:</label>
+          <%= @person.last_name %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label><%= Person.human_attribute_name(:sex) %>:</label>
+          <%= @person.gender_name %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label><%= Person.human_attribute_name(:dob) %>:</label>
+          <%= l @person.dob %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label><%= Person.human_attribute_name(:age) %>:</label>
+          <%= @person.age %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :follow_date %>
+                <div class="row date-select">
+                  <%= f.date_select :follow_date, { order: [:month, :day, :year]},
+                    {class: "form-control"} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="form-group">
+            <%= f.label :did_work %>
+            <div class="checkbox">
+              <label class="radio-inline">
+                <%= f.radio_button :did_work, true, class: "square-red" %>
+                <%= t('select_options.yes_no.yes') %>
+              </label>
+              <label class="radio-inline">
+                <%= f.radio_button :did_work, false, class: "square-red" %>
+                <%= t('select_options.yes_no.no') %>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :have_job_returning_to %>
+            <div class="checkbox">
+              <label class="radio-inline">
+                <%= f.radio_button :have_job_returning_to, true, class: "square-red" %>
+                <%= t('select_options.yes_no.yes') %>
+              </label>
+              <label class="radio-inline">
+                <%= f.radio_button :have_job_returning_to, false, class: "square-red" %>
+                <%= t('select_options.yes_no.no') %>
+              </label>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :hours_worked %>
+                <%= f.text_field :hours_worked, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :occupation_id %>
+                <%= f.collection_select :occupation_id, Occupation.all, :id, :display_name, {prompt: "Select Occupation"}, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :industry_id %>
+                <%= f.collection_select :industry_id, Industry.all, :id, :display_name, {prompt: "Select Industry"}, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :exposed_to_hazardous_condition %>
+            <div class="checkbox">
+              <label class="radio-inline">
+                <%= f.radio_button :exposed_to_hazardous_condition, true, class: "square-red" %>
+                <%= t('select_options.yes_no.yes') %>
+              </label>
+              <label class="radio-inline">
+                <%= f.radio_button :exposed_to_hazardous_condition, false, class: "square-red" %>
+                <%= t('select_options.yes_no.no') %>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :subject_to_abuses %>
+            <div class="checkbox">
+              <label class="radio-inline">
+                <%= f.radio_button :subject_to_abuses, true, class: "square-red" %>
+                <%= t('select_options.yes_no.yes') %>
+              </label>
+              <label class="radio-inline">
+                <%= f.radio_button :subject_to_abuses, false, class: "square-red" %>
+                <%= t('select_options.yes_no.no') %>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :performed_housework %>
+            <div class="checkbox">
+              <label class="radio-inline">
+                <%= f.radio_button :performed_housework, true, class: "square-red" %>
+                <%= t('select_options.yes_no.yes') %>
+              </label>
+              <label class="radio-inline">
+                <%= f.radio_button :performed_housework, false, class: "square-red" %>
+                <%= t('select_options.yes_no.no') %>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :hours_worked_on_housework %>
+                <%= f.text_field :hours_worked_on_housework, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :enrolled_in_school %>
+            <div class="checkbox">
+              <label class="radio-inline">
+                <%= f.radio_button :enrolled_in_school, true, class: "square-red" %>
+                <%= t('select_options.yes_no.yes') %>
+              </label>
+              <label class="radio-inline">
+                <%= f.radio_button :enrolled_in_school, false, class: "square-red" %>
+                <%= t('select_options.yes_no.no') %>
+              </label>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-4 col-sm-offset-4">
+        <%= link_to household_path(@household), :class => 'btn btn-danger btn-block' do %>
+        <i class="fa fa-times"></i>
+        <%= t("general.cancel") %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <button type="submit" class="btn btn-primary btn-block">
+          <%= t("general.submit") %>
+        </button>
+      </div>
+    </div>
+
+  </div>
+<% end %>

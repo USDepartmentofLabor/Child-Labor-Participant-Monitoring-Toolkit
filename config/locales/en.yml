@@ -108,10 +108,20 @@ en:
   people:
     index:
       add: "Add New Household Member"
+    new:
+      title: "Add New Household Member"
+    show:
+      title: "Household Member"
+      details_title: "Details"
+  follow_up:
+    new:
+      form_title: "New Follow Up"
+      details:title: "Add new follow up"
   households:
     index:
       add: "Add New Household"
       title: "List of Households"
+      add_member: "Add Household Member"
     new:
       title: "Add New Household"
       details_title: "Enter Household Details"
