@@ -15,6 +15,9 @@
     <%= f.text_field :estimated_income, class: "form-control" %>
   </td>
   <td>
+    <%= f.text_field :currency, class: "form-control" %>
+  </td>
+  <td>
     <%= f.hidden_field :_destroy %>
     <%= link_to '#', class: "remove_fields btn" do %>
       <i class="fa fa-trash-o"></i> <%= t("general.delete") %>
