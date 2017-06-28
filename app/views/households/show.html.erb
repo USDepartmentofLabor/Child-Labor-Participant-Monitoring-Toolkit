@@ -15,7 +15,9 @@
     <div class="box box-primary">
       <div class="box-header with-border">
         <%= fa_icon "info" %>
-        <h3 class="box-title"><%= t("households.show.title") %></h3>
+        <h3 class="box-title">
+          <%= t("households.show.title") %>
+        </h3>
       </div>
       <div class="box-body no-padding">
         <dl>
@@ -46,15 +48,31 @@
     <div class="box box-primary">
       <div class="box-header with-border">
         <%= fa_icon "money" %>
-        <h3 class="box-title"><%= t("households.show.income_sources") %></h3>
+        <h3 class="box-title">
+          <%= IncomeSource.model_name.human.pluralize %>
+        </h3>
       </div>
-      <div class="box-body">
+      <div class="box-body no-padding">
         <table class="table table-bordered table-hover">
           <tr>
-            <th>Product or Service</th>
-            <th>Estimated Volume Produced</th>
-            <th>Estimated Volume Sold</th>
-            <th>Estimated Income</th>
+            <th>
+              <%= IncomeSource.human_attribute_name :name %>
+            </th>
+            <th>
+              <%= IncomeSource.human_attribute_name :estimated_volume_produced %>
+            </th>
+            <th>
+              <%= IncomeSource.human_attribute_name :estimated_volume_sold %>
+            </th>
+            <th>
+              <%= IncomeSource.human_attribute_name :unit_of_measure %>
+            </th>
+            <th>
+              <%= IncomeSource.human_attribute_name :estimated_income %>
+            </th>
+            <th>
+              <%= IncomeSource.human_attribute_name :currency %>
+            </th>
           </tr>
           <%= render partial: "income_source", collection: @household.income_sources %>
         </table>
