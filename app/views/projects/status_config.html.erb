@@ -1,0 +1,45 @@
+<div class="page-header">
+  <h1><%= t("projects.status_config.title") %></h1>
+</div>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "truck" %>
+    <h3 class="box-title">
+      <%= t("projects.status_config.work_status_section_title") %>
+    </h3>
+  </div>
+  <div class="box-body">
+
+    <div class="row">
+      <div class="col-md-6">
+        <h4><%= t("projects.status_config.work_activities_title") %></h4>
+      </div>
+      <div class="col-md-6">
+        <%= link_to t("work_activities.new.add"), new_work_activity_path(@work_activity), remote: true, class: "btn btn-primary pull-right" %>
+      </div>
+    </div>
+    <table id="work-activities-data-table" class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th><%= WorkActivity.human_attribute_name(:code) %></th>
+          <th><%= WorkActivity.human_attribute_name(:display_name) %></th>
+          <th><%= t "general.delete" %></th>
+        </tr>
+      </thead>
+
+      <tbody id="work_activities_details">
+        <%= render partial: "work_activity",
+          collection: WorkActivity.all.order(:id) %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<div class="modal modal-info fade" id="detailModal" tabindex="-1" role="dialog"
+  aria-labelledby="detailModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"></div>
+  </div>
+</div>
