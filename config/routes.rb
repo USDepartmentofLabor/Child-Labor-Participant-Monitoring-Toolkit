@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resource :project do
     get :dashboard
+    get :status_config
   end
 
   resources :children do
@@ -52,6 +53,7 @@ Rails.application.routes.draw do
   resources :services
   resources :technical_progress_reports
   resources :users
+  resources :work_activities
 
   devise_for :users, skip: [:sessions, :registrations, :confirmations]
 
