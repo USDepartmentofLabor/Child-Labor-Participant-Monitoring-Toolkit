@@ -112,4 +112,7 @@ class ProjectsController < ApplicationController
 
     render 'dashboard'
   end
+
+  def status_config
+  end
 end

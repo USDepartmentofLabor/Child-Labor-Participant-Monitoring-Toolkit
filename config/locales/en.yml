@@ -54,6 +54,11 @@ en:
       dashboard: "Project Dashboard"
       targets: "Direct Beneficiary Targets"
       details: "Project Details"
+    status_config:
+      title: "Status Customizations"
+      work_status_section_title: "Work Status"
+      link_text: "Status Customization"
+      work_activities_title: "Work Activites"
   children:
     new:
       form_title: "Beneficiary Intake Form"
@@ -249,3 +254,6 @@ en:
   income_source:
     index:
       add: 'Add Income Source'
+  work_activities:
+    new:
+      add: "Add Work Activity"
