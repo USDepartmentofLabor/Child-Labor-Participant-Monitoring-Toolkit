@@ -72,31 +72,35 @@ namespace :db do
 
   desc 'Loads Occupations'
   task load_occupations: :environment do
-    Occupation.create!([
-      { code: '01', canonical_name: 'O1', display_name: 'bricklayer/mason' },
-      { code: '02', canonical_name: 'O2', display_name: 'helper/assistant' },
-      { code: '03', canonical_name: 'O3', display_name: 'shoe cobbler' },
-      { code: '04', canonical_name: 'O4', display_name: 'auto mechanic' },
-      { code: '05', canonical_name: 'O5', display_name: 'painter' },
-      { code: '06', canonical_name: 'O6', display_name: 'street/candy vendor' },
-      { code: '07', canonical_name: 'O7', display_name: 'farmer' },
-      { code: '08', canonical_name: 'O8', display_name: 'harvesting sugar cane' },
-      { code: '09', canonical_name: 'O9', display_name: 'nanny' }
-    ])
+    occupations = [
+      { code: '01', canonical_name: '', display_name: 'Bricklayer/Mason' },
+      { code: '02', canonical_name: '', display_name: 'Helper/Assistant' },
+      { code: '03', canonical_name: '', display_name: 'Shoe Cobbler' },
+      { code: '04', canonical_name: '', display_name: 'Auto Mechanic' },
+      { code: '05', canonical_name: '', display_name: 'Painter' },
+      { code: '06', canonical_name: '', display_name: 'Street/Candy Vendor' },
+      { code: '07', canonical_name: '', display_name: 'Farmer' },
+      { code: '08', canonical_name: '', display_name: 'Harvesting Sugar Cane' },
+      { code: '09', canonical_name: '', display_name: 'Nanny' }
+    ]
+    occupations.each { |o| o[:canonical_name] = 'O_' + o[:display_name].parameterize('_').upcase }
+    Occupation.create!(occupations)
   end
 
   desc 'Loads Industries'
   task load_industries: :environment do
-    Industry.create!([
-      { code: '01', canonical_name: 'I1', display_name: 'construction/homebuilding' },
-      { code: '02', canonical_name: 'I2', display_name: 'shoe store' },
-      { code: '03', canonical_name: 'I3', display_name: 'auto shop' },
-      { code: '04', canonical_name: 'I4', display_name: 'construction company' },
-      { code: '05', canonical_name: 'I5', display_name: 'street/candy vending' },
-      { code: '06', canonical_name: 'I6', display_name: 'corn crop' },
-      { code: '07', canonical_name: 'I7', display_name: 'sugar cane production' },
-      { code: '08', canonical_name: 'I8', display_name: 'other persons home' }
-    ])
+    industries = [
+      { code: '01', canonical_name: '', display_name: 'construction/homebuilding' },
+      { code: '02', canonical_name: '', display_name: 'shoe store' },
+      { code: '03', canonical_name: '', display_name: 'auto shop' },
+      { code: '04', canonical_name: '', display_name: 'construction company' },
+      { code: '05', canonical_name: '', display_name: 'street/candy vending' },
+      { code: '06', canonical_name: '', display_name: 'corn crop' },
+      { code: '07', canonical_name: '', display_name: 'sugar cane production' },
+      { code: '08', canonical_name: '', display_name: 'other persons home' }
+    ]
+    industries.each { |i| i[:canonical_name] = 'I_' + i[:display_name].parameterize('_').upcase }
+    Industry.create!(industries)
   end
 
 end
