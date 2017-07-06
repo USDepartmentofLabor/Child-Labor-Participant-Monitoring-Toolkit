@@ -69,7 +69,7 @@
                 <td><%= person.first_name %></td>
                 <td><%= person.age %></td>
                 <td><%= person.gender_name %></td>
-                <td><%= person.intake_status.work_status.name unless person.intake_status.nil? %></td>
+                <td><%= person.intake_work_status.name unless person.intake_work_status.nil? %></td>
                 <% end %>
               </tbody>
             </table>

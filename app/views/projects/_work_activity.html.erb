@@ -2,7 +2,7 @@
   <td><%= work_activity.code %></td>
   <td><%= link_to work_activity.display_name, edit_work_activity_path(work_activity), remote: true %></td>
   <td>
-    <%= link_to work_activity_path(work_activity), method: :delete, data: {config: 'Are you sure?'} do %>
+    <%= link_to work_activity_path(work_activity), method: :delete, data: {confirm: 'Are you sure?'} do %>
       <%= fa_icon "trash" %>
       <%= t "general.delete" %>
     <% end %>

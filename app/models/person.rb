@@ -4,6 +4,8 @@ class Person < ActiveRecord::Base
   belongs_to :household
   belongs_to :relationship
   has_many :follow_ups
+  has_and_belongs_to_many :work_activities
+
   has_many :statuses, class_name: "ChildStatus", dependent: :destroy
 
   validates :first_name, presence: true
@@ -47,12 +49,28 @@ class Person < ActiveRecord::Base
     end
   end
 
-  def intake_status
-    #statuses = ChildStatus.find_by(child_id: id)
-    #if !statuses.nil?
-    #  return statuses.order(:created_at).first
-    #end
-    #child_statuses.order(:created_at).first
-    ChildStatus.where("child_id = #{id}").order(:created_at).first
+  def intake_work_status
+    if age >= 5 and age <= 17
+      if did_work || have_job_returning_to
+        if occupation_id.present? || industry_id.present? ||
+           exposed_to_hazardous_condition || subject_to_abuses
+          return WorkStatus.find(2)
+        elsif (age >= 5 && age <= 14) && hours_worked > 14
+          return WorkStatus.find(1)
+        elsif age <= 17 and hours_worked > 40
+          return WorkStatus.find(1)
+        end
+      end
+    end
+  else
+    return nil
+  end
+
+  def intake_education_status
+    if enrolled_in_school
+      return EducationStatus.find(1)
+    else
+      return nil
+    end
   end
 end

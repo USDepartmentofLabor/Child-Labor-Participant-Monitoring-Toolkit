@@ -1,6 +1,6 @@
 $("#detailModal .modal-content").html(
   '<%= j render(partial: "form",
-    locals: {work_activity: @work_activity}) %>'
+    locals: {work_activity: @work_activity, is_new: false}) %>'
 );
 
 $("#detailModal").modal('show');
