@@ -5,7 +5,11 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <h4 class="modal-title" id="detailModalLabel">
-      <%= t("indicator_detail.edit") %>
+      <% if is_new %>
+        <%= t("general.add") %>
+      <% else %>
+        <%= t("general.edit") %>
+      <% end %>
     </h4>
   </div>
   <div class="modal-body">

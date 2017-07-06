@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619193846) do
+ActiveRecord::Schema.define(version: 20170630184013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -294,9 +294,15 @@ ActiveRecord::Schema.define(version: 20170619193846) do
     t.boolean  "performed_housework"
     t.integer  "hours_worked_on_housework"
     t.boolean  "enrolled_in_school"
+    t.boolean  "is_birthdate_approximate"
   end
 
   add_index "people", ["relationship_id"], name: "index_people_on_relationship_id", using: :btree
+
+  create_table "people_work_activities", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "work_activity_id"
+  end
 
   create_table "project_target_types", force: :cascade do |t|
     t.string   "name"
@@ -533,6 +539,8 @@ ActiveRecord::Schema.define(version: 20170619193846) do
   add_foreign_key "people", "industries"
   add_foreign_key "people", "occupations"
   add_foreign_key "people", "relationships"
+  add_foreign_key "people_work_activities", "people"
+  add_foreign_key "people_work_activities", "work_activities"
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"
   add_foreign_key "projects", "regions"

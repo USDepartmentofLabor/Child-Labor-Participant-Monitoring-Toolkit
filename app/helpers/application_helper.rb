@@ -52,4 +52,8 @@ module ApplicationHelper
   def description(page_description)
     content_for(:description) { page_description }
   end
+
+  def display_yes_no(value)
+    value ? "Yes" : "No"
+  end
 end

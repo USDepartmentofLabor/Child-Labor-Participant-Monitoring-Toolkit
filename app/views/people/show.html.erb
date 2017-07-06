@@ -44,6 +44,10 @@
               <td><%= l @person.dob unless @person.dob.nil? %></td>
             </tr>
             <tr>
+              <th><%= Person.human_attribute_name(:is_birthdate_approximate) %></th>
+              <td><%= display_yes_no(@person.is_birthdate_approximate) %></td>
+            </tr>
+            <tr>
               <th><%= Person.human_attribute_name(:age) %></th>
               <td><%= @person.age %></td>
             </tr>
