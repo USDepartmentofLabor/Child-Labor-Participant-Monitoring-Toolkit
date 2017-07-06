@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170630184013) do
+ActiveRecord::Schema.define(version: 20170706202617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20170630184013) do
 
   add_index "abilities_roles", ["ability_id"], name: "index_abilities_roles_on_ability_id", using: :btree
   add_index "abilities_roles", ["role_id"], name: "index_abilities_roles_on_role_id", using: :btree
+
+  create_table "abuses", force: :cascade do |t|
+    t.string   "code",           null: false
+    t.string   "canonical_name", null: false
+    t.string   "display_name",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "adults", force: :cascade do |t|
     t.string   "fname"
@@ -162,6 +170,22 @@ ActiveRecord::Schema.define(version: 20170630184013) do
   create_table "frequencies", force: :cascade do |t|
     t.string "code", default: "NOT SET", null: false
     t.string "name", default: "NOT SET", null: false
+  end
+
+  create_table "hazardous_conditions", force: :cascade do |t|
+    t.string   "code",           null: false
+    t.string   "canonical_name", null: false
+    t.string   "display_name",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "household_tasks", force: :cascade do |t|
+    t.string   "code",           null: false
+    t.string   "canonical_name", null: false
+    t.string   "display_name",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "households", force: :cascade do |t|
