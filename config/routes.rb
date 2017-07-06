@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   resources :work_activities
   resources :occupations
   resources :industries
+  resources :hazardous_conditions
 
   devise_for :users, skip: [:sessions, :registrations, :confirmations]
 

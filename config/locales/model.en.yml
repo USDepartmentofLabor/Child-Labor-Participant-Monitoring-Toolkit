@@ -16,6 +16,7 @@ en:
       work_activity: "Work Activity"
       occupation: "Occupation"
       industry: "Industry"
+      hazardous_condition: "Hazardous Condition"
     attributes:
       person:
         id: "Household Member ID"
@@ -122,6 +123,13 @@ en:
         created_at: "Date Created"
         updated_at: "Date Updated"
       industry:
+        id: "ID"
+        code: "Code"
+        canonical_name: "Canonical Name"
+        display_name: "Display Name"
+        created_at: "Date Created"
+        updated_at: "Date Updated"
+      hazardous_condition:
         id: "ID"
         code: "Code"
         canonical_name: "Canonical Name"

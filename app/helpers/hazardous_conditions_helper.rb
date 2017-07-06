@@ -1,0 +1,2 @@
+module HazardousConditionsHelper
+end
