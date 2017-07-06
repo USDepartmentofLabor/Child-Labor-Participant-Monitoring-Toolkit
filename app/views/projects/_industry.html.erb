@@ -1,0 +1,10 @@
+<tr>
+  <td><%= industry.code %></td>
+  <td><%= link_to industry.display_name, edit_industry_path(industry), remote: true %></td>
+  <td>
+    <%= link_to industry_path(industry), method: :delete, data: {confirm: 'Are you sure?'} do %>
+      <%= fa_icon "trash" %>
+      <%= t "general.delete" %>
+    <% end %>
+  </td>
+</tr>

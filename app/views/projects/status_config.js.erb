@@ -16,3 +16,8 @@ $("#occupations_details").html(
   '<%= j render partial: "occupation",
     collection: Occupation.all.order(:id) %>'
 );
+
+$("#industries_details").html(
+  '<%= j render partial: "industry",
+    collection: Industry.all.order(:id) %>'
+);

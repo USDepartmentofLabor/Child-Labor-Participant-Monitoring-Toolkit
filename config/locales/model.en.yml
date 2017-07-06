@@ -15,6 +15,7 @@ en:
       follow_up: "Follow Up"
       work_activity: "Work Activity"
       occupation: "Occupation"
+      industry: "Industry"
     attributes:
       person:
         id: "Household Member ID"
@@ -114,6 +115,13 @@ en:
         created_at: "Date Created"
         updated_at: "Date Updated"
       occupation:
+        id: "ID"
+        code: "Code"
+        canonical_name: "Canonical Name"
+        display_name: "Display Name"
+        created_at: "Date Created"
+        updated_at: "Date Updated"
+      industry:
         id: "ID"
         code: "Code"
         canonical_name: "Canonical Name"

@@ -60,6 +60,7 @@ en:
       link_text: "Status Customization"
       work_activities_title: "Work Activites"
       occupations_title: "Occupations"
+      industries_title: "Industries"
   children:
     new:
       form_title: "Beneficiary Intake Form"
@@ -261,3 +262,6 @@ en:
   occupations:
     new:
       add: "Add Occupation"
+  industries:
+    new:
+      add: "Add Industry"
