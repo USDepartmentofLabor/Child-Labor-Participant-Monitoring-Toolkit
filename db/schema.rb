@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(version: 20170630184013) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.text     "unit_of_measure"
+    t.string   "currency"
   end
 
   add_index "income_sources", ["household_id"], name: "index_income_sources_on_household_id", using: :btree

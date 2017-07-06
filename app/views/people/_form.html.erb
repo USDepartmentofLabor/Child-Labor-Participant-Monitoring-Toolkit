@@ -11,26 +11,29 @@
   <div class="box-body">
     <div class="row">
       <div class="col-sm-12">
-
-        <div class="form-group">
-          <%= f.label :intake_date %>
-          <div class="row date-select">
-            <%= f.date_select :intake_date, { order: [:month, :day, :year]},
-                {class: "form-control"} %>
+          <div class="form-group">
+            <%= f.label :intake_date %>
+            <div class="row date-select">
+              <%= f.date_select :intake_date, { order: [:month, :day, :year]},
+            {class: "form-control"} %>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :first_name %>
-          <%= f.text_field :first_name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :last_name %>
-          <%= f.text_field :last_name, class: "form-control" %>
-        </div>
+
+          <div class="form-group">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, class: "form-control" %>
+          </div>
+
         <div class="form-group">
           <%= f.label :middle_name %>
           <%= f.text_field :middle_name, class: "form-control" %>
         </div>
+
         <div class="form-group">
           <%= f.label :sex %>
           <div class="checkbox">
@@ -42,13 +45,14 @@
             <% end %>
           </div>
         </div>
+
         <div class="form-group">
           <%= f.label :dob %>
           <div class="row date-select">
             <%= f.date_select :dob, {order: [:month, :day, :year],
-                start_year: Date.today.year - 100, end_year: Date.today.year,
-                prompt: true},
-                {class: "form-control"} %>
+            start_year: Date.today.year - 100, end_year: Date.today.year,
+            prompt: true},
+            {class: "form-control"} %>
           </div>
         </div>
         <div class="form-group">
@@ -63,8 +67,7 @@
               <%= t('select_options.yes_no.no') %>
             </label>
           </div>
-        </div>
-        <div class="form-group">
+      <div class="form-group">
           <%= f.label :did_work %>
           <div class="checkbox">
             <label class="radio-inline">
@@ -81,15 +84,18 @@
           <%= f.label :have_job_returning_to %>
           <div class="checkbox">
             <label class="radio-inline">
-              <%= f.radio_button :have_job_returning_to, true, class: "square-red" %>
+            <%= f.radio_button :have_job_returning_to, true,
+              class: "square-red" %>
               <%= t('select_options.yes_no.yes') %>
             </label>
             <label class="radio-inline">
-              <%= f.radio_button :have_job_returning_to, false, class: "square-red" %>
+            <%= f.radio_button :have_job_returning_to, false,
+              class: "square-red" %>
               <%= t('select_options.yes_no.no') %>
             </label>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -102,27 +108,29 @@
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :occupation_id %>
-              <%= f.collection_select :occupation_id, Occupation.all, :id, :display_name, {prompt: "Select Occupation"}, class: "form-control" %>
-            </div>
-          </div>
+        <%= f.collection_select :occupation_id, Occupation.all, :id,
+          :display_name, {prompt: "Select Occupation"},
+          class: "form-control" %>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <%= f.label :industry_id %>
-              <%= f.collection_select :industry_id, Industry.all, :id, :display_name, {prompt: "Select Industry"}, class: "form-control" %>
-            </div>
+        <%= f.collection_select :industry_id, Industry.all, :id, :display_name,
+          {prompt: "Select Industry"}, class: "form-control" %>
           </div>
         </div>
         <div class="form-group">
           <%= f.label :exposed_to_hazardous_condition %>
           <div class="checkbox">
             <label class="radio-inline">
-              <%= f.radio_button :exposed_to_hazardous_condition, true, class: "square-red" %>
+            <%= f.radio_button :exposed_to_hazardous_condition, true,
+              class: "square-red" %>
               <%= t('select_options.yes_no.yes') %>
             </label>
             <label class="radio-inline">
-              <%= f.radio_button :exposed_to_hazardous_condition, false, class: "square-red" %>
+            <%= f.radio_button :exposed_to_hazardous_condition, false,
+              class: "square-red" %>
               <%= t('select_options.yes_no.no') %>
             </label>
           </div>
@@ -135,7 +143,8 @@
               <%= t('select_options.yes_no.yes') %>
             </label>
             <label class="radio-inline">
-              <%= f.radio_button :subject_to_abuses, false, class: "square-red" %>
+            <%= f.radio_button :subject_to_abuses, false,
+              class: "square-red" %>
               <%= t('select_options.yes_no.no') %>
             </label>
           </div>
@@ -144,11 +153,13 @@
           <%= f.label :performed_housework %>
           <div class="checkbox">
             <label class="radio-inline">
-              <%= f.radio_button :performed_housework, true, class: "square-red" %>
+            <%= f.radio_button :performed_housework, true,
+              class: "square-red" %>
               <%= t('select_options.yes_no.yes') %>
             </label>
             <label class="radio-inline">
-              <%= f.radio_button :performed_housework, false, class: "square-red" %>
+            <%= f.radio_button :performed_housework, false,
+              class: "square-red" %>
               <%= t('select_options.yes_no.no') %>
             </label>
           </div>
@@ -165,31 +176,37 @@
           <%= f.label :enrolled_in_school %>
           <div class="checkbox">
             <label class="radio-inline">
-              <%= f.radio_button :enrolled_in_school, true, class: "square-red" %>
+            <%= f.radio_button :enrolled_in_school, true,
+              class: "square-red" %>
               <%= t('select_options.yes_no.yes') %>
             </label>
             <label class="radio-inline">
-              <%= f.radio_button :enrolled_in_school, false, class: "square-red" %>
+            <%= f.radio_button :enrolled_in_school, false,
+              class: "square-red" %>
               <%= t('select_options.yes_no.no') %>
             </label>
           </div>
         </div>
 
-      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-sm-4 col-sm-offset-4">
-      <%= link_to household_path(@household), :class => 'btn btn-danger btn-block' do %>
-      <i class="fa fa-times"></i>
-      <%= t("general.cancel") %>
-      <% end %>
-    </div>
-    <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block">
-        <%= t("general.submit") %>
-      </button>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-4">
+          <%= link_to household_path(@household),
+            class: 'btn btn-danger btn-block' do %>
+          <i class="fa fa-times"></i>
+          <%= t("general.cancel") %>
+          <% end %>
+        </div>
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-primary btn-block">
+            <%= t("general.submit") %>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
   <% end %>
