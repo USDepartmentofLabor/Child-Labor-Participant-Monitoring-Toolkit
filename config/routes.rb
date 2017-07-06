@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   resources :users
   resources :work_activities
   resources :occupations
+  resources :industries
 
   devise_for :users, skip: [:sessions, :registrations, :confirmations]
 
