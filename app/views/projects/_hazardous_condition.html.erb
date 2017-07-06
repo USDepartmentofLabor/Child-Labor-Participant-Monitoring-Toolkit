@@ -1,0 +1,10 @@
+<tr>
+  <td><%= hazardous_condition.code %></td>
+  <td><%= link_to hazardous_condition.display_name, edit_hazardous_condition_path(hazardous_condition), remote: true %></td>
+  <td>
+    <%= link_to hazardous_condition_path(hazardous_condition), method: :delete, data: {confirm: 'Are you sure?'} do %>
+      <%= fa_icon "trash" %>
+      <%= t "general.delete" %>
+    <% end %>
+  </td>
+</tr>

@@ -61,6 +61,7 @@ en:
       work_activities_title: "Work Activites"
       occupations_title: "Occupations"
       industries_title: "Industries"
+      hazardous_conditions_title: "Hazardous Conditions"
   children:
     new:
       form_title: "Beneficiary Intake Form"
@@ -265,3 +266,6 @@ en:
   industries:
     new:
       add: "Add Industry"
+  hazardous_conditions:
+    new:
+      add: "Add Hazardous Condition"

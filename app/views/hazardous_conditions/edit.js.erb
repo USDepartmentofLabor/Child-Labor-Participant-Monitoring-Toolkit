@@ -1,0 +1,6 @@
+$("#detailModal .modal-content").html(
+  '<%= j render(partial: "form",
+    locals: {hazardous_condition: @hazardous_condition, is_new: false}) %>'
+);
+
+$("#detailModal").modal('show');

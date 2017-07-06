@@ -107,6 +107,40 @@
 </div>
 <!-- box -->
 
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "exclamation-triangle" %>
+    <h3 class="box-title">
+      <%= t("projects.status_config.hazardous_conditions_title") %>
+    </h3>
+  </div>
+  <div class="box-body">
+    <div class="table-responsive">
+      <table id="hazardous_conditions-data-table" class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th><%= HazardousCondition.human_attribute_name(:code) %></th>
+            <th><%= HazardousCondition.human_attribute_name(:display_name) %></th>
+            <th><%= t "general.delete" %></th>
+          </tr>
+        </thead>
+
+        <tbody id="hazardous_conditions_details">
+          <%= render partial: "hazardous_condition",
+          collection: HazardousCondition.all.order(:id) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- box-body -->
+  <div class="box-footer clearfix">
+    <%= link_to t("hazardous_conditions.new.add"), new_hazardous_condition_path(@hazardous_condition),
+          remote: true, class: "btn btn-primary" %>
+  </div>
+  <!-- box-footer -->
+</div>
+<!-- box -->
+
 <div class="modal modal-info fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content"></div>

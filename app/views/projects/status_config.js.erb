@@ -21,3 +21,8 @@ $("#industries_details").html(
   '<%= j render partial: "industry",
     collection: Industry.all.order(:id) %>'
 );
+
+$("#hazardous_conditions_details").html(
+  '<%= j render partial: "hazardous_condition",
+    collection: HazardousCondition.all.order(:id) %>'
+);
