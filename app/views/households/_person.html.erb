@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <%= link_to person.id, household_person_path(@household, person) %>
+  </td>
+  <td>
+    <%= link_to person.last_name, household_person_path(@household, person) %>
+  </td>
+  <td>
+    <%= person.first_name %>
+  </td>
+  <td>
+    <%= person.age %>
+  </td>
+  <td>
+    <%= person.gender_name %>
+  </td>
+  <td>
+    <%= person.intake_status&.work_status&.name %>
+  </td>
+</tr>
