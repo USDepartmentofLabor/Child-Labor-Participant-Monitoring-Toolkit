@@ -11,3 +11,8 @@ $("#work_activities_details").html(
   '<%= j render partial: "work_activity",
     collection: WorkActivity.all.order(:id) %>'
 );
+
+$("#occupations_details").html(
+  '<%= j render partial: "occupation",
+    collection: Occupation.all.order(:id) %>'
+);

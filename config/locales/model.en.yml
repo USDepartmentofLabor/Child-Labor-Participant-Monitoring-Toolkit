@@ -14,6 +14,7 @@ en:
       person: "Household Member"
       follow_up: "Follow Up"
       work_activity: "Work Activity"
+      occupation: "Occupation"
     attributes:
       person:
         id: "Household Member ID"
@@ -106,6 +107,13 @@ en:
         unit_of_measure: 'Unit of Measure'
         estimated_income: 'Estimated Income'
       work_activity:
+        id: "ID"
+        code: "Code"
+        canonical_name: "Canonical Name"
+        display_name: "Display Name"
+        created_at: "Date Created"
+        updated_at: "Date Updated"
+      occupation:
         id: "ID"
         code: "Code"
         canonical_name: "Canonical Name"

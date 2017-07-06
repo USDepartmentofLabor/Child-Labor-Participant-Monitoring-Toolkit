@@ -119,7 +119,7 @@ namespace :db do
       { code: '11', canonical_name: '', display_name: 'Chemicals (pesticides, glues, etc.)' },
       { code: '12', canonical_name: '', display_name: 'Explosives' }
     ]
-    conditions.each { |i| i[:canonical_name] = 'I_' + i[:display_name].parameterize('_').upcase }
+    conditions.each { |i| i[:canonical_name] = 'HC_' + i[:display_name].parameterize('_').upcase }
     HazardousCondition.create!(conditions)
   end
 
@@ -131,7 +131,7 @@ namespace :db do
       { code: '03', canonical_name: '', display_name: 'Beaten/physically hurt' },
       { code: '04', canonical_name: '', display_name: 'Sexually abused (touched or things done to you that you do not want)' }
     ]
-    abuses.each { |i| i[:canonical_name] = 'I_' + i[:display_name].parameterize('_').upcase }
+    abuses.each { |i| i[:canonical_name] = 'A_' + i[:display_name].parameterize('_').upcase }
     Abuse.create!(abuses)
   end
 
@@ -144,7 +144,7 @@ namespace :db do
       { code: '04', canonical_name: '', display_name: 'Washing clothes' },
       { code: '05', canonical_name: '', display_name: 'Caring for children/old/sick' }
     ]
-    household_tasks.each { |i| i[:canonical_name] = 'I_' + i[:display_name].parameterize('_').upcase }
+    household_tasks.each { |i| i[:canonical_name] = 'HT_' + i[:display_name].parameterize('_').upcase }
     HouseholdTask.create!(household_tasks)
   end
 

@@ -1,0 +1,10 @@
+<tr>
+  <td><%= occupation.code %></td>
+  <td><%= link_to occupation.display_name, edit_occupation_path(occupation), remote: true %></td>
+  <td>
+    <%= link_to occupation_path(occupation), method: :delete, data: {confirm: 'Are you sure?'} do %>
+      <%= fa_icon "trash" %>
+      <%= t "general.delete" %>
+    <% end %>
+  </td>
+</tr>
