@@ -59,6 +59,7 @@ en:
       work_status_section_title: "Work Status"
       link_text: "Status Customization"
       work_activities_title: "Work Activites"
+      occupations_title: "Occupations"
   children:
     new:
       form_title: "Beneficiary Intake Form"
@@ -257,3 +258,6 @@ en:
   work_activities:
     new:
       add: "Add Work Activity"
+  occupations:
+    new:
+      add: "Add Occupation"

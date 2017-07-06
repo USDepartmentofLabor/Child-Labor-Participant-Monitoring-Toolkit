@@ -1,0 +1,6 @@
+$("#detailModal .modal-content").html(
+  '<%= j render(partial: "form",
+    locals: {occupation: @occupation, is_new: false}) %>'
+);
+
+$("#detailModal").modal('show');
