@@ -90,17 +90,62 @@ namespace :db do
   desc 'Loads Industries'
   task load_industries: :environment do
     industries = [
-      { code: '01', canonical_name: '', display_name: 'construction/homebuilding' },
-      { code: '02', canonical_name: '', display_name: 'shoe store' },
-      { code: '03', canonical_name: '', display_name: 'auto shop' },
-      { code: '04', canonical_name: '', display_name: 'construction company' },
-      { code: '05', canonical_name: '', display_name: 'street/candy vending' },
-      { code: '06', canonical_name: '', display_name: 'corn crop' },
-      { code: '07', canonical_name: '', display_name: 'sugar cane production' },
-      { code: '08', canonical_name: '', display_name: 'other persons home' }
+      { code: '01', canonical_name: '', display_name: 'Construction/Homebuilding' },
+      { code: '02', canonical_name: '', display_name: 'Shoe Store' },
+      { code: '03', canonical_name: '', display_name: 'Auto Shop' },
+      { code: '04', canonical_name: '', display_name: 'Construction Company' },
+      { code: '05', canonical_name: '', display_name: 'Street/Candy Vending' },
+      { code: '06', canonical_name: '', display_name: 'Corn Crop' },
+      { code: '07', canonical_name: '', display_name: 'Sugar Cane Production' },
+      { code: '08', canonical_name: '', display_name: 'Other Persons Home' }
     ]
     industries.each { |i| i[:canonical_name] = 'I_' + i[:display_name].parameterize('_').upcase }
     Industry.create!(industries)
+  end
+
+  desc 'Loads Hazardous Conditions'
+  task load_hazardous_conditions: :environment do
+    conditions = [
+      { code: '01', canonical_name: '', display_name: 'Dust/fumes' },
+      { code: '02', canonical_name: '', display_name: 'Fire/gas/flames' },
+      { code: '03', canonical_name: '', display_name: 'Loud noise or vibration' },
+      { code: '04', canonical_name: '', display_name: 'Extreme cold or heat' },
+      { code: '05', canonical_name: '', display_name: 'Dangerous tools (knives, etc.)' },
+      { code: '06', canonical_name: '', display_name: 'Work underground' },
+      { code: '07', canonical_name: '', display_name: 'Work at heights' },
+      { code: '08', canonical_name: '', display_name: 'Work in water/lake/pond/river' },
+      { code: '09', canonical_name: '', display_name: 'Workplace too dark or confined' },
+      { code: '10', canonical_name: '', display_name: 'Insufficient ventilation' },
+      { code: '11', canonical_name: '', display_name: 'Chemicals (pesticides, glues, etc.)' },
+      { code: '12', canonical_name: '', display_name: 'Explosives' }
+    ]
+    conditions.each { |i| i[:canonical_name] = 'I_' + i[:display_name].parameterize('_').upcase }
+    HazardousCondition.create!(conditions)
+  end
+
+  desc 'Loads Abuses'
+  task load_abuses: :environment do
+    abuses = [
+      { code: '01', canonical_name: '', display_name: 'Constantly shouted at' },
+      { code: '02', canonical_name: '', display_name: 'Repeatedly insulted' },
+      { code: '03', canonical_name: '', display_name: 'Beaten/physically hurt' },
+      { code: '04', canonical_name: '', display_name: 'Sexually abused (touched or things done to you that you do not want)' }
+    ]
+    abuses.each { |i| i[:canonical_name] = 'I_' + i[:display_name].parameterize('_').upcase }
+    Abuse.create!(abuses)
+  end
+
+  desc 'Loads Household Tasks'
+  task load_household_tasks: :environment do
+    household_tasks = [
+      { code: '01', canonical_name: '', display_name: 'Shopping for household' },
+      { code: '02', canonical_name: '', display_name: 'Repairing any household equipment' },
+      { code: '03', canonical_name: '', display_name: 'Cooking cleaning utensils/house' },
+      { code: '04', canonical_name: '', display_name: 'Washing clothes' },
+      { code: '05', canonical_name: '', display_name: 'Caring for children/old/sick' }
+    ]
+    household_tasks.each { |i| i[:canonical_name] = 'I_' + i[:display_name].parameterize('_').upcase }
+    HouseholdTask.create!(household_tasks)
   end
 
 end
