@@ -84,7 +84,12 @@ class PeopleController < ApplicationController
       :hours_worked, :occupation_id, :industry_id,
       :exposed_to_hazardous_condition, :subject_to_abuses, :performed_housework,
       :hours_worked_on_housework, :enrolled_in_school,
-      :work_activity_ids => []
+      :work_activity_ids => [],
+      :occupation_ids => [],
+      :industry_ids => [],
+      :hazardous_condition_ids => [],
+      :abuse_ids => [],
+      :household_task_ids => []
     )
   end
 

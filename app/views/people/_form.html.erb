@@ -100,69 +100,53 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :occupation_id %>
-                <%= f.collection_select :occupation_id, Occupation.all, :id,
-                      :display_name, {prompt: "Select Occupation"},
-                      class: "form-control" %>
+          <div class="form-group">
+            <%= f.label :occupations %>
+            <%= f.collection_check_boxes :occupation_ids, Occupation.all, :id, :display_name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box class: "square-red" %>
+                <%= b.label %>
               </div>
-            </div>
+            <% end %>
           </div>
           <div class="row">
             <div class="col-md-6">
 
               <div class="form-group">
-                <%= f.label :industry_id %>
-                <%= f.collection_select :industry_id, Industry.all, :id,
-                      :display_name, {prompt: "Select Industry"},
-                      class: "form-control" %>
+                <%= f.label :industries %>
+                <%= f.collection_check_boxes :industry_ids, Industry.all, :id, :display_name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box class: "square-red" %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
               </div>
               <div class="form-group">
-                <%= f.label :exposed_to_hazardous_condition %>
-                <div class="checkbox">
-                  <label class="radio-inline">
-                    <%= f.radio_button :exposed_to_hazardous_condition, true,
-                          class: "square-red" %>
-                    <%= t('select_options.yes_no.yes') %>
-                  </label>
-                  <label class="radio-inline">
-                    <%= f.radio_button :exposed_to_hazardous_condition, false,
-                          class: "square-red" %>
-                    <%= t('select_options.yes_no.no') %>
-                  </label>
-                </div>
+                <%= f.label :hazardous_conditions %>
+                <%= f.collection_check_boxes :hazardous_condition_ids, HazardousCondition.all, :id, :display_name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box class: "square-red" %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
               </div>
               <div class="form-group">
-                <%= f.label :subject_to_abuses %>
-                <div class="checkbox">
-                  <label class="radio-inline">
-                    <%= f.radio_button :subject_to_abuses, true,
-                          class: "square-red" %>
-                    <%= t('select_options.yes_no.yes') %>
-                  </label>
-                  <label class="radio-inline">
-                    <%= f.radio_button :subject_to_abuses, false,
-                          class: "square-red" %>
-                    <%= t('select_options.yes_no.no') %>
-                  </label>
-                </div>
+                <%= f.label :abuses %>
+                <%= f.collection_check_boxes :abuse_ids, Abuse.all, :id, :display_name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box class: "square-red" %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
               </div>
               <div class="form-group">
-                <%= f.label :performed_housework %>
-                <div class="checkbox">
-                  <label class="radio-inline">
-                    <%= f.radio_button :performed_housework, true,
-                          class: "square-red" %>
-                    <%= t('select_options.yes_no.yes') %>
-                  </label>
-                  <label class="radio-inline">
-                    <%= f.radio_button :performed_housework, false,
-                          class: "square-red" %>
-                    <%= t('select_options.yes_no.no') %>
-                  </label>
-                </div>
+                <%= f.label :household_tasks %>
+                <%= f.collection_check_boxes :household_task_ids, HouseholdTask.all, :id, :display_name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box class: "square-red" %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
               </div>
               <div class="form-group">
                 <%= f.label :hours_worked_on_housework %>
