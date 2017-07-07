@@ -10,6 +10,10 @@
   <div class="col-md-12">
     <div class="box box-primary">
       <div class="box-body">
+        <div class="form-group">
+          <label><%= Relationship.human_attribute_name(:canonical_name) %></label>
+          <p><%= @relationship.canonical_name %></p>
+        </div>
         <%= render 'form' %>
       </div>
     </div>
