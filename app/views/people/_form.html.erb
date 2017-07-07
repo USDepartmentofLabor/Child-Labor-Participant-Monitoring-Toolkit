@@ -68,17 +68,13 @@
             </label>
           </div>
           <div class="form-group">
-            <%= f.label :did_work %>
-            <div class="checkbox">
-              <label class="radio-inline">
-                <%= f.radio_button :did_work, true, class: "square-red" %>
-                <%= t('select_options.yes_no.yes') %>
-              </label>
-              <label class="radio-inline">
-                <%= f.radio_button :did_work, false, class: "square-red" %>
-                <%= t('select_options.yes_no.no') %>
-              </label>
-            </div>
+            <%= f.label :work_activities %>
+            <%= f.collection_check_boxes :work_activity_ids, WorkActivity.all, :id, :display_name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box class: "square-red" %>
+                <%= b.label %>
+              </div>
+            <% end %>
           </div>
           <div class="form-group">
             <%= f.label :have_job_returning_to %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706202617) do
+ActiveRecord::Schema.define(version: 20170707135119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -309,7 +309,6 @@ ActiveRecord::Schema.define(version: 20170706202617) do
     t.boolean  "is_beneficiary",                           default: false
     t.integer  "relationship_id"
     t.string   "relationship_other"
-    t.boolean  "did_work"
     t.boolean  "have_job_returning_to"
     t.integer  "hours_worked"
     t.integer  "occupation_id"

@@ -51,13 +51,13 @@ class Person < ActiveRecord::Base
 
   def intake_work_status
     if age >= 5 and age <= 17
-      if did_work || have_job_returning_to
+      if work_activities.any? || have_job_returning_to
         if occupation_id.present? || industry_id.present? ||
            exposed_to_hazardous_condition || subject_to_abuses
           return WorkStatus.find(2)
-        elsif (age >= 5 && age <= 14) && hours_worked > 14
+        elsif (age >= 5 && age <= 14) && (!hours_worked.nil? && hours_worked > 14)
           return WorkStatus.find(1)
-        elsif age <= 17 and hours_worked > 40
+        elsif age <= 17 and (!hours_worked.nil? && hours_worked > 40)
           return WorkStatus.find(1)
         end
       end
