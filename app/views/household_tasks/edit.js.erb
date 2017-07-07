@@ -1,0 +1,6 @@
+$("#detailModal .modal-content").html(
+  '<%= j render(partial: "form",
+    locals: {household_task: @household_task, is_new: false}) %>'
+);
+
+$("#detailModal").modal('show');
