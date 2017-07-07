@@ -236,6 +236,9 @@ en:
       title: 'Translations'
     index:
       title: 'Locales'
+  relationships:
+    index:
+      title: 'Relationships to Head of Household'
   income_source:
     index:
       add: 'Add Income Source'
