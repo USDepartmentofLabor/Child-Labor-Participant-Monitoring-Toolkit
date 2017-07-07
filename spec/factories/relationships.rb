@@ -1,3 +1,5 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :relationship do
     sequence(:code) {|n| "C#{n}"}

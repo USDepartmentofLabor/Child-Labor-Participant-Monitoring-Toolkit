@@ -26,3 +26,8 @@ $("#hazardous_conditions_details").html(
   '<%= j render partial: "hazardous_condition",
     collection: HazardousCondition.all.order(:id) %>'
 );
+
+$("#abuses_details").html(
+  '<%= j render partial: "abuse",
+    collection: Abuse.all.order(:id) %>'
+);

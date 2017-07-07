@@ -7,7 +7,7 @@ class IndustriesController < ApplicationController
 
   def create
     @industry = Industry.new(industry_params)
-    @industry.canonical_name = 'O_' + @industry.display_name.parameterize('_').upcase
+    @industry.canonical_name = 'I_' + @industry.display_name.parameterize('_').upcase
     @industry.save
 
     redirect_to status_config_project_path, notice: t("action_messages.create",
