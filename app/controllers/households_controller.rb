@@ -93,8 +93,9 @@ class HouseholdsController < ApplicationController
     def household_params
       params.require(:household).permit(
         :name, :code, :intake_date,
-        people_attributes: [:first_name, :last_name, :middle_name, :sex, :dob,
-          :age, :intake_date, :is_head_of_household, :_destroy, :id],
+        people_attributes: [:intake_date, :first_name, :last_name,
+          :middle_name, :sex, :dob, :relationship_id, :is_beneficiary,
+          :_destroy, :id],
         income_sources_attributes: [:name, :estimated_volume_produced,
           :estimated_volume_sold, :unit_of_measure, :estimated_income,
           :currency, :_destroy, :id]
