@@ -1,0 +1,10 @@
+<tr>
+  <td><%= household_task.code %></td>
+  <td><%= link_to household_task.display_name, edit_household_task_path(household_task), remote: true %></td>
+  <td>
+    <%= link_to household_task_path(household_task), method: :delete, data: {confirm: 'Are you sure?'} do %>
+      <%= fa_icon "trash" %>
+      <%= t "general.delete" %>
+    <% end %>
+  </td>
+</tr>
