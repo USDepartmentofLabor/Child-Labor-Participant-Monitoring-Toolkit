@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707135119) do
+ActiveRecord::Schema.define(version: 20170707154509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -323,6 +323,31 @@ ActiveRecord::Schema.define(version: 20170707135119) do
 
   add_index "people", ["relationship_id"], name: "index_people_on_relationship_id", using: :btree
 
+  create_table "people_abuses", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "abuse_id"
+  end
+
+  create_table "people_hazardous_conditions", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "hazardous_condition_id"
+  end
+
+  create_table "people_household_tasks", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "household_task_id"
+  end
+
+  create_table "people_industries", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "industry_id"
+  end
+
+  create_table "people_occupations", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "occupation_id"
+  end
+
   create_table "people_work_activities", force: :cascade do |t|
     t.integer "person_id"
     t.integer "work_activity_id"
@@ -563,6 +588,16 @@ ActiveRecord::Schema.define(version: 20170707135119) do
   add_foreign_key "people", "industries"
   add_foreign_key "people", "occupations"
   add_foreign_key "people", "relationships"
+  add_foreign_key "people_abuses", "abuses", column: "abuse_id"
+  add_foreign_key "people_abuses", "people"
+  add_foreign_key "people_hazardous_conditions", "hazardous_conditions"
+  add_foreign_key "people_hazardous_conditions", "people"
+  add_foreign_key "people_household_tasks", "household_tasks"
+  add_foreign_key "people_household_tasks", "people"
+  add_foreign_key "people_industries", "industries"
+  add_foreign_key "people_industries", "people"
+  add_foreign_key "people_occupations", "occupations"
+  add_foreign_key "people_occupations", "people"
   add_foreign_key "people_work_activities", "people"
   add_foreign_key "people_work_activities", "work_activities"
   add_foreign_key "project_targets", "project_target_types"
