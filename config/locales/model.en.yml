@@ -30,8 +30,8 @@ en:
         age: "Age"
         intake_date: "Intake Date"
         household_id: "Household"
-        is_birthdate_approximate: "Approximate Birthday?"
-        did_work: "Did you engage in any work for at least one hour during the past week?"
+        is_birthdate_approximate: "Is the birthday an approximate date?"
+        work_activities: "During the past week, did you do any of the following activities, even for only one hour?"
         have_job_returning_to: "Even though you did not do any of these activities in the past week, do you have a job, business, or other economic or farming activity that you will definitely be returning to?"
       adult:
         id: "Adult Code"
