@@ -62,6 +62,8 @@ en:
       occupations_title: "Occupations"
       industries_title: "Industries"
       hazardous_conditions_title: "Hazardous Conditions"
+      abuses_title: "Abuses"
+      household_tasks_title: "Household Tasks"
   children:
     new:
       form_title: "Beneficiary Intake Form"
@@ -269,3 +271,9 @@ en:
   hazardous_conditions:
     new:
       add: "Add Hazardous Condition"
+  abuses:
+    new:
+      add: "Add Abuse"
+  household_tasks:
+    new:
+      add: "Add Household Task"

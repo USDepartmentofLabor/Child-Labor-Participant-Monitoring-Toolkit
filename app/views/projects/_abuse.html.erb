@@ -1,0 +1,10 @@
+<tr>
+  <td><%= abuse.code %></td>
+  <td><%= link_to abuse.display_name, edit_abus_path(abuse), remote: true %></td>
+  <td>
+    <%= link_to abus_path(abuse), method: :delete, data: {confirm: 'Are you sure?'} do %>
+      <%= fa_icon "trash" %>
+      <%= t "general.delete" %>
+    <% end %>
+  </td>
+</tr>
