@@ -588,7 +588,7 @@ ActiveRecord::Schema.define(version: 20170707154509) do
   add_foreign_key "people", "industries"
   add_foreign_key "people", "occupations"
   add_foreign_key "people", "relationships"
-  add_foreign_key "people_abuses", "abuses", column: "abuse_id"
+  add_foreign_key "people_abuses", "abuses"
   add_foreign_key "people_abuses", "people"
   add_foreign_key "people_hazardous_conditions", "hazardous_conditions"
   add_foreign_key "people_hazardous_conditions", "people"
