@@ -219,3 +219,69 @@ Relationship.create([
   { code: '17', canonical_name: 'NON_RELATIVE', display_name: 'Non-relative' },
   { code: '18', canonical_name: 'OTHER', display_name: 'Other (specify)' }
 ])
+
+WorkActivity.create([
+  { code: '01', canonical_name: 'RUN_OR_DO_ANY_KIND_OF_BUSINESS_BIG_OR_SMALL_FOR_HIMSELF_HERSELF_OR_WITH_ONE_OR_MORE_PARTNERS', display_name: 'Run or do any kind of business, big or small, for himself/herself or with one or more partners?' },
+  { code: '02', canonical_name: 'DO_ANY_WORK_FOR_A_WAGE_SALARY_COMMISSION_OR_ANY_PAYMENT_IN_KIND', display_name: 'Do any work for a wage, salary, commission or any payment in kind?' },
+  { code: '03', canonical_name: 'DO_ANY_WORK_AS_A_DOMESTIC_WORKER_FOR_A_WAGE_SALARY_OR_ANY_PAYMENT_IN_KIND', display_name: 'Do any work as a domestic worker for a wage, salary or any payment in kind?' },
+  { code: '04', canonical_name: 'HELP_UNPAID_IN_A_HOUSEHOLD_BUSINESS_OF_ANY_KIND', display_name: 'Help unpaid in a household business of any kind?' },
+  { code: '05', canonical_name: 'DO_ANY_WORK_ON_HIS_HER_OWN_OR_HOUSEHOLDS_PLOT_FARM_FOOD_GARDEN_OR_HELP_IN_GROWING_FARM_PRODUCE_OR_IN_LOOKING_AFTER_ANIMALS_FOR_THE_HOUSEHOLD', display_name: "Do any work on his/her own or household's plot, farm, food garden, or help in growing farm produce or in looking after animals for the household?" },
+  { code: '06', canonical_name: 'DO_ANY_CONSTRUCTION_OR_MAJOR_REPAIR_WORK_ON_HIS_HER_OWN_HOME_PLOT_OR_BUSINESS_OR_THOSE_OF_THE_HOUSEHOLD', display_name: 'Do any construction or major repair work on his/her own home, plot, or business or those of the household?' },
+  { code: '07', canonical_name: 'CATCH_ANY_FISH_PRAWNS_SHELLS_WILD_ANIMALS_OR_OTHER_FOOD_FOR_SALE_OR_HOUSEHOLD_FOOD', display_name: 'Catch any fish, prawns, shells, wild animals, or other food for sale or household food?' },
+  { code: '08', canonical_name: 'FETCH_WATER_OR_COLLECT_FIREWOOD_FOR_HOUSEHOLD_USE', display_name: 'Fetch water or collect firewood for household use?' },
+  { code: '09', canonical_name: 'PRODUCE_ANY_OTHER_GOOD_FOR_THIS_HOUSEHOLD_USE', display_name: 'Produce any other good for this household use?' },
+  { code: '10', canonical_name: 'DID_NOT_ENGAGE_IN_ANY_OF_THE_ABOVE_ACTIVITIES', display_name: 'Did not engage in any of the above activities.' }
+])
+
+Occupation.create([
+  { code: '01', canonical_name: 'BRICKLAYER_MASON', display_name: 'Bricklayer/Mason' },
+  { code: '02', canonical_name: 'HELPER_ASSISTANT', display_name: 'Helper/Assistant' },
+  { code: '03', canonical_name: 'SHOE_COBBLER', display_name: 'Shoe Cobbler' },
+  { code: '04', canonical_name: 'AUTO_MECHANIC', display_name: 'Auto Mechanic' },
+  { code: '05', canonical_name: 'PAINTER', display_name: "Painter" },
+  { code: '06', canonical_name: 'STREET_CANDY_VENDOR', display_name: 'Street/Candy Vendor' },
+  { code: '07', canonical_name: 'FARMER', display_name: 'Farmer' },
+  { code: '08', canonical_name: 'HARVESTING_SUGAR_CANE', display_name: 'Harvesting Sugar Cane' },
+  { code: '09', canonical_name: 'NANNY', display_name: 'Nanny' }
+])
+
+Industry.create([
+  { code: '01', canonical_name: 'CONSTRUCTION_HOMEBUILDING', display_name: 'Construction/Homebuilding' },
+  { code: '02', canonical_name: 'SHOE_STORE', display_name: 'Shoe Store' },
+  { code: '03', canonical_name: 'AUTO_SHOP', display_name: 'Auto Shop' },
+  { code: '04', canonical_name: 'CONSTRUCTION_COMPANY', display_name: 'Construction Company' },
+  { code: '05', canonical_name: 'STREET_CANDY_VENDING', display_name: "Street/Candy Vending" },
+  { code: '06', canonical_name: 'CORN_CROP', display_name: 'Corn Crop' },
+  { code: '07', canonical_name: 'SUGAR_CANE_PRODUCTION', display_name: 'Sugar Cane Production' },
+  { code: '08', canonical_name: 'OTHER_PERSONS_HOME', display_name: 'Other Persons Home' }
+])
+
+HazardousCondition.create([
+  { code: '01', canonical_name: 'DUST_FUMES', display_name: 'Dust/fumes' },
+  { code: '02', canonical_name: 'FIRE_GAS_FLAMES', display_name: 'Fire/gas/flames' },
+  { code: '03', canonical_name: 'LOUD_NOISE_OR_VIBRATION', display_name: 'Loud noise or vibration' },
+  { code: '04', canonical_name: 'EXTREME_COLD_OR_HEAT', display_name: 'Extreme cold or heat' },
+  { code: '05', canonical_name: 'DANGEROUS_TOOLS', display_name: 'Dangerous tools (knives, etc.)' },
+  { code: '06', canonical_name: 'WORK_UNDERGROUND', display_name: 'Work underground' },
+  { code: '07', canonical_name: 'WORK_AT_HEIGHTS', display_name: 'Work at heights' },
+  { code: '08', canonical_name: 'WORK_IN_WATER', display_name: 'Work in water/lake/pond/river' },
+  { code: '09', canonical_name: 'WORKPLACE_TOO_DARK_OR_CONFINED', display_name: 'Workplace too dark or confined' },
+  { code: '10', canonical_name: 'INSUFFICIENT_VENTILATION', display_name: 'Insufficient ventilation' },
+  { code: '11', canonical_name: 'CHEMICALS', display_name: 'Chemicals (pesticides, glues, etc.)' },
+  { code: '12', canonical_name: 'EXPLOSIVES', display_name: 'Explosives' }
+])
+
+Abuse.create([
+  { code: '01', canonical_name: 'CONSTANTLY_SHOUTED_AT', display_name: 'Constantly shouted at' },
+  { code: '02', canonical_name: 'REPEATEDLY_INSULTED', display_name: 'Repeatedly insulted' },
+  { code: '03', canonical_name: 'BEATEN_PHYSICALLY_HURT', display_name: 'Beaten/physically hurt' },
+  { code: '04', canonical_name: 'SEXUALLY_ABUSED', display_name: 'Sexually abused (touched or things done to you that you do not want)' }
+])
+
+HouseholdTask.create([
+  { code: '01', canonical_name: 'SHOPPING_FOR_HOUSEHOLD', display_name: 'Shopping for household' },
+  { code: '02', canonical_name: 'REPAIRING_ANY_HOUSEHOLD_EQUIPMENT', display_name: 'Repairing any household equipment' },
+  { code: '03', canonical_name: 'COOKING_CLEANING_UTENSILS_HOUSE', display_name: 'Cooking cleaning utensils/house' },
+  { code: '04', canonical_name: 'WASHING_CLOTHES', display_name: 'Washing clothes' },
+  { code: '05', canonical_name: 'CARING_FOR_CHILDREN_OLD_SICK', display_name: 'Caring for children/old/sick' }
+])
