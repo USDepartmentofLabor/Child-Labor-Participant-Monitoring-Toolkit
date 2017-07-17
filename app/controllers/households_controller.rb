@@ -6,6 +6,12 @@ class HouseholdsController < ApplicationController
   # GET /households
   def index
     @households = Household.all
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="' + t('people.export.names.full_intake_list_filename') + '"'
+      }
+    end
   end
 
   # GET /households/1

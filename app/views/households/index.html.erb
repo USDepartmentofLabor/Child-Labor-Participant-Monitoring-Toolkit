@@ -7,6 +7,10 @@
         <%= fa_icon "plus" %>
         <%= t("households.index.add") %>
       <% end %>
+      <%= link_to households_path(format: :xlsx), class: 'btn btn-primary' do %>
+      <%= fa_icon "file-excel-o" %>
+      <%= t("households.index.export") %>
+      <% end %>
     </div>
   </div>
   <div class="box-body">

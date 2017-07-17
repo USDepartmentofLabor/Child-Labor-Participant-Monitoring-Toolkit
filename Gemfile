@@ -103,3 +103,7 @@ gem 'aws-ses'
 
 # Chart.js for the dashboard
 gem 'chartjs-ror'
+
+#  for Excel export
+gem 'axlsx', '= 2.0.1'
+gem 'axlsx_rails'
