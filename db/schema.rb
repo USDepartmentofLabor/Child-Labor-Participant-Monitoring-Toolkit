@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707154509) do
+ActiveRecord::Schema.define(version: 20170717154904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,36 @@ ActiveRecord::Schema.define(version: 20170707154509) do
     t.boolean  "enrolled_in_school"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+  end
+
+  create_table "follow_ups_abuses", force: :cascade do |t|
+    t.integer "follow_up_id"
+    t.integer "abuse_id"
+  end
+
+  create_table "follow_ups_hazardous_conditions", force: :cascade do |t|
+    t.integer "follow_up_id"
+    t.integer "hazardous_condition_id"
+  end
+
+  create_table "follow_ups_household_tasks", force: :cascade do |t|
+    t.integer "follow_up_id"
+    t.integer "household_task_id"
+  end
+
+  create_table "follow_ups_industries", force: :cascade do |t|
+    t.integer "follow_up_id"
+    t.integer "industry_id"
+  end
+
+  create_table "follow_ups_occupations", force: :cascade do |t|
+    t.integer "follow_up_id"
+    t.integer "occupation_id"
+  end
+
+  create_table "follow_ups_work_activities", force: :cascade do |t|
+    t.integer "follow_up_id"
+    t.integer "work_activity_id"
   end
 
   create_table "frequencies", force: :cascade do |t|
@@ -577,6 +607,18 @@ ActiveRecord::Schema.define(version: 20170707154509) do
   add_foreign_key "follow_ups", "occupations"
   add_foreign_key "follow_ups", "people"
   add_foreign_key "follow_ups", "work_statuses"
+  add_foreign_key "follow_ups_abuses", "abuses"
+  add_foreign_key "follow_ups_abuses", "follow_ups"
+  add_foreign_key "follow_ups_hazardous_conditions", "follow_ups"
+  add_foreign_key "follow_ups_hazardous_conditions", "hazardous_conditions"
+  add_foreign_key "follow_ups_household_tasks", "follow_ups"
+  add_foreign_key "follow_ups_household_tasks", "household_tasks"
+  add_foreign_key "follow_ups_industries", "follow_ups"
+  add_foreign_key "follow_ups_industries", "industries"
+  add_foreign_key "follow_ups_occupations", "follow_ups"
+  add_foreign_key "follow_ups_occupations", "occupations"
+  add_foreign_key "follow_ups_work_activities", "follow_ups"
+  add_foreign_key "follow_ups_work_activities", "work_activities"
   add_foreign_key "income_sources", "households"
   add_foreign_key "indicator_details", "indicators"
   add_foreign_key "indicator_details", "reporting_periods"

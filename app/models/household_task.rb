@@ -1,5 +1,6 @@
 class HouseholdTask < ActiveRecord::Base
   has_and_belongs_to_many :people, :join_table => :people_household_tasks
+  has_and_belongs_to_many :follow_ups, :join_table => :follow_ups_household_tasks
   validates_presence_of :code
   validates_uniqueness_of :code
   validates_uniqueness_of :canonical_name

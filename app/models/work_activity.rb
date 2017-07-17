@@ -6,4 +6,5 @@ class WorkActivity < ActiveRecord::Base
   validates_presence_of :display_name
 
   has_and_belongs_to_many :people
+  has_and_belongs_to_many :follow_ups
 end
