@@ -118,6 +118,10 @@ en:
   people:
     index:
       add: "Add New Household Member"
+    export:
+      names:
+        worksheet_name: "Full Intake List"
+        full_intake_list_filename: "full_intake_list.xlsx"
     new:
       title: "Add New Household Member"
     show:

@@ -1,0 +1,62 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: t('people.export.names.worksheet_name')) do |sheet|
+
+  sheet.add_row [
+    Household.human_attribute_name(:id),
+    Household.human_attribute_name(:name),
+    Person.human_attribute_name(:id),
+    Person.human_attribute_name(:first_name),
+    Person.human_attribute_name(:last_name),
+    Person.human_attribute_name(:middle_name),
+    Person.human_attribute_name(:sex),
+    Person.human_attribute_name(:dob),
+    Person.human_attribute_name(:age),
+    Person.human_attribute_name(:is_birthdate_approximate),
+    Person.human_attribute_name(:work_activities),
+    Person.human_attribute_name(:have_job_returning_to),
+    Person.human_attribute_name(:hours_worked),
+    Person.human_attribute_name(:occupations),
+    Person.human_attribute_name(:industries),
+    Person.human_attribute_name(:hazardous_conditions),
+    Person.human_attribute_name(:abuses),
+    Person.human_attribute_name(:household_tasks),
+    Person.human_attribute_name(:hours_worked_on_housework),
+    Person.human_attribute_name(:enrolled_in_school),
+    'Status Type',
+    'Work Status',
+    'Education Status',
+    'Reporting Period',
+    'Date Recorded'
+  ]
+  @households.each do |h|
+    h.people.each do |p|
+      sheet.add_row [
+        h.id,
+        h.name,
+        p.id,
+        p.first_name,
+        p.last_name,
+        p.middle_name,
+        p.sex,
+        p.dob,
+        p.age,
+        p.is_birthdate_approximate,
+        p.work_activities.map(&:display_name).join(", "),
+        p.have_job_returning_to,
+        p.hours_worked,
+        p.occupations.map(&:display_name).join(", "),
+        p.industries.map(&:display_name).join(", "),
+        p.hazardous_conditions.map(&:display_name).join(", "),
+        p.abuses.map(&:display_name).join(", "),
+        p.household_tasks.map(&:display_name).join(", "),
+        p.hours_worked_on_housework,
+        p.enrolled_in_school,
+        'Intake',
+        p.intake_work_status.name,
+        p.intake_education_status.name,
+        p.intake_reporting_period.name,
+        p.intake_date]
+    end
+  end
+end
