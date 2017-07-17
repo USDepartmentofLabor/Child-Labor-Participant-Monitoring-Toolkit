@@ -71,8 +71,8 @@
               <th>Status Type</th>
               <th>Work Status</th>
               <th>Education Status</th>
+              <th>Reporting Period</th>
               <th>Date Recorded</th>
-              <th>Notes</th>
             </tr>
           </thead>
           <tbody>
@@ -81,8 +81,8 @@
                 <td><%= status[:status_type] %></td>
                 <td><%= status[:work_status] %></td>
                 <td><%= status[:education_status] %></td>
+                <td><%= status[:reporting_period] %></td>
                 <td><%= l status[:status_date] %></td>
-                <td><%= status[:note] %></td>
               </tr>
             <% end %>
           </tbody>

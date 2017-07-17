@@ -78,4 +78,9 @@ class Person < ActiveRecord::Base
       return nil
     end
   end
+
+  def intake_reporting_period
+    ReportingPeriod.where('start_date <= ? and end_date >= ?', intake_date, intake_date).first
+  end
+
 end

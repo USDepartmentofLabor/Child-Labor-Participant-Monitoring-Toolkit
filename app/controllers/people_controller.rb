@@ -10,8 +10,8 @@ class PeopleController < ApplicationController
       :status_type => "Intake",
       :work_status => intake_work_status_name,
       :education_status => intake_education_status_name,
-      :status_date => @person.created_at,
-      :note => ''
+      :status_date => @person.intake_date,
+      :reporting_period => @person.intake_reporting_period.name
     }
     @person_statuses << nh
     @person.follow_ups.order(:created_at).each do |s|
@@ -21,8 +21,8 @@ class PeopleController < ApplicationController
         :status_type => "Follow Up",
         :work_status => work_status_name,
         :education_status => education_status_name,
-        :status_date => s.created_at,
-        :note => ''
+        :status_date => s.follow_date,
+        :reporting_period => s.reporting_period.name
       }
     end
   end

@@ -56,16 +56,18 @@
         <div class="form-group">
           <label><%= Person.human_attribute_name(:dob) %>:</label>
           <%= l @person.dob %>
+          <label><%= Person.human_attribute_name(:is_birthdate_approximate) %>:</label>
+          <%= display_yes_no(@person.is_birthdate_approximate) %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label><%= Person.human_attribute_name(:age) %>:</label>
-          <%= @person.age %>
+          <%= Time.now.year - @person.dob.year %>
         </div>
       </div>
     </div>
-    
+
     <div class="row">
         <div class="col-md-12">
 
@@ -80,19 +82,15 @@
               </div>
             </div>
           </div>
-        
+
           <div class="form-group">
-            <%= f.label :did_work %>
-            <div class="checkbox">
-              <label class="radio-inline">
-                <%= f.radio_button :did_work, true, class: "square-red" %>
-                <%= t('select_options.yes_no.yes') %>
-              </label>
-              <label class="radio-inline">
-                <%= f.radio_button :did_work, false, class: "square-red" %>
-                <%= t('select_options.yes_no.no') %>
-              </label>
-            </div>
+            <%= f.label :work_activities %>
+            <%= f.collection_check_boxes :work_activity_ids, WorkActivity.all, :id, :display_name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box class: "square-red" %>
+                <%= b.label %>
+              </div>
+            <% end %>
           </div>
 
           <div class="form-group">
@@ -108,7 +106,7 @@
               </label>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -118,64 +116,58 @@
             </div>
           </div>
 
+          <div class="form-group">
+            <%= f.label :occupations %>
+            <%= f.collection_check_boxes :occupation_ids, Occupation.all, :id, :display_name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box class: "square-red" %>
+                <%= b.label %>
+              </div>
+            <% end %>
+          </div>
+
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <%= f.label :occupation_id %>
-                <%= f.collection_select :occupation_id, Occupation.all, :id, :display_name, {prompt: "Select Occupation"}, class: "form-control" %>
+                <%= f.label :industries %>
+                <%= f.collection_check_boxes :industry_ids, Industry.all, :id, :display_name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box class: "square-red" %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :industry_id %>
-                <%= f.collection_select :industry_id, Industry.all, :id, :display_name, {prompt: "Select Industry"}, class: "form-control" %>
+          <div class="form-group">
+            <%= f.label :hazardous_conditions %>
+            <%= f.collection_check_boxes :hazardous_condition_ids, HazardousCondition.all, :id, :display_name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box class: "square-red" %>
+                <%= b.label %>
               </div>
-            </div>
+            <% end %>
           </div>
 
           <div class="form-group">
-            <%= f.label :exposed_to_hazardous_condition %>
-            <div class="checkbox">
-              <label class="radio-inline">
-                <%= f.radio_button :exposed_to_hazardous_condition, true, class: "square-red" %>
-                <%= t('select_options.yes_no.yes') %>
-              </label>
-              <label class="radio-inline">
-                <%= f.radio_button :exposed_to_hazardous_condition, false, class: "square-red" %>
-                <%= t('select_options.yes_no.no') %>
-              </label>
-            </div>
+            <%= f.label :abuses %>
+            <%= f.collection_check_boxes :abuse_ids, Abuse.all, :id, :display_name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box class: "square-red" %>
+                <%= b.label %>
+              </div>
+            <% end %>
           </div>
 
           <div class="form-group">
-            <%= f.label :subject_to_abuses %>
-            <div class="checkbox">
-              <label class="radio-inline">
-                <%= f.radio_button :subject_to_abuses, true, class: "square-red" %>
-                <%= t('select_options.yes_no.yes') %>
-              </label>
-              <label class="radio-inline">
-                <%= f.radio_button :subject_to_abuses, false, class: "square-red" %>
-                <%= t('select_options.yes_no.no') %>
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :performed_housework %>
-            <div class="checkbox">
-              <label class="radio-inline">
-                <%= f.radio_button :performed_housework, true, class: "square-red" %>
-                <%= t('select_options.yes_no.yes') %>
-              </label>
-              <label class="radio-inline">
-                <%= f.radio_button :performed_housework, false, class: "square-red" %>
-                <%= t('select_options.yes_no.no') %>
-              </label>
-            </div>
+            <%= f.label :household_tasks %>
+            <%= f.collection_check_boxes :household_task_ids, HouseholdTask.all, :id, :display_name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box class: "square-red" %>
+                <%= b.label %>
+              </div>
+            <% end %>
           </div>
 
           <div class="row">
@@ -200,7 +192,7 @@
               </label>
             </div>
           </div>
-        
+
         </div>
       </div>
     </div>

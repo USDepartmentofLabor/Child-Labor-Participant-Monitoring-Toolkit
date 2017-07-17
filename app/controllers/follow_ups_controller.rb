@@ -20,11 +20,11 @@ class FollowUpsController < ApplicationController
     end
 
     if @person.age >= 5 and @person.age <= 17
-      if @follow_up.did_work || @follow_up.have_job_returning_to
-        if @follow_up.occupation_id.present? || 
-           @follow_up.industry_id.present? || 
-           @follow_up.exposed_to_hazardous_condition
-           @follow_up.subject_to_abuses
+      if @follow_up.work_activities.any? || @follow_up.have_job_returning_to
+        if @follow_up.occupations.any? ||
+           @follow_up.industries.any? ||
+           @follow_up.hazardous_conditions.any? ||
+           @follow_up.abuses.any?
 
            @follow_up.work_status_id = 2
         elsif (@person.age >= 5 && @person.age <= 14) && @follow_up.hours_worked > 14
@@ -77,8 +77,14 @@ class FollowUpsController < ApplicationController
   def follow_up_params
     params.require(:follow_up).permit(
       :follow_date, :did_work, :have_job_returning_to, :hours_worked, :occupation_id, :industry_id,
-      :exposed_to_hazardous_condition, :subject_to_abuses, :performed_housework, 
-      :hours_worked_on_housework, :enrolled_in_school
+      :exposed_to_hazardous_condition, :subject_to_abuses, :performed_housework,
+      :hours_worked_on_housework, :enrolled_in_school,
+      :work_activity_ids => [],
+      :occupation_ids => [],
+      :industry_ids => [],
+      :hazardous_condition_ids => [],
+      :abuse_ids => [],
+      :household_task_ids => []
     )
   end
 
