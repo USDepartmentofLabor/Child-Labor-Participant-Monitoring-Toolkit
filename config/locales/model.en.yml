@@ -31,6 +31,7 @@ en:
         intake_date: "Intake Date"
         household_id: "Household"
         is_birthdate_approximate: "Is the birthday an approximate date?"
+        relationship_id: "Relationship"
         work_activities: "During the past week, did you do any of the following activities, even for only one hour?"
         have_job_returning_to: "Even though you did not do any of these activities in the past week, do you have a job, business, or other economic or farming activity that you will definitely be returning to?"
         hours_worked: "During the past week, for how many hours did you engage in this/these activities?"

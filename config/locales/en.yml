@@ -281,3 +281,6 @@ en:
   household_tasks:
     new:
       add: "Add Household Task"
+  relationships:
+    index:
+      title: "Relationships"

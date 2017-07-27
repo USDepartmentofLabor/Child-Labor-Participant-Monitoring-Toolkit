@@ -7,7 +7,7 @@ class WorkActivitiesController < ApplicationController
 
   def create
     @work_activity = WorkActivity.new(work_activity_params)
-    @work_activity.canonical_name = 'WA_' + @work_activity.display_name.parameterize('_').upcase
+    @work_activity.canonical_name = @work_activity.display_name.parameterize('_').upcase
     @work_activity.save
 
     redirect_to status_config_project_path, notice: t("action_messages.create",

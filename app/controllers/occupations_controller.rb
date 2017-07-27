@@ -7,7 +7,7 @@ class OccupationsController < ApplicationController
 
   def create
     @occupation = Occupation.new(occupation_params)
-    @occupation.canonical_name = 'O_' + @occupation.display_name.parameterize('_').upcase
+    @occupation.canonical_name = @occupation.display_name.parameterize('_').upcase
     @occupation.save
 
     redirect_to status_config_project_path, notice: t("action_messages.create",

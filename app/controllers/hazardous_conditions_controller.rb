@@ -7,7 +7,7 @@ class HazardousConditionsController < ApplicationController
 
   def create
     @hazardous_condition = HazardousCondition.new(hazardous_condition_params)
-    @hazardous_condition.canonical_name = 'HC_' + @hazardous_condition.display_name.parameterize('_').upcase
+    @hazardous_condition.canonical_name = @hazardous_condition.display_name.parameterize('_').upcase
     @hazardous_condition.save
 
     redirect_to status_config_project_path, notice: t("action_messages.create",
