@@ -7,7 +7,7 @@ class AbusesController < ApplicationController
 
   def create
     @abuse = Abuse.new(abuse_params)
-    @abuse.canonical_name = 'A_' + @abuse.display_name.parameterize('_').upcase
+    @abuse.canonical_name = @abuse.display_name.parameterize('_').upcase
     @abuse.save
 
     redirect_to status_config_project_path, notice: t("action_messages.create",

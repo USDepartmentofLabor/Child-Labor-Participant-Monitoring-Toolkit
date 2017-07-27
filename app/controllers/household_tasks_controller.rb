@@ -7,7 +7,7 @@ class HouseholdTasksController < ApplicationController
 
   def create
     @household_task = HouseholdTask.new(household_task_params)
-    @household_task.canonical_name = 'HT_' + @household_task.display_name.parameterize('_').upcase
+    @household_task.canonical_name = @household_task.display_name.parameterize('_').upcase
     @household_task.save
 
     redirect_to status_config_project_path, notice: t("action_messages.create",

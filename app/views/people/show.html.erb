@@ -55,6 +55,10 @@
               <th><%= Person.human_attribute_name(:sex) %></th>
               <td><%= @person.gender_name %></td>
             </tr>
+            <tr>
+              <th><%= Person.human_attribute_name(:relationship_id) %></th>
+              <td><%= @person.relationship_name %></td>
+            </tr>
           </tbody>
         </table>
       </div>
