@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717154904) do
+ActiveRecord::Schema.define(version: 20170811133646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -471,7 +471,7 @@ ActiveRecord::Schema.define(version: 20170717154904) do
   add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
 
   create_table "service_instances", force: :cascade do |t|
-    t.integer  "child_id"
+    t.integer  "person_id"
     t.integer  "service_id"
     t.date     "start_date"
     t.date     "end_date"
@@ -481,7 +481,7 @@ ActiveRecord::Schema.define(version: 20170717154904) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "service_instances", ["child_id"], name: "index_service_instances_on_child_id", using: :btree
+  add_index "service_instances", ["person_id"], name: "index_service_instances_on_person_id", using: :btree
   add_index "service_instances", ["service_id"], name: "index_service_instances_on_service_id", using: :btree
 
   create_table "service_type_categories", force: :cascade do |t|
@@ -647,7 +647,7 @@ ActiveRecord::Schema.define(version: 20170717154904) do
   add_foreign_key "projects", "regions"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
-  add_foreign_key "service_instances", "people", column: "child_id"
+  add_foreign_key "service_instances", "people"
   add_foreign_key "service_instances", "services"
   add_foreign_key "service_types", "service_type_categories"
   add_foreign_key "services", "service_types"
