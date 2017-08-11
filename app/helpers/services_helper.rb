@@ -1,5 +1,5 @@
 module ServicesHelper
   def has_recipients service
-    return service.children.count > 0
+    return service.people.count > 0
   end
 end
