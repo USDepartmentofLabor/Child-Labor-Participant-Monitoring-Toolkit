@@ -70,7 +70,7 @@
       <tbody>
         <% @service.service_instances.by_start_date.each do |s| %>
           <tr>
-            <td><%= s.child.full_name %></td>
+            <td><%= s.person.full_name %></td>
             <td><%= s.start_date %></td>
             <td><%= s.hours %></td>
           </tr>
