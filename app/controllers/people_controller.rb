@@ -25,6 +25,7 @@ class PeopleController < ApplicationController
         :reporting_period => s.reporting_period.name
       }
     end
+    @service_instances = @person.service_instances.includes(:service)
   end
 
   def new

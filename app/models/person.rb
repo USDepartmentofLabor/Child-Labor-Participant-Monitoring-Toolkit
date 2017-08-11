@@ -10,6 +10,7 @@ class Person < ActiveRecord::Base
   has_and_belongs_to_many :hazardous_conditions, :join_table => :people_hazardous_conditions
   has_and_belongs_to_many :abuses, :join_table => :people_abuses
   has_and_belongs_to_many :household_tasks, :join_table => :people_household_tasks
+  has_many :service_instances
 
   has_many :statuses, class_name: "ChildStatus", dependent: :destroy
 

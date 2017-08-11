@@ -1,9 +1,10 @@
 class ServiceInstancesController < ApplicationController
-  before_action :set_child
+  before_action :set_household
+  before_action :set_person
 
   def create
     @service_instance = ServiceInstance.new(service_instance_params)
-    @service_instance.child_id = @child.id
+    @service_instance.person_id = @person.id
 
     if @service_instance.save
       redirect_to :back, notice: t("action_messages.create", model: ServiceInstance.model_name.human)
@@ -15,8 +16,12 @@ alert)
 
   private
 
-    def set_child
-      @child = Child.find(params[:child_id])
+    def set_household
+      @household = Household.find(params[:household_id])
+    end
+
+    def set_person
+      @person = Person.find(params[:person_id])
     end
 
     def service_instance_params

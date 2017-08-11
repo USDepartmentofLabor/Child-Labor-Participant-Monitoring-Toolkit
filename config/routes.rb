@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :children do
     resources :child_statuses
-    resources :service_instances
+    #resources :service_instances
     resources :timelines, only: [:index]
   end
 
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :income_sources
     resources :people do
       resources :follow_ups
+      resources :service_instances
     end
     post :finalize, on: :member
   end

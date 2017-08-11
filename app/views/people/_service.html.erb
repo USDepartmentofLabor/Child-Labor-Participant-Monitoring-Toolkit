@@ -1,0 +1,6 @@
+<tr>
+  <td><%= service.service.name %></td>
+  <td><%= format_date_range(service) %></td>
+  <td><%= service.hours.present? ? service.hours : "" %></td>
+  <td><% service.notes.present? ? service.notes : "" %></td>
+</tr>
