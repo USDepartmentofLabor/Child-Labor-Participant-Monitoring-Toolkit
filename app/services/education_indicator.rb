@@ -29,7 +29,55 @@ class EducationIndicator
 		cahr_educated_male = children_with_gender(cahr_educated, :male)
 		cahr_educated_female = children_with_gender(cahr_educated, :female)
 
-		results = {
+		results = [
+			{
+				reporting_period: "PERIOD 1: 1 Oct. 2015 - 31 Mar. 2016",
+				target: {
+					cl: 0,
+					cahr: 0,
+					total: 0
+				},
+				educated: {
+					cl: {
+						girls: 0,
+						boys: 0,
+						total_children: 0
+					},
+					cahr: {
+						girls: 0,
+						boys: 0,
+						total_children: 0
+					},
+					total: {
+						girls: 0,
+						boys: 0,
+						total_children: 0
+					}
+				}}, {
+					reporting_period: "PERIOD 2: 1 Apr. 2016 - 30 Sep. 2016",
+					target: {
+						cl: 0,
+						cahr: 0,
+						total: 0
+					},
+					educated: {
+						cl: {
+							girls: 278,
+							boys: 349,
+							total_children: 627
+						},
+						cahr: {
+							girls: 282,
+							boys: 283,
+							total_children: 565
+						},
+						total: {
+							girls: 560,
+							boys: 632,
+							total_children: 1192
+						}
+					}}, {
+			reporting_period: "",
 			target: {
 				cl: 0,
 				cahr: 0,
@@ -52,7 +100,7 @@ class EducationIndicator
 					total_children: cl_educated.length + cahr_educated.length
 				}
 			}
-		}
+		}]
 
 		return results
 	end
