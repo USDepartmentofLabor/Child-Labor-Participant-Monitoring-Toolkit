@@ -93,4 +93,8 @@ class Child < Person
 
     status
   end
+
+  def avatar
+    return false
+  end
 end

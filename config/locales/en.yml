@@ -152,7 +152,7 @@ en:
       title: "New Report Generator"
     index:
       add: "Generate A New Report"
-      title: "List of Reports"
+      title: "Standard Reports"
     wizard:
       step: "Step"
       next: "Next"

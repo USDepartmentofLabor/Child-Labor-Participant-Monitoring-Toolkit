@@ -22,17 +22,19 @@
         </tr>
       </thead>
       <tbody>
+        <% @results.each do |r| %>
         <% [:cl, :cahr, :total].each_with_index  do |type, i| %>
         <tr>
           <% if i == 0 %>
-          <td rowspan="3"><%= @report.date_range_in_text %></td>
+          <td rowspan="3"><%= r[:reporting_period] %></td>
           <% end %>
           <td><%= type.to_s.upcase %></td>
-          <td><%= @results[:target][type] %></td>
-          <td><%= @results[:educated][type][:girls] %></td>
-          <td><%= @results[:educated][type][:boys] %></td>
-          <td><%= @results[:educated][type][:total_children] %></td>
+          <td><%= r[:target][type] %></td>
+          <td><%= r[:educated][type][:girls] %></td>
+          <td><%= r[:educated][type][:boys] %></td>
+          <td><%= r[:educated][type][:total_children] %></td>
         </tr>
+        <% end %>
         <% end %>
       </tbody>
     </table>
