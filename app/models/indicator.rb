@@ -21,6 +21,10 @@ reporting_period_id: rp.id)
     indicator_detail_rows
   end
 
+  def name 
+    "#{code} #{indicator}"
+  end
+
   def self.create_common_indicators()
     DBMS::DefaultData::Indicators.create()
   end

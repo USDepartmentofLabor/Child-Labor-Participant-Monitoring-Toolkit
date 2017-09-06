@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resource :project do
     get :dashboard
     get :status_config
+    get :reporting_table
   end
 
   resources :children do

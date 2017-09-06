@@ -115,4 +115,11 @@ class ProjectsController < ApplicationController
 
   def status_config
   end
+
+  def reporting_table
+    @project = Project.first
+    @reporting_periods = ReportingPeriod.all
+    @indicators = Indicator.all
+
+  end
 end

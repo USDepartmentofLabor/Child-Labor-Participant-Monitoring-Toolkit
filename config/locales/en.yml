@@ -64,6 +64,8 @@ en:
       hazardous_conditions_title: "Hazardous Conditions"
       abuses_title: "Abuses"
       household_tasks_title: "Household Tasks"
+    reporting_table:
+      link_text: "Reporting Table"
   children:
     new:
       form_title: "Beneficiary Intake Form"

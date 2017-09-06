@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1><%= @project.name %> Reporting Table</h1>
+</div>
+
+<div class="box box-primary">
+
+  <div class="box-body">
+    <table id="reporting-table"
+      class="table table-bordered table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Project Outcomes/Indicators</th>
+          <th>Intake Value</th>
+          <th>Target/Actual</th>
+          <th>Baseline</th>
+          <% @reporting_periods.each do | rp | %>
+          <th><%= rp.name %></th>
+          <% end %>
+          <th>Final Value</th>
+          <th>Frequency of Report</th>
+          <th>Life of Project Target</th>
+          <th>Life of Project Achieved</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @indicators.order(:code).each do | i | %>
+          <tr>
+            <td><%= i.name %></td>
+            <td>&nbsp;</td>
+            <td>Target<br/>Actual</td>
+            <td><%= i.baseline %></td>
+            <% @reporting_periods.each do | rp | %>
+              <% details = i.indicator_details.where("reporting_period_id = ?", rp.id).first %>
+              <td>
+                <%= details.target unless details.nil? %><br/>
+                <%= details.actual unless details.nil? %>
+              </td>
+            <% end %>
+            <td>&nbsp;</td>
+            <td><%= i.reporting_frequency.name %></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
