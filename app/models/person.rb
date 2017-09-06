@@ -69,9 +69,9 @@ class Person < ActiveRecord::Base
           end
         end
       end
+    else
+      return nil
     end
-  else
-    return nil
   end
 
   def intake_education_status
