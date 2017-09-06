@@ -57,7 +57,7 @@
           </div>
           <div class="form-group">
             <%= f.label :relationship_id %>
-            <%= f.collection_select :relationship_id, Relationship.all, :id, :display_name,
+            <%= f.collection_select :relationship_id, Relationship.all, :id, :with_code,
               {include_blank: true, prompt: true},
               {class: "form-control", data: {toggle: 'other'}} %>
           </div>

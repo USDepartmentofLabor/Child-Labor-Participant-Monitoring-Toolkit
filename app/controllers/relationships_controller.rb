@@ -25,7 +25,7 @@ class RelationshipsController < ApplicationController
 
   def update
     if @relationship.update(relationship_params)
-      redirect_to relationship_path,
+      redirect_to relationships_path,
         notice: t("action_messages.update",
                   model: Relationship.model_name.human)
     else

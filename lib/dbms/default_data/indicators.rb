@@ -279,25 +279,6 @@ module DBMS
             reporting_frequency_id: 2
           )
 
-          indicator = <<-eos
-            Capacity Indicator
-          eos
-          use = <<-eos
-            # of countries with increased capacity to address child labor or forced labor.
-          eos
-          freq = <<-eos
-            Projects report their achievements towards building capacity in narrative in their TPRs.
-            They may also have specific related goals or milestones in their CMEP.
-          eos
-          Indicator.create!(
-            code: "C1",
-            indicator: indicator.strip,
-            use: use.strip,
-            frequency_definitions: freq.strip,
-            indicator_type: "Common",
-            unit_of_measure_id: numeric_unit_of_measure.id,
-            reporting_frequency_id: 2
-          )
         end
       end
     end
