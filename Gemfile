@@ -37,7 +37,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # User puma as the application server
-  gem 'puma'
+  #gem 'puma'
 end
 
 group :development, :test do
@@ -107,3 +107,6 @@ gem 'chartjs-ror'
 #  for Excel export
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
+
+gem 'rails_12factor', group: :production
+gem 'puma'
