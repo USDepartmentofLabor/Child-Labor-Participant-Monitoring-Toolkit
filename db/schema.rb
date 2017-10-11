@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170811154549) do
+ActiveRecord::Schema.define(version: 20171010204657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -422,6 +422,7 @@ ActiveRecord::Schema.define(version: 20170811154549) do
     t.string   "organization"
     t.decimal  "funding_amount"
     t.integer  "region_id"
+    t.string   "duns_number"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -537,7 +538,6 @@ ActiveRecord::Schema.define(version: 20170811154549) do
   create_table "technical_progress_reports", force: :cascade do |t|
     t.integer  "reporting_period_id",                 null: false
     t.integer  "reporting_status_id",                 null: false
-    t.boolean  "tpr_included",        default: false, null: false
     t.boolean  "annex_a_included",    default: false, null: false
     t.boolean  "annex_b_included",    default: false, null: false
     t.boolean  "annex_c_included",    default: false, null: false
@@ -546,11 +546,12 @@ ActiveRecord::Schema.define(version: 20170811154549) do
     t.boolean  "annex_f_included",    default: false, null: false
     t.boolean  "annex_g_included",    default: false, null: false
     t.boolean  "annex_h_included",    default: false, null: false
-    t.boolean  "annex_i_included",    default: false, null: false
     t.string   "submitted_by"
     t.date     "date_submitted"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "is_final_report",     default: false, null: false
+    t.boolean  "is_semi_annual",      default: true,  null: false
   end
 
   add_index "technical_progress_reports", ["reporting_period_id"], name: "index_technical_progress_reports_on_reporting_period_id", using: :btree

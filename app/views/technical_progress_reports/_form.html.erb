@@ -1,0 +1,140 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <label class="control-label">
+        1. Federal Agency and Organization Element to which Report is Submitted
+      </label>
+      <input type="text" class="form-control" value="USDOL/ILAB/OCFT" disabled />
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <label class="control-label">
+        2. Federal Grant Number
+      </label>
+      <input type="text" class="form-control"
+        value="<%= @project.cooperative_agreement_number %>" disabled />
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <label class="control-label">
+        3. DUNS Number
+      </label>
+      <input type="text"
+             class="form-control"
+             value="<%= @project.duns_number %>"
+             disabled />
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label">
+    4. Country and Project Name
+  </label>
+  <textarea class="form-control" disabled><%= @project.title %></textarea>
+</div>
+<fieldset>
+  <legend class="control-label">5. Recipient Organization Contact Information</legend>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label">Headquarters</label>
+        <textarea class="form-control" disabled><%= @project.headquarters_address %></textarea>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label">Field</label>
+        <textarea class="form-control" disabled><%= @project.field_addresses %></textarea>
+      </div>
+    </div>
+  </div>
+</fieldset>
+<div class="row">
+  <div class="col-md-4">
+    <fieldset>
+      <legend class="control-label">
+        6. Project / Grant Period
+      </legend>
+      <div class="form-group">
+        <label class="control-label">
+          Start Date (Month/Day/Year)
+        </label>
+        <input type="text"
+               class="form-control"
+               value="<%= @project.start_date %>"
+               disabled />
+      </div>
+      <div class="form-group">
+        <label class="control-label">
+          End Date (Month/Day/Year)
+        </label>
+        <input type="text"
+               class="form-control"
+               value="<%= @project.end_date %>"
+               disabled />
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :reporting_period_id, class: "control-label" %>
+      <%= f.collection_select :reporting_period_id, ReportingPeriod.all,
+        :id, :end_date, {:include_blank => true}, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :is_final_report %>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :is_final_report, "1", class: "icheck" %>
+          Yes
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :is_final_report, "0", class: "icheck" %>
+          No
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :is_semi_annual %>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :is_semi_annual, "1", class: "icheck" %>
+          Semi-annual
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :is_semi_annual, "0", class: "icheck" %>
+          Other
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>
+    10. Annexes to submit with every Technical Progress Report, as applicable
+  </label>
+  <p class="help">
+    Please mark the checkboxes below to indicate the annexes attached
+  </p>
+  <% ('a'..'h').each do |cb| %>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box "annex_#{cb}_included", class: "icheck" %>
+        <%= TechnicalProgressReport.human_attribute_name "annex_#{cb}_included" %>
+      </label>
+    </div>
+  <% end %>
+</div>

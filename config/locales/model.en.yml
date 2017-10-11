@@ -19,6 +19,7 @@ en:
       hazardous_condition: "Hazardous Condition"
       abuse: "Abuse"
       household_task: "Household Task"
+      technical_progress_report: "Technical Progress Report"
     attributes:
       person:
         id: "Household Member ID"
@@ -175,3 +176,15 @@ en:
         household_tasks: "During the past week, did you do any of the tasks below for this household?"
         hours_worked_on_housework: "During each day of the past week, for how many hours did you engage in this/these activities?"
         enrolled_in_school: "Are you enrolled in school and/or college?"
+      technical_progress_report:
+        reporting_period_id: "7. Reporting Period End Date (Month/Day/Year)"
+        is_final_report: "8. Final Report?"
+        is_semi_annual: "9. Report Frequency"
+        annex_a_included: "Annex A: Data Reporting Form for Reporting on Performance Indicators" 
+        annex_b_included: "Annex B: Updated Work Plan"
+        annex_c_included: "Annex C: Response to Donor Comments from Last Technical Progress Report"
+        annex_d_included: "Annex D: Update on Project Activities in Response to Evaluation Recommendations"
+        annex_e_included: "Annex E: Status of VAT Exemption"
+        annex_f_included: "Annex F: Updated Sustainability Strategy (to be included with each October report starting in year 2)"
+        annex_g_included: "Annex G: Major Project Outputs and Research Products"
+        annex_h_included: "Annex H: Other Documents"
