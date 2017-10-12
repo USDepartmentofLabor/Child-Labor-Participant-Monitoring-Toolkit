@@ -64,7 +64,7 @@ group :development, :test do
   gem 'simplecov', require: false
 end
 
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 4.0.0'
 gem 'i18n-active_record', :require => 'i18n/active_record'
 gem 'devise'
 gem 'font-awesome-rails'
@@ -107,3 +107,6 @@ gem 'chartjs-ror'
 #  for Excel export
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
+
+# Our Swagger Generated API Client
+gem 'swagger_client', '~> 1.0.0'

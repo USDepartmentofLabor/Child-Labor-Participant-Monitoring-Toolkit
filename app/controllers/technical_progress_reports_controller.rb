@@ -1,5 +1,5 @@
 class TechnicalProgressReportsController < ApplicationController
-  before_action :set_technical_progress_report, only: [:show]
+  before_action :set_technical_progress_report, only: [:show, :submit]
   before_action :set_project
 
   def index
@@ -20,6 +20,11 @@ class TechnicalProgressReportsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def submit
+    SubmitTprWorker.perform_async(params[:id])
+    redirect_to technical_progress_report_path(@technical_progress_report)
   end
 
   private
