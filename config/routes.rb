@@ -53,7 +53,11 @@ Rails.application.routes.draw do
   resources :service_type_categories
   resources :service_types
   resources :services
-  resources :technical_progress_reports
+  resources :technical_progress_reports do
+    member do
+      put :submit
+    end
+  end
   resources :users
   resources :work_activities
   resources :occupations
