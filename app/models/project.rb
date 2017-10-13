@@ -16,24 +16,28 @@ class Project < ActiveRecord::Base
   def headquarters_address
     address = self.headquarters_location
 
-    city_state_zip = [
-      address.city,
-      address.state,
-      address.zip
-    ].join(', ')
+    unless address.nil?
+      return "#{self.organization}\n#{address.to_mailing}"
+    end
 
-    [self.organization,
-     address.address_line1,
-     address.address_line2,
-     city_state_zip,
-     address.country].join("\n")
+    return nil
   end
 
   def headquarters_location
     self.locations.where('location_type_id = 1').first
   end
 
+  def field_address
+    address = self.field_location
+
+    address&.to_mailing || nil
+  end
+
   def field_addresses
     "TODO"
+  end
+
+  def field_location
+    self.locations.where('location_type_id = 2').first
   end
 end
