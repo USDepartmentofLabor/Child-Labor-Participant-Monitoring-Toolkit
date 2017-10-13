@@ -110,3 +110,6 @@ gem 'axlsx_rails'
 
 # Our Swagger Generated API Client
 gem 'swagger_client', '~> 1.0.0'
+
+# Prawn for PDF generation
+gem 'prawn'
