@@ -42,13 +42,13 @@
     <div class="col-md-6">
       <div class="form-group">
         <label class="control-label">Headquarters</label>
-        <textarea class="form-control" disabled><%= @project.headquarters_address %></textarea>
+        <textarea class="form-control" rows="5" disabled><%= @project.headquarters_address %></textarea>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label class="control-label">Field</label>
-        <textarea class="form-control" disabled><%= @project.field_addresses %></textarea>
+        <textarea class="form-control" rows="5" disabled><%= @project.field_address %></textarea>
       </div>
     </div>
   </div>
@@ -81,6 +81,7 @@
   </div>
 
   <div class="col-md-4">
+    <br>
     <div class="form-group">
       <%= f.label :reporting_period_id, class: "control-label" %>
       <%= f.collection_select :reporting_period_id, ReportingPeriod.all,
@@ -89,6 +90,7 @@
   </div>
 
   <div class="col-md-4">
+    <br>
     <div class="form-group">
       <%= f.label :is_final_report %>
       <div class="radio">

@@ -1,14 +1,19 @@
+<% content_for :title, "Technical Progress Reports" %>
+
 <div class="page-header">
-  <h1>Technical Progress Reports</h1>
+  <%= link_to new_technical_progress_report_path, class: "btn btn-primary" do %>
+    <%= fa_icon "plus" %>
+    Start New TPR
+  <% end %>
 </div>
 
-<div class="box">
-  <div class="box-body">
+<% unless @technical_progress_reports.length == 0 %>
+  <div class="box">
     <table id='technicalProgressReportsTable' class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th><%= ReportingPeriod.human_attribute_name(:name) %></th>
-          <th><%= ReportingStatus.human_attribute_name(:name) %></th>
+          <th><%= ReportingPeriod.model_name.human %></th>
+          <th><%= ReportingStatus.model_name.human %></th>
           <th><%= TechnicalProgressReport.human_attribute_name(:date_submitted) %></th>
         </tr>
       </thead>
@@ -22,4 +27,4 @@
       </tbody>
     </table>
   </div>
-</div>
+<% end %>

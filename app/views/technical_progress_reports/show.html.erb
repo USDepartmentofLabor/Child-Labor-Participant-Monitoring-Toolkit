@@ -54,22 +54,16 @@
     <h4 class="form-label">Headquarters</h4>
     <address class="form-body">
       <strong><%= @project.organization %></strong><br>
-      <%= @project.headquarters_location.address_line1 %><br>
-      <%= @project.headquarters_location.address_line2 %><br>
-      <%= @project.headquarters_location.city %>,
-      <%= @project.headquarters_location.state %>
-      <%= @project.headquarters_location.zip %>
+      <% unless @project.headquarters_location.nil? %>
+        <%= format_location @project.headquarters_location %>
+      <% end %>
     </address>
   </div>
   <div class="col-xs-6 col-unpadded">
     <h4 class="form-label">Field</h4>
     <address class="form-body">
-      <% @project.locations.where('location_type_id <> 1').each do |loc| %>
-        <%= loc.address_line1 %><br>
-        <%= loc.address_line2 %><br>
-        <%= loc.city %>,
-        <%= loc.state %>
-        <%= loc.zip %><br>
+      <% unless @project.field_location.nil? %>
+        <%= format_location @project.field_location %>
       <% end %>
   </div>
 </div>
