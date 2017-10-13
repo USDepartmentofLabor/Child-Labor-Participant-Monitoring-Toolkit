@@ -9,6 +9,10 @@
     <%= fa_icon "arrow-right" %>
     Submit
   <% end %>
+  <%= link_to technical_progress_report_path(@technical_progress_report, format: :pdf), class: "btn btn-primary" do %>
+    <%= fa_icon "file-pdf-o" %>
+    Generate PDF for Signature
+  <% end %>
 </div>
 
 <div class="row">

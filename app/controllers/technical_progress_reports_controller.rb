@@ -6,6 +6,18 @@ class TechnicalProgressReportsController < ApplicationController
     @technical_progress_reports = TechnicalProgressReport.all
   end
 
+  def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = @technical_progress_report.to_pdf
+        send_data pdf,
+          filename: "TPR_#{@technical_progress_report.reporting_period.end_date.strftime("%Y-%m-%d")}.pdf",
+          type: "application/pdf"
+      end
+    end
+  end
+
   def new
     @technical_progress_report = TechnicalProgressReport.new
   end
