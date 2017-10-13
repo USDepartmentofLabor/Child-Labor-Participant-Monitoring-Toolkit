@@ -8,6 +8,8 @@ class TechnicalProgressReport < ActiveRecord::Base
   belongs_to :reporting_period
   belongs_to :reporting_status
 
+  has_many :report_attachments
+
   def to_pdf
     font_path = "/usr/share/fonts/truetype/dejavu"
     project = Project.first

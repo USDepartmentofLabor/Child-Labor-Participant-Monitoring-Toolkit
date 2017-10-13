@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012003454) do
+ActiveRecord::Schema.define(version: 20171012172239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -440,6 +440,20 @@ ActiveRecord::Schema.define(version: 20171012003454) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "report_attachments", force: :cascade do |t|
+    t.integer  "technical_progress_report_id",             null: false
+    t.string   "name",                         limit: 255, null: false
+    t.string   "location",                                 null: false
+    t.string   "version",                      limit: 10,  null: false
+    t.string   "annex",                        limit: 1,   null: false
+    t.string   "mime_type",                    limit: 80,  null: false
+    t.string   "hash",                         limit: 140, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "report_attachments", ["technical_progress_report_id"], name: "index_report_attachments_on_technical_progress_report_id", using: :btree
+
   create_table "reporting_periods", force: :cascade do |t|
     t.date     "start_date", null: false
     t.date     "end_date",   null: false
@@ -660,6 +674,7 @@ ActiveRecord::Schema.define(version: 20171012003454) do
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"
   add_foreign_key "projects", "regions"
+  add_foreign_key "report_attachments", "technical_progress_reports"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "service_instances", "people"
