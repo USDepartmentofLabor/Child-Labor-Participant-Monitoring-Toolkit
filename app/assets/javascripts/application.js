@@ -34,6 +34,7 @@
 //= require report_wizard
 //= require services
 //= require service_types
+//= require technical_progress_reports
 //= require translations
 
 $(document).ready(function() {
