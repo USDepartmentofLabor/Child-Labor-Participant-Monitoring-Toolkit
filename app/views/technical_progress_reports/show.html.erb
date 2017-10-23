@@ -1,25 +1,41 @@
 <% content_for :title, "Technical Progress Report" %>
 
 <div class="page-header">
-  <%= link_to technical_progress_reports_path, class: "btn btn-primary" do %>
-    <%= fa_icon "arrow-left" %>
-    Back to Index
-  <% end %>
-  <%= link_to submit_technical_progress_report_path(@technical_progress_report), class: "btn btn-primary", method: "put" do %>
-    <%= fa_icon "arrow-right" %>
-    Submit
-  <% end %>
-  <%= link_to technical_progress_report_path(@technical_progress_report, format: :pdf), class: "btn btn-primary" do %>
-    <%= fa_icon "file-pdf-o" %>
-    Generate PDF for Signature
-  <% end %>
+  <div class="btn-group" role="group">
+    <%= link_to technical_progress_reports_path, class: "btn btn-primary" do %>
+      <%= fa_icon "arrow-left" %>
+      Back to Index
+    <% end %>
+    <%= link_to(
+      technical_progress_report_path(@technical_progress_report, format: :pdf),
+      class: "btn btn-primary") do %>
+      <%= fa_icon "file-pdf-o" %>
+      Generate PDF for Signature
+    <% end %>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#uploadDoc" data-annex="0">
+      <%= fa_icon "paperclip" %>
+      <% if @technical_progress_report.has_coversheet %>
+        Replace Signed Cover Sheet
+      <% else %>
+        Attach Signed Cover Sheet
+      <% end %>
+    </button>
+    <%= link_to(
+      submit_technical_progress_report_path(@technical_progress_report),
+      class: "btn btn-primary", method: "put",
+      disabled: !@technical_progress_report.is_ready_to_submit) do %>
+      Submit
+      <%= fa_icon "arrow-right" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="row">
   <div class="col-md-6">
     <p>
       <strong>Report Date:</strong>
-      <%= @technical_progress_report.reporting_period.end_date.strftime("%B %Y") %>
+      <%= @technical_progress_report.reporting_period.end_date
+        .strftime("%B %Y") %>
     </p>
   </div>
   <div class="col-md-6">
@@ -32,7 +48,9 @@
 
 <div class="row">
   <div class="col-md-4">
-    <h3 class="form-label">1. Federal Agency and Organization Element to Which Report is Submitted</h3>
+    <h3 class="form-label">
+      1. Federal Agency and Organization Element to Which Report is Submitted
+    </h3>
     <p class="form-body">USDOL/ILAB/OCFT</p>
   </div>
   <div class="col-md-4">
@@ -86,11 +104,12 @@
     </p>
   </div>
   <div class="col-md-4">
-    <h3 class="form-label">7. Reporting Period End Date(Month, Day, Year)</h3>
+    <h3 class="form-label">7. Reporting Period End Date</h3>
     <p class="form-body">
       <small>(Month, Day, Year)</small>
       <br>
-      <%= @technical_progress_report.reporting_period.end_date.strftime("%m/%d/%Y") %>
+      <%= @technical_progress_report.reporting_period.end_date
+        .strftime("%m/%d/%Y") %>
     </p>
   </div>
   <div class="col-md-4">
@@ -121,14 +140,14 @@
         <label>
           <%= radio_button_tag "is_semi_annual", 1,
             @technical_progress_report.is_semi_annual,
-            {class: "icheck", disabled: true} %> Yes
+            {class: "icheck", disabled: true} %> Semi-annual
         </label>
       </span>
       <span class="radio">
         <label>
           <%= radio_button_tag "is_semi_annual", 0,
             !@technical_progress_report.is_semi_annual,
-            {class: "icheck", disabled: true} %> No
+            {class: "icheck", disabled: true} %> Other
         </label>
       </span>
     </p>
@@ -137,7 +156,37 @@
 
 <h3 class="form-label">10. Attachments</h3>
 <p class="form-body">
-<% ('a'..'h').each do |cb| %>
-  <%= tpr_checkbox_helper @technical_progress_report, cb %>
-<% end %>
+  <% ('a'..'h').each do |id| %>
+    <% should_include = @technical_progress_report["annex_#{id}_included"] %>
+    <%= render partial: 'report_attachment', locals: {id: id,
+      should_include: should_include,
+      annexes: @technical_progress_report.report_attachments}
+    %>
+  <% end %>
 </p>
+
+<div class="modal fade" id="uploadDoc">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+        <h4 class="modal-title">Add Document</h4>
+      </div>
+      <%= form_for [@technical_progress_report, @report_attachment], html: {multipart: true} do |f| %>
+        <div class="modal-body">
+          <%= f.hidden_field :attachment_annex %>
+          <div class="form-group">
+            <%= f.label :attachment %>
+            <%= f.file_field :attachment %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Upload", class: "btn btn-success" %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

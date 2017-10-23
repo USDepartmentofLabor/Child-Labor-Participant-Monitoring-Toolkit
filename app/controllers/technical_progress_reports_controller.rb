@@ -7,12 +7,14 @@ class TechnicalProgressReportsController < ApplicationController
   end
 
   def show
+    @report_attachment = ReportAttachment.new
     respond_to do |format|
       format.html
       format.pdf do
+        end_date = @technical_progress_report.reporting_period.end_date
         pdf = @technical_progress_report.to_pdf
         send_data pdf,
-          filename: "TPR_#{@technical_progress_report.reporting_period.end_date.strftime("%Y-%m-%d")}.pdf",
+          filename: "TPR_#{end_date.strftime("%Y-%m-%d")}.pdf",
           type: "application/pdf"
       end
     end
@@ -35,6 +37,8 @@ class TechnicalProgressReportsController < ApplicationController
   end
 
   def submit
+    @technical_progress_report.reporting_status_id = 6
+    @technical_progress_report.save
     SubmitTprWorker.perform_async(params[:id])
     redirect_to technical_progress_report_path(@technical_progress_report)
   end

@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   resources :service_types
   resources :services
   resources :technical_progress_reports do
+    resources :report_attachments
     member do
       put :submit
     end

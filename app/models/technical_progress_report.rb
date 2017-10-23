@@ -10,6 +10,20 @@ class TechnicalProgressReport < ActiveRecord::Base
 
   has_many :report_attachments
 
+  def has_coversheet
+    self.report_attachments.any? {|x| x.attachment_annex == '0'}
+  end
+
+  def is_ready_to_submit
+    ('a'..'h').each do |x|
+      if self["annex_#{x}_included"] && !self.report_attachments.any? {|y| y.attachment_annex == x}
+        return false
+      end
+    end
+
+    return has_coversheet && (self.reporting_status_id == 1 || self.reporting_status_id == 3)
+  end
+
   def to_pdf
     font_path = "/usr/share/fonts/truetype/dejavu"
     project = Project.first
