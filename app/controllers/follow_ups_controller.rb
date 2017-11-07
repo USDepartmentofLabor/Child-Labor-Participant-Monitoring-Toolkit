@@ -19,7 +19,7 @@ class FollowUpsController < ApplicationController
       @follow_up.education_status_id = 1
     end
 
-    if @person.age >= 5 and @person.age <= 17
+    if @person.age and @person.age >= 5 and @person.age <= 17
       if @follow_up.work_activities.any? || @follow_up.have_job_returning_to
         if @follow_up.occupations.any? ||
            @follow_up.industries.any? ||

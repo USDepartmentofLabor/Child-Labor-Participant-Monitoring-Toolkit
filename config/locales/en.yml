@@ -138,6 +138,7 @@ en:
       add: "Add New Household"
       title: "List of Households"
       add_member: "Add Household Member"
+      export: "Export"
     new:
       title: "Add New Household"
       details_title: "Enter Household Details"
@@ -232,9 +233,9 @@ en:
     title: "Add Country and State(Province)"
     add: "Add"
   custom_fields:
-    index: "Customize Fields"
-    new: "Customize Fields For %{model} Forms"
-    preview: "Preview Of Custom Fields"
+    index: "Customize Fields for %{model}"
+    new: "Customize Fields for %{model} Forms"
+    preview: "Preview of Custom Fields"
     add: "Add New Custom Field"
     edit: "Edit Custom Field"
   users:

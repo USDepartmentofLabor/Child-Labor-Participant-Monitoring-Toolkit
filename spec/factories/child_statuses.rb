@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :child_status do
     start_date "2015-06-10"
     end_date "2015-06-10"
