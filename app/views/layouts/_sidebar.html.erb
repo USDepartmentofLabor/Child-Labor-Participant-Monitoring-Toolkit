@@ -12,20 +12,6 @@
         <% end %>
       </li>
 
-      <%= content_tag :li, class: (controller_name == "children" ? " treeview active" : "treeview") do %>
-        <a href="#">
-          <%= fa_icon "child" %>
-          <span><%= Child.model_name.human.pluralize %></span>
-          <%= fa_icon "angle-left", class: "pull-right" %>
-        </a>
-        <ul class="treeview-menu">
-          <% if policy(:child).index? %>
-            <%= sidebar_link t("children.index.title"), children_path %>
-          <% end %>
-          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: "Person") %>
-        </ul>
-      <% end -%>
-
       <%= content_tag :li, class: (controller_name == "households" ? " treeview active" : "treeview") do %>
         <a href="#">
           <%= fa_icon "home" %>
@@ -35,7 +21,10 @@
         <ul class="treeview-menu">
           <%= sidebar_link t("households.index.title"), households_path %>
           <%= sidebar_link t("households.index.add"), new_household_path %>
-          <%= sidebar_link t("custom_fields.index"), new_custom_field_path(model_type: "Household") %>
+          <%= sidebar_link t("custom_fields.index", model: Household.model_name.human),
+            new_custom_field_path(model_type: "Household") %>
+          <%= sidebar_link t("custom_fields.index", model: Person.model_name.human),
+            new_custom_field_path(model_type: "Person") %>
         </ul>
       <% end -%>
 

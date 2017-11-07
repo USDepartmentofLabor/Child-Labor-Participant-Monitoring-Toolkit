@@ -5,13 +5,9 @@ class Child < Person
 
   has_many :statuses, class_name: "ChildStatus", dependent: :destroy
 
-  has_many :service_instances
-
   has_many :services, through: :child_service
 
   belongs_to :household
-
-#  mount_uploader :avatar, AvatarUploader
 
   accepts_nested_attributes_for :statuses,
     :allow_destroy => true,
