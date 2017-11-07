@@ -42,19 +42,6 @@ RSpec.describe AbusesController, type: :controller do
       end
     end
 
-    context "with invalid params" do
-      it "assigns the abuse as @abuse" do
-        put :update, {:id => @abuse.to_param,
-                      abuse: attributes_for(:abuse, display_name: nil)}
-        expect(assigns(:abuse)).to eq(@abuse)
-      end
-
-      it "re-renders the 'edit' template" do
-        put :update, {:id => @abuse.to_param,
-                      abuse: attributes_for(:abuse, display_name: nil)}
-        expect(response).to render_template("edit")
-      end
-    end
   end
 
   describe "DELETE #destroy" do
