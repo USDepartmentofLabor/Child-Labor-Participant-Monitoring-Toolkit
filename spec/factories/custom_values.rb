@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :custom_value do
     custom_field_id 1
     model_id 1

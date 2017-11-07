@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :report do
     title 'MyString'
     start_date '2015-06-12'
