@@ -8,6 +8,11 @@ class TechnicalProgressReportsController < ApplicationController
 
   def show
     @report_attachment = ReportAttachment.new
+
+    if @technical_progress_report.report_comments.count == 0
+      @technical_progress_report.report_comments.build
+    end
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -58,6 +63,7 @@ class TechnicalProgressReportsController < ApplicationController
       :reporting_period_id, :annex_a_included, :annex_b_included,
       :annex_c_included, :annex_d_included, :annex_e_included,
       :annex_f_included, :annex_g_included, :annex_h_included,
-      :is_final_report, :is_semi_annual, :submitted_by, :date_submitted)
+      :is_final_report, :is_semi_annual, :submitted_by, :date_submitted,
+      report_comments_attributes: [:id, :body, :type])
   end
 end

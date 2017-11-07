@@ -9,6 +9,9 @@ class TechnicalProgressReport < ActiveRecord::Base
   belongs_to :reporting_status
 
   has_many :report_attachments
+  has_many :report_comments
+
+  accepts_nested_attributes_for :report_comments, allow_destroy: true
 
   def has_coversheet
     self.report_attachments.any? {|x| x.attachment_annex == '0'}

@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   resources :technical_progress_reports do
     resources :report_attachments
     member do
-      put :submit
+      patch :submit
     end
   end
   resources :users

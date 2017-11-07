@@ -12,18 +12,9 @@
       <%= fa_icon "file-pdf-o" %>
       Generate PDF for Signature
     <% end %>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#uploadDoc" data-annex="0">
-      <%= fa_icon "paperclip" %>
-      <% if @technical_progress_report.has_coversheet %>
-        Replace Signed Cover Sheet
-      <% else %>
-        Attach Signed Cover Sheet
-      <% end %>
-    </button>
-    <%= link_to(
-      submit_technical_progress_report_path(@technical_progress_report),
-      class: "btn btn-primary", method: "put",
-      disabled: !@technical_progress_report.is_ready_to_submit) do %>
+    <%= content_tag(:button, class: "btn btn-primary",
+                    disabled: !@technical_progress_report.is_ready_to_submit,
+                    data: {toggle: "modal", target: "#submitTpr"}) do %>
       Submit
       <%= fa_icon "arrow-right" %>
     <% end %>
@@ -156,6 +147,14 @@
 
 <h3 class="form-label">10. Attachments</h3>
 <p class="form-body">
+  <%= render partial: 'report_attachment', locals: {id: '0',
+    should_include: true,
+    annexes: @technical_progress_report.report_attachments}
+  %>
+  <%= render partial: 'report_attachment', locals: {id: '1',
+    should_include: true,
+    annexes: @technical_progress_report.report_attachments}
+  %>
   <% ('a'..'h').each do |id| %>
     <% should_include = @technical_progress_report["annex_#{id}_included"] %>
     <%= render partial: 'report_attachment', locals: {id: id,
@@ -164,6 +163,19 @@
     %>
   <% end %>
 </p>
+
+<h3 class="form-label">Comments</h3>
+<section class="form-body comments">
+  <% @technical_progress_report.report_comments.each do |c| %>
+    <article class="comment">
+      <h4 class="byline">
+        <%= c.user.email %>
+        <small><%= c.created_at %></small>
+      </h4>
+      <p><%= c.body %></p>
+    </article>
+  <% end %>
+</section>
 
 <div class="modal fade" id="uploadDoc">
   <div class="modal-dialog">
@@ -184,6 +196,33 @@
         </div>
         <div class="modal-footer">
           <%= f.submit "Upload", class: "btn btn-success" %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="submitTpr">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+        <h4 class="modal-title">Submit TPR</h4>
+      </div>
+      <%= form_for @technical_progress_report, url: {action: :submit},
+        html: {class: 'form-horizontal'} do |f| %>
+        <div class="modal-body">
+          <%= f.fields_for :report_comments do |b| %>
+            <%= b.label "Add any comments for submission" %>
+            <%= b.text_area :body, class: "form-control", rows: 10 %>
+            <%= b.hidden_field :type, value: 'submission' %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Submit", class: "btn btn-success" %>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012172239) do
+ActiveRecord::Schema.define(version: 20171106191647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -453,6 +453,20 @@ ActiveRecord::Schema.define(version: 20171012172239) do
 
   add_index "report_attachments", ["technical_progress_report_id"], name: "index_report_attachments_on_technical_progress_report_id", using: :btree
 
+  create_table "report_comments", force: :cascade do |t|
+    t.integer  "technical_progress_report_id"
+    t.integer  "report_attachment_id"
+    t.integer  "user_id"
+    t.text     "body",                                    null: false
+    t.string   "category",                     limit: 20, null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  add_index "report_comments", ["report_attachment_id"], name: "index_report_comments_on_report_attachment_id", using: :btree
+  add_index "report_comments", ["technical_progress_report_id"], name: "index_report_comments_on_technical_progress_report_id", using: :btree
+  add_index "report_comments", ["user_id"], name: "index_report_comments_on_user_id", using: :btree
+
   create_table "reporting_periods", force: :cascade do |t|
     t.date     "start_date", null: false
     t.date     "end_date",   null: false
@@ -674,6 +688,9 @@ ActiveRecord::Schema.define(version: 20171012172239) do
   add_foreign_key "project_targets", "projects"
   add_foreign_key "projects", "regions"
   add_foreign_key "report_attachments", "technical_progress_reports"
+  add_foreign_key "report_comments", "report_attachments"
+  add_foreign_key "report_comments", "technical_progress_reports"
+  add_foreign_key "report_comments", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "service_instances", "people"
