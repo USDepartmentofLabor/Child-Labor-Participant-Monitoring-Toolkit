@@ -35,10 +35,10 @@ describe RelationshipsController do
         expect(assigns(:relationship)).to eq(@relationship)
       end
 
-      it "redirects to the relationship" do
+      it "redirects to the list of relationships" do
         put :update, {:id => @relationship.to_param,
                       relationship: attributes_for(:relationship)}
-        expect(response).to redirect_to(relationship_url(@relationship))
+        expect(response).to redirect_to(relationships_path)
       end
     end
 

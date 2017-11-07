@@ -12,18 +12,12 @@ Rails.application.routes.draw do
     get :reporting_table
   end
 
-  resources :children do
-    resources :child_statuses
-    #resources :service_instances
-    resources :timelines, only: [:index]
-  end
-
   resources :households do
-    resources :adults, except: [:index, :new]
     resources :income_sources
     resources :people do
       resources :follow_ups
       resources :service_instances
+      resources :timelines, only: [:index]
     end
     post :finalize, on: :member
   end

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :service_instance do
     child nil
 service nil

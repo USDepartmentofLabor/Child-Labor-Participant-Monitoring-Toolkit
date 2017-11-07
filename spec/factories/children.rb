@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :child do
     sequence(:first_name) { |n| "FN #{n}" }
     sequence(:last_name) { |n| "LN #{n}" }
