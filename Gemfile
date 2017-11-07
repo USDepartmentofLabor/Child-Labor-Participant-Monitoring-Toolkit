@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-# Peg to rails 4.2.0
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.10'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+# Locked to 0.20 to avoid deprecation
+gem 'pg', '0.20'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -48,12 +48,13 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'faker', require: false
+  # Lock to 1.6.6 to avoid NoMethodError at startup
+  gem 'faker', '1.6.6', require: false
 
   # testing
   gem 'rspec-rails'
   gem 'rb-fsevent', require: RUBY_PLATFORM =~ /darwin/i ? 'rb-fsevent' : false
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'guard-rspec', require: false
   gem 'spring-commands-rspec'
   gem 'capybara'

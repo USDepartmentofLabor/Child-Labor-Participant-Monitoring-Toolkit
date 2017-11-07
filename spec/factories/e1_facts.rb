@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :e1_fact do
     reporting_period_id 1
     person_id 1
