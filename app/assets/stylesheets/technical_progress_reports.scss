@@ -50,7 +50,7 @@ fieldset label.control-label {
   }
 }
 
-p.form-body, address.form-body {
+p.form-body, address.form-body, section.form-body {
   border: 1px solid $border_color;
   padding: 3px 5px;
   margin-top: 0;
@@ -58,4 +58,21 @@ p.form-body, address.form-body {
 
 address.form-body {
   min-height: 90px;
+}
+
+.comment {
+  .byline {
+    font-size: 0.95em;
+    background: $gray-light;
+    padding: 3px 5px;
+  }
+  p {
+    padding-left: 10px;
+    border: 1px solid $gray-light;
+  }
+}
+
+.icheckbox_square-red.icon-only {
+  cursor: unset;
+  opacity: 0.7;
 }
