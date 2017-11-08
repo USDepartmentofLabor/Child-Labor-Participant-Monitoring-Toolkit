@@ -4,9 +4,12 @@
 
 $script = <<SCRIPT
 curl -sL https://deb.nodesource.com/setup_8.x | sh
+add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
+curl -L https://cli-assets.heroku.com/apt/release.key | apt-key add -
+apt-get update
 apt-get upgrade -y
 apt-get install -y git build-essential postgresql libpq-dev ruby libcurl3 \
-  libruby ruby-dev nodejs vim tmux redis-server
+  libruby ruby-dev nodejs vim tmux redis-server awscli heroku
 gem install bundler
 sudo -u postgres -- createuser -sU postgres ubuntu
 SCRIPT
