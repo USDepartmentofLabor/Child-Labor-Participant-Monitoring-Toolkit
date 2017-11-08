@@ -82,8 +82,6 @@ gem 'mini_magick'
 # background processes
 gem 'sidekiq'
 
-gem 'country_select', github: 'stefanpenner/country_select'
-
 # pagination
 gem 'kaminari'
 
@@ -105,6 +103,6 @@ gem 'aws-ses'
 # Chart.js for the dashboard
 gem 'chartjs-ror'
 
-#  for Excel export
+# Excel export
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
