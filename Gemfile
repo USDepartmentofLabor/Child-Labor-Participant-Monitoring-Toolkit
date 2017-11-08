@@ -38,6 +38,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   # User puma as the application server
   gem 'puma'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -106,3 +107,5 @@ gem 'chartjs-ror'
 # Excel export
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
+
+ruby '2.3.1'
