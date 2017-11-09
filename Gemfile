@@ -73,6 +73,7 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 gem 'adminlte2-rails'
 gem 'icheck-rails'
+gem 'toastr_rails'
 
 # carrierwave does file uploading
 gem 'carrierwave'
