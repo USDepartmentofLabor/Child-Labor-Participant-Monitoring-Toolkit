@@ -4,6 +4,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-editable";
+@import "toastr_rails";
 @import "AdminLTE/AdminLTE";
 @import "AdminLTE/skins/skin-blue";
 @import "dataTables/bootstrap/3/jquery.dataTables.bootstrap";
@@ -180,4 +181,12 @@ button.options-control {
   display: inline-block;
   width: auto;
   margin-left: 10px;
+}
+
+#toast-container {
+  top: 10px;
+
+  > div {
+    opacity: 1;
+  }
 }
