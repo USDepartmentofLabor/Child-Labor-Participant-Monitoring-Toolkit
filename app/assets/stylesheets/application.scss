@@ -31,15 +31,11 @@ body {
   padding-left: 0;
 }
 
-.box-header > .box-tools {
-  top: 9px;
-}
-
 .box.box-primary > .box-header > .fa {
   color: #3C8DBC;
 }
 
-.table-listing > tr:first-child {
+.table-listing > tbody > tr:first-child {
   td, th {
     border: none;
   }

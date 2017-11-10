@@ -23,7 +23,8 @@
     </div>
 
     <%= render partial: 'custom_fields/custom_field',
-      collection: @section_1_custom_fields, locals: {model_id: @household.id} %>
+      collection: @section_1_custom_fields,
+      locals: {model_id: @household.id} %>
 
   </div>
 </div>
@@ -39,7 +40,7 @@
     </h3>
   </div>
   <div class="box-body">
-    <table class="table condensed">
+    <table class="table table-hover table-condensed">
       <thead>
       <tr>
         <th>
@@ -71,9 +72,10 @@
       <tfoot>
         <tr>
           <td>
-            <%= link_to_add_fields t("income_source.index.add"), f, :income_sources,
-              class: "add_fields btn btn-primary" %>
+            <%= link_to_add_fields t("income_source.index.add"), f,
+              :income_sources, class: "add_fields btn btn-primary" %>
           </td>
+          <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
@@ -85,30 +87,11 @@
   </div>
 </div>
 
-<% if @household.id.nil? %>
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <%= fa_icon "user" %>
-    <h3 class="box-title">
-      <%= Person.model_name.human.pluralize %>
-    </h3>
-  </div>
-  <div class="box-body">
-    <%= f.fields_for :people do |builder| %>
-      <%= render 'person_fields', f: builder %>
-    <% end %>
-    <%= link_to_add_fields t("people.index.add"), f, :people,
-      class: "add_fields btn btn-primary" %>
-  </div>
-</div>
-<% end %>
-
-<div class="form-group">
+<div class="row">
   <div class="col-sm-4 col-sm-offset-4">
     <%= link_to household_or_households_path(@household),
-      :class => 'btn btn-danger btn-block' do %>
-      <i class="fa fa-times"></i>
-      <%= t("general.cancel") %>
+      class: 'btn btn-danger btn-block' do %>
+      <%= fa_icon 'times', text: t('general.cancel') %>
     <% end %>
   </div>
   <div class="col-sm-4">
