@@ -37,13 +37,17 @@ body {
 
 .table-listing > tbody > tr:first-child {
   td, th {
-    border: none;
+    border-top: none;
   }
 }
 
 .table-listing {
+  margin-top: -10px;
+
   th {
-    min-width: 33%;
+    text-align: right;
+    white-space: nowrap;
+    border-right: 1px solid #ddd;
   }
 
   td {
