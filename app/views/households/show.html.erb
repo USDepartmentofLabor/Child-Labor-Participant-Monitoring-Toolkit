@@ -1,114 +1,123 @@
-<div class="row">
-  <div class="col-xs-12">
+<% title @household.name %>
+<% description "#{@household.intake_date}" %>
 
-    <div class="page-header">
-      <%= link_to households_path, class: 'btn btn-default' do %>
-        <%= fa_icon "caret-left" %>
-        <%= t("general.back") %>
-      <% end %>
-      <%= link_to edit_household_path(@household),
-        class: 'btn btn-primary' do %>
-        <%= fa_icon "pencil" %>
-        <%= t("general.edit") %>
-      <% end %>
+<div class="page-header">
+  <%= link_to households_path, class: 'btn btn-default' do %>
+    <%= fa_icon 'caret-left', text: t('general.back') %>
+  <% end %>
+  <%= link_to edit_household_path(@household),
+    class: 'btn btn-primary' do %>
+    <%= fa_icon 'pencil', text: t('general.edit') %>
+  <% end %>
+</div>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "info" %>
+    <h3 class="box-title">
+      <%= t("households.show.title") %>
+    </h3>
+  </div>
+  <div class="box-body">
+    <table class="table table-hover table-listing table-condensed">
+      <tbody>
+        <tr>
+          <th><%= Household.human_attribute_name(:id) %></th>
+          <td><%= @household.id %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:name) %></th>
+          <td><%= @household.name %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:intake_date) %></th>
+          <td><%= @household.intake_date %></td>
+        </tr>
+        <tr>
+        <% @section_1_custom_fields.each do |custom_field| %>
+        </tr>
+        <tr>
+          <th><%= custom_field.name %></th>
+          <td><%= custom_field_display(custom_field, @household.id) %></td>
+        </tr>
+        <% end unless @section_1_custom_fields.nil? %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= render partial: 'custom_sections/custom_section_show',
+  collection: @sections, locals: {model_id: @household.id} %>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "money" %>
+    <h3 class="box-title">
+      <%= IncomeSource.model_name.human.pluralize %>
+    </h3>
+  </div>
+  <div class="box-body">
+    <table class="table table-condensed table-hover">
+      <thead>
+      <tr>
+        <th>
+          <%= IncomeSource.human_attribute_name :name %>
+        </th>
+        <th>
+          <%= IncomeSource.human_attribute_name :estimated_volume_produced %>
+        </th>
+        <th>
+          <%= IncomeSource.human_attribute_name :estimated_volume_sold %>
+        </th>
+        <th>
+          <%= IncomeSource.human_attribute_name :unit_of_measure %>
+        </th>
+        <th>
+          <%= IncomeSource.human_attribute_name :estimated_income %>
+        </th>
+        <th>
+          <%= IncomeSource.human_attribute_name :currency %>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "income_source",
+          collection: @household.income_sources %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <%= fa_icon "users" %>
+    <h3 class="box-title">
+      <%= Person.model_name.human.pluralize %>
     </div>
-
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <%= fa_icon "info" %>
-        <h3 class="box-title">
-          <%= t("households.show.title") %>
-        </h3>
-      </div>
-      <div class="box-body no-padding">
-        <dl>
-          <dt><%= Household.human_attribute_name(:id) %></dt>
-          <dd><%= @household.id %></dd>
-          <dt><%= Household.human_attribute_name(:name) %></dt>
-          <dd><%= @household.name %></dd>
-          <dt><%= Household.human_attribute_name(:intake_date) %></dt>
-          <dd><%= @household.intake_date %></dd>
-          <% @section_1_custom_fields.each do |custom_field| %>
-            <dt><%= custom_field.name %></dt>
-            <dd><%= custom_field_display(custom_field, @household.id) %></dd>
-          <% end unless @section_1_custom_fields.nil? %>
-        </dl>
-      </div>
-    </div>
-
-    <%= render partial: 'custom_sections/custom_section_show',
-      collection: @sections, locals: {model_id: @household.id} %>
-
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <%= fa_icon "money" %>
-        <h3 class="box-title">
-          <%= IncomeSource.model_name.human.pluralize %>
-        </h3>
-      </div>
-      <div class="box-body no-padding">
-        <table class="table condensed table-striped">
-          <thead>
+    <div class="box-body">
+      <table id="people-data-table"
+        class="table table-condensed table-hover">
+        <thead>
           <tr>
-            <th>
-              <%= IncomeSource.human_attribute_name :name %>
-            </th>
-            <th>
-              <%= IncomeSource.human_attribute_name :estimated_volume_produced %>
-            </th>
-            <th>
-              <%= IncomeSource.human_attribute_name :estimated_volume_sold %>
-            </th>
-            <th>
-              <%= IncomeSource.human_attribute_name :unit_of_measure %>
-            </th>
-            <th>
-              <%= IncomeSource.human_attribute_name :estimated_income %>
-            </th>
-            <th>
-              <%= IncomeSource.human_attribute_name :currency %>
-            </th>
+            <th><%= Person.human_attribute_name :id %></th>
+            <th><%= Person.human_attribute_name :last_name %></th>
+            <th><%= Person.human_attribute_name :first_name %></th>
+            <th><%= Person.human_attribute_name :age %></th>
+            <th><%= Person.human_attribute_name :sex %></th>
+            <th><%= Person.human_attribute_name :intake_status %></th>
           </tr>
-          </thead>
-          <tbody>
-            <%= render partial: "income_source",
-              collection: @household.income_sources %>
-          </tbody>
-        </table>
-      </div>
+        </thead>
+        <tbody>
+          <%= render partial: "person",
+            collection: @household.people.order(:id) %>
+        </tbody>
+      </table>
     </div>
-
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <%= fa_icon "users" %>
-        <h3 class="box-title">
-          <%= Person.model_name.human.pluralize %>
-        </div>
-        <div class="box-body no-padding">
-          <table id="people-data-table"
-            class="table table-condensed table-striped">
-            <thead>
-              <tr>
-                <th><%= Person.human_attribute_name :id %></th>
-                <th><%= Person.human_attribute_name :last_name %></th>
-                <th><%= Person.human_attribute_name :first_name %></th>
-                <th><%= Person.human_attribute_name :age %></th>
-                <th><%= Person.human_attribute_name :sex %></th>
-                <th><%= Person.human_attribute_name :intake_status %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <%= render partial: "person",
-                collection: @household.people.order(:id) %>
-            </tbody>
-          </table>
-        </div>
-        <div class="box-footer">
-          <%= link_to t("households.index.add_member"),
-            new_household_person_path(@household),
-            class: "btn btn-primary" %>
-        </div>
-      </div>
+    <div class="box-footer">
+      <%= link_to new_household_person_path(@household),
+        class: "btn btn-primary" do %>
+        <%= fa_icon 'plus', text: t('households.index.add_member') %>
+      <% end %>
     </div>
   </div>
 </div>
