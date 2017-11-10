@@ -1,11 +1,6 @@
 $("#detailModal").modal("hide");
 
-$(".content-header").html(
-    '<div class="alert alert-success alert-dismissable">' +
-    '  <i class="fa fa-check"></i>' +
-    '  <button type="button" class="close" data-dismiss="alert" ' +
-    '    aria-hidden="true">×</button><b><%= j notice %></b>' +
-    '</div>').fadeIn().delay(3000).fadeOut();
+toastr.success("<%= j notice %>");
 
 $("#indicator_details").html(
   '<%= j render(partial: "detail",

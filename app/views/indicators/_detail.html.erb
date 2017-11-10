@@ -7,7 +7,7 @@
     <% if detail.id.nil? %>
       <%= link_to t("general.update"),
         new_indicator_indicator_detail_path(@indicator,
-          :reporting_period_id => detail.reporting_period_id), remote: true %>
+          reporting_period_id: detail.reporting_period_id), remote: true %>
     <% else %>
       <%= link_to t("general.update"),
         edit_indicator_indicator_detail_path(@indicator, detail),
