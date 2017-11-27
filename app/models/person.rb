@@ -56,22 +56,18 @@ class Person < ActiveRecord::Base
   end
 
   def intake_work_status
-    if !age.nil?
-      if age >= 5 and age <= 17
-        if work_activities.any? || have_job_returning_to
-          if occupations.any? || industries.any? ||
-            hazardous_conditions.any? || abuses.any?
-            return WorkStatus.find(2)
-          elsif (age >= 5 && age <= 14) && (!hours_worked.nil? && hours_worked > 14)
-            return WorkStatus.find(1)
-          elsif age <= 17 and (!hours_worked.nil? && hours_worked > 40)
-            return WorkStatus.find(1)
-          end
-        end
+    if working_youth
+      if occupations.any? || industries.any? ||
+        hazardous_conditions.any? || abuses.any?
+        return WorkStatus.find(2)
+      elsif (age >= 5 && age <= 14) && (!hours_worked.nil? && hours_worked > 14)
+        return WorkStatus.find(1)
+      elsif age <= 17 and (!hours_worked.nil? && hours_worked > 40)
+        return WorkStatus.find(1)
       end
+    else
+      return nil
     end
-  else
-    return nil
   end
 
   def intake_education_status
@@ -84,6 +80,11 @@ class Person < ActiveRecord::Base
 
   def intake_reporting_period
     ReportingPeriod.where('start_date <= ? and end_date >= ?', intake_date, intake_date).first
+  end
+
+private
+  def working_youth
+    !age.nil? && age >= 5 && age <= 17 && (work_activities.any? || have_job_returning_to)
   end
 
 end
