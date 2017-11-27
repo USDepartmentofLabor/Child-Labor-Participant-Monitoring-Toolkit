@@ -6,7 +6,8 @@ $script = <<SCRIPT
 curl -sL https://deb.nodesource.com/setup_8.x | sh
 apt-get upgrade -y
 apt-get install -y git build-essential postgresql libpq-dev ruby libcurl3 \
-  libruby ruby-dev nodejs vim tmux redis-server
+  libruby ruby-dev nodejs vim tmux redis-server fonts-dejavu-core \
+  fonts-dejavu-extra
 gem install bundler
 sudo -u postgres -- createuser -sU postgres ubuntu
 SCRIPT
