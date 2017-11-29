@@ -169,7 +169,7 @@
   <% @technical_progress_report.report_comments.each do |c| %>
     <article class="comment">
       <h4 class="byline">
-        <%= c.user.email %>
+        <%= c&.user&.email %>
         <small><%= c.created_at %></small>
       </h4>
       <p><%= c.body %></p>
@@ -218,7 +218,7 @@
           <%= f.fields_for :report_comments do |b| %>
             <%= b.label "Add any comments for submission" %>
             <%= b.text_area :body, class: "form-control", rows: 10 %>
-            <%= b.hidden_field :type, value: 'submission' %>
+            <%= b.hidden_field :category, value: 'submission' %>
           <% end %>
         </div>
         <div class="modal-footer">

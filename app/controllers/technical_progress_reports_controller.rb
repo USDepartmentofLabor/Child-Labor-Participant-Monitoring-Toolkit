@@ -42,6 +42,7 @@ class TechnicalProgressReportsController < ApplicationController
   end
 
   def submit
+    @technical_progress_report.update_attributes(tpr_params)
     @technical_progress_report.reporting_status_id = 6
     @technical_progress_report.save
     SubmitTprWorker.perform_async(params[:id])
@@ -64,6 +65,6 @@ class TechnicalProgressReportsController < ApplicationController
       :annex_c_included, :annex_d_included, :annex_e_included,
       :annex_f_included, :annex_g_included, :annex_h_included,
       :is_final_report, :is_semi_annual, :submitted_by, :date_submitted,
-      report_comments_attributes: [:id, :body, :type])
+      report_comments_attributes: [:id, :body, :category])
   end
 end
