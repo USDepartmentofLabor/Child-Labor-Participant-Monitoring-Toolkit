@@ -5,21 +5,19 @@
 The text of presentation layer in this project follows [i18n](http://guides.rubyonrails.org/i18n.html) as much as
 possible. Locale files can be found under [/config/locales](./config/locales)
 
-## Development Environment
+## Development Environment Setup
 
-**Notice**: running application from shared folder (folder shared between Windows OS and Virtual OS) can be [very
-slow](https://meta.discourse.org/t/vagrant-and-virtualbox-slow-on-windows-update/17176)! The **best solution** is: setup
-and run rails in Windows (troublesome), or do the coding directly inside of Virtual Linux OS (inconvenient), or buy a
-Mac :)
+Note these instructions assume you have an account on gitdev with a SSH key uploaded.
 
-1. Download and Install [VirtualBox](www.virtualbox.org/wiki/Downloads)
-2. Download and Install [Vagrant](vagrantup.com/downloads)
-3. Start your console, and go to source code folder.
-4. For the first time before running `vagrant`, install vagrant NSF support for Windows:
+1. Ensure you have the Powershell version 3.0 or later installer.
+2. Download and Install [VirtualBox](www.virtualbox.org/wiki/Downloads)
+3. Download and Install [Vagrant](vagrantup.com/downloads)
+4. Start your console, and go to source code folder.
+5. For the first time before running `vagrant`, install vagrant NSF support for Windows:
    `vagrant plugin install vagrant-winnfsd`
-5. Start rails development environment in a virtual machine: `vagrant up` (might take some take for the first time)
-6. To enter into the VM, use `vagrant ssh`
-7. To stop the VM, use: `vagrant halt`
+6. Start rails development environment in a virtual machine: `vagrant up` (might take some take for the first time)
+7. To enter into the VM, use `vagrant ssh`
+8. To stop the VM, use: `vagrant halt`
 
 
 ## Getting Started
@@ -41,7 +39,7 @@ You can load some example data to play with this system. To load the data:
   `bundle exec rake DBMS:load_example_data`
 
 
-## Deployment
+## Deployment (need to update)
 
 Run `cap production deploy` to deploy new code to live server.
 
@@ -49,5 +47,6 @@ The default user:pass for the testing server is: `deployer:deploy`
 
 ## Reload Example Data
 
-1. `bundle exec rake db:reset`
-2. `bundle exec rake DBMS:load_example_data`
+1. `bundle exec rake db:prepare`
+2. `bundle exec rake db:load_project_data`
+3. `bundle exec rake DBMS:load_example_data`
