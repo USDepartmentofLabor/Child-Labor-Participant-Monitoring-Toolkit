@@ -11,23 +11,6 @@
 
   <!-- Main content -->
   <section class="content">
-    <% if notice %>
-      <div class="alert alert-success alert-dismissable">
-        <%= fa_icon "check" %>
-        <button type="button" class="close" data-dismiss="alert"
-          aria-hidden="true">×</button>
-        <b><%= notice %></b>
-      </div>
-    <% end %>
-
-    <% if alert %>
-      <div class="alert alert-danger alert-dismissable">
-        <%= fa_icon "ban" %>
-        <button type="button" class="close" data-dismiss="alert"
-          aria-hidden="true">×</button>
-        <b><%= alert %></b>
-      </div>
-    <% end %>
     <%= yield %>
   </section>
 </div>

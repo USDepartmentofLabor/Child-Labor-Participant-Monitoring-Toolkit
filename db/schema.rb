@@ -144,17 +144,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
     t.integer  "model_id"
   end
 
-  create_table "e1_facts", force: :cascade do |t|
-    t.integer  "reporting_period_id",         null: false
-    t.integer  "person_id",                   null: false
-    t.integer  "work_status"
-    t.integer  "education_status"
-    t.boolean  "received_education_service"
-    t.boolean  "received_livelihood_service"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
   create_table "education_statuses", force: :cascade do |t|
     t.string "name"
   end
@@ -642,8 +631,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
   add_foreign_key "child_statuses", "people", column: "child_id"
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
-  add_foreign_key "e1_facts", "people"
-  add_foreign_key "e1_facts", "reporting_periods"
   add_foreign_key "follow_ups", "education_statuses"
   add_foreign_key "follow_ups", "industries"
   add_foreign_key "follow_ups", "occupations"

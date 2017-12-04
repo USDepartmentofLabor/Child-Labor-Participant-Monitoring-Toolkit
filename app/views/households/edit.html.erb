@@ -1,16 +1,12 @@
+<% title t('households.edit.title') %>
+
 <div class="page-header">
  <%= link_to households_path(), class: 'btn btn-default' do %>
-    <%= fa_icon "caret-left" %>
-    <%= t("general.back") %>
+    <%= fa_icon 'caret-left', text: t("general.back") %>
   <% end %>
   <%= link_to household_path(@household), class: 'btn btn-primary' do %>
-    <%= fa_icon "info-circle" %> <%= t("general.show") %>
+    <%= fa_icon "info-circle", text: t("general.show") %>
   <% end %>
-  <h1><%= t("households.edit.title") %></h1>
 </div>
 
-<div class="row">
-  <div class="col-xs-12">
-    <%= render 'form' %>
-  </div>
-</div>
+<%= render 'form' %>
