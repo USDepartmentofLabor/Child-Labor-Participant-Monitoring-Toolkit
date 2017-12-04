@@ -38,6 +38,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   # User puma as the application server
   gem 'puma'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -72,6 +73,7 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 gem 'adminlte2-rails'
 gem 'icheck-rails'
+gem 'toastr_rails'
 
 # carrierwave does file uploading
 gem 'carrierwave'
@@ -81,8 +83,6 @@ gem 'mini_magick'
 
 # background processes
 gem 'sidekiq'
-
-gem 'country_select', github: 'stefanpenner/country_select'
 
 # pagination
 gem 'kaminari'
@@ -105,7 +105,7 @@ gem 'aws-ses'
 # Chart.js for the dashboard
 gem 'chartjs-ror'
 
-#  for Excel export
+# Excel export
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
 
@@ -114,3 +114,5 @@ gem 'swagger_client', path: '../shared/ruby-client'
 
 # Prawn for PDF generation
 gem 'prawn'
+
+ruby '2.3.1'

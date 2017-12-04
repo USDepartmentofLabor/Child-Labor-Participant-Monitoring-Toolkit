@@ -12,18 +12,21 @@
     <%= f.text_field :hours, class: "form-control" %>
   </div>
 </div>
+
 <div class="row">
   <div class="col-sm-6 form-group">
     <%= f.label :start_date %>
     <div class="row date-select">
-      <%= f.date_select :start_date, {order: [:month, :day, :year]}, {class: "form-control"} %>
+      <%= f.date_select :start_date, {order: [:month, :day, :year]},
+        {class: "form-control"} %>
     </div>
   </div>
 
   <div class="col-sm-6 form-group">
     <%= f.label :end_date %>
     <div class="row date-select">
-      <%= f.date_select :end_date, {order: [:month, :day, :year]}, {class: "form-control"} %>
+      <%= f.date_select :end_date, {order: [:month, :day, :year]},
+        {class: "form-control"} %>
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
-<%= form_for([@household, @person, @follow_up], html: { role: "form" }) do |f| %>
+<%= form_for([@household, @person, @follow_up],
+             html: { role: "form" }) do |f| %>
   <%= error_messages(@follow_up) %>
 
   <div class="box box-primary">
@@ -9,207 +10,212 @@
       </h3>
     </div>
 
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label><%= Person.human_attribute_name(:id) %>:</label>
-          <%= @person.id %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label><%= Person.human_attribute_name(:intake_date) %>:</label>
-          <%= l @person.intake_date %>
-        </div>
-      </div>
-    </div>
+    <div class="box-body">
 
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label><%= Person.human_attribute_name(:first_name) %>:</label>
-          <%= @person.first_name %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label><%= Person.human_attribute_name(:middle_name) %>:</label>
-          <%= @person.middle_name %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label><%= Person.human_attribute_name(:last_name) %>:</label>
-          <%= @person.last_name %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label><%= Person.human_attribute_name(:sex) %>:</label>
-          <%= @person.gender_name %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label><%= Person.human_attribute_name(:dob) %>:</label>
-          <%= l @person.dob %>
-          <label><%= Person.human_attribute_name(:is_birthdate_approximate) %>:</label>
-          <%= display_yes_no(@person.is_birthdate_approximate) %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label><%= Person.human_attribute_name(:age) %>:</label>
-          <%= Time.now.year - @person.dob.year %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :follow_date %>
-                <div class="row date-select">
-                  <%= f.date_select :follow_date, { order: [:month, :day, :year]},
-                    {class: "form-control"} %>
-                </div>
-              </div>
-            </div>
-          </div>
-
+      <div class="row">
+        <div class="col-md-4">
           <div class="form-group">
-            <%= f.label :work_activities %>
-            <%= f.collection_check_boxes :work_activity_ids, WorkActivity.all, :id, :display_name do |b| %>
-              <div class="collection-check-box">
-                <%= b.check_box class: "square-red" %>
-                <%= b.label %>
-              </div>
+            <label><%= Person.human_attribute_name(:id) %>:</label>
+            <%= @person.id %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label><%= Person.human_attribute_name(:intake_date) %>:</label>
+            <%= l @person.intake_date %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label><%= Person.human_attribute_name(:first_name) %>:</label>
+            <%= @person.first_name %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label><%= Person.human_attribute_name(:middle_name) %>:</label>
+            <%= @person.middle_name %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label><%= Person.human_attribute_name(:last_name) %>:</label>
+            <%= @person.last_name %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label><%= Person.human_attribute_name(:sex) %>:</label>
+            <%= @person.gender_name %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label><%= Person.human_attribute_name(:dob) %>:</label>
+            <%= l @person.dob %>
+            <label>
+              <%= Person.human_attribute_name(:is_birthdate_approximate) %>:
+            </label>
+            <%= display_yes_no(@person.is_birthdate_approximate) %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label><%= Person.human_attribute_name(:age) %>:</label>
+            <%= Time.now.year - @person.dob.year %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :follow_date %>
+        <div class="row date-select">
+          <%= f.date_select :follow_date, { order: [:month, :day, :year]},
+            {class: "form-control"} %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :work_activities %>
+        <%= f.collection_check_boxes :work_activity_ids, WorkActivity.all, :id,
+          :display_name do |b| %>
+          <div class="checkbox">
+            <%= b.label do %>
+              <%= b.check_box class: "square-red" %>
+              <%= b.text %>
             <% end %>
           </div>
-
-          <div class="form-group">
-            <%= f.label :have_job_returning_to %>
-            <div class="checkbox">
-              <label class="radio-inline">
-                <%= f.radio_button :have_job_returning_to, true, class: "square-red" %>
-                <%= t('select_options.yes_no.yes') %>
-              </label>
-              <label class="radio-inline">
-                <%= f.radio_button :have_job_returning_to, false, class: "square-red" %>
-                <%= t('select_options.yes_no.no') %>
-              </label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :hours_worked %>
-                <%= f.text_field :hours_worked, class: "form-control" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :occupations %>
-            <%= f.collection_check_boxes :occupation_ids, Occupation.all, :id, :display_name do |b| %>
-              <div class="collection-check-box">
-                <%= b.check_box class: "square-red" %>
-                <%= b.label %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :industries %>
-                <%= f.collection_check_boxes :industry_ids, Industry.all, :id, :display_name do |b| %>
-                  <div class="collection-check-box">
-                    <%= b.check_box class: "square-red" %>
-                    <%= b.label %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :hazardous_conditions %>
-            <%= f.collection_check_boxes :hazardous_condition_ids, HazardousCondition.all, :id, :display_name do |b| %>
-              <div class="collection-check-box">
-                <%= b.check_box class: "square-red" %>
-                <%= b.label %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :abuses %>
-            <%= f.collection_check_boxes :abuse_ids, Abuse.all, :id, :display_name do |b| %>
-              <div class="collection-check-box">
-                <%= b.check_box class: "square-red" %>
-                <%= b.label %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :household_tasks %>
-            <%= f.collection_check_boxes :household_task_ids, HouseholdTask.all, :id, :display_name do |b| %>
-              <div class="collection-check-box">
-                <%= b.check_box class: "square-red" %>
-                <%= b.label %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :hours_worked_on_housework %>
-                <%= f.text_field :hours_worked_on_housework, class: "form-control" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :enrolled_in_school %>
-            <div class="checkbox">
-              <label class="radio-inline">
-                <%= f.radio_button :enrolled_in_school, true, class: "square-red" %>
-                <%= t('select_options.yes_no.yes') %>
-              </label>
-              <label class="radio-inline">
-                <%= f.radio_button :enrolled_in_school, false, class: "square-red" %>
-                <%= t('select_options.yes_no.no') %>
-              </label>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-4 col-sm-offset-4">
-        <%= link_to household_path(@household), :class => 'btn btn-danger btn-block' do %>
-        <i class="fa fa-times"></i>
-        <%= t("general.cancel") %>
         <% end %>
       </div>
-      <div class="col-sm-4">
-        <button type="submit" class="btn btn-primary btn-block">
-          <%= t("general.submit") %>
-        </button>
-      </div>
-    </div>
 
+      <div class="form-group">
+        <%= f.label :have_job_returning_to %>
+        <div class="checkbox">
+          <label class="radio-inline">
+            <%= f.radio_button :have_job_returning_to, true,
+              class: "square-red" %>
+            <%= t('select_options.yes_no.yes') %>
+          </label>
+          <label class="radio-inline">
+            <%= f.radio_button :have_job_returning_to, false,
+              class: "square-red" %>
+            <%= t('select_options.yes_no.no') %>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :hours_worked %>
+        <%= f.text_field :hours_worked, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :occupations %>
+        <%= f.collection_check_boxes :occupation_ids, Occupation.all, :id,
+          :display_name do |b| %>
+          <div class="checkbox">
+            <%= b.label do %>
+              <%= b.check_box class: "square-red" %>
+              <%= b.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :industries %>
+        <%= f.collection_check_boxes :industry_ids, Industry.all, :id,
+          :display_name do |b| %>
+          <div class="checkbox">
+            <%= b.label do %>
+              <%= b.check_box class: "square-red" %>
+              <%= b.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :hazardous_conditions %>
+        <%= f.collection_check_boxes :hazardous_condition_ids,
+          HazardousCondition.all, :id, :display_name do |b| %>
+          <div class="checkbox">
+            <%= b.label do %>
+              <%= b.check_box class: "square-red" %>
+              <%= b.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :abuses %>
+        <%= f.collection_check_boxes :abuse_ids, Abuse.all, :id,
+          :display_name do |b| %>
+          <div class="checkbox">
+            <%= b.label do %>
+              <%= b.check_box class: "square-red" %>
+              <%= b.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :household_tasks %>
+        <%= f.collection_check_boxes :household_task_ids, HouseholdTask.all,
+          :id, :display_name do |b| %>
+          <div class="checkbox">
+            <%= b.label do %>
+              <%= b.check_box class: "square-red" %>
+              <%= b.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :hours_worked_on_housework %>
+        <%= f.text_field :hours_worked_on_housework, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :enrolled_in_school %>
+        <div class="checkbox">
+          <label class="radio-inline">
+            <%= f.radio_button :enrolled_in_school, true,
+              class: "square-red" %>
+            <%= t('select_options.yes_no.yes') %>
+          </label>
+          <label class="radio-inline">
+            <%= f.radio_button :enrolled_in_school, false,
+              class: "square-red" %>
+            <%= t('select_options.yes_no.no') %>
+          </label>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= link_to household_path(@household),
+        class: 'btn btn-danger btn-block' do %>
+        <%= fa_icon 'times', text: t('general.cancel') %>
+      <% end %>
+    </div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block">
+        <%= t("general.submit") %>
+      </button>
+    </div>
+  </div>
+
 <% end %>

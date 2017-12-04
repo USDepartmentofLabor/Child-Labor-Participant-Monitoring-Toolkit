@@ -20,7 +20,7 @@
   <td>
     <%= f.hidden_field :_destroy %>
     <%= link_to '#', class: "remove_fields btn" do %>
-      <i class="fa fa-trash-o"></i> <%= t("general.delete") %>
+      <%= fa_icon 'trash-o', text: t('general.delete') %>
     <% end %>
   </td>
 </tr>

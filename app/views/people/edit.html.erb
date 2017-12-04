@@ -1,13 +1,10 @@
+<% title t('people.new.title') %>
+
 <div class="page-header">
- <%= link_to household_person_path(@household, @person), class: 'btn btn-default' do %>
-    <%= fa_icon "caret-left" %>
-    <%= t("general.back") %>
+  <%= link_to household_person_path(@household, @person),
+    class: 'btn btn-default' do %>
+    <%= fa_icon 'caret-left', text: t('general.back') %>
   <% end %>
-  <h1><%= t("people.new.title") %></h1>
 </div>
 
-<div class="row">
-  <div class="col-md-8">
-    <%= render 'form' %>
-  </div>
-</div>
+<%= render 'form' %>

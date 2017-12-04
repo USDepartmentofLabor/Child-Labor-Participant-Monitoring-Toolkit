@@ -1,11 +1,10 @@
 <div class="box box-primary">
-  <div class="box-header">
+  <div class="box-header with-border">
     <%= fa_icon "flag" %>
-    <h1 class="box-title"><%= t("indicators.index.title") %></h1>
+    <h1 class="box-title"><%= t('indicators.index.title') %></h1>
     <div class="box-tools">
-      <%= link_to new_indicator_path, class: "btn btn-primary" do %>
-        <%= fa_icon "plus" %>
-        <%= t("indicators.index.add") %>
+      <%= link_to new_indicator_path, class: 'btn btn-primary btn-sm' do %>
+        <%= fa_icon 'plus', text: t('indicators.index.add') %>
       <% end %>
     </div>
   </div>
@@ -15,11 +14,11 @@
       class="table table-bordered table-condensed table-striped">
       <thead>
         <tr>
-          <th><%= Indicator.human_attribute_name(:code) %></th>
-          <th><%= Indicator.human_attribute_name(:indicator) %></th>
-          <th><%= Indicator.human_attribute_name(:reporting_frequency) %></th>
-          <th><%= Indicator.human_attribute_name(:baseline) %></th>
-          <th><%= Indicator.human_attribute_name(:indicator_type) %></th>
+          <th><%= Indicator.human_attribute_name :code %></th>
+          <th><%= Indicator.human_attribute_name :indicator %></th>
+          <th><%= Indicator.human_attribute_name :reporting_frequency %></th>
+          <th><%= Indicator.human_attribute_name :baseline %></th>
+          <th><%= Indicator.human_attribute_name :indicator_type %></th>
         </tr>
       </thead>
       <tbody></tbody>

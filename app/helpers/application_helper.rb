@@ -56,4 +56,21 @@ module ApplicationHelper
   def display_yes_no(value)
     value ? "Yes" : "No"
   end
+
+  def submit_or_cancel(return_path)
+    content_tag :div, class: 'row' do
+      cancel = content_tag(:div, class: 'col-sm-4 col-sm-offset-4') do
+        link_to return_path, class: 'btn btn-danger btn-block' do
+          fa_icon 'times', text: I18n.t('general.cancel')
+        end
+      end
+      submit = content_tag(:div, class: 'col-sm-4') do
+        content_tag :button, type: 'submit', class: 'btn btn-primary btn-block' do
+          I18n.t('general.submit')
+        end
+      end
+
+      cancel + submit
+    end
+  end
 end
