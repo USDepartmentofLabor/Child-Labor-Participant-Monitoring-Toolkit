@@ -4,6 +4,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-editable";
+@import "toastr_rails";
 @import "AdminLTE/AdminLTE";
 @import "AdminLTE/skins/skin-blue";
 @import "dataTables/bootstrap/3/jquery.dataTables.bootstrap";
@@ -30,23 +31,23 @@ body {
   padding-left: 0;
 }
 
-.box-header > .box-tools {
-  top: 9px;
-}
-
 .box.box-primary > .box-header > .fa {
   color: #3C8DBC;
 }
 
-.table-listing > tr:first-child {
+.table-listing > tbody > tr:first-child {
   td, th {
-    border: none;
+    border-top: none;
   }
 }
 
 .table-listing {
+  margin-top: -10px;
+
   th {
-    min-width: 33%;
+    text-align: right;
+    white-space: nowrap;
+    border-right: 1px solid #ddd;
   }
 
   td {
@@ -180,4 +181,12 @@ button.options-control {
   display: inline-block;
   width: auto;
   margin-left: 10px;
+}
+
+#toast-container {
+  top: 10px;
+
+  > div {
+    opacity: 1;
+  }
 }

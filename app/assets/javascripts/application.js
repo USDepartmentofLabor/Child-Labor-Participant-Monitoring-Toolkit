@@ -25,6 +25,7 @@
 //= require ckeditor/init
 //= require bootstrap-editable
 //= require bootstrap-editable-rails
+//= require toastr_rails
 
 //= require children
 //= require custom_fields
@@ -52,4 +53,22 @@ $(document).ready(function() {
       $(this).delay(3000).fadeOut();
     });
   });
+
+  toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-center",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "500",
+    "hideDuration": "500",
+    "timeOut": "4000",
+    "extendedTimeOut": "500",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "slideDown",
+    "hideMethod": "slideUp"
+  };
 });

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :adult do
     first_name "MyString"
     last_name "MyString"

@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-# Peg to rails 4.2.0
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.10'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+# Locked to 0.20 to avoid deprecation
+gem 'pg', '0.20'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -38,6 +38,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   # User puma as the application server
   #gem 'puma'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -48,12 +49,13 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'faker', require: false
+  # Lock to 1.6.6 to avoid NoMethodError at startup
+  gem 'faker', '1.6.6', require: false
 
   # testing
   gem 'rspec-rails'
   gem 'rb-fsevent', require: RUBY_PLATFORM =~ /darwin/i ? 'rb-fsevent' : false
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'guard-rspec', require: false
   gem 'spring-commands-rspec'
   gem 'capybara'
@@ -71,6 +73,7 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 gem 'adminlte2-rails'
 gem 'icheck-rails'
+gem 'toastr_rails'
 
 # carrierwave does file uploading
 gem 'carrierwave'
@@ -80,8 +83,6 @@ gem 'mini_magick'
 
 # background processes
 gem 'sidekiq'
-
-gem 'country_select', github: 'stefanpenner/country_select'
 
 # pagination
 gem 'kaminari'
@@ -104,9 +105,10 @@ gem 'aws-ses'
 # Chart.js for the dashboard
 gem 'chartjs-ror'
 
-#  for Excel export
+# Excel export
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
 
 gem 'rails_12factor', group: :production
 gem 'puma'
+ruby '2.3.1'

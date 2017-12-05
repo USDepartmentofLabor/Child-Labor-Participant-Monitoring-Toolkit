@@ -33,6 +33,7 @@ Makefile
 *.swo
 
 /public/uploads
+/public/system
 
 # ignore the Ruby Version manager (rvm)
 .rvmrc
