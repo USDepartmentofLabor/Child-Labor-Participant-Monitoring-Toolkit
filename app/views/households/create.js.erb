@@ -1,4 +1,0 @@
-var option = "<option value=<%= @household.id %>><%= @household.name %></option>";
-$(option).insertBefore("select#household-selection option[value='0']");
-$("select#household-selection").val("<%= @household.id %>");
-$("#household-form-modal").modal("hide");

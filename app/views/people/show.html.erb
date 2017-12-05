@@ -1,134 +1,134 @@
+<% title t('people.show.title') %>
+
 <div class="page-header">
   <%= link_to household_path(@household), class: 'btn btn-default' do %>
-  <%= fa_icon "caret-left" %>
-  <%= t("general.back") %>
+    <%= fa_icon 'caret-left' %>
+    <%= t 'general.back' %>
   <% end %>
-  <%= link_to edit_household_person_path(@household, @person), class: 'btn btn-primary' do %>
-  <%= fa_icon "pencil" %>
-  <%= t("general.edit") %>
+  <%= link_to edit_household_person_path(@household, @person),
+    class: 'btn btn-primary' do %>
+    <%= fa_icon 'pencil' %>
+    <%= t 'general.edit' %>
   <% end %>
-  <%= link_to new_household_person_follow_up_path(@household, @person), class: 'btn btn-primary' do %>
-  Follow Up
+  <%= link_to new_household_person_follow_up_path(@household, @person),
+    class: 'btn btn-primary' do %>
+    <%= t 'person.follow_up' %>
   <% end %>
-  <h1><%= t("people.show.title") %></h1>
 </div>
 
-<div class="row">
-  <div class="col-md-8">
-
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <h3 class="box-title"><%= t("people.show.details_title") %></h3>
-      </div>
-      <div class="box-body">
-        <table class="table table-bordered table-hover table-listing">
-          <tbody>
-            <tr>
-              <th><%= Person.human_attribute_name(:id) %></th>
-              <td><%= @person.id %></td>
-            </tr>
-            <tr>
-              <th><%= Person.human_attribute_name(:intake_date) %></th>
-              <td><%= l @person.intake_date %></td>
-            </tr>
-            <tr>
-              <th><%= Person.human_attribute_name(:last_name) %></th>
-              <td><%= @person.last_name %></td>
-            </tr>
-            <tr>
-              <th><%= Person.human_attribute_name(:first_name) %></th>
-              <td><%= @person.first_name %></td>
-            </tr>
-            <tr>
-              <th><%= Person.human_attribute_name(:dob) %></th>
-              <td><%= l @person.dob unless @person.dob.nil? %></td>
-            </tr>
-            <tr>
-              <th><%= Person.human_attribute_name(:is_birthdate_approximate) %></th>
-              <td><%= display_yes_no(@person.is_birthdate_approximate) %></td>
-            </tr>
-            <tr>
-              <th><%= Person.human_attribute_name(:age) %></th>
-              <td><%= @person.age %></td>
-            </tr>
-            <tr>
-              <th><%= Person.human_attribute_name(:sex) %></th>
-              <td><%= @person.gender_name %></td>
-            </tr>
-            <tr>
-              <th><%= Person.human_attribute_name(:relationship_id) %></th>
-              <td><%= @person.relationship_name %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        Status History
-      </div>
-      <div class="box-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Status Type</th>
-              <th>Work Status</th>
-              <th>Education Status</th>
-              <th>Reporting Period</th>
-              <th>Date Recorded</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @person_statuses.each do |status| %>
-              <tr>
-                <td><%= status[:status_type] %></td>
-                <td><%= status[:work_status] %></td>
-                <td><%= status[:education_status] %></td>
-                <td><%= status[:reporting_period] %></td>
-                <td><%= l status[:status_date] %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <% if show_services_for @person %>
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <%= t("children.show.services") %>
-      </div>
-      <div class="box-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Date Received</th>
-              <th>Hours</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= render partial: "service", collection: @service_instances.order(:start_date) %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <% end %>
-
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <%= t("children.show.service_form_title") %>
-      </div>
-      <div class="box-body">
-        <%= form_for([@household, @person, ServiceInstance.new], html: { role: "form" }) do |f| %>
-        <%= render partial: 'service_form', locals: {f: f} %>
-        <button type="submit" class="btn btn-primary"><%= t("general.submit") %></button>
-        <% end %>
-      </div>
-    </div>
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t("people.show.details_title") %></h3>
   </div>
+  <div class="box-body">
+    <table class="table table-condensed table-hover table-listing">
+      <tbody>
+        <tr>
+          <th><%= Person.human_attribute_name(:id) %></th>
+          <td><%= @person.id %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:intake_date) %></th>
+          <td><%= l @person.intake_date %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:last_name) %></th>
+          <td><%= @person.last_name %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:first_name) %></th>
+          <td><%= @person.first_name %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:dob) %></th>
+          <td><%= l @person.dob unless @person.dob.nil? %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:is_birthdate_approximate) %></th>
+          <td><%= display_yes_no(@person.is_birthdate_approximate) %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:age) %></th>
+          <td><%= @person.age %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:sex) %></th>
+          <td><%= @person.gender_name %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:relationship_id) %></th>
+          <td><%= @person.relationship_name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t 'people.show.status_history' %></h3>
+  </div>
+  <div class="box-body">
+    <table class="table table-condensed table-hover">
+      <thead>
+        <tr>
+          <th>Status Type</th>
+          <th>Work Status</th>
+          <th>Education Status</th>
+          <th>Reporting Period</th>
+          <th>Date Recorded</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @person_statuses.each do |status| %>
+          <tr>
+            <td><%= status[:status_type] %></td>
+            <td><%= status[:work_status] %></td>
+            <td><%= status[:education_status] %></td>
+            <td><%= status[:reporting_period] %></td>
+            <td><%= l status[:status_date] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% if show_services_for @person %>
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t 'people.show.service_history' %></h3>
+  </div>
+  <div class="box-body">
+    <table class="table table-condensed table-hover">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Date Received</th>
+          <th>Hours</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'service',
+          collection: @service_instances.order(:start_date) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<% end %>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t 'people.show.service_form_title' %></h3>
+  </div>
+  <div class="box-body">
+    <%= form_for([@household, @person, ServiceInstance.new],
+                 html: { role: "form" }) do |f| %>
+      <%= render partial: 'service_form', locals: {f: f} %>
+      <button type="submit" class="btn btn-primary">
+        <%= t 'general.submit' %>
+      </button>
+    <% end %>
   </div>
 </div>
