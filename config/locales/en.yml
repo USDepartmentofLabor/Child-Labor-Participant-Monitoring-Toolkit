@@ -272,18 +272,9 @@ en:
   work_activities:
     new:
       add: "Add Work Activity"
-  occupations:
-    new:
-      add: "Add Occupation"
-  industries:
-    new:
-      add: "Add Industry"
   hazardous_conditions:
     new:
       add: "Add Hazardous Condition"
-  abuses:
-    new:
-      add: "Add Abuse"
   household_tasks:
     new:
       add: "Add Household Task"

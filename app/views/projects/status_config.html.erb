@@ -41,74 +41,6 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <%= fa_icon "briefcase" %>
-    <h3 class="box-title">
-      <%= t("projects.status_config.occupations_title") %>
-    </h3>
-  </div>
-  <div class="box-body">
-    <div class="table-responsive">
-      <table id="occupations-data-table" class="table table-condensed table-striped">
-        <thead>
-          <tr>
-            <th><%= Occupation.human_attribute_name(:code) %></th>
-            <th><%= Occupation.human_attribute_name(:display_name) %></th>
-            <th><%= t "general.delete" %></th>
-          </tr>
-        </thead>
-
-        <tbody id="occupations_details">
-          <%= render partial: "occupation",
-          collection: Occupation.all.order(:id) %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <!-- box-body -->
-  <div class="box-footer clearfix">
-    <%= link_to t("occupations.new.add"), new_occupation_path(@occupation),
-          remote: true, class: "btn btn-primary" %>
-  </div>
-  <!-- box-footer -->
-</div>
-<!-- box -->
-
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <%= fa_icon "industry" %>
-    <h3 class="box-title">
-      <%= t("projects.status_config.industries_title") %>
-    </h3>
-  </div>
-  <div class="box-body">
-    <div class="table-responsive">
-      <table id="industries-data-table" class="table table-condensed table-striped">
-        <thead>
-          <tr>
-            <th><%= Industry.human_attribute_name(:code) %></th>
-            <th><%= Industry.human_attribute_name(:display_name) %></th>
-            <th><%= t "general.delete" %></th>
-          </tr>
-        </thead>
-
-        <tbody id="industries_details">
-          <%= render partial: "industry",
-          collection: Industry.all.order(:id) %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <!-- box-body -->
-  <div class="box-footer clearfix">
-    <%= link_to t("industries.new.add"), new_industry_path(@industry),
-          remote: true, class: "btn btn-primary" %>
-  </div>
-  <!-- box-footer -->
-</div>
-<!-- box -->
-
-<div class="box box-primary">
-  <div class="box-header with-border">
     <%= fa_icon "exclamation-triangle" %>
     <h3 class="box-title">
       <%= t("projects.status_config.hazardous_conditions_title") %>
@@ -135,40 +67,6 @@
   <!-- box-body -->
   <div class="box-footer clearfix">
     <%= link_to t("hazardous_conditions.new.add"), new_hazardous_condition_path(@hazardous_condition),
-          remote: true, class: "btn btn-primary" %>
-  </div>
-  <!-- box-footer -->
-</div>
-<!-- box -->
-
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <%= fa_icon "exclamation-triangle" %>
-    <h3 class="box-title">
-      <%= t("projects.status_config.abuses_title") %>
-    </h3>
-  </div>
-  <div class="box-body">
-    <div class="table-responsive">
-      <table id="abuses-data-table" class="table table-condensed table-striped">
-        <thead>
-          <tr>
-            <th><%= Abuse.human_attribute_name(:code) %></th>
-            <th><%= Abuse.human_attribute_name(:display_name) %></th>
-            <th><%= t "general.delete" %></th>
-          </tr>
-        </thead>
-
-        <tbody id="abuses_details">
-          <%= render partial: "abuse",
-          collection: Abuse.all.order(:id) %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <!-- box-body -->
-  <div class="box-footer clearfix">
-    <%= link_to t("abuses.new.add"), new_abuse_path(@abuse),
           remote: true, class: "btn btn-primary" %>
   </div>
   <!-- box-footer -->

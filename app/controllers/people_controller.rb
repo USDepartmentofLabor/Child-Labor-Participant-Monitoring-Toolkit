@@ -87,10 +87,7 @@ class PeopleController < ApplicationController
       :hours_worked_on_housework, :enrolled_in_school, :relationship_id,
       :relationship_other,
       :work_activity_ids => [],
-      :occupation_ids => [],
-      :industry_ids => [],
       :hazardous_condition_ids => [],
-      :abuse_ids => [],
       :household_task_ids => []
     )
   end
