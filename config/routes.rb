@@ -50,10 +50,7 @@ Rails.application.routes.draw do
   resources :technical_progress_reports
   resources :users
   resources :work_activities
-  resources :occupations
-  resources :industries
   resources :hazardous_conditions
-  resources :abuses
   resources :household_tasks
 
   devise_for :users, skip: [:sessions, :registrations, :confirmations]
