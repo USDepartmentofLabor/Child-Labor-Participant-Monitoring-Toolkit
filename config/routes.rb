@@ -69,5 +69,12 @@ Rails.application.routes.draw do
     get 'confirm_account' => 'devise/confirmations#show', as: :user_confirmation
   end
 
+  # Api definition
+  namespace :api do
+    namespace :v1 do
+      resources :households
+    end
+  end
+
   root to: "home#index"
 end
