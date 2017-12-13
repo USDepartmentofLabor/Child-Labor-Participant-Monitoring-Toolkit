@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205230757) do
+ActiveRecord::Schema.define(version: 20171213194929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pgcrypto"
 
   create_table "abilities", force: :cascade do |t|
     t.string "name"
@@ -106,6 +107,18 @@ ActiveRecord::Schema.define(version: 20171205230757) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "comments", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
+    t.uuid     "parent_id"
+    t.string   "parent_type"
+    t.string   "body",         null: false
+    t.string   "author",       null: false
+    t.datetime "submitted_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "comments", ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id", using: :btree
 
   create_table "custom_fields", force: :cascade do |t|
     t.string   "name"
@@ -357,6 +370,8 @@ ActiveRecord::Schema.define(version: 20171205230757) do
     t.string   "organization"
     t.decimal  "funding_amount"
     t.integer  "region_id"
+    t.string   "duns_number"
+    t.string   "api_key"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -376,12 +391,6 @@ ActiveRecord::Schema.define(version: 20171205230757) do
   create_table "reporting_periods", force: :cascade do |t|
     t.date     "start_date", null: false
     t.date     "end_date",   null: false
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "reporting_statuses", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -468,28 +477,6 @@ ActiveRecord::Schema.define(version: 20171205230757) do
   end
 
   add_index "targets", ["indicator_id"], name: "index_targets_on_indicator_id", using: :btree
-
-  create_table "technical_progress_reports", force: :cascade do |t|
-    t.integer  "reporting_period_id",                 null: false
-    t.integer  "reporting_status_id",                 null: false
-    t.boolean  "tpr_included",        default: false, null: false
-    t.boolean  "annex_a_included",    default: false, null: false
-    t.boolean  "annex_b_included",    default: false, null: false
-    t.boolean  "annex_c_included",    default: false, null: false
-    t.boolean  "annex_d_included",    default: false, null: false
-    t.boolean  "annex_e_included",    default: false, null: false
-    t.boolean  "annex_f_included",    default: false, null: false
-    t.boolean  "annex_g_included",    default: false, null: false
-    t.boolean  "annex_h_included",    default: false, null: false
-    t.boolean  "annex_i_included",    default: false, null: false
-    t.string   "submitted_by"
-    t.date     "date_submitted"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  add_index "technical_progress_reports", ["reporting_period_id"], name: "index_technical_progress_reports_on_reporting_period_id", using: :btree
-  add_index "technical_progress_reports", ["reporting_status_id"], name: "index_technical_progress_reports_on_reporting_status_id", using: :btree
 
   create_table "translations", force: :cascade do |t|
     t.string   "locale"
@@ -583,6 +570,4 @@ ActiveRecord::Schema.define(version: 20171205230757) do
   add_foreign_key "services", "service_types"
   add_foreign_key "targets", "indicators"
   add_foreign_key "targets", "reporting_periods"
-  add_foreign_key "technical_progress_reports", "reporting_periods"
-  add_foreign_key "technical_progress_reports", "reporting_statuses"
 end
