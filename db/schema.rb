@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106191647) do
+ActiveRecord::Schema.define(version: 20171205230757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,14 +31,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
 
   add_index "abilities_roles", ["ability_id"], name: "index_abilities_roles_on_ability_id", using: :btree
   add_index "abilities_roles", ["role_id"], name: "index_abilities_roles_on_role_id", using: :btree
-
-  create_table "abuses", force: :cascade do |t|
-    t.string   "code",           null: false
-    t.string   "canonical_name", null: false
-    t.string   "display_name",   null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
 
   create_table "adults", force: :cascade do |t|
     t.string   "fname"
@@ -167,11 +159,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
     t.datetime "updated_at",                     null: false
   end
 
-  create_table "follow_ups_abuses", force: :cascade do |t|
-    t.integer "follow_up_id"
-    t.integer "abuse_id"
-  end
-
   create_table "follow_ups_hazardous_conditions", force: :cascade do |t|
     t.integer "follow_up_id"
     t.integer "hazardous_condition_id"
@@ -180,16 +167,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
   create_table "follow_ups_household_tasks", force: :cascade do |t|
     t.integer "follow_up_id"
     t.integer "household_task_id"
-  end
-
-  create_table "follow_ups_industries", force: :cascade do |t|
-    t.integer "follow_up_id"
-    t.integer "industry_id"
-  end
-
-  create_table "follow_ups_occupations", force: :cascade do |t|
-    t.integer "follow_up_id"
-    t.integer "occupation_id"
   end
 
   create_table "follow_ups_work_activities", force: :cascade do |t|
@@ -278,14 +255,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
   add_index "indicators", ["reporting_frequency_id"], name: "index_indicators_on_reporting_frequency_id", using: :btree
   add_index "indicators", ["unit_of_measure_id"], name: "index_indicators_on_unit_of_measure_id", using: :btree
 
-  create_table "industries", force: :cascade do |t|
-    t.string   "code",           null: false
-    t.string   "canonical_name", null: false
-    t.string   "display_name",   null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
   create_table "locales", force: :cascade do |t|
     t.string   "code",       null: false
     t.string   "name",       null: false
@@ -316,14 +285,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
   add_index "locations", ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
   add_index "locations", ["project_id"], name: "index_locations_on_project_id", using: :btree
 
-  create_table "occupations", force: :cascade do |t|
-    t.string   "code",           null: false
-    t.string   "canonical_name", null: false
-    t.string   "display_name",   null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -353,11 +314,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
 
   add_index "people", ["relationship_id"], name: "index_people_on_relationship_id", using: :btree
 
-  create_table "people_abuses", force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "abuse_id"
-  end
-
   create_table "people_hazardous_conditions", force: :cascade do |t|
     t.integer "person_id"
     t.integer "hazardous_condition_id"
@@ -366,16 +322,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
   create_table "people_household_tasks", force: :cascade do |t|
     t.integer "person_id"
     t.integer "household_task_id"
-  end
-
-  create_table "people_industries", force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "industry_id"
-  end
-
-  create_table "people_occupations", force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "occupation_id"
   end
 
   create_table "people_work_activities", force: :cascade do |t|
@@ -411,8 +357,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
     t.string   "organization"
     t.decimal  "funding_amount"
     t.integer  "region_id"
-    t.string   "duns_number"
-    t.string   "api_key"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -428,33 +372,6 @@ ActiveRecord::Schema.define(version: 20171106191647) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
-
-  create_table "report_attachments", force: :cascade do |t|
-    t.integer  "technical_progress_report_id",            null: false
-    t.string   "attachment_file_name",                    null: false
-    t.string   "attachment_content_type",                 null: false
-    t.string   "attachment_fingerprint",                  null: false
-    t.string   "attachment_version",           limit: 10, null: false
-    t.string   "attachment_annex",             limit: 1,  null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-  end
-
-  add_index "report_attachments", ["technical_progress_report_id"], name: "index_report_attachments_on_technical_progress_report_id", using: :btree
-
-  create_table "report_comments", force: :cascade do |t|
-    t.integer  "technical_progress_report_id"
-    t.integer  "report_attachment_id"
-    t.integer  "user_id"
-    t.text     "body",                                    null: false
-    t.string   "category",                     limit: 20, null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-  end
-
-  add_index "report_comments", ["report_attachment_id"], name: "index_report_comments_on_report_attachment_id", using: :btree
-  add_index "report_comments", ["technical_progress_report_id"], name: "index_report_comments_on_technical_progress_report_id", using: :btree
-  add_index "report_comments", ["user_id"], name: "index_report_comments_on_user_id", using: :btree
 
   create_table "reporting_periods", force: :cascade do |t|
     t.date     "start_date", null: false
@@ -555,6 +472,7 @@ ActiveRecord::Schema.define(version: 20171106191647) do
   create_table "technical_progress_reports", force: :cascade do |t|
     t.integer  "reporting_period_id",                 null: false
     t.integer  "reporting_status_id",                 null: false
+    t.boolean  "tpr_included",        default: false, null: false
     t.boolean  "annex_a_included",    default: false, null: false
     t.boolean  "annex_b_included",    default: false, null: false
     t.boolean  "annex_c_included",    default: false, null: false
@@ -563,12 +481,11 @@ ActiveRecord::Schema.define(version: 20171106191647) do
     t.boolean  "annex_f_included",    default: false, null: false
     t.boolean  "annex_g_included",    default: false, null: false
     t.boolean  "annex_h_included",    default: false, null: false
+    t.boolean  "annex_i_included",    default: false, null: false
     t.string   "submitted_by"
     t.date     "date_submitted"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.boolean  "is_final_report",     default: false, null: false
-    t.boolean  "is_semi_annual",      default: true,  null: false
   end
 
   add_index "technical_progress_reports", ["reporting_period_id"], name: "index_technical_progress_reports_on_reporting_period_id", using: :btree
@@ -632,20 +549,12 @@ ActiveRecord::Schema.define(version: 20171106191647) do
   add_foreign_key "children_services", "children"
   add_foreign_key "children_services", "services"
   add_foreign_key "follow_ups", "education_statuses"
-  add_foreign_key "follow_ups", "industries"
-  add_foreign_key "follow_ups", "occupations"
   add_foreign_key "follow_ups", "people"
   add_foreign_key "follow_ups", "work_statuses"
-  add_foreign_key "follow_ups_abuses", "abuses"
-  add_foreign_key "follow_ups_abuses", "follow_ups"
   add_foreign_key "follow_ups_hazardous_conditions", "follow_ups"
   add_foreign_key "follow_ups_hazardous_conditions", "hazardous_conditions"
   add_foreign_key "follow_ups_household_tasks", "follow_ups"
   add_foreign_key "follow_ups_household_tasks", "household_tasks"
-  add_foreign_key "follow_ups_industries", "follow_ups"
-  add_foreign_key "follow_ups_industries", "industries"
-  add_foreign_key "follow_ups_occupations", "follow_ups"
-  add_foreign_key "follow_ups_occupations", "occupations"
   add_foreign_key "follow_ups_work_activities", "follow_ups"
   add_foreign_key "follow_ups_work_activities", "work_activities"
   add_foreign_key "income_sources", "households"
@@ -656,28 +565,16 @@ ActiveRecord::Schema.define(version: 20171106191647) do
   add_foreign_key "locations", "location_types"
   add_foreign_key "locations", "projects"
   add_foreign_key "people", "households"
-  add_foreign_key "people", "industries"
-  add_foreign_key "people", "occupations"
   add_foreign_key "people", "relationships"
-  add_foreign_key "people_abuses", "abuses"
-  add_foreign_key "people_abuses", "people"
   add_foreign_key "people_hazardous_conditions", "hazardous_conditions"
   add_foreign_key "people_hazardous_conditions", "people"
   add_foreign_key "people_household_tasks", "household_tasks"
   add_foreign_key "people_household_tasks", "people"
-  add_foreign_key "people_industries", "industries"
-  add_foreign_key "people_industries", "people"
-  add_foreign_key "people_occupations", "occupations"
-  add_foreign_key "people_occupations", "people"
   add_foreign_key "people_work_activities", "people"
   add_foreign_key "people_work_activities", "work_activities"
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"
   add_foreign_key "projects", "regions"
-  add_foreign_key "report_attachments", "technical_progress_reports"
-  add_foreign_key "report_comments", "report_attachments"
-  add_foreign_key "report_comments", "technical_progress_reports"
-  add_foreign_key "report_comments", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "service_instances", "people"

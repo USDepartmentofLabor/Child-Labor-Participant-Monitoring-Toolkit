@@ -6,8 +6,9 @@ The text of presentation layer in this project follows
 [i18n](http://guides.rubyonrails.org/i18n.html) as much as possible. Locale
 files can be found under [/config/locales](./config/locales)
 
-## Development Environment
+## Development Environment Setup
 
+Note these instructions assume you have an account on gitdev with a SSH key uploaded.
 **Notice**: running application from shared folder (folder shared between
 Windows OS and Virtual OS) can be [very
 slow](https://meta.discourse.org/t/vagrant-and-virtualbox-slow-on-windows-update/17176)!
