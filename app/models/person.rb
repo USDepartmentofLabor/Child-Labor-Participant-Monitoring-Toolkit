@@ -57,8 +57,7 @@ class Person < ActiveRecord::Base
 
   def intake_work_status
     if working_youth
-      if occupations.any? || industries.any? ||
-        hazardous_conditions.any? || abuses.any?
+      if hazardous_conditions.any?
         return WorkStatus.find(2)
       elsif (age >= 5 && age <= 14) && (!hours_worked.nil? && hours_worked > 14)
         return WorkStatus.find(1)

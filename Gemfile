@@ -23,6 +23,7 @@ gem 'sdoc', group: :doc
 
 group :production do
   gem 'unicorn'
+  gem 'rails_12factor'
 end
 
 group :development do
@@ -38,7 +39,6 @@ group :development do
   gem 'web-console', '~> 2.0'
   # User puma as the application server
   gem 'puma'
-  gem 'rails_12factor'
 end
 
 group :development, :test do
