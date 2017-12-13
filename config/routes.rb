@@ -1,5 +1,8 @@
+require 'api_constraints'
+
 Rails.application.routes.draw do
 
+  resources :comments
   mount Ckeditor::Engine => '/ckeditor'
 
   get 'targets/index'
@@ -72,6 +75,13 @@ Rails.application.routes.draw do
     patch 'sign_up' => 'devise/registrations#update', as: nil
 
     get 'confirm_account' => 'devise/confirmations#show', as: :user_confirmation
+  end
+
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :comments, only: [:create]
+      resources :reports, only: [:update]
+    end
   end
 
   root to: "home#index"

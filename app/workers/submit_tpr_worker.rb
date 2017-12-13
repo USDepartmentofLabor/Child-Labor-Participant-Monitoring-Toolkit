@@ -17,7 +17,6 @@ class SubmitTprWorker
     output.submitted_on = tpr.date_submitted
     output.is_final_report = tpr.is_final_report
     output.is_semi_annual = tpr.is_semi_annual
-    output.reporting_status_id = tpr.reporting_status_id
 
 #    output.attachments = []
     output.annexes_included = []
@@ -45,13 +44,6 @@ class SubmitTprWorker
     # Only queued TPRs can be submitted
     if tpr.reporting_status_id != 6
       return
-    end
-
-    SwaggerClient.configure do |c|
-      c.api_key['Authorization'] = Project.first.api_key
-      c.scheme = 'http'
-      c.host = '192.168.70.140:3001'
-      c.base_path = '/api'
     end
 
     client = SwaggerClient::DefaultApi.new
