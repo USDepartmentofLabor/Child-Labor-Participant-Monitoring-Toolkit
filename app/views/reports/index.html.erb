@@ -1,25 +1,30 @@
-<div class="box box-primary">
-  <div class="box-header with-border">
-    <h3 class="box-title">
-      Common Indicators Standard Reports
-    </h3>
-  </div>
-  <div class="box-body">
-    <table class="table table-condensed table-striped">
+<% content_for :title, "Technical Progress Reports" %>
+
+<div class="page-header">
+  <%= link_to new_report_path, class: "btn btn-primary" do %>
+    <%= fa_icon "plus" %>
+    Start New TPR
+  <% end %>
+</div>
+
+<% unless @reports.length == 0 %>
+  <div class="box">
+    <table id='technicalProgressReportsTable' class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th><%= Report.human_attribute_name(:title) %></th>
-          <th><%= Report.human_attribute_name(:desc) %></th>
+          <th><%= ReportingPeriod.model_name.human %></th>
+          <th><%= ReportStatus.model_name.human %></th>
+          <th><%= Report.human_attribute_name(:date_submitted) %></th>
         </tr>
       </thead>
 
       <tbody>
-        <%= content_tag_for(:tr, @reports) do |report| %>
-        <td><%= link_to report.title, report_path(report)%></td>
-        <td><%= report.desc %></td>
+        <%= content_tag_for(:tr, @reports) do |r| %>
+          <td><%= link_to r.reporting_period.name, report_path(r) %></td>
+          <td><%= r.report_status.name %></td>
+          <td><%= r.submitted_on %></td>
         <% end %>
       </tbody>
     </table>
-
   </div>
-</div>
+<% end %>

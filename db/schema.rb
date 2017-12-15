@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213194929) do
+ActiveRecord::Schema.define(version: 20171214215318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -388,6 +388,24 @@ ActiveRecord::Schema.define(version: 20171213194929) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "report_attachments", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
+    t.integer  "report_id",               null: false
+    t.string   "attachment_file_name",    null: false
+    t.string   "attachment_content_type", null: false
+    t.string   "attachment_version",      null: false
+    t.string   "attachment_annex",        null: false
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "report_statuses", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reporting_periods", force: :cascade do |t|
     t.date     "start_date", null: false
     t.date     "end_date",   null: false
@@ -396,20 +414,18 @@ ActiveRecord::Schema.define(version: 20171213194929) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reports", force: :cascade do |t|
-    t.string   "title"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.text     "service_ids",  default: [],              array: true
-    t.string   "service_type"
-    t.text     "target_ids",   default: [],              array: true
-    t.string   "target_type"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "user_id"
-    t.text     "desc"
-    t.integer  "indicator_id"
+  create_table "reports", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
+    t.integer "reporting_period_id"
+    t.integer "report_status_id"
+    t.integer "submitted_by"
+    t.date    "submitted_on"
+    t.boolean "is_final_report",     default: false
+    t.string  "report_frequency"
+    t.string  "annexes_required",    default: [],    array: true
   end
+
+  add_index "reports", ["report_status_id"], name: "index_reports_on_report_status_id", using: :btree
+  add_index "reports", ["reporting_period_id"], name: "index_reports_on_reporting_period_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -562,6 +578,9 @@ ActiveRecord::Schema.define(version: 20171213194929) do
   add_foreign_key "project_targets", "project_target_types"
   add_foreign_key "project_targets", "projects"
   add_foreign_key "projects", "regions"
+  add_foreign_key "reports", "report_statuses"
+  add_foreign_key "reports", "reporting_periods"
+  add_foreign_key "reports", "users", column: "submitted_by"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "service_instances", "people"
