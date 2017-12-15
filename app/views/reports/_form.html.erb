@@ -1,174 +1,142 @@
-<%= form_for(@report, html: {class: "form-horizontal", role: "form", id: "report-wizard"}) do |f| %>
-  <%= error_messages(@report) %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <label class="control-label">
+        1. Federal Agency and Organization Element to which Report is Submitted
+      </label>
+      <input type="text" class="form-control" value="USDOL/ILAB/OCFT" disabled />
+    </div>
+  </div>
 
-  <div class="swMain">
-    <ul>
-      <li>
-        <a href="#step-1">
-          <div class="stepNumber">
-            1
-          </div>
-          <span class="stepDesc"> <%= t("reports.wizard.step") %> 1
-            <br />
-            <small><%= t("reports.wizard.select_indicator") %></small>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="#step-2">
-          <div class="stepNumber">
-            2
-          </div>
-          <span class="stepDesc"> <%= t("reports.wizard.step") %> 2
-            <br />
-            <small><%= t("reports.wizard.basic_infomation") %></small>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="#step-3">
-          <div class="stepNumber">
-            3
-          </div>
-          <span class="stepDesc"> <%= t("reports.wizard.step") %> 3
-            <br />
-            <small><%= t("reports.wizard.select_work_status") %></small>
-          </span>
-        </a>
-      </li>
-    </ul>
+  <div class="col-md-4">
+    <div class="form-group">
+      <label class="control-label">
+        2. Federal Grant Number
+      </label>
+      <input type="text" class="form-control"
+        value="<%= @project.cooperative_agreement_number %>" disabled />
+    </div>
+  </div>
 
-    <div id="step-1">
-      <h3 class="StepTitle"><%= t("reports.wizard.step") %> 1 - <%= t("reports.wizard.select_indicator") %></h3>
-
+  <div class="col-md-4">
+    <div class="form-group">
+      <label class="control-label">
+        3. DUNS Number
+      </label>
+      <input type="text"
+             class="form-control"
+             value="<%= @project.duns_number %>"
+             disabled />
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label">
+    4. Country and Project Name
+  </label>
+  <textarea class="form-control" disabled><%= @project.title %></textarea>
+</div>
+<fieldset>
+  <legend class="control-label">5. Recipient Organization Contact Information</legend>
+  <div class="row">
+    <div class="col-md-6">
       <div class="form-group">
-        <div class="col-sm-4 col-sm-offset-2">
-          <% @indicators.group_by(&:indicator_type).each do |indicator_type, indicators| %>
-            <div class="checkbox" style="padding-bottom: 20px;">
-              <label style="font-size: 20px;">
-                <%= check_box_tag "indicator_type[]", indicator_type, false, class: "square-red" %>&nbsp;<%= indicator_type %> Indicators
-              </label>
-            </div>
-            <div class="sub-indicators" style="padding-left: 20px; padding-bottom: 25px;">
-              <%= f.select :indicator_id, options_from_collection_for_select(indicators, "id", "code"),
-                {include_blank: true}, {class: "form-control"}
-              %>
-            </div>
-          <% end %>
-
-          <div class="checkbox" style="padding-bottom: 20px;">
-            <label style="font-size: 20px;">
-              <%= check_box_tag "indicator_type[]", "Custom", false, class: "square-red" %>&nbsp;Custom Indicators
-            </label>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="indicator-tips-section">
-            <% @indicators.each do |indicator| %>
-              <div id="<%= "indicator-tips-#{indicator.id}" %>" style="display: none;">
-                <h4># <%= indicator.code %>:</h4>
-                <%= content_tag(:p, indicator.indicator, id: "indicator-desc-#{indicator.id}") %>
-                <h4><%= Indicator.human_attribute_name(:use) %>:</h4>
-                <%= content_tag(:p, indicator.use) %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <hr>
-      <div class="form-group">
-        <div class="col-sm-4 col-sm-offset-8">
-          <button class="btn btn-success next-step btn-block btn-large">
-            <%= t("reports.wizard.next") %> <i class="fa fa-arrow-circle-right"></i>
-          </button>
-        </div>
+        <label class="control-label">Headquarters</label>
+        <textarea class="form-control" rows="5" disabled><%= @project.headquarters_address %></textarea>
       </div>
     </div>
-
-    <div id="step-2">
-      <h3 class="StepTitle"><%= t("reports.wizard.step") %> 1 - <%= t("reports.wizard.basic_infomation") %></h3>
-
+    <div class="col-md-6">
       <div class="form-group">
-        <%= f.label :title, class: "col-sm-3 control-label" %>
-        <div class="col-sm-7">
-          <%= f.text_field :title, class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :desc, class: "col-sm-3 control-label" %>
-        <div class="col-sm-7">
-          <%= f.text_area :desc, class: "form-control", rows: "5" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :start_date, class: "col-sm-3 control-label" %>
-        <div class="col-sm-7">
-          <div class="input-group date">
-            <%= f.text_field :start_date, class: "form-control" %>
-            <span class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :end_date, class: "col-sm-3 control-label" %>
-        <div class="col-sm-7">
-          <div class="input-group date">
-            <%= f.text_field :end_date, class: "form-control" %>
-            <span class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <hr>
-      <div class="form-group">
-        <div class="col-sm-4">
-          <button class="btn btn-default back-step btn-block btn-large">
-            <i class="fa fa-arrow-circle-left"></i> <%= t("reports.wizard.back") %>
-          </button>
-        </div>
-        <div class="col-sm-4 col-sm-offset-4">
-          <button class="btn btn-success next-step btn-block btn-large">
-            <%= t("reports.wizard.next") %> <i class="fa fa-arrow-circle-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="step-3">
-      <h3 class="StepTitle"><%= t("reports.wizard.step") %> 3 - <%= t("reports.wizard.select_work_status") %></h3>
-      <div class="form-group">
-        <div class="col-sm-7 col-sm-offset-3">
-          <div class="checkbox">
-            <% WorkStatus.all.each do |e| %>
-              <div class="checkbox">
-                <label>
-                  <%= check_box_tag "report[target_ids][]", e.id, true, class: "square-red" %>&nbsp;<%= e.name %>
-                </label>
-              </div>
-            <% end %>
-          </div>
-          <%= hidden_field_tag "report[target_type]", "WorkStatus" %>
-        </div>
-      </div>
-      <hr>
-      <div class="form-group">
-        <div class="col-sm-4">
-          <button class="btn btn-default back-step btn-block btn-large">
-            <i class="fa fa-arrow-circle-left"></i> <%= t("reports.wizard.back") %>
-          </button>
-        </div>
-        <div class="col-sm-4 col-sm-offset-4">
-          <%= submit_tag(t("reports.wizard.finish"), class: "btn btn-primary finish-step btn-block btn-large") %>
-        </div>
+        <label class="control-label">Field</label>
+        <textarea class="form-control" rows="5" disabled><%= @project.field_address %></textarea>
       </div>
     </div>
   </div>
-<% end %>
+</fieldset>
+<div class="row">
+  <div class="col-md-4">
+    <fieldset>
+      <legend class="control-label">
+        6. Project / Grant Period
+      </legend>
+      <div class="form-group">
+        <label class="control-label">
+          Start Date (Month/Day/Year)
+        </label>
+        <input type="text"
+               class="form-control"
+               value="<%= @project.start_date %>"
+               disabled />
+      </div>
+      <div class="form-group">
+        <label class="control-label">
+          End Date (Month/Day/Year)
+        </label>
+        <input type="text"
+               class="form-control"
+               value="<%= @project.end_date %>"
+               disabled />
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="col-md-4">
+    <br>
+    <div class="form-group">
+      <%= f.label :reporting_period_id, class: "control-label" %>
+      <%= f.collection_select :reporting_period_id, ReportingPeriod.all,
+        :id, :end_date, {:include_blank => true}, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <br>
+    <div class="form-group">
+      <%= f.label :is_final_report %>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :is_final_report, "1", class: "icheck" %>
+          Yes
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :is_final_report, "0", class: "icheck" %>
+          No
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :is_semi_annual %>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :is_semi_annual, "1", class: "icheck" %>
+          Semi-annual
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :is_semi_annual, "0", class: "icheck" %>
+          Other
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>
+    10. Annexes to submit with every Technical Progress Report, as applicable
+  </label>
+  <p class="help">
+    Please mark the checkboxes below to indicate the annexes attached
+  </p>
+  <% ('a'..'h').each do |cb| %>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :annexes_required, {multiple: true, class: 'icheck'}, cb %>
+        <%= Report.human_attribute_name "annex_#{cb}_required" %>
+      </label>
+    </div>
+  <% end %>
+</div>

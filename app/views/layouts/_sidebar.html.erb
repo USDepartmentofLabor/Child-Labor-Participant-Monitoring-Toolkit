@@ -59,9 +59,8 @@
           <%= fa_icon "angle-left", class: "pull-right" %>
         </a>
         <ul class="treeview-menu">
-          <%= sidebar_link t("reports.index.title"), reports_path %>
           <%= sidebar_link t("projects.reporting_table.link_text"), reporting_table_project_path %>
-          <%= sidebar_link t("reports.technical_progress"), technical_progress_reports_path %>
+          <%= sidebar_link t("reports.technical_progress"), reports_path %>
         </ul>
       <% end -%>
 

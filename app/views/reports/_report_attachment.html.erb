@@ -17,7 +17,7 @@
       <%= fa_icon "plus" %> Add
     <% end %>
   <% end %>
-  <%= TechnicalProgressReport.human_attribute_name("annex_#{id}_included".to_sym) %>
+  <%= Report.human_attribute_name("annex_#{id}_required".to_sym) %>
 
   <% if annex %>
     (<%= link_to 'Download', annex.attachment.url %>)
