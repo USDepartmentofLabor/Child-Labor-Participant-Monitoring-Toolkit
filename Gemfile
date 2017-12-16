@@ -114,5 +114,3 @@ gem 'swagger_client', path: '../shared/ruby-client'
 
 # Prawn for PDF generation
 gem 'prawn'
-
-ruby '2.3.1'

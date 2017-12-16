@@ -1,8 +1,8 @@
 PATH
   remote: ../shared/ruby-client
   specs:
-    swagger_client (1.1.0)
-      json (~> 1.8, >= 1.8.0)
+    swagger_client (1.2.0)
+      json (~> 1.8)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
@@ -463,9 +463,6 @@ DEPENDENCIES
   uglifier
   unicorn
   web-console (~> 2.0)
-
-RUBY VERSION
-   ruby 2.3.1p112
 
 BUNDLED WITH
    1.16.0
