@@ -1,4 +1,4 @@
-class Api::V1::ReportsController < Api::Controller
+class Api::V1::ReportsController < Api::ApiController
   def update
     @technical_progress_report = TechnicalProgressReport.new(tpr_params)
     @technical_progress_report.reporting_status_id = 1
