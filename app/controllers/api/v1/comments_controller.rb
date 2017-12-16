@@ -1,6 +1,6 @@
 class Api::V1::CommentsController < Api::ApiController
   def create
-    comment = ReportComment.new(comment_params)
+    comment = Comment.new(comment_params)
     if comment.save!
       render json: {status: 'submitted'}
     else
