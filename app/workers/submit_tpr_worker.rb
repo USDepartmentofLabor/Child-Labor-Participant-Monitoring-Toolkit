@@ -5,7 +5,7 @@ class SubmitTprWorker
 
     puts "Submitting TPR #{id}"
 
-    tpr = TechnicalProgressReport.find(id)
+    tpr = Report.find(id)
 
     output = SwaggerClient::TprUpload.new
 
@@ -14,35 +14,27 @@ class SubmitTprWorker
     output.submitter = {
       name: tpr.submitted_by
     }
-    output.submitted_on = tpr.date_submitted
+    output.submitted_on = tpr.submitted_on
     output.is_final_report = tpr.is_final_report
-    output.is_semi_annual = tpr.is_semi_annual
 
-#    output.attachments = []
-    output.annexes_included = []
+    output.attachments = []
 
-    ('a'..'h').each do |a|
-      if tpr["annex_#{a}_included"]
-        output.annexes_included.push a
-      end
+    tpr.report_attachments.each do |att|
+      annex = att.attachment_annex
+      version = att.attachment_version
+      body = Base64.encode64(File.read(att.attachment.path))
+
+      output.attachments.push(
+        {
+          annex: annex,
+          body: body,
+          revision: version
+        }
+      )
     end
 
-#    tpr.report_attachments.each do |att|
-#      annex = att.attachment_annex
-#      version = att.attachment_version
-#      body = Base64.encode64(File.read(att.attachment.path))
-#
-#      output.attachments.push(
-#        {
-#          annex: annex,
-#          body: body,
-#          revision: version
-#        }
-#      )
-#    end
-
     # Only queued TPRs can be submitted
-    if tpr.reporting_status_id != 6
+    if tpr.report_status_id != 6
       return
     end
 
@@ -50,7 +42,7 @@ class SubmitTprWorker
 
     begin
       client.upload_tpr(tpr)
-      tpr.reporting_status_id = 2
+      tpr.report_status_id = 2
       tpr.save
     rescue SwaggerClient::ApiError => e
       puts "Exception when calling API->submit_tpr: #{e}"
