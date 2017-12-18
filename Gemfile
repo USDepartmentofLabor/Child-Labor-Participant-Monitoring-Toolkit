@@ -21,8 +21,9 @@ gem 'jquery-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
 
+gem 'puma'
+
 group :production do
-  gem 'unicorn'
   gem 'rails_12factor'
 end
 
@@ -38,7 +39,6 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # User puma as the application server
-  gem 'puma'
 end
 
 group :development, :test do
