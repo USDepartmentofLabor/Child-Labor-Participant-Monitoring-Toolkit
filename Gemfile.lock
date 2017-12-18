@@ -1,5 +1,7 @@
-PATH
-  remote: ../shared/ruby-client
+GIT
+  remote: https://gitlab.com/tmm/dbms-api-client.git
+  revision: 8863b0f41bdd8cfb7d777cb9423b1f78c3e79978
+  tag: 1.2.0
   specs:
     swagger_client (1.2.0)
       json (~> 1.8)

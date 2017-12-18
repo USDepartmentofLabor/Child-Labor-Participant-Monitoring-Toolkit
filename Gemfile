@@ -110,7 +110,7 @@ gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
 
 # Our Swagger Generated API Client
-gem 'swagger_client', path: '../shared/ruby-client'
+gem 'swagger_client', :git => 'https://gitlab.com/tmm/dbms-api-client.git', :tag => '1.2.0'
 
 # Prawn for PDF generation
 gem 'prawn'
