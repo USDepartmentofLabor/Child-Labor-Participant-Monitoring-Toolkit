@@ -1,5 +1,4 @@
-class Api::V1::HouseholdsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+class Api::V1::HouseholdsController < Api::ApiController
 
   def index
     render json: Household.all.to_json
