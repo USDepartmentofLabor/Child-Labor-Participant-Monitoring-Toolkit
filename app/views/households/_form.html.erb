@@ -22,6 +22,51 @@
       <%= f.text_field :name, class: "form-control" %>
     </div>
 
+    <div class="form-group">
+      <%= f.label :address_line_1 %>
+      <%= f.text_field :address_line_1, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address_line_2 %>
+      <%= f.text_field :address_line_2, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :dependent_locality %>
+      <%= f.text_field :dependent_locality, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :locality %>
+      <%= f.text_field :locality, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :dependent_adminv_area %>
+      <%= f.text_field :dependent_adminv_area, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :adminv_area %>
+      <%= f.text_field :adminv_area, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :postal_code %>
+      <%= f.text_field :postal_code, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :country %>
+      <%= f.text_field :country, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address_info %>
+      <%= f.text_area :address_info, rows: 5, class: "form-control" %>
+    </div>
+
     <%= render partial: 'custom_fields/custom_field',
       collection: @section_1_custom_fields,
       locals: {model_id: @household.id} %>
