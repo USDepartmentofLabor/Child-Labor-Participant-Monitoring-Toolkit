@@ -4,16 +4,20 @@ class Api::V1::HouseholdsController < Api::ApiController
     render json: Household.all.to_json
   end
 
-  def create              
-    household = Household.new(household_params) 
-    if household.save
+  def create
+    @household = Household.new(household_params)
+    if @household.save
       render json: '{"status":"submitted"}'
     else
       render json: '{"status":"failed"}'
-    end        
+    end       
   end
 
-  def household_params
-    params[:household].permit(:name, :intake_date)
-  end
+  private
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def household_params
+      params.require(:household).permit(:name, :intake_date)
+    end
+
 end
