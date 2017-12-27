@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220153738) do
+ActiveRecord::Schema.define(version: 20171221202944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,17 +196,20 @@ ActiveRecord::Schema.define(version: 20171220153738) do
   end
 
   create_table "households", force: :cascade do |t|
-    t.string   "name",                            null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "name",                  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "code"
     t.date     "intake_date"
-    t.string   "intake_form_number"
-    t.string   "housing_number"
-    t.string   "home_number"
-    t.string   "district"
-    t.integer  "area",                  limit: 2
-    t.string   "references_for_access"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "postal_code"
+    t.string   "dependent_locality"
+    t.string   "locality"
+    t.string   "adminv_area"
+    t.string   "dependent_adminv_area"
+    t.string   "country"
+    t.text     "address_info"
   end
 
   add_index "households", ["code"], name: "index_households_on_code", unique: true, using: :btree

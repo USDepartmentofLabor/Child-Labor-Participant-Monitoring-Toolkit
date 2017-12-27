@@ -34,6 +34,42 @@
           <td><%= @household.intake_date %></td>
         </tr>
         <tr>
+          <th><%= Household.human_attribute_name(:address_line_1) %></th>
+          <td><%= @household.address_line_1 %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:address_line_2) %></th>
+          <td><%= @household.address_line_2 %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:dependent_locality) %></th>
+          <td><%= @household.dependent_locality %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:locality) %></th>
+          <td><%= @household.locality %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:dependent_adminv_area) %></th>
+          <td><%= @household.dependent_adminv_area %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:adminv_area) %></th>
+          <td><%= @household.adminv_area %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:postal_code) %></th>
+          <td><%= @household.postal_code %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:country) %></th>
+          <td><%= @household.country %></td>
+        </tr>
+        <tr>
+          <th><%= Household.human_attribute_name(:address_info) %></th>
+          <td><%= @household.address_info %></td>
+        </tr>
+        <tr>
         <% @section_1_custom_fields.each do |custom_field| %>
         </tr>
         <tr>

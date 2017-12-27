@@ -10,6 +10,8 @@
 /.vagrantfile
 /.byebug_history
 
+/node_modules
+
 Makefile
 
 # Ignore all logfiles and tempfiles.
