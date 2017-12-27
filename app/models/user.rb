@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def has_ability? ability
     abilities.has(ability.to_s).count > 0
   end
+
+  def has_role? role
+    roles.has(role.to_s).count > 0
+  end
 end
