@@ -177,6 +177,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     htmlentities (4.3.4)
+    httpclient (2.8.3)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     i18n-active_record (0.2.1)
@@ -429,6 +430,7 @@ DEPENDENCIES
   foreman
   fuubar
   guard-rspec
+  httpclient
   i18n-active_record
   icheck-rails
   jquery-datatables-rails

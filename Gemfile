@@ -101,6 +101,7 @@ gem 'ckeditor'
 gem 'paperclip'
 gem 'bootstrap-editable-rails'
 gem 'aws-ses'
+gem 'httpclient'
 
 # Chart.js for the dashboard
 gem 'chartjs-ror'
