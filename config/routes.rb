@@ -1,4 +1,5 @@
 require 'api_constraints'
+require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
@@ -84,6 +85,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:create]
       resources :reports, only: [:update]
     end
+  end
+
+  authenticate :user, lambda {|u| u.has_role? 'Administrator'} do
+    mount Sidekiq::Web => '/sidekiq'
   end
 
   post 'initialize'=> 'home#create'
