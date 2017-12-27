@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   get 'gender_count/:id' => 'projects#gender_count'
 
+  get '*path', to: 'home#setup',
+    constraints: ProjectConstraints.new
+
   resource :project do
     get :dashboard
     get :status_config
@@ -82,6 +85,8 @@ Rails.application.routes.draw do
       resources :reports, only: [:update]
     end
   end
+
+  post 'initialize'=> 'home#create'
 
   root to: "home#index"
 end
