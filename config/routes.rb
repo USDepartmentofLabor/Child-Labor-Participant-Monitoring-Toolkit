@@ -64,7 +64,7 @@ Rails.application.routes.draw do
   resources :hazardous_conditions
   resources :household_tasks
 
-  devise_for :users, skip: [:sessions, :registrations, :confirmations]
+  devise_for :users, skip: [:sessions, :registrations, :confirmations, :passwords]
 
   as :user do
     get 'sign_in' => 'devise/sessions#new', as: :new_user_session
@@ -76,6 +76,12 @@ Rails.application.routes.draw do
 
     put 'sign_up' => 'devise/registrations#update', as: nil
     patch 'sign_up' => 'devise/registrations#update', as: nil
+
+    get 'password/new' => 'devise/passwords#new', as: :new_user_password
+    get 'password/edit' => 'devise/passwords#edit', as: :edit_user_password
+    post 'password' => 'devise/passwords#create', as: :user_password
+    patch 'password' => 'devise/passwords#update', as: nil
+    put 'password' => 'devise/passwords#update', as: nil
 
     get 'confirm_account' => 'devise/confirmations#show', as: :user_confirmation
   end
