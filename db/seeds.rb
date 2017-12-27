@@ -233,29 +233,6 @@ WorkActivity.create([
   { code: '10', canonical_name: 'DID_NOT_ENGAGE_IN_ANY_OF_THE_ABOVE_ACTIVITIES', display_name: 'Did not engage in any of the above activities.' }
 ])
 
-Occupation.create([
-  { code: '01', canonical_name: 'BRICKLAYER_MASON', display_name: 'Bricklayer/Mason' },
-  { code: '02', canonical_name: 'HELPER_ASSISTANT', display_name: 'Helper/Assistant' },
-  { code: '03', canonical_name: 'SHOE_COBBLER', display_name: 'Shoe Cobbler' },
-  { code: '04', canonical_name: 'AUTO_MECHANIC', display_name: 'Auto Mechanic' },
-  { code: '05', canonical_name: 'PAINTER', display_name: "Painter" },
-  { code: '06', canonical_name: 'STREET_CANDY_VENDOR', display_name: 'Street/Candy Vendor' },
-  { code: '07', canonical_name: 'FARMER', display_name: 'Farmer' },
-  { code: '08', canonical_name: 'HARVESTING_SUGAR_CANE', display_name: 'Harvesting Sugar Cane' },
-  { code: '09', canonical_name: 'NANNY', display_name: 'Nanny' }
-])
-
-Industry.create([
-  { code: '01', canonical_name: 'CONSTRUCTION_HOMEBUILDING', display_name: 'Construction/Homebuilding' },
-  { code: '02', canonical_name: 'SHOE_STORE', display_name: 'Shoe Store' },
-  { code: '03', canonical_name: 'AUTO_SHOP', display_name: 'Auto Shop' },
-  { code: '04', canonical_name: 'CONSTRUCTION_COMPANY', display_name: 'Construction Company' },
-  { code: '05', canonical_name: 'STREET_CANDY_VENDING', display_name: "Street/Candy Vending" },
-  { code: '06', canonical_name: 'CORN_CROP', display_name: 'Corn Crop' },
-  { code: '07', canonical_name: 'SUGAR_CANE_PRODUCTION', display_name: 'Sugar Cane Production' },
-  { code: '08', canonical_name: 'OTHER_PERSONS_HOME', display_name: 'Other Persons Home' }
-])
-
 HazardousCondition.create([
   { code: '01', canonical_name: 'DUST_FUMES', display_name: 'Dust/fumes' },
   { code: '02', canonical_name: 'FIRE_GAS_FLAMES', display_name: 'Fire/gas/flames' },
@@ -269,13 +246,6 @@ HazardousCondition.create([
   { code: '10', canonical_name: 'INSUFFICIENT_VENTILATION', display_name: 'Insufficient ventilation' },
   { code: '11', canonical_name: 'CHEMICALS', display_name: 'Chemicals (pesticides, glues, etc.)' },
   { code: '12', canonical_name: 'EXPLOSIVES', display_name: 'Explosives' }
-])
-
-Abuse.create([
-  { code: '01', canonical_name: 'CONSTANTLY_SHOUTED_AT', display_name: 'Constantly shouted at' },
-  { code: '02', canonical_name: 'REPEATEDLY_INSULTED', display_name: 'Repeatedly insulted' },
-  { code: '03', canonical_name: 'BEATEN_PHYSICALLY_HURT', display_name: 'Beaten/physically hurt' },
-  { code: '04', canonical_name: 'SEXUALLY_ABUSED', display_name: 'Sexually abused (touched or things done to you that you do not want)' }
 ])
 
 HouseholdTask.create([
