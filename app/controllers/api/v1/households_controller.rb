@@ -15,7 +15,7 @@ class Api::V1::HouseholdsController < Api::ApiController
   def create
     @household = Household.new(household_params)
     if @household.save
-      render json: '{"status":"success", "updated_at":"'+ get_datetime_formatted(@household.updated_at) + '"}'
+      render json: '{"status":"success", "updated_at":"'+ get_datetime_formatted(@household.updated_at) + '","id":"' + @household.id.to_s + '"}'
     else
       render json: '{"status":"failure"}'
     end       
