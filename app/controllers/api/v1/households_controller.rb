@@ -1,30 +1,37 @@
 class Api::V1::HouseholdsController < Api::ApiController
-  before_action :set_household, only: [:update]
+  before_action :set_household, only: [:show, :update]
 
+  # GET /api/v1/households  
   def index
     render json: Household.all.to_json
   end
 
+  # GET /api/v1/households/1
+  def show
+    render json: @household.to_json
+  end
+
+  # POST /api/v1/households
   def create
     @household = Household.new(household_params)
     if @household.save
-      render json: '{"status":"household create successful"}'
+      render json: '{"status":"success", "updated_at":"'+ get_datetime_formatted(@household.updated_at) + '"}'
     else
-      render json: '{"status":"household create failed"}'
+      render json: '{"status":"failure"}'
     end       
   end
   
+  # PUT /api/v1/households/1
   def update   
     if @household.update(household_params)
-      render json: '{"status":"update successful"}'
+      render json: '{"status":"success", "updated_at":"'+ get_datetime_formatted(@household.updated_at) + '"}'
     else
-      render json: '{"status":"update failed"}'
+      render json: '{"status":"failure"}'
     end
   end
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_household
       @household = Household.find(params[:id])
     end
