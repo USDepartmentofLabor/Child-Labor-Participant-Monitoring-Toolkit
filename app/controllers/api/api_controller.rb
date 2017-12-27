@@ -8,4 +8,9 @@ class Api::ApiController < ActionController::Base
     end
   end
 
+  def get_datetime_formatted(datetime)    
+    # Alternatively: YYYY-MM-DDTHH:MM:SS.000Z return datetime.strftime("%Y-%m-%dT%H:%M:%S.%LZ")
+    return datetime.to_s        
+  end
+
 end
