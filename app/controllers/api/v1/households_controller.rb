@@ -17,7 +17,10 @@ class Api::V1::HouseholdsController < Api::ApiController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def household_params
-      params.require(:household).permit(:name, :intake_date)
+      params.require(:household).permit(
+        :name, :code, :intake_date, :address_line_1, :address_line_2,
+        :postal_code, :dependent_locality, :locality, :adminv_area,
+        :dependent_adminv_area, :country, :address_info)
     end
 
 end
