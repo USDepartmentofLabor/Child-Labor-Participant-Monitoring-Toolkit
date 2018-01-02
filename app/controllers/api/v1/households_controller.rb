@@ -15,7 +15,11 @@ class Api::V1::HouseholdsController < Api::ApiController
   def create
     @household = Household.new(household_params)
     if @household.save
-      render json: '{"status":"success", "updated_at":"'+ get_datetime_formatted(@household.updated_at) + '","id":"' + @household.id.to_s + '"}'
+      render json: '{"status":"success","updated_at":"' +
+        get_datetime_formatted(@household.updated_at) +
+        '","created_at":"' +
+        get_datetime_formatted(@household.created_at) +
+        '","id":"' + @household.id.to_s + '"}'
     else
       render json: '{"status":"failure"}'
     end       
@@ -24,7 +28,8 @@ class Api::V1::HouseholdsController < Api::ApiController
   # PUT /api/v1/households/1
   def update   
     if @household.update(household_params)
-      render json: '{"status":"success", "updated_at":"'+ get_datetime_formatted(@household.updated_at) + '"}'
+      render json: '{"status":"success", "updated_at":"' +
+      get_datetime_formatted(@household.updated_at) + '"}'
     else
       render json: '{"status":"failure"}'
     end
