@@ -99,12 +99,13 @@ LocationType.create([
   { name: 'Project Field Location' }
 ])
 
-ReportingStatus.create([
+ReportStatus.create([
   { name: 'Draft' },
   { name: 'Submitted' },
   { name: 'Ready for Revision' },
   { name: 'In Revision' },
-  { name: 'Approved' }
+  { name: 'Approved' },
+  { name: 'Pending' }
 ])
 
 Ability.create([
@@ -254,17 +255,4 @@ HouseholdTask.create([
   { code: '03', canonical_name: 'COOKING_CLEANING_UTENSILS_HOUSE', display_name: 'Cooking cleaning utensils/house' },
   { code: '04', canonical_name: 'WASHING_CLOTHES', display_name: 'Washing clothes' },
   { code: '05', canonical_name: 'CARING_FOR_CHILDREN_OLD_SICK', display_name: 'Caring for children/old/sick' }
-])
-
-Report.create([
-  { title: 'POH1 Standard Report', desc: 'The Standard Report for the POH1: % of livelihood beneficiary HHs with at least one child engaged in child labor Indicator', indicator_id: 1 },
-  { title: 'POH2 Standard Report', desc: 'The Standard Report for the POH2: % of livelihood beneficiary HHs with at least one child engaged in hazardous child labor (if applicable) Indicator', indicator_id: 2},
-  { title: 'POH3 Standard Report', desc: 'The Standard Report for the POH3: % of livelihood beneficiary HHs with at least one child engaged in other WFCL (only applicable if project specifically targets this population; majority of projects will not use) Indicator', indicator_id: 3},
-  { title: 'POH4 Standard Report', desc: 'The Standard Report for the POH4: % of livelihood beneficiary HHs with all children of compulsory school age attending school regularly Indicator', indicator_id: 4},
-  { title: 'POC1 Standard Report', desc: 'The Standard Report for the POC1: % of beneficiary children engaged in CL Indicator', indicator_id: 5},
-  { title: 'POC2 Standard Report', desc: 'The Standard Report for the POC2: % of beneficiary children engaged in HCL Indicator', indicator_id: 6},
-  { title: 'POC3 Standard Report', desc: 'The Standard Report for the POC3: % of beneficiary children in other WFCL (only applicable if project specifically targets this population; majority of projects will not use) Indicator', indicator_id: 7},
-  { title: 'POC4 Standard Report', desc: 'The Standard Report for the POC4: % of beneficiary children who regularly attended any form of education during the past six (6) months Indicator', indicator_id: 8},
-  { title: 'E1 Standard Report', desc: 'The Standard Report for the E1: # of children engaged in or at high-risk of entering CL provided education or vocational training services Indicator', indicator_id: 9},
-  { title: 'L1 Standard Report', desc: 'The Standard Report for the L1: # of HHs receiving livelihood services Indicator', indicator_id: 10}
 ])

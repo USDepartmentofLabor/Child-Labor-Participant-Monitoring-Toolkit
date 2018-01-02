@@ -1,10 +1,17 @@
+require 'api_constraints'
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
 
+  resources :comments
   mount Ckeditor::Engine => '/ckeditor'
 
   get 'targets/index'
 
   get 'gender_count/:id' => 'projects#gender_count'
+
+  get '*path', to: 'home#setup',
+    constraints: ProjectConstraints.new
 
   resource :project do
     get :dashboard
@@ -42,18 +49,22 @@ Rails.application.routes.draw do
   resources :project_targets
   resources :regions, defaults: {format: :json}
   resources :relationships, except: [:show]
-  resources :reports, except: [:edit, :update]
   resources :roles
   resources :service_type_categories
   resources :service_types
   resources :services
-  resources :technical_progress_reports
+  resources :reports do
+    resources :report_attachments
+    member do
+      patch :submit
+    end
+  end
   resources :users
   resources :work_activities
   resources :hazardous_conditions
   resources :household_tasks
 
-  devise_for :users, skip: [:sessions, :registrations, :confirmations]
+  devise_for :users, skip: [:sessions, :registrations, :confirmations, :passwords]
 
   as :user do
     get 'sign_in' => 'devise/sessions#new', as: :new_user_session
@@ -66,8 +77,27 @@ Rails.application.routes.draw do
     put 'sign_up' => 'devise/registrations#update', as: nil
     patch 'sign_up' => 'devise/registrations#update', as: nil
 
+    get 'password/new' => 'devise/passwords#new', as: :new_user_password
+    get 'password/edit' => 'devise/passwords#edit', as: :edit_user_password
+    post 'password' => 'devise/passwords#create', as: :user_password
+    patch 'password' => 'devise/passwords#update', as: nil
+    put 'password' => 'devise/passwords#update', as: nil
+
     get 'confirm_account' => 'devise/confirmations#show', as: :user_confirmation
   end
+
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :comments, only: [:create]
+      resources :reports, only: [:update]
+    end
+  end
+
+  authenticate :user, lambda {|u| u.has_role? 'Administrator'} do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
+  post 'initialize'=> 'home#create'
 
   root to: "home#index"
 end
