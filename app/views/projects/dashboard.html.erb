@@ -94,17 +94,13 @@
           <% @new_children.each do |child| %>
             <li>
               <%= preview_avatar child, {size: "small"} %>
-              <%= link_to child.full_name, child, {class: "users-list-name"} %>
+              <%= link_to child.full_name, household_person_path(child.household, child), {class: "users-list-name"} %>
               <span class="users-list-date">
                 <%= child.created_at.strftime("%Y-%m-%d") %>
               </span>
             </li>
           <% end %>
         </ul>
-      </div>
-
-      <div class="box-footer text-center">
-        <%= link_to "View all Beneficiaries", children_path %>
       </div>
     </div>
   </div>
