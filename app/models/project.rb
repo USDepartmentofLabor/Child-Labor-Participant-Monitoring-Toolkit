@@ -12,4 +12,32 @@ class Project < ActiveRecord::Base
   def generate_common_indicators
     Indicator.create_common_indicators()
   end
+
+  def headquarters_address
+    address = self.headquarters_location
+
+    unless address.nil?
+      return "#{self.organization}\n#{address.to_mailing}"
+    end
+
+    return nil
+  end
+
+  def headquarters_location
+    self.locations.where('location_type_id = 1').first
+  end
+
+  def field_address
+    address = self.field_location
+
+    address&.to_mailing || nil
+  end
+
+  def field_addresses
+    "TODO"
+  end
+
+  def field_location
+    self.locations.where('location_type_id = 2').first
+  end
 end

@@ -9,7 +9,8 @@ curl -L https://cli-assets.heroku.com/apt/release.key | apt-key add -
 apt-get update
 apt-get upgrade -y
 apt-get install -y git build-essential postgresql libpq-dev ruby libcurl3 \
-  libruby ruby-dev nodejs vim tmux redis-server awscli heroku
+  libruby ruby-dev nodejs vim tmux redis-server awscli heroku \
+  fonts-dejavu-core fonts-dejavu-extra
 gem install bundler
 sudo -u postgres -- createuser -sU postgres ubuntu
 SCRIPT

@@ -1,64 +1,68 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: [:show, :destroy]
+  before_action :set_report, only: [:show, :submit]
+  before_action :set_project
 
   def index
-    @reports = Report.order("title").all
+    @reports = Report.all
   end
 
   def show
-    # Generate report on demand
-    @indicator = Indicator.where(id: @report.indicator_id).first
+    @report_attachment = ReportAttachment.new
 
-    if !@indicator.nil? && @indicator.indicator_type == "Common"
-      if @indicator.code == "E1"
-        education_report = EducationIndicator.new(EducationStatus.pluck(:id), @report.start_date, @report.end_date)
-
-        @results = education_report.generate
-
-        render "show_e1"
-
-      elsif @indicator.code == "L1"
-        render "show_l1"
+    respond_to do |format|
+      format.html
+      format.pdf do
+        end_date = @report.reporting_period.end_date
+        pdf = @report.to_pdf
+        send_data pdf,
+          filename: "TPR_#{end_date.strftime("%Y-%m-%d")}.pdf",
+          type: "application/pdf"
       end
-
-    else
-      render :show
     end
   end
 
   def new
     @report = Report.new
-    @indicators = Indicator.order("id ASC").all
   end
 
   def create
-    @report = Report.new(report_params)
-    @report.user_id = current_user.id
-
+    @report = Report.new(tpr_params)
+    @report.report_status_id = 1
+    @report.annexes_required.select! {|a| a != '0'}
     if @report.save
-      redirect_to reports_path, notice: t("action_messages.create", model: "Report")
+      redirect_to report_path(@report),
+        notice: t("action_messages.create",
+                  model: Report.model_name.human)
     else
       render :new
     end
   end
 
-  def destroy
-    @report.destroy
-    redirect_to reports_url, notice: t("action_messages.destroy", model: "Report")
+  def submit
+    @report.assign_attributes(tpr_params)
+    @report.comments.select {|x| x.id.nil?}.each do |c|
+      c.set_author current_user
+    end
+    @report.report_status_id = 6
+    @report.save
+    SubmitTprWorker.perform_async(params[:id])
+    redirect_to report_path(@report)
   end
 
   private
 
-    # Only allow a trusted parameter "white list" through.
-    def report_params
-      params.require(:report).permit(
-        :title, :start_date, :end_date,
-        :service_type, :target_type, {service_ids: []}, {target_ids: []},
-        :indicator_id, :desc
-      )
-    end
+  def set_report
+    @report = Report.find(params[:id])
+  end
 
-    def set_report
-      @report = Report.find(params[:id])
-    end
+  def set_project
+    @project = Project.first
+  end
+
+  def tpr_params
+    params[:report].permit(
+      :reporting_period_id, :is_final_report, :is_semi_annual,
+      annexes_required: [],
+      comments_attributes: [:id, :body])
+  end
 end

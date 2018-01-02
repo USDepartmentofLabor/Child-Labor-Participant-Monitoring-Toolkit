@@ -21,8 +21,10 @@ gem 'jquery-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
 
+gem 'puma'
+
 group :production do
-  gem 'unicorn'
+  gem 'rails_12factor'
 end
 
 group :development do
@@ -37,8 +39,6 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # User puma as the application server
-  #gem 'puma'
-  gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -66,7 +66,7 @@ group :development, :test do
   gem 'simplecov', require: false
 end
 
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 4.0.0'
 gem 'i18n-active_record', :require => 'i18n/active_record'
 gem 'devise'
 gem 'font-awesome-rails'
@@ -101,6 +101,7 @@ gem 'ckeditor'
 gem 'paperclip'
 gem 'bootstrap-editable-rails'
 gem 'aws-ses'
+gem 'httpclient'
 
 # Chart.js for the dashboard
 gem 'chartjs-ror'
@@ -109,6 +110,8 @@ gem 'chartjs-ror'
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
 
-gem 'rails_12factor', group: :production
-gem 'puma'
-ruby '2.3.1'
+# Our Swagger Generated API Client
+gem 'swagger_client', :git => 'https://gitlab.com/tmm/dbms-api-client.git', :tag => '1.2.0'
+
+# Prawn for PDF generation
+gem 'prawn'
