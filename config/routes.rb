@@ -72,7 +72,12 @@ Rails.application.routes.draw do
   # Api definition
   namespace :api do
     namespace :v1 do
-      resources :households, :tokens, :income_sources
+      resources :tokens
+      resources :households
+      resources :income_sources
+      resources :status_customization_work_activities
+      resources :status_customization_hazardous_conditions
+      resources :status_customization_household_tasks
     end
   end
 
