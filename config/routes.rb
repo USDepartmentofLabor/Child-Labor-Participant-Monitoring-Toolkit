@@ -78,6 +78,7 @@ Rails.application.routes.draw do
       resources :status_customization_work_activities
       resources :status_customization_hazardous_conditions
       resources :status_customization_household_tasks
+      resources :relationships
     end
   end
 
