@@ -6,11 +6,6 @@
         <h2><%= t("login.tagline") -%></h2>
       </div>
       <div class="login-box-body">
-        <div class="panel-heading">
-          <%= link_to root_path do %>
-            <%= image_tag "145px_dol_seal.png", alt: t("general.logo_alt") %>
-          <% end %>
-        </div>
         <p class="login-box-msg">Change your password</p>
         <%= form_for(resource, as: resource_name,
                      url: password_path(resource_name),
