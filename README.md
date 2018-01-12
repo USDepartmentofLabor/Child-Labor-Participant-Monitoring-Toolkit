@@ -32,13 +32,14 @@ the coding directly inside of Virtual Linux OS (inconvenient), or buy a Mac :)
    to get an SSH client, and use it to connect to your Vagrant VM instead. We
    recommend
 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+3. Add `API_HOST=admin.dbmsprototype.org` to .env
 
 After logging in to the VM, from the shell:
 
 ```shell
 $ cd /dbms
 $ bundle exec rake db:prepare
-$ foreman
+$ foreman start
 ```
 
 Then open up a web browser on your local workstation and navigate to
