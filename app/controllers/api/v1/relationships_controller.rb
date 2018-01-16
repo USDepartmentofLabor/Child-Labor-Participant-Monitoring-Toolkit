@@ -1,4 +1,5 @@
 class Api::V1::RelationshipsController < Api::ApiController
+  before_filter :ensure_user_allowed
 
   # GET /api/v1/relationships  
   def index

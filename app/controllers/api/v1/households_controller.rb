@@ -1,4 +1,5 @@
 class Api::V1::HouseholdsController < Api::ApiController
+  before_filter :ensure_user_allowed
   before_action :set_household, only: [:show, :update]
 
   # GET /api/v1/households  

@@ -1,4 +1,5 @@
 class Api::V1::StatusCustomizationHazardousConditionsController < Api::ApiController
+  before_filter :ensure_user_allowed
 
   # GET /api/v1/status_customization_hazardous_conditions  
   def index

@@ -1,4 +1,5 @@
 class Api::V1::StatusCustomizationHouseholdTasksController < Api::ApiController
+  before_filter :ensure_user_allowed
 
   # GET /api/v1/status_customization_household_tasks  
   def index
