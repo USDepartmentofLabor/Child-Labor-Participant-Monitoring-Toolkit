@@ -15,15 +15,15 @@ slow](https://meta.discourse.org/t/vagrant-and-virtualbox-slow-on-windows-update
 The **best solution** is: setup and run rails in Windows (troublesome), or do
 the coding directly inside of Virtual Linux OS (inconvenient), or buy a Mac :)
 
-1. Ensure you have the Powershell version 3.0 or later installer.
-2. Download and Install [VirtualBox](www.virtualbox.org/wiki/Downloads)
-3. Download and Install [Vagrant](vagrantup.com/downloads)
-4. Start your console, and go to source code folder.
-5. For the first time before running `vagrant`, install vagrant NSF support for Windows:
-6. Start rails development environment in a virtual machine: `vagrant up` (might take some take for the first time)
+1. Download and Install [VirtualBox](www.virtualbox.org/wiki/Downloads)
+2. Download and Install [Vagrant](vagrantup.com/downloads)
+3. Start your console, and go to source code folder.
+4. For the first time before running `vagrant`, install vagrant NSF support for
+   Windows: `vagrant plugin install vagrant-winnfsd`
+5. Start rails development environment in a virtual machine: `vagrant up`
    (might take some take for the first time)
-7. To enter into the VM, use `vagrant ssh`
-8. To stop the VM, use: `vagrant halt`
+6. To enter into the VM, use `vagrant ssh`
+7. To stop the VM, use: `vagrant halt`
 
 ## Getting Started
 
@@ -32,13 +32,14 @@ the coding directly inside of Virtual Linux OS (inconvenient), or buy a Mac :)
    to get an SSH client, and use it to connect to your Vagrant VM instead. We
    recommend
 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+3. Add `API_HOST=admin.dbmsprototype.org` to .env
 
 After logging in to the VM, from the shell:
 
 ```shell
 $ cd /dbms
 $ bundle exec rake db:prepare
-$ foreman
+$ foreman start
 ```
 
 Then open up a web browser on your local workstation and navigate to
@@ -48,7 +49,6 @@ is: admin@ilabtoolkit.com / password.
 ## Load Example Data
 
 From the VM shell:
-## Deployment (need to update)
 
 ```shell
 $ bundle exec rake db:load_project_data
@@ -60,9 +60,6 @@ wish.
 
 ## Reload Example Data
 
-1. `bundle exec rake db:prepare`
-2. `bundle exec rake db:load_project_data`
-3. `bundle exec rake DBMS:load_example_data`
 From the VM shell:
 
 ```shell

@@ -125,7 +125,8 @@ en:
         worksheet_name: "Full Intake List"
         full_intake_list_filename: "full_intake_list.xlsx"
     new:
-      title: "Add New Household Member"
+      form_title: "New Household Member Form"
+      details_title: "Add New Household Member"
     show:
       title: "Household Member"
       details_title: "Details"
