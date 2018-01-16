@@ -1,4 +1,5 @@
 class Api::V1::IncomeSourcesController < Api::ApiController
+  before_filter :ensure_user_allowed
   before_action :set_income_source, only: [:show, :update]
 
   # GET /api/v1/income_sources  
