@@ -6,11 +6,6 @@
         <h2><%= t("login.tagline") -%></h2>
       </div>
       <div class="login-box-body">
-        <div class="panel-heading">
-          <%= link_to root_path do %>
-            <%= image_tag "145px_dol_seal.png", alt: t("general.logo_alt") %>
-          <% end %>
-        </div>
         <p class="login-box-msg"><%= t("login.instruction") -%></p>
         <%= form_for(:user, url: session_path(:user)) do |f| %>
           <div class="form-group has-feedback">

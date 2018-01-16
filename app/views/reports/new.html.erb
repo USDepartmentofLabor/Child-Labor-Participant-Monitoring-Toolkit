@@ -1,13 +1,30 @@
 <div class="page-header">
-  <h1><%= t("reports.new.title") %></h1>
+  <%= link_to reports_path, class: 'btn btn-default' do %>
+    <%= fa_icon "caret-left" %>
+    Back to TPR List
+  <% end %>
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= render("form") %>
+  <div class="col-md-12">
+    <%= form_for @report do |f| %>
+      <div class="box box-primary">
+        <div class="box-body">
+          <%= render partial: "form", locals: {f: f} %>
+        </div>
+
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary pull-right">
+            <%= t "general.submit" %>
+          </button>
+          <%= link_to reports_path,
+            class: "btn btn-danger pull-right",
+            style: "margin-right: 1rem" do %>
+          <i class="fa fa-times"></i>
+          <%= t "general.cancel" %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

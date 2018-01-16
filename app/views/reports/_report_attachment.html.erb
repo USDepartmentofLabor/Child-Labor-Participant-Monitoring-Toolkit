@@ -1,0 +1,25 @@
+<% annex = annexes.select {|x| x.attachment_annex == id}.first %>
+<span class="checkbox">
+  <% if should_include %>
+    <span class="icheckbox_square-red checked icon-only"></span>
+  <% else %>
+    <span class="icheckbox_square-red icon-only"></span>
+  <% end %>
+  <%= button_tag(class: "btn btn-xs btn-success", disabled: !should_include,
+                 style: "width: 100px", data: {toggle: "modal",
+                                               target: "#uploadDoc",
+                                               annex: id}) do %>
+    <% if !should_include %>
+      <%= fa_icon "minus" %> Not Applicable
+    <% elsif annex %>
+      <%= fa_icon "check" %> Update
+    <% else %>
+      <%= fa_icon "plus" %> Add
+    <% end %>
+  <% end %>
+  <%= Report.human_attribute_name("annex_#{id}_required".to_sym) %>
+
+  <% if annex %>
+    (<%= link_to 'Download', annex.attachment.url %>)
+  <% end %>
+</span>
