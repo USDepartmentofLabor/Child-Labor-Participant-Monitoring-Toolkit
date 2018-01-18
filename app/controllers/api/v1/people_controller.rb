@@ -14,16 +14,23 @@ class Api::V1::PeopleController < Api::ApiController
 
   # POST /api/v1/people
   def create
-    @household = Household.find(person_params[:household_id])    
-    if @person = @household.people.create(person_params)
-      render json: '{"status":"success","updated_at":"' +
-        get_datetime_formatted(@person.updated_at) +
-        '","created_at":"' +
-        get_datetime_formatted(@person.created_at) +
-        '","id":"' + @person.id.to_s + '"}'
+    @household = Household.find(person_params[:household_id])      
+    if @person = @household.people.create(person_params)      
+      @person.work_activity_ids << person_params[:work_activity_ids]
+      @person.hazardous_condition_ids << person_params[:hazardous_condition_ids]
+      @person.household_task_ids << person_params[:household_task_ids] 
+      if @person.save
+        render json: '{"status":"success","updated_at":"' +
+          get_datetime_formatted(@person.updated_at) +
+          '","created_at":"' +
+          get_datetime_formatted(@person.created_at) +
+          '","id":"' + @person.id.to_s + '"}'
+      else
+        render json: '{"status":"failure"}'
+      end
     else
       render json: '{"status":"failure"}'
-    end       
+    end      
   end
   
   # PUT /api/v1/people/1
@@ -48,7 +55,10 @@ class Api::V1::PeopleController < Api::ApiController
       :first_name, :last_name, :middle_name, :sex, :dob, :household_id,
       :intake_date, :relationship_id, :relationship_other, :have_job_returning_to,
       :hours_worked, :hours_worked_on_housework, :enrolled_in_school,
-      :is_birthdate_approximate)      
+      :is_birthdate_approximate,
+      :work_activity_ids => [],
+      :hazardous_condition_ids => [],
+      :household_task_ids => [])      
   end
 
 end
