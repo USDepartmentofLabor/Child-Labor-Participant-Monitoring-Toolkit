@@ -4,7 +4,13 @@ class Api::V1::PeopleController < Api::ApiController
 
   # GET /api/v1/people  
   def index
-    render json: Person.all.to_json
+    json = '['
+    for person in Person.all do
+      json << get_person_as_json(person) + ','
+    end
+    json = json.chop
+    json << ']'
+    render json: json
   end
 
   # GET /api/v1/people/1
