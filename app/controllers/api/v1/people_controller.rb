@@ -9,7 +9,7 @@ class Api::V1::PeopleController < Api::ApiController
 
   # GET /api/v1/people/1
   def show
-    render json: @person.to_json
+    render json: get_person_as_json(@person)
   end
 
   # POST /api/v1/people
@@ -44,6 +44,13 @@ class Api::V1::PeopleController < Api::ApiController
   end
 
   private
+
+  def get_person_as_json(person)
+    return person.to_json.chop + ',"work_activity_ids":' +
+      person.work_activity_ids.to_s + ',"hazardous_condition_ids":' +
+      person.hazardous_condition_ids.to_s + ',"household_task_ids":' +
+      person.household_task_ids.to_s + '}'
+  end
 
   def set_person
     @person = Person.find(params[:id])
