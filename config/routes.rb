@@ -98,6 +98,7 @@ Rails.application.routes.draw do
       resources :status_customization_household_tasks
       resources :relationships
       resources :people
+      resources :follow_ups
     end
   end
 
