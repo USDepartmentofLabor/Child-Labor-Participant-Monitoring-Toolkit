@@ -99,6 +99,10 @@ Rails.application.routes.draw do
       resources :relationships
       resources :people
       resources :follow_ups
+      resources :service_type_categories
+      resources :service_types
+      resources :services
+      resources :service_instances
     end
   end
 
