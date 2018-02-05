@@ -47,7 +47,9 @@ class Api::V1::HouseholdsController < Api::ApiController
       params.require(:household).permit(
         :name, :code, :intake_date, :address_line_1, :address_line_2,
         :postal_code, :dependent_locality, :locality, :adminv_area,
-        :dependent_adminv_area, :country, :address_info)
+        :dependent_adminv_area, :country, :address_info, :latitude, :longitude,
+        :position_accuracy, :altitude, :altitude_accuracy, :heading, :speed,
+        :gps_recorded_at)
     end
 
 end

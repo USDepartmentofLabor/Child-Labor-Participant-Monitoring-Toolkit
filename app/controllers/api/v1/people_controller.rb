@@ -68,10 +68,11 @@ class Api::V1::PeopleController < Api::ApiController
       :first_name, :last_name, :middle_name, :sex, :dob, :household_id,
       :intake_date, :relationship_id, :relationship_other, :have_job_returning_to,
       :hours_worked, :hours_worked_on_housework, :enrolled_in_school,
-      :is_birthdate_approximate,
+      :is_birthdate_approximate, :latitude, :longitude, :position_accuracy,
+      :altitude, :altitude_accuracy, :heading, :speed, :gps_recorded_at,
       :work_activity_ids => [],
       :hazardous_condition_ids => [],
-      :household_task_ids => [])      
+      :household_task_ids => [])
   end
 
 end
