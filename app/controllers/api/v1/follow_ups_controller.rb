@@ -2,15 +2,19 @@ class Api::V1::FollowUpsController < Api::ApiController
   before_filter :ensure_user_allowed
   before_action :set_follow_up, only: [:show, :update]
 
-  # GET /api/v1/follow_ups  
+  # GET /api/v1/follow_ups
   def index
-    json = '['
-    for follow_up in FollowUp.all do
-      json << get_follow_up_as_json(follow_up) + ','
+    if FollowUp.count.zero?
+      render json: '[]'
+    else
+      json = '['
+      for follow_up in FollowUp.all do
+        json << get_follow_up_as_json(follow_up) + ','
+      end
+      json = json.chop
+      json << ']'
+      render json: json
     end
-    json = json.chop
-    json << ']'
-    render json: json
   end
 
   # GET /api/v1/follow_ups/1

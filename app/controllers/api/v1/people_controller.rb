@@ -2,15 +2,19 @@ class Api::V1::PeopleController < Api::ApiController
   before_filter :ensure_user_allowed
   before_action :set_person, only: [:show, :update]
 
-  # GET /api/v1/people  
+  # GET /api/v1/people
   def index
-    json = '['
-    for person in Person.all do
-      json << get_person_as_json(person) + ','
+    if Person.count.zero?
+      render json: '[]'
+    else
+      json = '['
+      for person in Person.all do
+        json << get_person_as_json(person) + ','
+      end
+      json = json.chop
+      json << ']'
+      render json: json
     end
-    json = json.chop
-    json << ']'
-    render json: json
   end
 
   # GET /api/v1/people/1
