@@ -1,10 +1,8 @@
 class Api::ApiController < ActionController::Base
   respond_to :json
 
-  def get_datetime_formatted(datetime)    
-    # Alternatively: return datetime.to_s    
-    # YYYY-MM-DD HH:MM:SS.000Z
-    return datetime.strftime("%Y-%m-%d %H:%M:%S.%LZ")
+  def get_datetime_formatted(datetime)
+    return datetime.strftime("%Y-%m-%d") + 'T' + datetime.strftime("%H:%M:%S.%LZ")
   end
 
   private
@@ -17,7 +15,7 @@ class Api::ApiController < ActionController::Base
     end
   end
 
-  def ensure_user_allowed    
+  def ensure_user_allowed
     unless authenticate_or_request_with_http_token { |token, options| User.find_by(auth_token: token) }
       render json: { error: 'Token Error' }, status: 401
     end
