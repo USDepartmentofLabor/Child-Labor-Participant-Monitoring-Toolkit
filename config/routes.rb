@@ -100,9 +100,9 @@ Rails.application.routes.draw do
       resources :relationships, only: [:index, :show]
       resources :people
       resources :follow_ups
-      resources :service_type_categories
-      resources :service_types
-      resources :services
+      resources :service_type_categories, only: [:index]
+      resources :service_types, only: [:index]
+      resources :services, only: [:index]
       resources :service_instances
     end
   end
