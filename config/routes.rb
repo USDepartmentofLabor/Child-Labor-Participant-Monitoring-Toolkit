@@ -87,9 +87,10 @@ Rails.application.routes.draw do
   end
 
   # Api definition
-  # ToDo: merge with other api routes
-  namespace :api do
-    namespace :v1 do
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :comments, only: [:create]
+      resources :reports, only: [:update]
       resources :tokens
       resources :households
       resources :income_sources
@@ -103,13 +104,6 @@ Rails.application.routes.draw do
       resources :service_types
       resources :services
       resources :service_instances
-    end
-  end
-
-  namespace :api, defaults: {format: 'json'} do
-    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-      resources :comments, only: [:create]
-      resources :reports, only: [:update]
     end
   end
 
