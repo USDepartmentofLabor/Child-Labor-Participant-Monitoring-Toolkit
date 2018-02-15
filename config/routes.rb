@@ -94,9 +94,9 @@ Rails.application.routes.draw do
       resources :tokens
       resources :households
       resources :income_sources
-      resources :status_customization_work_activities
-      resources :status_customization_hazardous_conditions
-      resources :status_customization_household_tasks
+      resources :status_customization_work_activities, only: [:index, :show]
+      resources :status_customization_hazardous_conditions, only: [:index, :show]
+      resources :status_customization_household_tasks, only: [:index, :show]
       resources :relationships
       resources :people
       resources :follow_ups
