@@ -1,8 +1,7 @@
 class Api::V1::PeopleController < Api::ApiController
   before_filter :ensure_user_allowed
-  before_action :set_person, only: [:show, :update]
 
-  # GET /api/v1/people
+  # GET /api/people
   def index
     if Person.count.zero?
       render json: '[]'
@@ -17,43 +16,84 @@ class Api::V1::PeopleController < Api::ApiController
     end
   end
 
-  # GET /api/v1/people/1
+  # GET /api/people/1
   def show
-    render json: get_person_as_json(@person)
+    if Person.exists?(params[:id])
+      set_person
+      render json: get_person_as_json(@person)
+    else
+      render status: 404, json: '{"status":"failure"}'
+    end
   end
 
   # POST /api/v1/people
   def create
-    @household = Household.find(person_params[:household_id])      
-    if @person = @household.people.create(person_params)      
+    if !validate_request
+      render status: 400, json: '{"status":"failure"}'
+      return
+    end
+
+    @household = Household.find(person_params[:household_id])
+    if @person = @household.people.create(person_params)
       @person.work_activity_ids << person_params[:work_activity_ids]
       @person.hazardous_condition_ids << person_params[:hazardous_condition_ids]
-      @person.household_task_ids << person_params[:household_task_ids] 
+      @person.household_task_ids << person_params[:household_task_ids]
       if @person.save
-        render json: '{"status":"success","updated_at":"' +
-          get_datetime_formatted(@person.updated_at) +
-          '","created_at":"' +
-          get_datetime_formatted(@person.created_at) +
-          '","id":"' + @person.id.to_s + '"}'
+        render status: 201, json: '{"status":"success","updated_at":"' +
+          get_datetime_formatted(@person.updated_at) + '","created_at":"' +
+          get_datetime_formatted(@person.created_at) + '","id":"' +
+          @person.id.to_s + '"}'
       else
-        render json: '{"status":"failure"}'
+        render status: 500, json: '{"status":"failure"}'
       end
     else
-      render json: '{"status":"failure"}'
-    end      
+      render status: 500, json: '{"status":"failure"}'
+    end
   end
-  
-  # PUT /api/v1/people/1
-  def update   
-    if @person.update(person_params)
-      render json: '{"status":"success", "updated_at":"' +
-        get_datetime_formatted(@person.updated_at) + '"}'
+
+  # PUT /api/people/1
+  def update
+    if Person.exists?(params[:id])
+      set_person
+      if !validate_request
+        render status: 400, json: '{"status":"failure"}'
+        return
+      end
+      if @person.update(person_params)
+        render json: '{"status":"success", "updated_at":"' +
+          get_datetime_formatted(@person.updated_at) + '"}'
+      else
+        render status: 500, json: '{"status":"failure"}'
+      end
     else
-      render json: '{"status":"failure"}'
+      render status: 404, json: '{"status":"failure"}'
     end
   end
 
   private
+
+  def validate_request
+    # check if relationship_id is valid if not null
+    if person_params[:relationship_id].present?
+      if !Relationship.exists?(person_params[:relationship_id])
+        return false
+      end
+    end
+
+    # check if household_id is valid
+    if person_params[:household_id].present?
+      if !Household.exists?(person_params[:household_id])
+        return false
+      end
+    end
+
+    # do not allow null household_id
+    if person_params[:household_id].blank?
+      return false
+    end
+
+    return true
+  end
 
   def get_person_as_json(person)
     return person.to_json.chop + ',"work_activity_ids":' +
