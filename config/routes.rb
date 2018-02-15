@@ -97,7 +97,7 @@ Rails.application.routes.draw do
       resources :status_customization_work_activities, only: [:index, :show]
       resources :status_customization_hazardous_conditions, only: [:index, :show]
       resources :status_customization_household_tasks, only: [:index, :show]
-      resources :relationships
+      resources :relationships, only: [:index, :show]
       resources :people
       resources :follow_ups
       resources :service_type_categories
