@@ -78,7 +78,32 @@ class Api::V1::FollowUpsController < Api::ApiController
       return false
     end
 
-    # TODO: ids x 3
+    # check work_activity_ids
+    if follow_up_params[:work_activity_ids].present?
+      for id in follow_up_params[:work_activity_ids] do
+        if !WorkActivity.exists?(id)
+          return false
+        end
+      end
+    end
+
+    # check hazardous_condition_ids
+    if follow_up_params[:hazardous_condition_ids].present?
+      for id in follow_up_params[:hazardous_condition_ids] do
+        if !HazardousCondition.exists?(id)
+          return false
+        end
+      end
+    end
+
+    # check household_task_ids
+    if follow_up_params[:household_task_ids].present?
+      for id in follow_up_params[:household_task_ids] do
+        if !HouseholdTask.exists?(id)
+          return false
+        end
+      end
+    end
 
     return true
   end
