@@ -92,6 +92,33 @@ class Api::V1::PeopleController < Api::ApiController
       return false
     end
 
+    # check work_activity_ids
+    if person_params[:work_activity_ids].present?
+      for id in person_params[:work_activity_ids] do
+        if !WorkActivity.exists?(id)
+          return false
+        end
+      end
+    end
+
+    # check hazardous_condition_ids
+    if person_params[:hazardous_condition_ids].present?
+      for id in person_params[:hazardous_condition_ids] do
+        if !HazardousCondition.exists?(id)
+          return false
+        end
+      end
+    end
+
+    # check household_task_ids
+    if person_params[:household_task_ids].present?
+      for id in person_params[:household_task_ids] do
+        if !HouseholdTask.exists?(id)
+          return false
+        end
+      end
+    end
+
     return true
   end
 
