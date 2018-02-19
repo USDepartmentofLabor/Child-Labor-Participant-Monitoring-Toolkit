@@ -163,11 +163,12 @@ namespace :db do
 
         # Create service assignments
         Random.new.rand(1..max_service_assignments).times do
+          start_date = rand(Date.new(2017, 7, 1)..today)
           ServiceInstance.create(
             person_id: new_person.id,
             service_id: service_ids.sample,
-            start_date: rand(Date.new(2018, 1, 1)..today),
-            end_date: rand(Date.new(2019, 1, 1)..today),
+            start_date: start_date,
+            end_date: start_date + 1,
             hours: Random.new.rand(0..10),
             notes: Faker::Lorem.paragraph)
         end
