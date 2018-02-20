@@ -64,7 +64,7 @@ group :development, :test do
 end
 
 # Lock to 1.6.6 to avoid NoMethodError at startup
-gem 'faker', '1.6.6', require: false
+gem 'faker', '1.6.6'
 
 gem 'rails-i18n', '~> 4.0.0'
 gem 'i18n-active_record', :require => 'i18n/active_record'
