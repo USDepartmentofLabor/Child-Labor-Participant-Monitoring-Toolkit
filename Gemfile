@@ -49,9 +49,6 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  # Lock to 1.6.6 to avoid NoMethodError at startup
-  gem 'faker', '1.6.6', require: false
-
   # testing
   gem 'rspec-rails'
   gem 'rb-fsevent', require: RUBY_PLATFORM =~ /darwin/i ? 'rb-fsevent' : false
@@ -65,6 +62,9 @@ group :development, :test do
   gem 'foreman'
   gem 'simplecov', require: false
 end
+
+# Lock to 1.6.6 to avoid NoMethodError at startup
+gem 'faker', '1.6.6', require: false
 
 gem 'rails-i18n', '~> 4.0.0'
 gem 'i18n-active_record', :require => 'i18n/active_record'
