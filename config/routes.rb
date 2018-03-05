@@ -104,6 +104,7 @@ Rails.application.routes.draw do
       resources :service_types, only: [:index]
       resources :services, only: [:index]
       resources :service_instances, only: [:index, :show, :create, :update]
+      resources :custom_fields, only: [:index]
     end
   end
 
