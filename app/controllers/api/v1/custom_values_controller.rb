@@ -47,6 +47,10 @@ class Api::V1::CustomValuesController < Api::ApiController
         if !Person.exists?(custom_value_params[:model_id])
           return false
         end
+      elsif @custom_field.model_type == 'FollowUp'
+        if !FollowUp.exists?(custom_value_params[:model_id])
+          return false
+        end
       else
         return false
       end
