@@ -86,113 +86,7 @@ namespace :db do
       end_date: Date.new(2019, 3, 1),
       description: 'Service to provide counseling.')
 
-    # Add Household custom fields
-    CustomField.create(
-      name: 'HouseholdCustomShortText',
-      field_type: 'text',
-      model_type: 'Household',
-      help_text: 'This is a HouseholdCustomShortText',
-      sort_order: 1)
-    CustomField.create(
-      name: 'HouseholdCustomLongText',
-      field_type: 'textarea',
-      model_type: 'Household',
-      help_text: 'This is a HouseholdCustomLongText',
-      sort_order: 2)
-    CustomField.create(
-      name: 'HouseholdCustomCheckBox',
-      field_type: 'check_box',
-      selections: "HouseholdCustomCheckBoxOptionA\r\nHouseholdCustomCheckBoxOptionB\r\nHouseholdCustomCheckBoxOptionC",
-      model_type: 'Household',
-      help_text: 'This is a HouseholdCustomCheckBox',
-      sort_order: 3)
-    CustomField.create(
-      name: 'HouseholdCustomRadioButton',
-      field_type: 'radio_button',
-      selections: "HouseholdCustomRadioButtonOptionA\r\nHouseholdCustomRadioButtonOptionB\r\nHouseholdCustomRadioButtonOptionC",
-      model_type: 'Household',
-      help_text: 'This is a HouseholdCustomRadioButton',
-      sort_order: 4)
-    CustomField.create(
-      name: 'HouseholdCustomSelectionField',
-      field_type: 'select',
-      selections: "HouseholdCustomSelectionFieldOptionA\r\nHouseholdCustomSelectionFieldOptionB\r\nHouseholdCustomSelectionFieldOptionC",
-      model_type: 'Household',
-      help_text: 'This is a HouseholdCustomSelectionField',
-      sort_order: 5)
-    CustomField.create(
-      name: 'HouseholdCustomNumericField',
-      field_type: 'number',
-      model_type: 'Household',
-      help_text: 'This is a HouseholdCustomNumericField',
-      sort_order: 6)
-    CustomField.create(
-      name: 'HouseholdCustomDateField',
-      field_type: 'date',
-      model_type: 'Household',
-      help_text: 'This is a HouseholdCustomDateField',
-      sort_order: 7)
-    CustomField.create(
-      name: 'HouseholdCustomRankList',
-      field_type: 'rank_list',
-      selections: "HouseholdCustomRankListOptionA\r\nHouseholdCustomRankListOptionB\r\nHouseholdCustomRankListOptionC",
-      model_type: 'Household',
-      help_text: 'This is a HouseholdCustomRankList',
-      sort_order: 8)
 
-    # Add Household Member custom fields
-    CustomField.create(
-      name: 'HouseholdMemberCustomShortText',
-      field_type: 'text',
-      model_type: 'Person',
-      help_text: 'This is a HouseholdMemberCustomShortText',
-      sort_order: 1)
-    CustomField.create(
-      name: 'HouseholdMemberCustomLongText',
-      field_type: 'textarea',
-      model_type: 'Person',
-      help_text: 'This is a HouseholdMemberCustomLongText',
-      sort_order: 2)
-    CustomField.create(
-      name: 'HouseholdMemberCustomCheckBox',
-      field_type: 'check_box',
-      selections: "HouseholdMemberCustomCheckBoxOptionA\r\nHouseholdMemberCustomCheckBoxOptionB\r\nHouseholdMemberCustomCheckBoxOptionC",
-      model_type: 'Person',
-      help_text: 'This is a HouseholdMemberCustomCheckBox',
-      sort_order: 3)
-    CustomField.create(
-      name: 'HouseholdMemberCustomRadioButton',
-      field_type: 'radio_button',
-      selections: "HouseholdMemberCustomRadioButtonOptionA\r\nHouseholdMemberCustomRadioButtonOptionB\r\nHouseholdMemberCustomRadioButtonOptionC",
-      model_type: 'Person',
-      help_text: 'This is a HouseholdMemberCustomRadioButton',
-      sort_order: 4)
-    CustomField.create(
-      name: 'HouseholdMemberCustomSelectionField',
-      field_type: 'select',
-      selections: "HouseholdMemberCustomSelectionFieldOptionA\r\nHouseholdMemberCustomSelectionFieldOptionB\r\nHouseholdMemberCustomSelectionFieldOptionC",
-      model_type: 'Person',
-      help_text: 'This is a HouseholdMemberCustomSelectionField',
-      sort_order: 5)
-    CustomField.create(
-      name: 'HouseholdMemberCustomNumericField',
-      field_type: 'number',
-      model_type: 'Person',
-      help_text: 'This is a HouseholdMemberCustomNumericField',
-      sort_order: 6)
-    CustomField.create(
-      name: 'HouseholdMemberCustomDateField',
-      field_type: 'date',
-      model_type: 'Person',
-      help_text: 'This is a HouseholdMemberCustomDateField',
-      sort_order: 7)
-    CustomField.create(
-      name: 'HouseholdMemberCustomRankList',
-      field_type: 'rank_list',
-      selections: "HouseholdMemberCustomRankListOptionA\r\nHouseholdMemberCustomRankListOptionB\r\nHouseholdMemberCustomRankListOptionC",
-      model_type: 'Person',
-      help_text: 'This is a HouseholdMemberCustomRankList',
-      sort_order: 8)
 
     # get look up arrays so we have valid values
     service_ids = Service.ids
@@ -282,6 +176,173 @@ namespace :db do
         end
       end
     end
+  end
+
+  desc 'Populates the database with custom fields'
+  task add_custom_fields: :environment do
+
+    # Add Household custom fields
+    CustomField.create(
+      name: 'Household Short Text',
+      field_type: 'text',
+      model_type: 'Household',
+      help_text: 'This is for short answers',
+      sort_order: 1)
+    CustomField.create(
+      name: 'Household Long Text',
+      field_type: 'textarea',
+      model_type: 'Household',
+      help_text: 'This is for longer answers',
+      sort_order: 2)
+    CustomField.create(
+      name: 'Household Check Box',
+      field_type: 'check_box',
+      selections: "Household Check Box Option A\r\nHousehold Check Box Option B\r\nHousehold Check Box Option C",
+      model_type: 'Household',
+      help_text: 'This allows for multiple selection of choices among many',
+      sort_order: 3)
+    CustomField.create(
+      name: 'Household Radio Button',
+      field_type: 'radio_button',
+      selections: "Household Radio Option A\r\nHousehold Radio Option B\r\nHousehold Radio Option C",
+      model_type: 'Household',
+      help_text: 'This is for a single selection among many',
+      sort_order: 4)
+    CustomField.create(
+      name: 'Household Selection Field',
+      field_type: 'select',
+      selections: "Household Selection Option A\r\nHousehold Selection Option B\r\nHousehold Selection Option C",
+      model_type: 'Household',
+      help_text: 'This is for a single selection among many',
+      sort_order: 5)
+    CustomField.create(
+      name: 'Household Numeric Field',
+      field_type: 'number',
+      model_type: 'Household',
+      help_text: 'This is for numbers',
+      sort_order: 6)
+    CustomField.create(
+      name: 'Household Date Field',
+      field_type: 'date',
+      model_type: 'Household',
+      help_text: 'This is for a date',
+      sort_order: 7)
+    CustomField.create(
+      name: 'Household Rank List',
+      field_type: 'rank_list',
+      selections: "Household Rank Option A\r\nHousehold Rank Option B\r\nHousehold Rank Option C",
+      model_type: 'Household',
+      help_text: 'This is for ranking a list of options',
+      sort_order: 8)
+
+    # Add Household Member custom fields
+    CustomField.create(
+      name: 'Person Intake Short Text',
+      field_type: 'text',
+      model_type: 'Person',
+      help_text: 'This is for short answers',
+      sort_order: 1)
+    CustomField.create(
+      name: 'Person Intake Long Text',
+      field_type: 'textarea',
+      model_type: 'Person',
+      help_text: 'This is for longer answers',
+      sort_order: 2)
+    CustomField.create(
+      name: 'Person Intake Check Box',
+      field_type: 'check_box',
+      selections: "Person Check Box Option A\r\nPerson Check Box Option B\r\nPerson Check Box Option C",
+      model_type: 'Person',
+      help_text: 'This allows for multiple selection of choices among many',
+      sort_order: 3)
+    CustomField.create(
+      name: 'Person Intake Radio Button',
+      field_type: 'radio_button',
+      selections: "Person Radio Option A\r\nPerson Radio Option B\r\nPerson Radio Option C",
+      model_type: 'Person',
+      help_text: 'This is for a single selection among many',
+      sort_order: 4)
+    CustomField.create(
+      name: 'Person Intake Selection Field',
+      field_type: 'select',
+      selections: "Person Selection Option A\r\nPerson Selection Option B\r\nPerson Selection Option C",
+      model_type: 'Person',
+      help_text: 'This is for a single selection among many',
+      sort_order: 5)
+    CustomField.create(
+      name: 'Person Intake Numeric Field',
+      field_type: 'number',
+      model_type: 'Person',
+      help_text: 'This is for numbers',
+      sort_order: 6)
+    CustomField.create(
+      name: 'Person Intake Date Field',
+      field_type: 'date',
+      model_type: 'Person',
+      help_text: 'This is for a date',
+      sort_order: 7)
+    CustomField.create(
+      name: 'Person Intake Rank List',
+      field_type: 'rank_list',
+      selections: "Person Rank Option A\r\nPerson Rank Option B\r\nPerson Rank Option C",
+      model_type: 'Person',
+      help_text: 'This is for ranking a list of options',
+      sort_order: 8)
+
+    # Add Household Member Follow Up custom fields
+    CustomField.create(
+      name: 'Person Follow Up Short Text',
+      field_type: 'text',
+      model_type: 'FollowUp',
+      help_text: 'This is for short answers',
+      sort_order: 1)
+    CustomField.create(
+      name: 'Person Follow Up Long Text',
+      field_type: 'textarea',
+      model_type: 'FollowUp',
+      help_text: 'This is for longer answers',
+      sort_order: 2)
+    CustomField.create(
+      name: 'Person Follow Up Check Box',
+      field_type: 'check_box',
+      selections: "Follow Up Check Box Option A\r\nFollow Up Check Box Option B\r\nFollow Up Check Box Option C",
+      model_type: 'FollowUp',
+      help_text: 'This allows for multiple selection of choices among many',
+      sort_order: 3)
+    CustomField.create(
+      name: 'Person Follow Up Radio Button',
+      field_type: 'radio_button',
+      selections: "Follow Up Radio Option A\r\nFollow Up Radio Option B\r\nFollow Up Radio Option C",
+      model_type: 'FollowUp',
+      help_text: 'This is for a single selection among many',
+      sort_order: 4)
+    CustomField.create(
+      name: 'Person Follow Up Selection Field',
+      field_type: 'select',
+      selections: "Follow Up Selection Option A\r\nFollow Up Selection Option B\r\nFollow Up Selection Option C",
+      model_type: 'FollowUp',
+      help_text: 'This is for a single selection among many',
+      sort_order: 5)
+    CustomField.create(
+      name: 'Person Follow Up Numeric Field',
+      field_type: 'number',
+      model_type: 'FollowUp',
+      help_text: 'This is for numbers',
+      sort_order: 6)
+    CustomField.create(
+      name: 'Person Follow Up Date Field',
+      field_type: 'date',
+      model_type: 'FollowUp',
+      help_text: 'This is for a date',
+      sort_order: 7)
+    CustomField.create(
+      name: 'Person Follow Up Rank List',
+      field_type: 'rank_list',
+      selections: "Follow Up Rank Option A\r\nFollow Up Rank Option B\r\nFollow Up Rank Option C",
+      model_type: 'FollowUp',
+      help_text: 'This is for ranking a list of options',
+      sort_order: 8)
+
   end
 
 end
