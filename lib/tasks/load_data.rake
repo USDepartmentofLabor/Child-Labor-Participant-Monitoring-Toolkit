@@ -63,7 +63,7 @@ namespace :db do
   end
 
   desc 'Populates the database with demo data using Faker'
-  task load_demo_data: :environment do
+  task dev_load_demo_data: :environment do
     # VARS
     number_households_to_create = 10
     today = Date.today
@@ -179,7 +179,7 @@ namespace :db do
   end
 
   desc 'Populates the database with custom fields'
-  task add_custom_fields: :environment do
+  task dev_add_custom_fields: :environment do
 
     # Add Household custom fields
     CustomField.create(
