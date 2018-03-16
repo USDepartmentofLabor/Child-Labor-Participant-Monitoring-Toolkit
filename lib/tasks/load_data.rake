@@ -62,7 +62,7 @@ namespace :db do
     ReportingPeriod.create(start_date: Date.new(2019, 10, 1), end_date: Date.new(2020, 3, 31), name: 'PERIOD 9: 1 Oct. 2019 - 31 Mar. 2020')
   end
 
-  desc 'Populates the database with demo data using Faker'
+  desc 'Populates the database with demo data using Faker for development'
   task dev_load_demo_data: :environment do
     # VARS
     number_households_to_create = 10
@@ -85,8 +85,6 @@ namespace :db do
       start_date: Date.new(2017, 6, 1),
       end_date: Date.new(2019, 3, 1),
       description: 'Service to provide counseling.')
-
-
 
     # get look up arrays so we have valid values
     service_ids = Service.ids
@@ -178,7 +176,7 @@ namespace :db do
     end
   end
 
-  desc 'Populates the database with custom fields'
+  desc 'Populates the database with custom fields for development'
   task dev_add_custom_fields: :environment do
 
     # Add Household custom fields
