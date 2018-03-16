@@ -344,12 +344,12 @@ namespace :db do
   end
 
   desc 'Populates the database with demo data using Faker'
-  task load_demo_data: :environment do
+  task :load_demo_data, [:household_count, :person_count] => [:environment] do |t, args|
     # VARS
-    number_households_to_create = 20
+    number_households_to_create = args[:household_count].to_i
     today = Date.today
     max_income_sources = 2
-    max_people = 5
+    max_people = args[:person_count].to_i
     max_follow_ups = 5
     max_service_assignments = 5
 
