@@ -1,4 +1,6 @@
 class Api::V1::ReportsController < Api::ApiController
+  before_filter :ensure_allowed
+  
   def update
     @technical_progress_report = TechnicalProgressReport.new(tpr_params)
     @technical_progress_report.reporting_status_id = 1
