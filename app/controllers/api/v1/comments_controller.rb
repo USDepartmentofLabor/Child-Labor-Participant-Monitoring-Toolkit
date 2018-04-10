@@ -1,4 +1,6 @@
 class Api::V1::CommentsController < Api::ApiController
+  before_filter :ensure_allowed
+  
   def create
     comment = Comment.new(comment_params)
     if comment.save!

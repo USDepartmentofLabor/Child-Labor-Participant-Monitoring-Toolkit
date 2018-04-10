@@ -86,10 +86,26 @@ Rails.application.routes.draw do
     get 'confirm_account' => 'devise/confirmations#show', as: :user_confirmation
   end
 
+  # Api definition
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :comments, only: [:create]
       resources :reports, only: [:update]
+      resources :tokens, only: [:index]
+      resources :households, only: [:index, :show, :create, :update]
+      resources :income_sources, only: [:index, :show, :create, :update]
+      resources :status_customization_work_activities, only: [:index, :show]
+      resources :status_customization_hazardous_conditions, only: [:index, :show]
+      resources :status_customization_household_tasks, only: [:index, :show]
+      resources :relationships, only: [:index, :show]
+      resources :people, only: [:index, :show, :create, :update]
+      resources :follow_ups, only: [:index, :show, :create, :update]
+      resources :service_type_categories, only: [:index]
+      resources :service_types, only: [:index]
+      resources :services, only: [:index]
+      resources :service_instances, only: [:index, :show, :create, :update]
+      resources :custom_fields, only: [:index]
+      resources :custom_values, only: [:index, :create]
     end
   end
 

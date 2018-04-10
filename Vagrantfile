@@ -18,6 +18,7 @@ SCRIPT
 Vagrant.configure(2) do |config|
   # Use a simple, current Ubuntu box
   config.vm.box = "ubuntu/xenial64"
+  config.vm.box_version = "20171028.0.0"
 
   # 3000 is the rails dev server, 3080 is for mailcatcher
   config.vm.network "forwarded_port", guest: 3000, host: 3000
@@ -25,6 +26,7 @@ Vagrant.configure(2) do |config|
 
   # Use local ssh keypairs
   config.ssh.forward_agent = true
+  config.ssh.username = "ubuntu"
 
   # Customize VirtualBox VM
   config.vm.provider "virtualbox" do |v|
@@ -37,14 +39,12 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "../shared", "/home/ubuntu/shared",
     id: "shared",
     owner: "ubuntu",
-    group: "ubuntu",
-    mount_options: ["dmode=775,fmode=664"]
+    group: "ubuntu"
 
   config.vm.synced_folder ".", "/home/ubuntu/dbms",
     id: "ubuntu-root",
     owner: "ubuntu",
-    group: "ubuntu",
-    mount_options: ["dmode=775,fmode=664"]
+    group: "ubuntu"
 
   config.vm.provision "shell", inline: $script
 end

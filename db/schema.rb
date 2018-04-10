@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221202944) do
+ActiveRecord::Schema.define(version: 20180202200346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,10 +154,10 @@ ActiveRecord::Schema.define(version: 20171221202944) do
   end
 
   create_table "follow_ups", force: :cascade do |t|
-    t.integer  "person_id",                      null: false
+    t.integer  "person_id",                                               null: false
     t.integer  "work_status_id"
     t.integer  "education_status_id"
-    t.date     "follow_date",                    null: false
+    t.date     "follow_date",                                             null: false
     t.boolean  "did_work"
     t.boolean  "have_job_returning_to"
     t.integer  "hours_worked"
@@ -168,8 +168,16 @@ ActiveRecord::Schema.define(version: 20171221202944) do
     t.boolean  "performed_housework"
     t.integer  "hours_worked_on_housework"
     t.boolean  "enrolled_in_school"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.decimal  "latitude",                       precision: 10, scale: 7
+    t.decimal  "longitude",                      precision: 10, scale: 7
+    t.decimal  "position_accuracy",              precision: 10, scale: 7
+    t.decimal  "altitude",                       precision: 10, scale: 7
+    t.decimal  "altitude_accuracy",              precision: 10, scale: 7
+    t.decimal  "heading",                        precision: 10, scale: 7
+    t.decimal  "speed",                          precision: 10, scale: 7
+    t.datetime "gps_recorded_at"
   end
 
   create_table "follow_ups_hazardous_conditions", force: :cascade do |t|
@@ -209,9 +217,9 @@ ActiveRecord::Schema.define(version: 20171221202944) do
   end
 
   create_table "households", force: :cascade do |t|
-    t.string   "name",                  null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "name",                                           null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "code"
     t.date     "intake_date"
     t.string   "address_line_1"
@@ -223,6 +231,14 @@ ActiveRecord::Schema.define(version: 20171221202944) do
     t.string   "dependent_adminv_area"
     t.string   "country"
     t.text     "address_info"
+    t.decimal  "latitude",              precision: 10, scale: 7
+    t.decimal  "longitude",             precision: 10, scale: 7
+    t.decimal  "position_accuracy",     precision: 10, scale: 7
+    t.decimal  "altitude",              precision: 10, scale: 7
+    t.decimal  "altitude_accuracy",     precision: 10, scale: 7
+    t.decimal  "heading",               precision: 10, scale: 7
+    t.decimal  "speed",                 precision: 10, scale: 7
+    t.datetime "gps_recorded_at"
   end
 
   add_index "households", ["code"], name: "index_households_on_code", unique: true, using: :btree
@@ -311,9 +327,9 @@ ActiveRecord::Schema.define(version: 20171221202944) do
     t.integer  "household_id"
     t.date     "intake_date"
     t.boolean  "is_head_of_household"
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
-    t.boolean  "is_beneficiary",                           default: false
+    t.datetime "created_at",                                                                        null: false
+    t.datetime "updated_at",                                                                        null: false
+    t.boolean  "is_beneficiary",                                                    default: false
     t.integer  "relationship_id"
     t.string   "relationship_other"
     t.boolean  "have_job_returning_to"
@@ -326,6 +342,14 @@ ActiveRecord::Schema.define(version: 20171221202944) do
     t.integer  "hours_worked_on_housework"
     t.boolean  "enrolled_in_school"
     t.boolean  "is_birthdate_approximate"
+    t.decimal  "latitude",                                 precision: 10, scale: 7
+    t.decimal  "longitude",                                precision: 10, scale: 7
+    t.decimal  "position_accuracy",                        precision: 10, scale: 7
+    t.decimal  "altitude",                                 precision: 10, scale: 7
+    t.decimal  "altitude_accuracy",                        precision: 10, scale: 7
+    t.decimal  "heading",                                  precision: 10, scale: 7
+    t.decimal  "speed",                                    precision: 10, scale: 7
+    t.datetime "gps_recorded_at"
   end
 
   add_index "people", ["relationship_id"], name: "index_people_on_relationship_id", using: :btree
@@ -529,6 +553,7 @@ ActiveRecord::Schema.define(version: 20171221202944) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "auth_token"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

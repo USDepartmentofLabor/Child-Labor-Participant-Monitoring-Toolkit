@@ -25,6 +25,8 @@
             new_custom_field_path(model_type: "Household") %>
           <%= sidebar_link t("custom_fields.index", model: Person.model_name.human),
             new_custom_field_path(model_type: "Person") %>
+          <%= sidebar_link t("custom_fields.index", model: FollowUp.model_name.human),
+            new_custom_field_path(model_type: "FollowUp") %>
         </ul>
       <% end -%>
 
