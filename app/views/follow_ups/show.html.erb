@@ -1,0 +1,107 @@
+<% title t('follow_up.show.title') %>
+
+<div class="page-header">
+  <%= link_to household_person_path(@household, @person), class: 'btn btn-default' do %>
+    <%= fa_icon 'caret-left' %>
+    <%= t 'general.back' %>
+  <% end %>
+  <%= link_to edit_household_person_follow_up_path(@household, @person, @follow_up),
+    class: 'btn btn-primary' do %>
+    <%= fa_icon 'pencil' %>
+    <%= t 'general.edit' %>
+  <% end %>
+</div>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title"><%= t("follow_up.show.details_title") %></h3>
+  </div>
+  <div class="box-body">
+    <table class="table table-condensed table-hover table-listing">
+      <tbody>
+        <tr>
+          <th><%= Person.human_attribute_name(:id) %></th>
+          <td><%= @person.id %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:intake_date) %></th>
+          <td><%= l @person.intake_date %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:last_name) %></th>
+          <td><%= @person.last_name %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:first_name) %></th>
+          <td><%= @person.first_name %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:dob) %></th>
+          <td><%= l @person.dob unless @person.dob.nil? %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:is_birthdate_approximate) %></th>
+          <td><%= display_yes_no(@person.is_birthdate_approximate) %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:age) %></th>
+          <td><%= @person.age %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:sex) %></th>
+          <td><%= @person.gender_name %></td>
+        </tr>
+        <tr>
+          <th><%= Person.human_attribute_name(:relationship_id) %></th>
+          <td><%= @person.relationship_name %></td>
+        </tr>
+      </tbody>
+    </table>
+      <p>
+        <strong><%= FollowUp.human_attribute_name(:follow_date) %></strong>
+          <%= l @follow_up.follow_date %>
+      </p>
+    <p>
+      <strong><%= FollowUp.human_attribute_name(:work_activities) %></strong>
+      <%= @follow_up.work_activities_names %>
+    </p>
+    <p>
+      <strong><%= FollowUp.human_attribute_name(:have_job_returning_to) %></strong>
+      <%= @follow_up.have_job_returning_to %>
+    </p>
+    <p>
+      <strong><%= FollowUp.human_attribute_name(:hours_worked) %></strong>
+      <%= @follow_up.hours_worked %>
+    </p>
+    <p>
+      <strong><%= FollowUp.human_attribute_name(:hazardous_conditions) %></strong>
+      <%= @follow_up.hazardous_conditions_names %>
+    </p>
+    <p>
+      <strong><%= FollowUp.human_attribute_name(:household_tasks) %></strong>
+      <%= @follow_up.household_tasks_names %>
+    </p>
+    <p>
+      <strong><%= FollowUp.human_attribute_name(:hours_worked_on_housework) %></strong>
+      <%= @follow_up.hours_worked_on_housework %>
+    </p>
+    <p>
+      <strong><%= FollowUp.human_attribute_name(:enrolled_in_school) %></strong>
+      <%= @follow_up.enrolled_in_school %>
+    </p>
+    <table class="table table-condensed table-hover table-listing">
+      <tbody>
+        <% @section_1_custom_fields.each do |custom_field| %>
+        </tr>
+        <tr>
+          <th><%= custom_field.name %></th>
+          <td><%= custom_field_display(custom_field, @person.id) %></td>
+        </tr>
+        <% end unless @section_1_custom_fields.nil? %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= render partial: 'custom_sections/custom_section_show',
+  collection: @sections, locals: {model_id: @follow_up.id} %>
