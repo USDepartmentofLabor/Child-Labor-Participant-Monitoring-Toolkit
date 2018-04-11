@@ -10,7 +10,7 @@
   <% if @sections.length > 0 %>
   <div class="form-group">
     <%= f.label :custom_section_id %>
-    <%= f.collection_select :custom_section_id, @sections, :id, :title,
+    <%= f.collection_select :custom_section_id, @sections.order(:sort_order), :id, :title,
       {prompt: true, include_blank: true}, class: "form-control" %>
   </div>
   <% end %>

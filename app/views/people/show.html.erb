@@ -59,10 +59,20 @@
           <th><%= Person.human_attribute_name(:relationship_id) %></th>
           <td><%= @person.relationship_name %></td>
         </tr>
+        <% @section_1_custom_fields.each do |custom_field| %>
+        </tr>
+        <tr>
+          <th><%= custom_field.name %></th>
+          <td><%= custom_field_display(custom_field, @person.id) %></td>
+        </tr>
+        <% end unless @section_1_custom_fields.nil? %>
       </tbody>
     </table>
   </div>
 </div>
+
+<%= render partial: 'custom_sections/custom_section_show',
+  collection: @sections, locals: {model_id: @person.id} %>
 
 <div class="box box-primary">
   <div class="box-header with-border">
