@@ -194,10 +194,9 @@ Translation.create([
 ])
 
 CustomSection.create([
-    { title: 'Section 1', model_type: 'Child', sort_order: 1},
-    { title: 'Economic Activity', model_type: 'Child', sort_order: 2},
-    { title: 'Health and Safety of Working Children', model_type: 'Child', sort_order: 3},
-    { title: 'Hosehold Tasks of Children', model_type: 'Child', sort_order: 4}
+    { title: 'Enter Household Details', model_type: 'Household', sort_order: 1},
+    { title: 'Add New Household Member', model_type: 'Person', sort_order: 1},
+    { title: 'Add New Household Member', model_type: 'FollowUp', sort_order: 1}
 ])
 
 Relationship.create([

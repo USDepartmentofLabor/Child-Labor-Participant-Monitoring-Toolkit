@@ -162,8 +162,15 @@
         </div>
       </div>
 
+      <%= render partial: 'custom_fields/custom_field',
+        collection: @section_1_custom_fields,
+        locals: {model_id: @follow_up.id} %>
+
     </div>
   </div>
+
+  <%= render partial: 'custom_sections/custom_section',
+    collection: @sections, locals: {model_id: @follow_up.id} %>
 
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
