@@ -21,12 +21,6 @@
         <ul class="treeview-menu">
           <%= sidebar_link t("households.index.title"), households_path %>
           <%= sidebar_link t("households.index.add"), new_household_path %>
-          <%= sidebar_link t("custom_fields.index", model: Household.model_name.human),
-            new_custom_field_path(model_type: "Household") %>
-          <%= sidebar_link t("custom_fields.index", model: Person.model_name.human),
-            new_custom_field_path(model_type: "Person") %>
-          <%= sidebar_link t("custom_fields.index", model: FollowUp.model_name.human),
-            new_custom_field_path(model_type: "FollowUp") %>
         </ul>
       <% end -%>
 
@@ -85,6 +79,12 @@
           <% end %>
           <%= sidebar_link t("locales.menu.title"), locales_path %>
           <%= sidebar_link t("projects.status_config.link_text"), status_config_project_path %>
+          <%= sidebar_link t("custom_fields.index", model: Household.model_name.human),
+            new_custom_field_path(model_type: "Household") %>
+          <%= sidebar_link t("custom_fields.index", model: Person.model_name.human),
+            new_custom_field_path(model_type: "Person") %>
+          <%= sidebar_link t("custom_fields.index", model: FollowUp.model_name.human),
+            new_custom_field_path(model_type: "FollowUp") %>
         </ul>
       </li>
 

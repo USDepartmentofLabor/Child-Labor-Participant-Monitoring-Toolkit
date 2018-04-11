@@ -161,8 +161,15 @@
       </div>
     </div>
 
+    <%= render partial: 'custom_fields/custom_field',
+      collection: @section_1_custom_fields,
+      locals: {model_id: @person.id} %>
+
   </div>
 </div>
+
+<%= render partial: 'custom_sections/custom_section',
+  collection: @sections, locals: {model_id: @person.id} %>
 
 <%= submit_or_cancel household_path(@household) %>
 <% end %>
