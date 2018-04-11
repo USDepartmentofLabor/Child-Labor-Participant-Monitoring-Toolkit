@@ -14,6 +14,7 @@ class PeopleController < ApplicationController
     intake_work_status_name = @person.intake_work_status.name unless @person.intake_work_status.nil?
     intake_education_status_name = @person.intake_education_status.name unless @person.intake_education_status.nil?
     nh = {
+      :status_id => 0,
       :status_type => "Intake",
       :work_status => intake_work_status_name,
       :education_status => intake_education_status_name,
@@ -25,6 +26,7 @@ class PeopleController < ApplicationController
       work_status_name = s.work_status.name unless s.nil? || s.work_status.nil?
       education_status_name = s.education_status.name unless s.nil? || s.education_status.nil?
       @person_statuses << {
+        :status_id => s.id,
         :status_type => "Follow Up",
         :work_status => work_status_name,
         :education_status => education_status_name,

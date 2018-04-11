@@ -92,7 +92,11 @@
       <tbody>
         <% @person_statuses.each do |status| %>
           <tr>
-            <td><%= status[:status_type] %></td>
+            <% if status[:status_id] > 0 %>
+              <td><%= link_to status[:status_type], household_person_follow_up_path(@household, @person, status[:status_id]) %></td>
+            <% else %>
+              <td><%= status[:status_type] %></td>
+            <% end %>
             <td><%= status[:work_status] %></td>
             <td><%= status[:education_status] %></td>
             <td><%= status[:reporting_period] %></td>

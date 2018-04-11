@@ -88,6 +88,10 @@ class FollowUpsController < ApplicationController
     @person = Person.find(params[:person_id])
   end
 
+  def set_follow_up
+    @follow_up = FollowUp.find(params[:id])
+  end
+
   def follow_up_params
     params.require(:follow_up).permit(
       :follow_date, :did_work, :have_job_returning_to, :hours_worked, :occupation_id, :industry_id,

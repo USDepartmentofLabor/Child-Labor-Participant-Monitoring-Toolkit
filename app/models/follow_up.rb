@@ -13,4 +13,22 @@ class FollowUp < ActiveRecord::Base
     def reporting_period
       ReportingPeriod.where('start_date <= ? and end_date >= ?', follow_date, follow_date).first
     end
+
+    def work_activities_names
+      if work_activities
+        return work_activities.map(&:display_name).join(', ')
+      end
+    end
+
+    def hazardous_conditions_names
+      if hazardous_conditions
+        return hazardous_conditions.map(&:display_name).join(', ')
+      end
+    end
+
+    def household_tasks_names
+      if household_tasks
+        return household_tasks.map(&:display_name).join(', ')
+      end
+    end
 end
