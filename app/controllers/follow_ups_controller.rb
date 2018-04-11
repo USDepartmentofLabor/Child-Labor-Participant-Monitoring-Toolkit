@@ -4,14 +4,23 @@ class FollowUpsController < ApplicationController
   before_action :set_follow_up, only: [:show, :edit, :update, :destroy]
 
   def show
+    if ! CustomSection.where(model_type: 'FollowUp', sort_order: 1).empty?
+      @section_1_custom_fields = CustomSection.where(model_type: 'FollowUp', sort_order: 1).first.custom_fields
+    else
+      @section_1_custom_fields = Array.new
+    end
+    @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'FollowUp', 1)
   end
 
   def new
     @follow_up = FollowUp.new
+    @section_1_custom_fields = CustomSection.where(model_type: 'FollowUp', sort_order: 1).first.custom_fields unless CustomSection.where(model_type: 'FollowUp', sort_order: 1).empty?
+    @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'FollowUp', 1)
   end
 
   def create
     @follow_up = FollowUp.new(follow_up_params)
+    @custom_fields = CustomField.where(model_type: "FollowUp")
 
     @follow_up.person_id = @person.id
 
@@ -33,6 +42,10 @@ class FollowUpsController < ApplicationController
     end
 
     if @follow_up.save
+      if params[:custom_fields].present? && @custom_fields.length > 0
+        CustomFieldGroup.create_or_update(@follow_up, @custom_fields, params_for_custom_field)
+      end
+
       redirect_to household_person_path(@household, @person), notice: t("action_messages.create", model: FollowUp.model_name.human)
     else
       render :new
@@ -41,17 +54,22 @@ class FollowUpsController < ApplicationController
   end
 
   def edit
+    @section_1_custom_fields = CustomSection.where(model_type: 'FollowUp', sort_order: 1).first.custom_fields unless CustomSection.where(model_type: 'FollowUp', sort_order: 1).empty?
+    @sections = CustomSection.where('model_type = ? AND sort_order > ?', 'FollowUp', 1)
   end
 
   def update
+    @custom_fields = CustomField.where(model_type: "FollowUp")
 
-    #if @person.update_attributes(person_params)
-    #  @person.age = Time.now.year - @person.dob.year
-    #  @person.save
-    #  redirect_to household_person_path(@household, @person), notice: t("action_messages.update", model: Person.model_name.human)
-    #else
-    #  render :edit
-    #end
+    if @follow_up.update_attributes(follow_up_params)
+      if params[:custom_fields].present? && @custom_fields.length > 0
+        CustomFieldGroup.create_or_update(@follow_up, @custom_fields, params_for_custom_field)
+      end
+
+      redirect_to household_person_path(@household, @person), notice: t("action_messages.update", model: FollowUp.model_name.human)
+    else
+      render :edit
+    end
 
   end
 
@@ -79,6 +97,10 @@ class FollowUpsController < ApplicationController
       :hazardous_condition_ids => [],
       :household_task_ids => []
     )
+  end
+
+  def params_for_custom_field
+    params.require(:custom_fields)
   end
 
 end
