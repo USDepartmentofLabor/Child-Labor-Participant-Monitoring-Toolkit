@@ -66,7 +66,7 @@ class FollowUpsController < ApplicationController
         CustomFieldGroup.create_or_update(@follow_up, @custom_fields, params_for_custom_field)
       end
 
-      redirect_to household_person_path(@household, @person), notice: t("action_messages.update", model: FollowUp.model_name.human)
+      redirect_to household_person_follow_up_path(@household, @person, @follow_up), notice: t("action_messages.update", model: FollowUp.model_name.human)
     else
       render :edit
     end

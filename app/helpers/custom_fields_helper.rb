@@ -24,6 +24,19 @@ module CustomFieldsHelper
     return nil
   end
 
+  def display_data_custom_field(date_as_json)
+    if date_as_json and date_as_json.length > 0
+      y = date_as_json["(1i)"].to_i
+      m = date_as_json["(2i)"].to_i
+      d = date_as_json["(3i)"].to_i
+      begin
+        Date.new(y, m, d)
+      rescue
+        nil
+      end
+    end
+  end
+
   def custom_field_display(custom_field, model_id)
     value = ''
     if custom_field_value(custom_field, model_id).is_a? Array

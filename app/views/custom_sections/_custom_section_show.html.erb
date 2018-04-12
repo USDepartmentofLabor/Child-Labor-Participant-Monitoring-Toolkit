@@ -12,6 +12,8 @@
         <dd>
         <% if custom_field_value(custom_field, model_id).is_a? Array %>
           <%= custom_field_value(custom_field, model_id).join(', ') %>
+        <% elsif custom_field.field_type == "date" %>
+          <%= l display_data_custom_field(custom_field_value(custom_field, model_id)) unless display_data_custom_field(custom_field_value(custom_field, model_id)).nil? %>
         <% else %>
           <%= custom_field_value(custom_field, model_id) %>
         <% end %>

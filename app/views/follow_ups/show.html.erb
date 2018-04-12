@@ -67,7 +67,7 @@
     </p>
     <p>
       <strong><%= FollowUp.human_attribute_name(:have_job_returning_to) %></strong>
-      <%= @follow_up.have_job_returning_to %>
+      <%= display_yes_no(@follow_up.have_job_returning_to) %>
     </p>
     <p>
       <strong><%= FollowUp.human_attribute_name(:hours_worked) %></strong>
@@ -87,7 +87,7 @@
     </p>
     <p>
       <strong><%= FollowUp.human_attribute_name(:enrolled_in_school) %></strong>
-      <%= @follow_up.enrolled_in_school %>
+      <%= display_yes_no(@follow_up.enrolled_in_school) %>
     </p>
     <table class="table table-condensed table-hover table-listing">
       <tbody>
