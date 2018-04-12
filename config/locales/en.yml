@@ -137,6 +137,8 @@ en:
     show:
       title: "Participant Follow Up"
       details_title: "Follow Up Details"
+    edit:
+      form_title: "Participant Follup Up Form"
   households:
     index:
       add: "Add New Household"

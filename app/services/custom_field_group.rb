@@ -19,6 +19,8 @@ class CustomFieldGroup
       field_id = field.id.to_s
       custom_value = CustomValue.where(model_id: target.id, custom_field_id: field.id).first_or_initialize
 
+      puts "******** value: #{values[field_id].to_json}"
+
       custom_value.value_text = values[field_id].to_json
 
       if !(custom_value.value_text.blank? || values[field_id].nil?)
