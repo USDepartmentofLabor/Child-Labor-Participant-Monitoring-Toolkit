@@ -40,11 +40,11 @@ module CustomFieldsHelper
   def custom_field_display(custom_field, model_id)
     value = ''
     if custom_field_value(custom_field, model_id).is_a? Array
-      value = custom_field_value(custom_field, model_id).join(', ')
+      return value = custom_field_value(custom_field, model_id).join(', ')
     else
-      value = custom_field_value(custom_field, model_id)
+      return value = custom_field_value(custom_field, model_id)
     end
-    value + ' ' + custom_field_other(custom_field, model_id)
+    return value + ' ' + custom_field_other(custom_field, model_id)
   end
 
   def custom_input(field_object, name, model_id, options={})
