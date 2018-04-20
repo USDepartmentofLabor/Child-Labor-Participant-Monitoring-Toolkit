@@ -515,6 +515,7 @@ namespace :db do
       field_type: 'text',
       model_type: 'Household',
       help_text: '',
+      custom_section_id: CustomSection.where(model_type: 'Household').order(:sort_order).first.id,
       sort_order: 1)
     CustomField.create(
       name: 'Type of Household',
@@ -522,12 +523,14 @@ namespace :db do
       selections: "Child headed\r\nFemale headed\r\nMale headed\r\nSingle parent Male\r\nSingle parent Female\r\nElderly Female\r\nElderly Male\r\nFemale headed with a disability\r\nMale headed with a disability",
       model_type: 'Household',
       help_text: 'What type of household is this?',
+      custom_section_id: CustomSection.where(model_type: 'Household').order(:sort_order).first.id,
       sort_order: 2)
     CustomField.create(
       name: 'Additional Household Notes',
       field_type: 'textarea',
       model_type: 'Household',
       help_text: 'Add any additional notes on the household',
+      custom_section_id: CustomSection.where(model_type: 'Household').order(:sort_order).first.id,
       sort_order: 3)
 
     # Add Household Member custom fields
@@ -537,6 +540,7 @@ namespace :db do
       selections: "Married\r\nNever Married\r\nDivorced\r\nLiving Together\r\nWidowed",
       model_type: 'Person',
       help_text: 'Select one marital status',
+      custom_section_id: CustomSection.where(model_type: 'Person').order(:sort_order).first.id,
       sort_order: 1)
     CustomField.create(
       name: 'Children Not in School',
@@ -544,18 +548,21 @@ namespace :db do
       selections: "School fees\r\nLong distance to school\r\nUniform\r\nNo food\r\nHigh exams fees\r\nLack of basic school needs\r\nChildren have to work\r\nToo many children\r\nNo interest in school\r\nToo old to be in school\r\nOther",
       model_type: 'Person',
       help_text: 'For children 5 to 17, give reason(s) if child is not in school (check all that apply)',
+      custom_section_id: CustomSection.where(model_type: 'Person').order(:sort_order).first.id,
       sort_order: 2)
     CustomField.create(
       name: 'Number of jobs',
       field_type: 'number',
       model_type: 'Person',
       help_text: 'How many jobs has the member had?',
+      custom_section_id: CustomSection.where(model_type: 'Person').order(:sort_order).first.id,
       sort_order: 3)
     CustomField.create(
       name: 'Last Date Worked',
       field_type: 'date',
       model_type: 'Person',
       help_text: 'What was the last date the member worked?',
+      custom_section_id: CustomSection.where(model_type: 'Person').order(:sort_order).first.id,
       sort_order: 4)
     CustomField.create(
       name: 'Rank Types of Help',
@@ -563,6 +570,7 @@ namespace :db do
       selections: "School\r\nLoans\r\nAgricultural",
       model_type: 'Person',
       help_text: 'Have the member rank the types of assistance needed in order of most important (top_) to least (bottom)',
+      custom_section_id: CustomSection.where(model_type: 'Person').order(:sort_order).first.id,
       sort_order: 5)
 
     # Add Household Member Follow Up custom fields
@@ -572,6 +580,7 @@ namespace :db do
       selections: "School fees\r\nLong distance to school\r\nUniform\r\nNo food\r\nHigh exams fees\r\nLack of basic school needs\r\nChildren have to work\r\nToo many children\r\nNo interest in school\r\nToo old to be in school\r\nOther",
       model_type: 'FollowUp',
       help_text: 'For children 5 to 17, give reason(s) if child is not in school (check all that apply)',
+      custom_section_id: CustomSection.where(model_type: 'FollowUp').order(:sort_order).first.id,
       sort_order: 1)
 
   end
