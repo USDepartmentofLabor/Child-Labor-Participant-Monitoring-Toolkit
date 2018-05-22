@@ -406,9 +406,7 @@ namespace :db do
       head_of_household_middle_name = Faker::Name.first_name
 
       new_household = Household.create(
-        name: head_of_household_first_name + ' ' +
-              head_of_household_middle_name + ' ' +
-              head_of_household_last_name + ' Household',
+        name: head_of_household_last_name,
         intake_date: Date.new(today.year, today.month, today.day),
         address_line_1: Faker::Address.street_address,
         address_line_2: Faker::Address.secondary_address,
