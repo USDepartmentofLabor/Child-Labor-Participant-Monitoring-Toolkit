@@ -39,12 +39,23 @@ module CustomFieldsHelper
 
   def custom_field_display(custom_field, model_id)
     value = ''
-    if custom_field_value(custom_field, model_id).is_a? Array
-      return value = custom_field_value(custom_field, model_id).join(', ')
+    custom_field_type = custom_field.field_type
+    if custom_field_type == 'date'
+      display_data_custom_field(custom_field_value(custom_field, model_id))
+    elsif custom_field_type == 'rank_list'
+      rank_list_display(custom_field, model_id)
+    elsif custom_field_value(custom_field, model_id).is_a? Array
+      value = custom_field_value(custom_field, model_id).join(', ')
     else
-      return value = custom_field_value(custom_field, model_id)
+      value = custom_field_value(custom_field, model_id)
     end
-    return value + ' ' + custom_field_other(custom_field, model_id)
+
+    #if custom_field_value(custom_field, model_id).is_a? Array
+    #  return value = custom_field_value(custom_field, model_id).join(', ')
+    #else
+    #  return value = custom_field_value(custom_field, model_id)
+    #end
+    #return value + ' ' + custom_field_other(custom_field, model_id)
   end
 
   def custom_input(field_object, name, model_id, options={})
