@@ -37,13 +37,34 @@ module CustomFieldsHelper
     end
   end
 
+  def display_rank_list_data(custom_field, model_id)
+    # parsing JSON {"value_text":["A","B"],"order":"[1,0]"} to B, A
+    values = custom_field_value(custom_field, model_id)
+    orders = custom_field_order(custom_field, model_id)
+    if (!orders.nil?)
+      orders_split = orders[1..-2].split(',')
+      if (orders_split.length > 0)
+        sorted_values = Array.new(orders_split.length, '')
+        i = 0
+        orders_split.each do |item|
+          index = item.to_s.to_i
+          sorted_values[index] = values[i]
+          i = i + 1
+        end
+        sorted_values.reject! { |c| c.empty? }
+        return sorted_values.join(', ')
+      end
+    end
+    return ""
+  end
+
   def custom_field_display(custom_field, model_id)
     value = ''
     custom_field_type = custom_field.field_type
     if custom_field_type == 'date'
       display_data_custom_field(custom_field_value(custom_field, model_id))
     elsif custom_field_type == 'rank_list'
-      rank_list_display(custom_field, model_id)
+      value = display_rank_list_data(custom_field, model_id)
     elsif custom_field_value(custom_field, model_id).is_a? Array
       value = custom_field_value(custom_field, model_id).join(', ')
     else
