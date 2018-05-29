@@ -155,7 +155,7 @@ module CustomFieldsHelper
       radio_dom.join.html_safe
 
     when "number"
-      number_field_tag(name, content, {class: "form-control"}.merge(options))
+      number_field_tag(name, content, {class: "form-control", step: "0.00001"}.merge(options))
 
     when "date"
       date_options = {start_year: 1901, end_year: 2099, include_blank: true}
