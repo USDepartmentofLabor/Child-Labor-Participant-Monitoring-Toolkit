@@ -216,4 +216,129 @@ namespace :demo do
 
   end
 
+  desc 'Populates the database with custom field values'
+  task add_all_custom_field_values: :environment do
+    custom_fields = CustomField.all
+    custom_fields.each_with_index do |i|
+      if i == custom_fields.first.id
+        Rake::Task["demo:add_custom_field_values"].invoke(i.id)
+      else
+        Rake::Task["demo:add_custom_field_values"].reenable
+        Rake::Task["demo:add_custom_field_values"].invoke(i.id)
+      end
+    end
+  end
+
+  desc 'Populates the database with custom field values by custom field id'
+  task :add_custom_field_values, [:custom_field_id] => [:environment] do |t, args|
+
+    # ARGS
+    custom_field_id = args[:custom_field_id].to_i
+
+    # Get the custom field
+    custom_field = CustomField.where(id: custom_field_id).first
+    type = custom_field.field_type
+
+    # what is the model type?
+    model_ids = Array.new
+    model_type = custom_field.model_type
+    if (model_type == 'Household')
+      model_ids = Household.all.map { |id| id }
+    elsif (model_type == 'Person')
+      model_ids = Person.all.map { |id| id }
+    elsif (model_type == 'FollowUp')
+      model_ids = FollowUp.all.map { |id| id }
+    else
+      puts 'ERROR - ENDING TASK'
+      return
+    end
+
+    # get selections if needed
+    selections = Array.new
+    if ((type == "check_box") | (type == "radio_button") | (type == "select") | (type == "rank_list"))
+      selections = custom_field.selections.split /[\r\n]+/
+    end
+
+    # dates
+    from = Time.now
+    to = Time.now
+    if (type == "date")
+      from = Time.new(to.year - 50, 1, 1)
+    end
+
+    # add the values
+    model_ids.each do |model_id|
+      value = ''
+
+      # generate a value
+      # TYPES: { text, textarea, check_box, radio_button, select, number, date, rank_list }
+      if ((type == "text") | (type == "textarea"))
+        value = '"' + Faker::Lorem.paragraph + '"'
+      elsif (type == 'check_box')
+        chosen_selections = Array.new
+        selections.each do |selection|
+          if (Random.rand > 0.5)
+            chosen_selections.push(selection)
+          end
+        end
+        if (chosen_selections.length > 0)
+          value = "["
+          chosen_selections.each do |chosen_selection|
+            value << "\"" + chosen_selection + "\","
+          end
+          value = value.chomp(",")
+          value << "]"
+        end
+      elsif ((type == 'radio_button') | (type == 'select'))
+        value = "\"" + selections.sample + "\""
+      elsif (type == 'number')
+        value = "\"" + (Random.rand(1..10000) * Random.rand).round(3).to_s + "\""
+      elsif (type == 'date')
+        # {"(1i)":"1901","(2i)":"12","(3i)":"31"}
+        rand_date = Time.at(from + rand * (to.to_f - from.to_f))
+        value = "{\"(1i)\":\"" + rand_date.year.to_s +
+          "\",\"(2i)\":\"" + rand_date.month.to_s +
+          "\",\"(3i)\":\"" + rand_date.day.to_s + "\"}"
+      elsif (type == 'rank_list')
+        # rank_list = {"order":""}
+        # {"value_text":["A","B","C"],"order":"[2,1,0]"}
+        # {"value_text":["A"],"order":"[0]"}
+        # {"value_text":["A","C"],"order":"[2,0]"}
+        rank_list_chosen_selections = Array.new
+        selections.each do |selection|
+          if (Random.rand > 0.5)
+            rank_list_chosen_selections.push(selection)
+          end
+        end
+        if (rank_list_chosen_selections.length > 0)
+          value = "["
+          rank_list_chosen_selections.each do |rank_list_chosen_selection|
+            value << "\"" + rank_list_chosen_selection + "\","
+          end
+          value = value.chomp(",")
+          value << "],\"order\":\"["
+          [*0..(rank_list_chosen_selections.length - 1)].shuffle.each do |order|
+            value << order.to_s + ","
+          end
+          value = value.chomp(",")
+          value << "]\""
+        end
+      else
+        # ERROR
+        puts 'ERROR IN TYPE - ENDING TASK'
+        return
+      end
+
+      if (value != '')
+        json_value = "{\"value_text\":" + value + "}"
+        CustomValue.create(
+          custom_field_id: custom_field.id,
+          value_text: json_value,
+          model_id: model_id.id)
+      end
+
+    end
+
+  end
+
 end
