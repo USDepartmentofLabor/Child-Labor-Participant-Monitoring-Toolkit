@@ -53,12 +53,12 @@ Rails.application.routes.draw do
   resources :service_type_categories
   resources :service_types
   resources :services
-  resources :reports do
-    resources :report_attachments
-    member do
-      patch :submit
-    end
-  end
+  #resources :reports do
+  #  resources :report_attachments
+  #  member do
+  #    patch :submit
+  #  end
+  #end
   resources :users
   resources :work_activities
   resources :hazardous_conditions
@@ -90,7 +90,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :comments, only: [:create]
-      resources :reports, only: [:update]
+      #resources :reports, only: [:update]
       resources :tokens, only: [:index]
       resources :households, only: [:index, :show, :create, :update]
       resources :income_sources, only: [:index, :show, :create, :update]
