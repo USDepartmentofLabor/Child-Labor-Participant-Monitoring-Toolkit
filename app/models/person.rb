@@ -4,12 +4,15 @@ class Person < ActiveRecord::Base
   belongs_to :household
   belongs_to :relationship
   has_many :follow_ups
-  has_and_belongs_to_many :work_activities
+  has_and_belongs_to_many :work_activities,
+                            after_add: :touch_updated_at, after_remove: :touch_updated_at
   has_and_belongs_to_many :occupations, :join_table => :people_occupations
   has_and_belongs_to_many :industries, :join_table => :people_industries
-  has_and_belongs_to_many :hazardous_conditions, :join_table => :people_hazardous_conditions
+  has_and_belongs_to_many :hazardous_conditions, :join_table => :people_hazardous_conditions,
+                            after_add: :touch_updated_at, after_remove: :touch_updated_at
   has_and_belongs_to_many :abuses, :join_table => :people_abuses
-  has_and_belongs_to_many :household_tasks, :join_table => :people_household_tasks
+  has_and_belongs_to_many :household_tasks, :join_table => :people_household_tasks,
+                            after_add: :touch_updated_at, after_remove: :touch_updated_at
   has_many :service_instances
 
   has_many :statuses, class_name: "ChildStatus", dependent: :destroy
@@ -84,6 +87,18 @@ class Person < ActiveRecord::Base
 private
   def working_youth
     !age.nil? && age >= 5 && age <= 17 && (work_activities.any? || have_job_returning_to)
+  end
+
+  def touch_updated_at(hazardous_condition)
+    self.touch if persisted?
+  end
+
+  def touch_updated_at(work_activity)
+    self.touch if persisted?
+  end
+
+  def touch_updated_at(household_task)
+    self.touch if persisted?
   end
 
 end
