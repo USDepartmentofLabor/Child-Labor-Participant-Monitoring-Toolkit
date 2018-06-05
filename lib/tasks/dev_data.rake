@@ -1,7 +1,7 @@
 namespace :dev do
 
   desc 'Populates the database with custom fields for development'
-  task dev_add_custom_fields: :environment do
+  task add_custom_fields: :environment do
 
     # Add Household custom fields
     CustomField.create(
