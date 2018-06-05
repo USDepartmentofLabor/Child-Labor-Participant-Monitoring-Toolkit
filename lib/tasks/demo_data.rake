@@ -182,10 +182,10 @@ namespace :demo do
       custom_section_id: CustomSection.where(model_type: 'Person').order(:sort_order).first.id,
       sort_order: 2)
     CustomField.create(
-      name: 'Number of jobs',
+      name: 'Hours worked',
       field_type: 'number',
       model_type: 'Person',
-      help_text: 'How many jobs has the member had?',
+      help_text: 'How hours has the member worked over the past year?',
       custom_section_id: CustomSection.where(model_type: 'Person').order(:sort_order).first.id,
       sort_order: 3)
     CustomField.create(
@@ -292,7 +292,7 @@ namespace :demo do
       elsif ((type == 'radio_button') | (type == 'select'))
         value = "\"" + selections.sample + "\""
       elsif (type == 'number')
-        value = "\"" + (Random.rand(1..10000) * Random.rand).round(3).to_s + "\""
+        value = "\"" + (Random.rand(1..1000) * Random.rand).round(3).to_s + "\""
       elsif (type == 'date')
         # {"(1i)":"1901","(2i)":"12","(3i)":"31"}
         rand_date = Time.at(from + rand * (to.to_f - from.to_f))
