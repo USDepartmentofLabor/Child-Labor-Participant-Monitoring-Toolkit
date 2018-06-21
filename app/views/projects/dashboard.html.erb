@@ -2,12 +2,12 @@
 
 <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
-    <%= info_box("Beneficiaries",
+    <%= info_box("Participants",
         number_with_delimiter(@total_children),
         @total_children_percentage,
         "#{number_to_percentage(@total_children_percentage, precision: 0)} " +
         "of #{number_with_delimiter(@total_children_target)} targeted " +
-        "beneficiaries serviced", "child", "aqua") %>
+        "participants serviced", "child", "aqua") %>
   </div>
 
   <div class="col-md-3 col-sm-6 col-xs-12">
@@ -51,7 +51,7 @@
 <div class="row">
   <div class="col-md-6">
     <%= collapsible_box(
-        raw("Beneficiaries Target vs Actual by Reporting Period " +
+        raw("Participants Target vs Actual by Reporting Period " +
         "<small>(#{@project.start_date} – #{@project.end_date})</small>"),
         "primary") do %>
       <%= bar_chart @children_target_vs_actual, @bar_chart_options.deep_dup %>
@@ -70,20 +70,20 @@
 
 <div class="row">
   <div class="col-md-4">
-    <%= collapsible_box("Beneficiaries by Age", "primary") do %>
+    <%= collapsible_box("Participants by Age", "primary") do %>
       <%= doughnut_chart @children_by_age, @pie_chart_options.deep_dup %>
     <% end %>
   </div>
 
   <div class="col-md-4">
-    <%= collapsible_box("Beneficiaries by Gender", "primary") do %>
+    <%= collapsible_box("Participants by Gender", "primary") do %>
       <%= pie_chart @children_by_gender, @pie_chart_options %>
     <% end %>
   </div>
 
   <div class="col-md-4">
     <div class="box box-danger">
-      <%= collapsible_box_header "Newest Beneficiaries" do %>
+      <%= collapsible_box_header "Newest Participants" do %>
         <span class="label label-danger">
           <%= @new_children.count %> New Members
         </span>

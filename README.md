@@ -1,4 +1,4 @@
-# Direct Beneficiary Monitoring System Prototype (DOL-ILAB)
+# Direct Participant Monitoring System Prototype (DOL-ILAB)
 
 ## Overview
 
