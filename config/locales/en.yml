@@ -102,10 +102,10 @@ en:
     show:
       title: "Service Record"
       details: "Service Details"
-      children: "Beneficiary List"
+      children: "Participant List"
     form:
-      children_title: "Beneficiaries"
-      add_child: "Add Beneficiary"
+      children_title: "Participants"
+      add_child: "Add Participant"
   adults:
     index:
       add: "Add New Adult"

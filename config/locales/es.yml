@@ -98,10 +98,10 @@ es:
     show:
       title: "Registro de servicio"
       details: "Detalles de Servicio"
-      children: "Lista beneficiario"
+      children: "Lista partícipe"
     form:
-      children_title: "Los beneficiarios"
-      add_child: "Añadir Beneficiario"
+      children_title: "Los participantes"
+      add_child: "Añadir Partícipe"
   adults:
     index:
       add: "Añadir un adulto"

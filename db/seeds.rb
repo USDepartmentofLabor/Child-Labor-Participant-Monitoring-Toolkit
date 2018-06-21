@@ -173,7 +173,7 @@ Locale.create([
 Translation.create([
   { locale: 'en', key: 'general.logo_alt', value: 'Department of Labor Seal' },
   { locale: 'en', key: 'general.submit', value: 'Submit' },
-  { locale: 'en', key: 'login.banner', value: 'Direct Beneficiary Monitoring System' },
+  { locale: 'en', key: 'login.banner', value: 'Direct Participant Monitoring System' },
   { locale: 'en', key: 'login.email', value: 'Email Address' },
   { locale: 'en', key: 'login.forgot_password', value: 'Forgot your password?' },
   { locale: 'en', key: 'login.instruction', value: 'Login with your email address and password' },
@@ -183,7 +183,7 @@ Translation.create([
 
   { locale: 'es', key: 'general.logo_alt', value: 'Sello del Departamento de Trabajo' },
   { locale: 'es', key: 'general.submit', value: 'Presentar' },
-  { locale: 'es', key: 'login.banner', value: 'Direct Beneficiary Monitoring System' },
+  { locale: 'es', key: 'login.banner', value: 'Direct Participant Monitoring System' },
   { locale: 'es', key: 'login.email', value: 'Dirección de correo electrónico' },
   { locale: 'es', key: 'login.forgot_password', value: '¿Olvidaste tu contraseña?' },
   { locale: 'es', key: 'login.instruction',
