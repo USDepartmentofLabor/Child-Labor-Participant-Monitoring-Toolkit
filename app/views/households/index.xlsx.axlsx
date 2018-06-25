@@ -16,16 +16,11 @@ wb.add_worksheet(name: t('people.export.names.worksheet_name')) do |sheet|
     Person.human_attribute_name(:work_activities),
     Person.human_attribute_name(:have_job_returning_to),
     Person.human_attribute_name(:hours_worked),
-    Person.human_attribute_name(:occupations),
-    Person.human_attribute_name(:industries),
     Person.human_attribute_name(:hazardous_conditions),
-    Person.human_attribute_name(:abuses),
     Person.human_attribute_name(:household_tasks),
     Person.human_attribute_name(:hours_worked_on_housework),
     Person.human_attribute_name(:enrolled_in_school),
     'Status Type',
-    'Work Status',
-    'Education Status',
     'Reporting Period',
     'Date Recorded'
   ]
@@ -45,16 +40,11 @@ wb.add_worksheet(name: t('people.export.names.worksheet_name')) do |sheet|
         p.work_activities.map(&:display_name).join(", "),
         p.have_job_returning_to,
         p.hours_worked,
-        p.occupations.map(&:display_name).join(", "),
-        p.industries.map(&:display_name).join(", "),
         p.hazardous_conditions.map(&:display_name).join(", "),
-        p.abuses.map(&:display_name).join(", "),
         p.household_tasks.map(&:display_name).join(", "),
         p.hours_worked_on_housework,
         p.enrolled_in_school,
         'Intake',
-        p.intake_work_status.name,
-        p.intake_education_status.name,
         p.intake_reporting_period.name,
         p.intake_date]
     end
