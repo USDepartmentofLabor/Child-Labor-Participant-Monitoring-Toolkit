@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.10'
 
+gem 'nokogiri', '~> 1.8.2'
+
 # Use postgresql as the database for Active Record
 # Locked to 0.20 to avoid deprecation
 gem 'pg', '0.20'
@@ -71,7 +73,7 @@ gem 'i18n-active_record', :require => 'i18n/active_record'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass'
-gem 'adminlte2-rails'
+gem 'adminlte2-rails', '~> 0.0.6'
 gem 'icheck-rails'
 gem 'toastr_rails'
 
