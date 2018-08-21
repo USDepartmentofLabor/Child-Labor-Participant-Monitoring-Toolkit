@@ -52,7 +52,7 @@ en:
     show:
       title: "Project Details"
       dashboard: "Project Dashboard"
-      targets: "Direct Beneficiary Targets"
+      targets: "Direct Participant Targets"
       details: "Project Details"
     status_config:
       title: "Status Customizations"
@@ -239,7 +239,7 @@ en:
     title: "Add Country and State(Province)"
     add: "Add"
   custom_fields:
-    index: "Customize Fields for %{model}"
+    index: "%{model} Custom Fields"
     new: "Customize Fields for %{model} Forms"
     preview: "Preview of Custom Fields"
     add: "Add New Custom Field"
