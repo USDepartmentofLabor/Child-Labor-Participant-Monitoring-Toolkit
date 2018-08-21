@@ -5,21 +5,23 @@
       <%= custom_section_show.title %>
     </h3>
   </div>
-  <div class="box-body no-padding">
-    <dl>
+  <div class="box-body">
+    <table class="table table-hover table-listing table-condensed">
       <% custom_section_show.custom_fields.each do |custom_field| %>
-        <dt><%= custom_field.name %></dt>
-        <dd>
-        <% if custom_field_value(custom_field, model_id).is_a? Array %>
-          <%= custom_field_value(custom_field, model_id).join(', ') %>
-        <% elsif custom_field.field_type == "date" %>
-          <%= l display_data_custom_field(custom_field_value(custom_field, model_id)) unless display_data_custom_field(custom_field_value(custom_field, model_id)).nil? %>
-        <% else %>
-          <%= custom_field_value(custom_field, model_id) %>
-        <% end %>
-        <%= custom_field_other(custom_field, model_id) %>
-        </dd>
+        <tr>
+	  <th><%= custom_field.name %></th>
+          <td>
+          <% if custom_field_value(custom_field, model_id).is_a? Array %>
+            <%= custom_field_value(custom_field, model_id).join(', ') %>
+          <% elsif custom_field.field_type == "date" %>
+            <%= l display_data_custom_field(custom_field_value(custom_field, model_id)) unless display_data_custom_field(custom_field_value(custom_field, model_id)).nil? %>
+          <% else %>
+            <%= custom_field_value(custom_field, model_id) %>
+          <% end %>
+          <%= custom_field_other(custom_field, model_id) %>
+          </td>
+        </tr>
       <% end %>
-    </dl>
+    </table>
   </div>
 </div>
