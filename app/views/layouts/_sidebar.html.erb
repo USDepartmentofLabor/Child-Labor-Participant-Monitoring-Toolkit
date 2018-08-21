@@ -48,17 +48,12 @@
         </ul>
       <% end -%>
 
-      <%= content_tag :li, class: (controller_name == "reports" ? " treeview active" : "treeview") do %>
-        <a href="#">
+      <li>
+        <%= link_to reporting_table_project_path do %>
           <%= fa_icon "file-text-o" %>
-          <span>Reports</span>
-          <%= fa_icon "angle-left", class: "pull-right" %>
-        </a>
-        <ul class="treeview-menu">
-          <%= sidebar_link t("projects.reporting_table.link_text"), reporting_table_project_path %>
-          <%# = sidebar_link t("reports.technical_progress"), reports_path %>
-        </ul>
-      <% end -%>
+          <span><%= t("projects.reporting_table.link_text") %></span>
+        <% end %>
+      </li>
 
       <li class="treeview">
         <a href="#">
