@@ -58,10 +58,11 @@ GEM
       mail (> 2.2.5)
       mime-types
       xml-simple
-    axlsx (2.0.1)
-      htmlentities (~> 4.3.1)
-      nokogiri (>= 1.4.1)
-      rubyzip (~> 1.0.0)
+    axlsx (3.0.0.pre)
+      htmlentities (~> 4.3, >= 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (~> 1.8, >= 1.8.2)
+      rubyzip (~> 1.2, >= 1.2.1)
     axlsx_rails (0.5.2)
       actionpack (>= 3.1)
       axlsx (>= 2.0.1)
@@ -336,7 +337,7 @@ GEM
     rspec-support (3.8.0)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
-    rubyzip (1.0.0)
+    rubyzip (1.2.2)
     sass (3.7.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -404,7 +405,7 @@ PLATFORMS
 DEPENDENCIES
   adminlte2-rails (~> 0.0.6)
   aws-ses
-  axlsx (= 2.0.1)
+  axlsx (~> 3.0.0.pre)
   axlsx_rails
   bootstrap-editable-rails
   bootstrap-sass
